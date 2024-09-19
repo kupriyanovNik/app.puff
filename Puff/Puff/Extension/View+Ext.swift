@@ -81,9 +81,9 @@ struct RoundedCorner: Shape {
 
 extension View {
     func roundedCornerWithBorder(
-        lineWidth: CGFloat,
+        lineWidth: CGFloat = 1,
         borderColor: Color,
-        radius: CGFloat,
+        radius: CGFloat = 16,
         corners: UIRectCorner
     ) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners) )

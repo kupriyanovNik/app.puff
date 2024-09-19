@@ -27,6 +27,8 @@
 		B7F377762C9B6C480050C93B /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377752C9B6C480050C93B /* SecondaryButton.swift */; };
 		B7F574D02C9C0C730059BAB9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574CF2C9C0C730059BAB9 /* Fonts.swift */; };
 		B7F574DA2C9C11470059BAB9 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574D92C9C11470059BAB9 /* TextButton.swift */; };
+		B7F574DD2C9C144A0059BAB9 /* MainInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574DC2C9C144A0059BAB9 /* MainInputField.swift */; };
+		B7F574DF2C9C9EE10059BAB9 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574DE2C9C9EE10059BAB9 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		B7F377752C9B6C480050C93B /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		B7F574CF2C9C0C730059BAB9 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		B7F574D92C9C11470059BAB9 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		B7F574DC2C9C144A0059BAB9 /* MainInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInputField.swift; sourceTree = "<group>"; };
+		B7F574DE2C9C9EE10059BAB9 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -206,9 +210,10 @@
 		B7F377632C9B68180050C93B /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				B7F377692C9B68A30050C93B /* DelayedButton */,
+				B7F3776A2C9B68AC0050C93B /* DelayedButton.swift */,
 				B7F377642C9B681C0050C93B /* MainButtons */,
 				B7F377602C9B674E0050C93B /* TabBar */,
+				B7F574DC2C9C144A0059BAB9 /* MainInputField.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -224,20 +229,13 @@
 			path = MainButtons;
 			sourceTree = "<group>";
 		};
-		B7F377692C9B68A30050C93B /* DelayedButton */ = {
-			isa = PBXGroup;
-			children = (
-				B7F3776A2C9B68AC0050C93B /* DelayedButton.swift */,
-			);
-			path = DelayedButton;
-			sourceTree = "<group>";
-		};
 		B7F3776C2C9B68D70050C93B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				B7F3776D2C9B68E30050C93B /* Internal.swift */,
 				B7F3776F2C9B69940050C93B /* Color+Ext.swift */,
 				B7F377712C9B6A330050C93B /* View+Ext.swift */,
+				B7F574DE2C9C9EE10059BAB9 /* String+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -322,11 +320,13 @@
 				B73B2E4A2C9B644C001EB658 /* HomeView.swift in Sources */,
 				B7F377762C9B6C480050C93B /* SecondaryButton.swift in Sources */,
 				B73B2E522C9B64A6001EB658 /* Logger.swift in Sources */,
+				B7F574DF2C9C9EE10059BAB9 /* String+Ext.swift in Sources */,
 				B7F377702C9B69940050C93B /* Color+Ext.swift in Sources */,
 				B7F574DA2C9C11470059BAB9 /* TextButton.swift in Sources */,
 				B7F574D02C9C0C730059BAB9 /* Fonts.swift in Sources */,
 				B73B2E4F2C9B6498001EB658 /* HapticManager.swift in Sources */,
 				B7F377662C9B682A0050C93B /* AccentButton.swift in Sources */,
+				B7F574DD2C9C144A0059BAB9 /* MainInputField.swift in Sources */,
 				B7F3776B2C9B68AC0050C93B /* DelayedButton.swift in Sources */,
 				B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */,
 				B73B2E452C9B63E1001EB658 /* AppDelegate.swift in Sources */,
