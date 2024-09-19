@@ -10,7 +10,7 @@ import SwiftUI
 struct SecondaryButton: View {
 
     let text: String
-    var font: Font = .custom("SF Pro Rounded", size: 16)
+    var font: Font = .semibold16
     var background: Color = Color(hex: 0xE7E7E7)
     var padding: EdgeInsets = .init(
         top: 16,

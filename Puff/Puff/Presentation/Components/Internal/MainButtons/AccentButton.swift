@@ -11,7 +11,7 @@ struct AccentButton: View {
 
     let text: String
     var background: Color = Palette.accentColor
-    var font: Font = .custom("SF Pro Rounded", size: 16)
+    var font: Font = .semibold16
     var padding: EdgeInsets = .init(
         top: 16,
         leading: 0,

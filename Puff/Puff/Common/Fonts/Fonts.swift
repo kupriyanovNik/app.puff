@@ -24,6 +24,10 @@ extension Font {
     static let medium12 = getMedium(size: 12)
 }
 
+extension UIFont {
+    static let medium15: UIFont = .init(name: "SF Pro Rounded Medium", size: 15)!
+}
+
 private extension Font {
     static func getRegular(size: CGFloat) -> Font {
         .custom("SF-Pro-Rounded-Regular", size: size)

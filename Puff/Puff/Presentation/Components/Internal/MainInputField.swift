@@ -15,8 +15,8 @@ struct MainInputField: View {
 
 
     var placeholder: String = "Обратная связь"
-    var placeholderFont: Font = .callout
-    var fieldFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
+    var placeholderFont: Font = .medium16
+    var fieldFont: UIFont = .medium15
     var height: CGFloat = 140
     var background: Color = .white
     var padding: EdgeInsets = .init(
@@ -34,7 +34,8 @@ struct MainInputField: View {
                     Text(placeholder)
                         .font(placeholderFont)
                         .foregroundStyle(Color(hex: 0x0303034D).opacity(0.3))
-                        .offset(x: 6, y: 8)
+                        .offset(x: 6, y: 10)
+                        .transition(.opacity.animation(.smooth))
                 }
             }
             .padding(padding)

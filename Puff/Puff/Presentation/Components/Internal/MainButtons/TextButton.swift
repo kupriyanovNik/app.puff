@@ -10,9 +10,9 @@ import SwiftUI
 struct TextButton: View {
 
     var text: String
+    var font: Font = .medium15
     var color: Color = Color(hex: 0x0303034D).opacity(0.3)
     var padding: EdgeInsets = .init(top: 10, leading: 1, bottom: 10, trailing: 1)
-    var font: Font = .callout
 
     var action: () -> Void
 
