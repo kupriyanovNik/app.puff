@@ -12,9 +12,11 @@ struct PuffApp: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+    @StateObject var navigationVM = NavigationViewModel()
+
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            MainNavigationView(navigationVM: navigationVM)
         }
     }
 }

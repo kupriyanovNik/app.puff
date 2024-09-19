@@ -8,5 +8,5 @@
 import SwiftUI
 
 enum Palette {
-
+    static let accentColor = Color(hex: 0x75B8FD)
 }
