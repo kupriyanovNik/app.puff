@@ -30,18 +30,18 @@ extension UIFont {
 
 private extension Font {
     static func getRegular(size: CGFloat) -> Font {
-        .custom("SF-Pro-Rounded-Regular", size: size)
+        .custom("SF Pro Rounded Regular", size: size)
     }
 
     static func getMedium(size: CGFloat) -> Font {
-        .custom("SF-Pro-Rounded-Medium", size: size)
+        .custom("SF Pro Rounded Medium", size: size)
     }
 
     static func getSemibold(size: CGFloat) -> Font {
-        .custom("SF-Pro-Rounded-Semibold", size: size)
+        .custom("SF Pro Rounded Semibold", size: size)
     }
 
     static func getBold(size: CGFloat) -> Font {
-        .custom("SF-Pro-Rounded-Bold", size: size)
+        .custom("SF Pro Rounded Bold", size: size)
     }
 }

@@ -13,10 +13,12 @@ struct PuffApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     @StateObject var navigationVM = NavigationViewModel()
+    @StateObject var onboardingVM = OnboardingViewModel()
 
     var body: some Scene {
         WindowGroup {
-            MainNavigationView(navigationVM: navigationVM)
+//            MainNavigationView(navigationVM: navigationVM)
+            OnboardingView(onboardingVM: onboardingVM)
         }
     }
 }

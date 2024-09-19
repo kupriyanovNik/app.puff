@@ -93,3 +93,11 @@ extension View {
             )
     }
 }
+
+extension View {
+    func prepareFotStackPresentationInOnboarding() -> some View {
+        self
+            .navigationBarBackButtonHidden()
+            .navigationBarTitleDisplayMode(.inline)
+    }
+}

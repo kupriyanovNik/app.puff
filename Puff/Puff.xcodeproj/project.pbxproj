@@ -29,6 +29,8 @@
 		B7F574DD2C9C144A0059BAB9 /* MainInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574DC2C9C144A0059BAB9 /* MainInputField.swift */; };
 		B7F574DF2C9C9EE10059BAB9 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574DE2C9C9EE10059BAB9 /* String+Ext.swift */; };
 		B7F574E12C9CA1940059BAB9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F574E02C9CA1940059BAB9 /* Launch Screen.storyboard */; };
+		B7F574F12C9CAAAF0059BAB9 /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */; };
+		B7F574FA2C9CB8D50059BAB9 /* MarkdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574F92C9CB8D50059BAB9 /* MarkdownText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,12 +58,15 @@
 		B7F574DE2C9C9EE10059BAB9 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		B7F574E02C9CA1940059BAB9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B7F574EC2C9CA3130059BAB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
+		B7F574F92C9CB8D50059BAB9 /* MarkdownText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B7F574D12C9C0CCF0059BAB9 /* Navigation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Navigation; sourceTree = "<group>"; };
 		B7F574D62C9C10980059BAB9 /* Statistics */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Statistics; sourceTree = "<group>"; };
 		B7F574E22C9CA2AF0059BAB9 /* Fonts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fonts; sourceTree = "<group>"; };
+		B7F574ED2C9CAA3D0059BAB9 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +160,7 @@
 		B73B2E462C9B6432001EB658 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B7F574ED2C9CAA3D0059BAB9 /* Onboarding */,
 				B7F574D62C9C10980059BAB9 /* Statistics */,
 				B7F574D12C9C0CCF0059BAB9 /* Navigation */,
 				B73B2E482C9B6447001EB658 /* Home */,
@@ -218,6 +224,7 @@
 				B7F377642C9B681C0050C93B /* MainButtons */,
 				B7F377602C9B674E0050C93B /* TabBar */,
 				B7F574DC2C9C144A0059BAB9 /* MainInputField.swift */,
+				B7F574F92C9CB8D50059BAB9 /* MarkdownText.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -240,6 +247,7 @@
 				B7F3776F2C9B69940050C93B /* Color+Ext.swift */,
 				B7F377712C9B6A330050C93B /* View+Ext.swift */,
 				B7F574DE2C9C9EE10059BAB9 /* String+Ext.swift */,
+				B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 				B7F574D12C9C0CCF0059BAB9 /* Navigation */,
 				B7F574D62C9C10980059BAB9 /* Statistics */,
 				B7F574E22C9CA2AF0059BAB9 /* Fonts */,
+				B7F574ED2C9CAA3D0059BAB9 /* Onboarding */,
 			);
 			name = Puff;
 			productName = Puff;
@@ -337,7 +346,9 @@
 				B73B2E452C9B63E1001EB658 /* AppDelegate.swift in Sources */,
 				B7F3776E2C9B68E30050C93B /* Internal.swift in Sources */,
 				B7F377742C9B6ADB0050C93B /* PrimaryButton.swift in Sources */,
+				B7F574FA2C9CB8D50059BAB9 /* MarkdownText.swift in Sources */,
 				B73B2E322C9B637A001EB658 /* PuffApp.swift in Sources */,
+				B7F574F12C9CAAAF0059BAB9 /* Text+Ext.swift in Sources */,
 				B73B2E4C2C9B647D001EB658 /* Palette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
