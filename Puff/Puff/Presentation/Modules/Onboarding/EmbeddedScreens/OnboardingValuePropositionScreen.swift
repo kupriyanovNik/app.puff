@@ -54,6 +54,7 @@ struct OnboardingValuePropositionScreen: View {
             ForEach(0..<3) { index in
                 tabForIndex(index)
                     .tag(index)
+                    .vBottom()
                     .ignoresSafeArea()
             }
         }

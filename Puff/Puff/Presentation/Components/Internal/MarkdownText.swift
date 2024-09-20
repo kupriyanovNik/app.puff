@@ -10,14 +10,40 @@ import SwiftUI
 struct MarkdownText: View {
 
     var text: String
-    var markdown: String
-    var foregroundColor: Color = Palette.textPrimary
-    var accentColor: Color = .init(hex: 0x4AA1FD)
+    var markdowns: [String]
+    var foregroundColor: Color
+    var accentColor: Color
+
+    init(
+        text: String,
+        markdown: String,
+        foregroundColor: Color = Palette.textPrimary,
+        accentColor: Color = .init(hex: 0x4AA1FD)
+    ) {
+        self.text = text
+        self.markdowns = [markdown]
+        self.foregroundColor = foregroundColor
+        self.accentColor = accentColor
+    }
+
+    init(
+        text: String,
+        markdowns: [String],
+        foregroundColor: Color = Palette.textPrimary,
+        accentColor: Color = .init(hex: 0x4AA1FD)
+    ) {
+        self.text = text
+        self.markdowns = markdowns
+        self.foregroundColor = foregroundColor
+        self.accentColor = accentColor
+    }
 
     var body: some View {
         Text(text) { str in
-            if let range = str.range(of: markdown) {
-                str[range].foregroundColor = accentColor
+            for markdown in markdowns {
+                if let range = str.range(of: markdown) {
+                    str[range].foregroundColor = accentColor
+                }
             }
         }
         .foregroundStyle(foregroundColor)

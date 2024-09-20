@@ -9,57 +9,85 @@ import SwiftUI
 
 struct OnboardingSurveyScreen: View {
 
-    @State private var questionIndex: Int = 0
-
     private let maxIndex: Int = 10
 
     @ObservedObject var onboardingVM: OnboardingViewModel
 
+    var questionIndex: Int {
+        onboardingVM.questionIndex
+    }
+
     var body: some View {
         VStack(spacing: 24) {
-            headerView()
+            if !onboardingVM.isSurveySkipped {
+                headerView()
+                    .transition(.opacity.animation(.smooth))
+                    .animation(.smooth)
+            }
 
-
-            if questionIndex == 0 {
-                questionView(for: OnboardingSurveyScreen.questions[0])
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .trailing),
-                            removal: .move(edge: .leading)
-                        ).animation(.smooth)
-                    )
-            } else if questionIndex == 1 {
-                questionView(for: OnboardingSurveyScreen.questions[1])
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .trailing),
-                            removal: .move(edge: .leading)
-                        ).animation(.smooth)
-                    )
-            } else if questionIndex == 2 {
-                questionView(for: OnboardingSurveyScreen.questions[2])
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .trailing),
-                            removal: .move(edge: .leading)
-                        ).animation(.smooth)
-                    )
-            } else if questionIndex == 3 {
-                questionView(for: OnboardingSurveyScreen.questions[3])
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .trailing),
-                            removal: .move(edge: .leading)
-                        ).animation(.smooth)
-                    )
-            } else if questionIndex == 4 {
-                questionView(for: OnboardingSurveyScreen.questions[4])
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .trailing),
-                            removal: .move(edge: .leading)
-                        ).animation(.smooth)
-                    )
+            // ЭТО НЕ Я ГОВНОКОЖУ, А АНИМАЦИИ В СУИ ПОЛНАЯ ПАРАША
+            if onboardingVM.isSurveySkipped {
+                OnboardingSurveySkippedScreen(
+                    onboardingVM: onboardingVM,
+                    reasonIndex: onboardingVM.surveyAnswersIndices.count > 5 ? onboardingVM.surveyAnswersIndices[5] : nil
+                )
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .move(edge: .leading)
+                    ).animation(.smooth)
+                )
+                .animation(.smooth)
+            } else {
+                if questionIndex == 0 {
+                    questionView(for: OnboardingSurveyScreen.questions[0])
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .trailing),
+                                removal: .move(edge: .leading)
+                            ).animation(.smooth)
+                        )
+                } else if questionIndex == 1 {
+                    questionView(for: OnboardingSurveyScreen.questions[1])
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .trailing),
+                                removal: .move(edge: .leading)
+                            ).animation(.smooth)
+                        )
+                } else if questionIndex == 2 {
+                    questionView(for: OnboardingSurveyScreen.questions[2])
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .trailing),
+                                removal: .move(edge: .leading)
+                            ).animation(.smooth)
+                        )
+                } else if questionIndex == 3 {
+                    questionView(for: OnboardingSurveyScreen.questions[3])
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .trailing),
+                                removal: .move(edge: .leading)
+                            ).animation(.smooth)
+                        )
+                } else if questionIndex == 4 {
+                    questionView(for: OnboardingSurveyScreen.questions[4])
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .trailing),
+                                removal: .move(edge: .leading)
+                            ).animation(.smooth)
+                        )
+                } else if !onboardingVM.isSurveySkipped && questionIndex == 5 {
+                    questionView(for: OnboardingSurveyScreen.questions[5])
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .trailing),
+                                removal: .move(edge: .leading)
+                            ).animation(.smooth)
+                        )
+                }
             }
 
             Spacer()
@@ -72,9 +100,9 @@ struct OnboardingSurveyScreen: View {
             progressView()
 
             HStack {
-                if questionIndex != 0 {
+                if questionIndex != 0 && questionIndex != 7 {
                     Button {
-                        questionIndex = max(0, questionIndex - 1)
+                        backQuestion()
                     } label: {
                         Image(systemName: "chevron.left")
                             .resizable()
@@ -135,6 +163,7 @@ struct OnboardingSurveyScreen: View {
             }
             .padding(.horizontal, 12)
         }
+        .animation(.smooth)
     }
 
     @ViewBuilder
@@ -160,17 +189,31 @@ struct OnboardingSurveyScreen: View {
     private func selectAnswer(index: Int) {
         onboardingVM.surveyAnswersIndices.append(index)
 
-        questionIndex += 1
+        if (questionIndex == 4 && index == 0) || questionIndex == 5 {
+            skipSurvey()
+        }
+
+        onboardingVM.questionIndex += 1
     }
 
     private func backQuestion() {
-        questionIndex = max(0, questionIndex - 1)
+        if questionIndex == 7 {
+            return
+        }
 
-        onboardingVM.surveyAnswersIndices = onboardingVM.surveyAnswersIndices.dropLast()
+        onboardingVM.questionIndex = max(0, questionIndex - 1)
+
+        if !onboardingVM.surveyAnswersIndices.isEmpty {
+            onboardingVM.surveyAnswersIndices.removeLast()
+        }
     }
 
     private func skipSurvey() {
-        onboardingVM.isSurveySkipped = true
+        if questionIndex > 6 {
+            onboardingVM.nextScreen()
+        } else {
+            onboardingVM.isSurveySkipped = true
+        }
     }
 }
 
@@ -232,6 +275,16 @@ private extension OnboardingSurveyScreen {
                 "Нет",
                 "Да, 1-2 раза",
                 "Да, много раз"
+            ]
+        ),
+        .init(
+            title: "Что было основной причиной срыва?",
+            markdown: "основной",
+            answers: [
+                "Ломка",
+                "Стресс",
+                "Влияние окружающих",
+                "Не знаю"
             ]
         )
     ]
