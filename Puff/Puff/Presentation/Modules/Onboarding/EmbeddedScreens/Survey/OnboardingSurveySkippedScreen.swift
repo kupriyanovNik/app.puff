@@ -75,9 +75,6 @@ struct OnboardingSurveySkippedScreen: View {
         }
         .background(.white)
         .prepareForStackPresentationInOnboarding()
-        .onAppear {
-            print("RI", reasonIndex)
-        }
     }
 
     @ViewBuilder

@@ -47,6 +47,17 @@ struct OnboardingSurveyScreen: View {
                                 removal: .move(edge: .leading)
                             ).animation(.smooth)
                         )
+                } else {
+                    if questionIndex == 7 {
+                        OnboardingSurveyNegativeEffectScreen(onboardingVM: onboardingVM)
+                            .transition(
+                                .asymmetric(
+                                    insertion: .move(edge: .trailing),
+                                    removal: .move(edge: .leading)
+                                ).animation(.smooth)
+                            )
+                            .animation(.smooth)
+                    }
                 }
             }
 
