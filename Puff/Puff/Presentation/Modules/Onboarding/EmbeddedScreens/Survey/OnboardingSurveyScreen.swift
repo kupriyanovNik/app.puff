@@ -25,7 +25,6 @@ struct OnboardingSurveyScreen: View {
                     .animation(.smooth)
             }
 
-            // ЭТО НЕ Я ГОВНОКОЖУ, А АНИМАЦИИ В СУИ ПОЛНАЯ ПАРАША
             if onboardingVM.isSurveySkipped {
                 OnboardingSurveySkippedScreen(
                     onboardingVM: onboardingVM,
@@ -39,48 +38,9 @@ struct OnboardingSurveyScreen: View {
                 )
                 .animation(.smooth)
             } else {
-                if questionIndex == 0 {
-                    questionView(for: OnboardingSurveyScreen.questions[0])
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: .trailing),
-                                removal: .move(edge: .leading)
-                            ).animation(.smooth)
-                        )
-                } else if questionIndex == 1 {
-                    questionView(for: OnboardingSurveyScreen.questions[1])
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: .trailing),
-                                removal: .move(edge: .leading)
-                            ).animation(.smooth)
-                        )
-                } else if questionIndex == 2 {
-                    questionView(for: OnboardingSurveyScreen.questions[2])
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: .trailing),
-                                removal: .move(edge: .leading)
-                            ).animation(.smooth)
-                        )
-                } else if questionIndex == 3 {
-                    questionView(for: OnboardingSurveyScreen.questions[3])
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: .trailing),
-                                removal: .move(edge: .leading)
-                            ).animation(.smooth)
-                        )
-                } else if questionIndex == 4 {
-                    questionView(for: OnboardingSurveyScreen.questions[4])
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: .trailing),
-                                removal: .move(edge: .leading)
-                            ).animation(.smooth)
-                        )
-                } else if !onboardingVM.isSurveySkipped && questionIndex == 5 {
-                    questionView(for: OnboardingSurveyScreen.questions[5])
+                if questionIndex <= 5 {
+                    questionView(for: OnboardingSurveyScreen.questions[questionIndex])
+                        .id(questionIndex)
                         .transition(
                             .asymmetric(
                                 insertion: .move(edge: .trailing),
