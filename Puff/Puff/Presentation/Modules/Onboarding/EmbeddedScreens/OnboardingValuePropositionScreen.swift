@@ -43,7 +43,8 @@ struct OnboardingValuePropositionScreen: View {
                 .padding(.horizontal, 12)
                 .padding(.top, isSmallDevice ? 0 : 65)
         }
-        .padding(.vertical, 16)
+        .padding(.top, isSmallDevice ? 8 : 16)
+        .padding(.bottom, 16)
         .prepareFotStackPresentationInOnboarding()
     }
 
@@ -72,7 +73,7 @@ struct OnboardingValuePropositionScreen: View {
 
             VStack(spacing: 12) {
                 MarkdownText(text: titles[index], markdown: titleMarks[index])
-                    .font(.bold28)
+                    .font(isSmallDevice ? .bold22 : .bold28)
                     .foregroundStyle(Palette.textPrimary)
                     .hLeading()
 
