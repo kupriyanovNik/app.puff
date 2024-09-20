@@ -11,13 +11,15 @@ struct MarkdownText: View {
 
     var text: String
     var markdown: String
-    var color: Color = .init(hex: 0x4AA1FD)
+    var foregroundColor: Color = Palette.textPrimary
+    var accentColor: Color = .init(hex: 0x4AA1FD)
 
     var body: some View {
         Text(text) { str in
             if let range = str.range(of: markdown) {
-                str[range].foregroundColor = color
+                str[range].foregroundColor = accentColor
             }
         }
+        .foregroundStyle(foregroundColor)
     }
 }

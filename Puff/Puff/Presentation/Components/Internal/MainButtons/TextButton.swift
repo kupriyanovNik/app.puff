@@ -32,9 +32,12 @@ struct TextButton: View {
 }
 
 struct TextButtonStyle: ButtonStyle {
+
+    var pressedOpacity: Double = 0.1
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .opacity(configuration.isPressed ? 0.88 : 1)
+            .opacity(configuration.isPressed ? pressedOpacity : 1)
             .animation(.smooth, value: configuration.isPressed)
     }
 }

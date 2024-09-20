@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B72CABA12C9DDA4000CD1040 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */; };
 		B73B2E322C9B637A001EB658 /* PuffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E312C9B637A001EB658 /* PuffApp.swift */; };
 		B73B2E362C9B637B001EB658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73B2E352C9B637B001EB658 /* Assets.xcassets */; };
 		B73B2E392C9B637B001EB658 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73B2E382C9B637B001EB658 /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		B73B2E2E2C9B637A001EB658 /* Puff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B73B2E312C9B637A001EB658 /* PuffApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffApp.swift; sourceTree = "<group>"; };
 		B73B2E352C9B637B001EB658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				B7F377712C9B6A330050C93B /* View+Ext.swift */,
 				B7F574DE2C9C9EE10059BAB9 /* String+Ext.swift */,
 				B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */,
+				B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				B7F377722C9B6A330050C93B /* View+Ext.swift in Sources */,
 				B7F377622C9B677E0050C93B /* TabBarModel.swift in Sources */,
 				B73B2E552C9B64CD001EB658 /* AppManager.swift in Sources */,
+				B72CABA12C9DDA4000CD1040 /* Array+Ext.swift in Sources */,
 				B73B2E4A2C9B644C001EB658 /* HomeView.swift in Sources */,
 				B7F377762C9B6C480050C93B /* SecondaryButton.swift in Sources */,
 				B73B2E522C9B64A6001EB658 /* Logger.swift in Sources */,

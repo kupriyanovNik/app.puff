@@ -11,7 +11,7 @@ struct OnboardingWelcomeScreen: View {
 
     @ObservedObject var onboardingVM: OnboardingViewModel
 
-    @State private var imageScale: CGFloat = 1
+    @State private var imageScale: CGFloat = 3
 
     @State private var shouldShow: Bool = false
 
@@ -55,23 +55,17 @@ struct OnboardingWelcomeScreen: View {
             Spacer()
 
             if shouldShow {
-                AccentButton(text: "Начать") {
-                    onboardingVM.onboardingPath.append(1)
-                }
-                .transition(
-                    .opacity.animation(.smooth.delay(0.7))
-                )
+                AccentButton(text: "Начать", action: onboardingVM.nextScreen)
+                    .transition(
+                        .opacity.animation(.smooth.delay(0.7))
+                    )
             }
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 16)
         .onAppear {
-            delay(0.5) {
-                imageScale = 1.8
-
-                delay(0.3) {
-                    imageScale = 1
-                }
+            delay(0.8) {
+                imageScale = 1
             }
 
             delay(1.2) {
@@ -80,7 +74,7 @@ struct OnboardingWelcomeScreen: View {
                 }
             }
         }
-        .prepareFotStackPresentationInOnboarding()
+        .prepareForStackPresentationInOnboarding()
     }
 }
 

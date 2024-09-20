@@ -17,6 +17,8 @@ struct OnboardingView: View {
                 .navigationDestination(for: Int.self) { index in
                     switch index {
                     case 1: OnboardingValuePropositionScreen(onboardingVM: onboardingVM)
+                    case 2: OnboardingSurveyDescriptionScreen(onboardingVM: onboardingVM)
+                    case 3: OnboardingSurveyScreen(onboardingVM: onboardingVM)
                     default: EmptyView()
                     }
                 }

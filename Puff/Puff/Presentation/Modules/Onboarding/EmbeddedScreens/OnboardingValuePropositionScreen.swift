@@ -45,7 +45,7 @@ struct OnboardingValuePropositionScreen: View {
         }
         .padding(.top, isSmallDevice ? 8 : 16)
         .padding(.bottom, 16)
-        .prepareFotStackPresentationInOnboarding()
+        .prepareForStackPresentationInOnboarding()
     }
 
     @ViewBuilder
@@ -108,7 +108,7 @@ struct OnboardingValuePropositionScreen: View {
                 selectedTabIndex += 1
             }
         } else {
-            onboardingVM.onboardingPath.append(2)
+            onboardingVM.nextScreen()
         }
     }
 }

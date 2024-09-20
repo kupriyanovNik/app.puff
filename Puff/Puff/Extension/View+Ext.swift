@@ -95,7 +95,7 @@ extension View {
 }
 
 extension View {
-    func prepareFotStackPresentationInOnboarding() -> some View {
+    func prepareForStackPresentationInOnboarding() -> some View {
         self
             .navigationBarBackButtonHidden()
             .navigationBarTitleDisplayMode(.inline)
