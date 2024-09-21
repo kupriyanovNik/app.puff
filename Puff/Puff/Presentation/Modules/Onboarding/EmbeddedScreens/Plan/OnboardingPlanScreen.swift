@@ -1,5 +1,5 @@
 //
-//  OnboardingPlanView.swift
+//  OnboardingPlanScreen.swift
 //  Puff
 //
 //  Created by Никита Куприянов on 21.09.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingPlanView: View {
+struct OnboardingPlanScreen: View {
 
     @ObservedObject var onboardingVM: OnboardingViewModel
 
@@ -130,5 +130,5 @@ struct OnboardingPlanView: View {
 }
 
 #Preview {
-    OnboardingPlanView(onboardingVM: .init())
+    OnboardingPlanScreen(onboardingVM: .init())
 }
