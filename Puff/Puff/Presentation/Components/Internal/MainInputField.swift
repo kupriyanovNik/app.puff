@@ -50,10 +50,3 @@ struct MainInputField: View {
             }
     }
 }
-
-#Preview {
-    @Previewable @State var text: String = ""
-
-    MainInputField(text: $text)
-        .padding(50)
-}

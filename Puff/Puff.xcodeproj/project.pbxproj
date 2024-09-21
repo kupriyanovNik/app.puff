@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7024D112C9EE5AF006809AC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B7024D102C9EE5AF006809AC /* Lottie */; };
+		B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7024D122C9EE5C1006809AC /* LottieView.swift */; };
 		B72CABA12C9DDA4000CD1040 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */; };
 		B72CABA92C9E0CF900CD1040 /* PickerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA82C9E0CF900CD1040 /* PickerCard.swift */; };
 		B73B2E322C9B637A001EB658 /* PuffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E312C9B637A001EB658 /* PuffApp.swift */; };
@@ -36,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7024D122C9EE5C1006809AC /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		B72CABA82C9E0CF900CD1040 /* PickerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCard.swift; sourceTree = "<group>"; };
 		B73B2E2E2C9B637A001EB658 /* Puff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puff.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +70,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B7024D142C9EE5F7006809AC /* Animations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Animations; sourceTree = "<group>"; };
 		B7F574D12C9C0CCF0059BAB9 /* Navigation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Navigation; sourceTree = "<group>"; };
 		B7F574D62C9C10980059BAB9 /* Statistics */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Statistics; sourceTree = "<group>"; };
 		B7F574E22C9CA2AF0059BAB9 /* Fonts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fonts; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7024D112C9EE5AF006809AC /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +147,7 @@
 		B73B2E422C9B63A2001EB658 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B7024D142C9EE5F7006809AC /* Animations */,
 				B73B2E352C9B637B001EB658 /* Assets.xcassets */,
 				B73B2E372C9B637B001EB658 /* Preview Content */,
 				B73B2E4B2C9B647D001EB658 /* Palette.swift */,
@@ -230,6 +236,7 @@
 				B7F574DC2C9C144A0059BAB9 /* MainInputField.swift */,
 				B7F574F92C9CB8D50059BAB9 /* MarkdownText.swift */,
 				B72CABA82C9E0CF900CD1040 /* PickerCard.swift */,
+				B7024D122C9EE5C1006809AC /* LottieView.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				B7024D142C9EE5F7006809AC /* Animations */,
 				B7F574D12C9C0CCF0059BAB9 /* Navigation */,
 				B7F574D62C9C10980059BAB9 /* Statistics */,
 				B7F574E22C9CA2AF0059BAB9 /* Fonts */,
@@ -308,6 +316,9 @@
 				Base,
 			);
 			mainGroup = B73B2E252C9B637A001EB658;
+			packageReferences = (
+				B7024D0F2C9EE5AF006809AC /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = B73B2E2F2C9B637A001EB658 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +363,7 @@
 				B7F3776B2C9B68AC0050C93B /* DelayedButton.swift in Sources */,
 				B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */,
 				B73B2E452C9B63E1001EB658 /* AppDelegate.swift in Sources */,
+				B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */,
 				B7F3776E2C9B68E30050C93B /* Internal.swift in Sources */,
 				B7F377742C9B6ADB0050C93B /* PrimaryButton.swift in Sources */,
 				B7F574FA2C9CB8D50059BAB9 /* MarkdownText.swift in Sources */,
@@ -500,6 +512,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -530,6 +543,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -565,6 +579,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B7024D0F2C9EE5AF006809AC /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B7024D102C9EE5AF006809AC /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7024D0F2C9EE5AF006809AC /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B73B2E262C9B637A001EB658 /* Project object */;
 }

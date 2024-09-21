@@ -38,24 +38,40 @@ struct OnboardingEffectsBaseScreen: View {
 
     @ViewBuilder
     private func picker() -> some View {
-        LazyVGrid(columns: [.init(.flexible()), .init(.flexible())]) {
-            ForEach(items.indices) { index in
-                let item = items[index]
+        // нельзя использовать LazyVGrid потому что ios < 17 багованная анимация
+        VStack(spacing: 10) {
+            HStack(spacing: 10) {
+                ForEach(0..<2, content: cardView)
+            }
 
-                PickerCard(
-                    title: item.name,
-                    imageName: item.image,
-                    isSelected: selectedIndices.contains(index)
-                ) {
-                    if let index = selectedIndices.firstIndex(of: index) {
-                        selectedIndices.remove(at: index)
-                    } else {
-                        selectedIndices.append(index)
-                    }
+            HStack(spacing: 10) {
+                ForEach(2..<4, content: cardView)
+            }
+
+            if items.count == 6 {
+                HStack(spacing: 10) {
+                    ForEach(4..<6, content: cardView)
                 }
-                .animation(.smooth, value: selectedIndices)
             }
         }
         .padding(.horizontal, 12)
+    }
+
+    @ViewBuilder
+    private func cardView(_ index: Int) -> some View {
+        let item = items[index]
+
+        PickerCard(
+            title: item.name,
+            imageName: item.image,
+            isSelected: selectedIndices.contains(index)
+        ) {
+            if let index = selectedIndices.firstIndex(of: index) {
+                selectedIndices.remove(at: index)
+            } else {
+                selectedIndices.append(index)
+            }
+        }
+        .animation(.smooth, value: selectedIndices)
     }
 }

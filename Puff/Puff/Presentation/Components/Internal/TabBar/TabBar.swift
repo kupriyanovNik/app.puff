@@ -15,9 +15,3 @@ struct TabBar: View {
         Text("Hello, World!")
     }
 }
-
-#Preview {
-    @Previewable @State var selectedTab: TabBarModel = .home
-
-    TabBar(selectedTab: $selectedTab)
-}
