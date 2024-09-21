@@ -86,6 +86,8 @@ struct OnboardingValuePropositionScreen: View {
             .multilineTextAlignment(.leading)
             .padding(.horizontal, 20)
 
+            Spacer()
+
             tabViewIndicator(dotIndex: index)
                 .padding(.horizontal, 20)
                 .hLeading()

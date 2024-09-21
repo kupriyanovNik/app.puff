@@ -57,6 +57,15 @@ struct OnboardingSurveyScreen: View {
                                 ).animation(.smooth)
                             )
                             .animation(.smooth)
+                    } else if questionIndex == 8 {
+                        OnboardingSurveySideEffectScreen(onboardingVM: onboardingVM)
+                            .transition(
+                                .asymmetric(
+                                    insertion: .move(edge: .trailing),
+                                    removal: .move(edge: .leading)
+                                ).animation(.smooth)
+                            )
+                            .animation(.smooth)
                     }
                 }
             }
@@ -88,7 +97,10 @@ struct OnboardingSurveyScreen: View {
 
                 Spacer()
 
-                TextButton(text: "Пропустить", action: skipSurvey)
+                if questionIndex != 8 {
+                    TextButton(text: "Пропустить", action: skipSurvey)
+                        .transition(.opacity.animation(.smooth))
+                }
             }
         }
         .padding([.top, .horizontal], 16)
