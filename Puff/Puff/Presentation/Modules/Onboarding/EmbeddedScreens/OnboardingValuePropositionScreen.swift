@@ -41,7 +41,7 @@ struct OnboardingValuePropositionScreen: View {
 
             AccentButton(text: "Далее", action: nextButtonAction)
                 .padding(.horizontal, 12)
-                .padding(.top, isSmallDevice ? 0 : 65)
+//                .padding(.top, isSmallDevice ? 0 : 65)
         }
         .padding(.top, isSmallDevice ? 8 : 16)
         .padding(.bottom, 16)
@@ -54,12 +54,9 @@ struct OnboardingValuePropositionScreen: View {
             ForEach(0..<3) { index in
                 tabForIndex(index)
                     .tag(index)
-                    .vBottom()
-                    .ignoresSafeArea()
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .ignoresSafeArea()
     }
 
     @ViewBuilder
@@ -78,20 +75,20 @@ struct OnboardingValuePropositionScreen: View {
                     .foregroundStyle(Palette.textPrimary)
                     .hLeading()
 
-                Text(descriptions[index])
-                    .font(.medium16)
-                    .foregroundStyle(Palette.textPrimary.opacity(0.56))
-                    .hLeading()
+                VStack(spacing: isSmallDevice ? 18 : 24) {
+                    Text(descriptions[index])
+                        .font(.medium16)
+                        .foregroundStyle(Palette.textPrimary.opacity(0.56))
+                        .hLeading()
+
+                    tabViewIndicator(dotIndex: index)
+                        .hLeading()
+                }
             }
             .multilineTextAlignment(.leading)
             .padding(.horizontal, 20)
-
-            Spacer()
-
-            tabViewIndicator(dotIndex: index)
-                .padding(.horizontal, 20)
-                .hLeading()
         }
+        .vTop()
     }
 
     @ViewBuilder

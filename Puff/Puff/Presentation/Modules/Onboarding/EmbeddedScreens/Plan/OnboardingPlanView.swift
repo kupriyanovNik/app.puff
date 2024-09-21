@@ -75,11 +75,7 @@ struct OnboardingPlanView: View {
             .multilineTextAlignment(.center)
 
             VStack(spacing: 12) {
-                // TODO: - fix animation
                 LottieView(name: "OnboardingChartAnimation")
-                    .scaledToFit()
-                    .scaledToFit()
-                    .border(.red)
 
                 HStack {
                     Text(todayString)
