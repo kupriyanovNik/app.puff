@@ -19,6 +19,7 @@ struct OnboardingView: View {
                     case 1: OnboardingValuePropositionScreen(onboardingVM: onboardingVM)
                     case 2: OnboardingSurveyDescriptionScreen(onboardingVM: onboardingVM)
                     case 3: OnboardingSurveyScreen(onboardingVM: onboardingVM)
+                    case 4: OnboardingPlanCreatingScreen(onboardingVM: onboardingVM)
                     default: EmptyView()
                     }
                 }
