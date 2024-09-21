@@ -18,7 +18,7 @@ struct PickerCard: View {
 
     var action: () -> Void
 
-    private let isSmallDevice = UIScreen.main.bounds.width < 700
+    private let isSmallDevice = UIScreen.main.bounds.height < 700
 
     var body: some View {
         DelayedButton(action: action) {

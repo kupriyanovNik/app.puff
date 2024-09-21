@@ -22,6 +22,7 @@ struct OnboardingSurveyNegativeEffectScreen: View {
         OnboardingEffectsBaseScreen(
             text: "На что в вашей жизни парение оказывает негативный эффект?",
             markdown: "негативный эффект?",
+            nextButtonText: "Далее",
             items: items
         ) {
             onboardingVM.questionIndex += 1

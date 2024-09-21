@@ -47,13 +47,14 @@ struct OnboardingPlanView: View {
         )
     ]
 
+    private let isSmallDevice: Bool =  UIScreen.main.bounds.height < 700
+
     var body: some View {
-        VStack(spacing: 42) {
+        VStack(spacing: isSmallDevice ? 28 : 42) {
             topView()
 
             bottomView()
-
-            Spacer()
+                .vTop()
 
             AccentButton(text: "Далее", action: onboardingVM.nextScreen)
                 .padding(.horizontal, 12)
@@ -64,7 +65,7 @@ struct OnboardingPlanView: View {
 
     @ViewBuilder
     private func topView() -> some View {
-        VStack(spacing: 20) {
+        VStack(spacing: isSmallDevice ? 4 : 20) {
             MarkdownText(
                 text: "Оптимальный план:\n21 день",
                 markdown: "21 день"
@@ -77,7 +78,7 @@ struct OnboardingPlanView: View {
                 // TODO: - fix animation
                 LottieView(name: "OnboardingChartAnimation")
                     .scaledToFit()
-                    .height(150)
+                    .scaledToFit()
                     .border(.red)
 
                 HStack {
@@ -105,7 +106,7 @@ struct OnboardingPlanView: View {
 
     @ViewBuilder
     private func bottomView() -> some View {
-        VStack(alignment: .leading, spacing: 28) {
+        VStack(alignment: .leading, spacing: 26) {
             ForEach(planDescription, id: \.title) { item in
                 HStack(spacing: 10) {
                     Image(item.imageName)

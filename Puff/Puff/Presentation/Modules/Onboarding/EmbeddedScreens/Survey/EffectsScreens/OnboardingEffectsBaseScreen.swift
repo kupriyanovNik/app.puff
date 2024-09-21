@@ -13,6 +13,7 @@ struct OnboardingEffectsBaseScreen: View {
 
     let text: String
     let markdown: String
+    var nextButtonText: String
     let items: [(name: String, image: String)]
 
     var action: () -> Void
@@ -30,8 +31,8 @@ struct OnboardingEffectsBaseScreen: View {
 
             Spacer()
 
-            AccentButton(text: "Далее", isDisabled: selectedIndices.isEmpty, action: action)
-                .padding(.horizontal, 20)
+            AccentButton(text: nextButtonText, isDisabled: selectedIndices.isEmpty, action: action)
+                .padding(.horizontal, 12)
                 .padding(.bottom, -16)
         }
     }

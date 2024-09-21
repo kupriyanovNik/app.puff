@@ -26,6 +26,7 @@ struct OnboardingSurveySideEffectScreen: View {
         OnboardingEffectsBaseScreen(
             text: "Какие побочные эффекты от парения вы замечаете?",
             markdown: "побочные эффекты",
+            nextButtonText: "Определить план бросания",
             items: items
         ) {
             onboardingVM.nextScreen()
