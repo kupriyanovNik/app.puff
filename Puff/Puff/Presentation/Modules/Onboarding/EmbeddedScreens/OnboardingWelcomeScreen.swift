@@ -33,7 +33,7 @@ struct OnboardingWelcomeScreen: View {
                             .font(.bold28)
                             .foregroundStyle(Palette.textPrimary)
                             .transition(
-                                .opacity.animation(.smooth.delay(0.1))
+                                .opacity.animation(.smooth.delay(0.25))
                             )
                     }
 
@@ -57,7 +57,7 @@ struct OnboardingWelcomeScreen: View {
             if shouldShow {
                 AccentButton(text: "Начать", action: onboardingVM.nextScreen)
                     .transition(
-                        .opacity.animation(.smooth.delay(0.7))
+                        .opacity.animation(.smooth.delay(0.55))
                     )
             }
         }
@@ -68,7 +68,7 @@ struct OnboardingWelcomeScreen: View {
                 imageScale = 1
             }
 
-            delay(1.2) {
+            delay(0.8) {
                 animated {
                     shouldShow = true
                 }

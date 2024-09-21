@@ -14,7 +14,7 @@ struct LottieView: UIViewRepresentable {
     let name: String
     var loopMode: LottieLoopMode = .playOnce
     var contentMode: UIView.ContentMode = .scaleAspectFit
-    var delay: Double = 0.5
+    var delay: Double = 0.3
 
     func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView(frame: .zero)

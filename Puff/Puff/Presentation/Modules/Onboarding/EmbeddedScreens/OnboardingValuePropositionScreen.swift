@@ -104,7 +104,7 @@ struct OnboardingValuePropositionScreen: View {
 
     private func nextButtonAction() {
         if selectedTabIndex < 2 {
-            animated {
+            animated(.easeIn) {
                 selectedTabIndex += 1
             }
         } else {

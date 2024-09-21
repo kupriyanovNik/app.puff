@@ -26,6 +26,7 @@ struct OnboardingEffectsBaseScreen: View {
             )
             .font(.bold28)
             .multilineTextAlignment(.center)
+            .padding(.horizontal, 20)
 
             picker()
 
@@ -73,6 +74,6 @@ struct OnboardingEffectsBaseScreen: View {
                 selectedIndices.append(index)
             }
         }
-        .animation(.smooth, value: selectedIndices)
+        .animation(.easeOut(duration: 0.2), value: selectedIndices)
     }
 }

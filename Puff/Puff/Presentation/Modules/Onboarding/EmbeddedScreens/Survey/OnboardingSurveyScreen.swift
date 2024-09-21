@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingSurveyScreen: View {
 
-    private let maxIndex: Int = 10
+    private let maxIndex: Int = 9
 
     @ObservedObject var onboardingVM: OnboardingViewModel
 
@@ -30,42 +30,19 @@ struct OnboardingSurveyScreen: View {
                     onboardingVM: onboardingVM,
                     reasonIndex: onboardingVM.surveyAnswersIndices.count > 5 ? onboardingVM.surveyAnswersIndices[5] : nil
                 )
-                .transition(
-                    .asymmetric(
-                        insertion: .move(edge: .trailing),
-                        removal: .move(edge: .leading)
-                    ).animation(.smooth)
-                )
-                .animation(.smooth)
+                .makeSlideTransition()
             } else {
                 if questionIndex <= 5 {
                     questionView(for: OnboardingSurveyScreen.questions[questionIndex])
                         .id(questionIndex)
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: .trailing),
-                                removal: .move(edge: .leading)
-                            ).animation(.smooth)
-                        )
+                        .makeSlideTransition()
                 } else {
                     if questionIndex == 7 {
                         OnboardingSurveyNegativeEffectScreen(onboardingVM: onboardingVM)
-                            .transition(
-                                .asymmetric(
-                                    insertion: .move(edge: .trailing),
-                                    removal: .move(edge: .leading)
-                                ).animation(.smooth)
-                            )
-                            .animation(.smooth)
+                            .makeSlideTransition()
                     } else if questionIndex == 8 {
                         OnboardingSurveySideEffectScreen(onboardingVM: onboardingVM)
-                            .transition(
-                                .asymmetric(
-                                    insertion: .move(edge: .trailing),
-                                    removal: .move(edge: .leading)
-                                ).animation(.smooth)
-                            )
-                            .animation(.smooth)
+                            .makeSlideTransition()
                     }
                 }
             }
@@ -125,7 +102,7 @@ struct OnboardingSurveyScreen: View {
                         .hLeading()
                 }
             }
-            .animation(.smooth, value: questionIndex)
+            .animation(.easeInOut(duration: 0.3), value: questionIndex)
     }
 
     @ViewBuilder
@@ -146,7 +123,6 @@ struct OnboardingSurveyScreen: View {
             }
             .padding(.horizontal, 12)
         }
-        .animation(.smooth)
     }
 
     @ViewBuilder

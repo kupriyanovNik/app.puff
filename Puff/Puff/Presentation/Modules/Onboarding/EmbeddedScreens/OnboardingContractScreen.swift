@@ -46,6 +46,8 @@ struct OnboardingContractScreen: View {
                             withAnimation {
                                 scaleEffect = 1
                             }
+
+                            pressStartDate = nil
                         }
                     }
 

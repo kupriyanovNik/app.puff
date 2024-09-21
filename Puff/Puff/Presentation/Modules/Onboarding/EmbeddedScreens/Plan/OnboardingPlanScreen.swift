@@ -60,7 +60,6 @@ struct OnboardingPlanScreen: View {
                 .padding(.horizontal, 12)
                 .padding(.bottom, 16)
         }
-        .prepareForStackPresentationInOnboarding()
     }
 
     @ViewBuilder

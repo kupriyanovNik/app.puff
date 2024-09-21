@@ -101,3 +101,17 @@ extension View {
             .navigationBarTitleDisplayMode(.inline)
     }
 }
+
+
+extension View {
+    func makeSlideTransition() -> some View {
+        self
+            .transition(
+                .asymmetric(
+                    insertion: .move(edge: .trailing),
+                    removal: .move(edge: .leading)
+                ).animation(.easeInOut(duration: 0.3))
+            )
+            .animation(.easeInOut(duration: 0.3))
+    }
+}
