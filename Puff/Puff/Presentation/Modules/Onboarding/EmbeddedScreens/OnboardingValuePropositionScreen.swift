@@ -41,7 +41,6 @@ struct OnboardingValuePropositionScreen: View {
 
             AccentButton(text: "Далее", action: nextButtonAction)
                 .padding(.horizontal, 12)
-//                .padding(.top, isSmallDevice ? 0 : 65)
         }
         .padding(.top, isSmallDevice ? 8 : 16)
         .padding(.bottom, 16)

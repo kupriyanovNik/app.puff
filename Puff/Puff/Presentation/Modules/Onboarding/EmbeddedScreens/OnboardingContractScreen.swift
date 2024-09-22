@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
 struct OnboardingContractScreen: View {
 
@@ -15,6 +16,8 @@ struct OnboardingContractScreen: View {
     @State private var scaleEffect: Double = 1
 
     @State private var isPressingEnded: Bool = false
+
+    @State private var engine: CHHapticEngine?
 
     var body: some View {
         VStack(spacing: 70) {
@@ -30,6 +33,7 @@ struct OnboardingContractScreen: View {
                 touchidButton()
                     .onLongPressGesture(minimumDuration: 4, maximumDistance: 50) {
                         isPressingEnded = true
+                        HapticManager.feedback(style: .heavy)
                     } onPressingChanged: { isPressed in
                         withAnimation {
                             isPressing = isPressed
