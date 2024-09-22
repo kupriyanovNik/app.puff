@@ -15,9 +15,6 @@ struct OnboardingContractScreen: View {
     @State private var scaleEffect: Double = 1
 
     @State private var isPressingEnded: Bool = false
-    @State private var pressStartDate: Date?
-
-    let timer = Timer.publish(every: 0.2, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack(spacing: 70) {
@@ -31,23 +28,23 @@ struct OnboardingContractScreen: View {
 
             VStack(spacing: 23) {
                 touchidButton()
-                    .onLongPressGesture(minimumDuration: 0.1) {
-                        pressStartDate = .now
-
-                        withAnimation(.linear(duration: 5)) {
-                            scaleEffect = 10
-                        }
+                    .onLongPressGesture(minimumDuration: 4, maximumDistance: 50) {
+                        isPressingEnded = true
                     } onPressingChanged: { isPressed in
                         withAnimation {
                             isPressing = isPressed
+                        }
+
+                        if isPressed {
+                            withAnimation(.linear(duration: 5)) {
+                                scaleEffect = 10
+                            }
                         }
 
                         if !isPressed && !isPressingEnded {
                             withAnimation {
                                 scaleEffect = 1
                             }
-
-                            pressStartDate = nil
                         }
                     }
 
@@ -78,13 +75,6 @@ struct OnboardingContractScreen: View {
             }
         }
         .prepareForStackPresentationInOnboarding()
-        .onReceive(timer) { _ in
-            if let pressStartDate {
-                if Date() - pressStartDate > TimeInterval(4) {
-                    isPressingEnded = true
-                }
-            }
-        }
         .onChange(of: isPressingEnded) { newValue in
             if newValue {
                 delay(2) {
