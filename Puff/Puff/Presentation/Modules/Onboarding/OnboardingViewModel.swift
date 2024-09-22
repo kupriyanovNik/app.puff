@@ -24,6 +24,11 @@ final class OnboardingViewModel: ObservableObject {
         onboardingPath.append(currentIndex)
     }
 
+    func nextOrSkipScreen(skipOne: Bool = false) {
+        currentIndex += skipOne ? 2 : 1
+        onboardingPath.append(currentIndex)
+    }
+
     func backToQuestionsFromSkippedView() {
         isSurveySkipped = false
 

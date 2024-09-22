@@ -74,6 +74,8 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B7024D142C9EE5F7006809AC /* Animations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Animations; sourceTree = "<group>"; };
 		B756D6672CA0240300DF28CD /* Paywall */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Paywall; sourceTree = "<group>"; };
+		B756D66C2CA04B6F00DF28CD /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
+		B756D66F2CA04B8000DF28CD /* Notifications */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notifications; sourceTree = "<group>"; };
 		B7F574D12C9C0CCF0059BAB9 /* Navigation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Navigation; sourceTree = "<group>"; };
 		B7F574D62C9C10980059BAB9 /* Statistics */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Statistics; sourceTree = "<group>"; };
 		B7F574E22C9CA2AF0059BAB9 /* Fonts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fonts; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		B73B2E412C9B639F001EB658 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B756D66F2CA04B8000DF28CD /* Notifications */,
 				B73B2E532C9B64C9001EB658 /* App */,
 				B73B2E512C9B64A6001EB658 /* Log */,
 				B73B2E4D2C9B648C001EB658 /* Haptic */,
@@ -173,6 +176,7 @@
 		B73B2E462C9B6432001EB658 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B756D66C2CA04B6F00DF28CD /* Helpers */,
 				B756D6672CA0240300DF28CD /* Paywall */,
 				B7F574ED2C9CAA3D0059BAB9 /* Onboarding */,
 				B7F574D62C9C10980059BAB9 /* Statistics */,
@@ -288,6 +292,8 @@
 			fileSystemSynchronizedGroups = (
 				B7024D142C9EE5F7006809AC /* Animations */,
 				B756D6672CA0240300DF28CD /* Paywall */,
+				B756D66C2CA04B6F00DF28CD /* Helpers */,
+				B756D66F2CA04B8000DF28CD /* Notifications */,
 				B7F574D12C9C0CCF0059BAB9 /* Navigation */,
 				B7F574D62C9C10980059BAB9 /* Statistics */,
 				B7F574E22C9CA2AF0059BAB9 /* Fonts */,

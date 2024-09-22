@@ -11,7 +11,9 @@ struct AppPaywallView: View {
 
     @State private var withTrial: Bool = false
 
-    var action: () -> Void
+    var onUserBought: (Bool) -> Void // true if bought, else if skipped
+
+    @State private var shouldShowBenefits: Bool = false
 
     private let benefits: [String] = [
         "Доступ к плану бросания",
@@ -40,30 +42,47 @@ struct AppPaywallView: View {
             VStack(spacing: 18) {
                 infoCardView()
 
-                VStack(spacing: 12) {
-                    ForEach(0..<3) { index in
-                        benefitView(index: index)
+                    VStack(spacing: 12) {
+                        ForEach(0..<3) { index in
+                            if shouldShowBenefits {
+                                benefitView(index: index)
+                                    .transition(
+                                        .opacity
+                                            .combined(with: .offset(y: 10))
+                                            .animation(.bouncy.delay(0.05 * Double(index)))
+                                    )
+                                    .animation(.bouncy.delay(0.08 * Double(index)))
+                            }
+                        }
                     }
-                }
-                .padding(.horizontal, 16)
+                    .padding(.horizontal, 16)
+
             }
             .vTop()
         }
         .safeAreaInset(edge: .bottom, content: bottomView)
         .prepareForStackPresentationInOnboarding()
+        .onAppear {
+            delay(0.25) {
+                shouldShowBenefits = true
+            }
+        }
     }
 
     @ViewBuilder
     private func headerView() -> some View {
         VStack(spacing: isSmallDevice ? 0 : 16) {
             HStack {
-                DelayedButton(afterPressedScale: 1.2, action: action) {
+                DelayedButton(afterPressedScale: 1.2) {
+                    onUserBought(false)
+                } content: {
                     Image(systemName: "xmark")
                         .resizable()
                         .scaledToFit()
                         .foregroundStyle(Palette.textTertiary)
                         .frame(16)
                 }
+
 
                 Spacer()
 
@@ -162,7 +181,10 @@ struct AppPaywallView: View {
             trialView()
 
             VStack(spacing: 5) {
-                AccentButton(text: "Продолжить", action: makePurchase)
+                AccentButton(
+                    text: withTrial ? "Начать пробный период" : "Продолжить",
+                    action: makePurchase
+                )
 
                 HStack {
                     linkText("Условия использования", urlString: "")
@@ -249,10 +271,10 @@ struct AppPaywallView: View {
     }
 
     private func makePurchase() {
-
+        onUserBought(true)
     }
 }
 
 #Preview {
-    AppPaywallView { }
+    AppPaywallView { _ in }
 }
