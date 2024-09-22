@@ -19,6 +19,7 @@ struct PuffApp: App {
         WindowGroup {
 //            MainNavigationView(navigationVM: navigationVM)
             OnboardingView(onboardingVM: onboardingVM)
+                .preferredColorScheme(.light)
         }
     }
 }

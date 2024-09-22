@@ -25,6 +25,7 @@ struct NotificationRequestView: View {
                 Text("Разрешите присылать вам уведомления, чтобы мы смогли помочь вам сформировать новую привычку")
                     .font(.medium16)
                     .foregroundStyle(Palette.textSecondary)
+                    .padding(.horizontal, 10)
             }
             .multilineTextAlignment(.center)
 
