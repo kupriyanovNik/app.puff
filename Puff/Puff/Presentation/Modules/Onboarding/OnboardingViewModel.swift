@@ -8,9 +8,10 @@
 import SwiftUI
 
 final class OnboardingViewModel: ObservableObject {
-    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+//    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+    @Published var hasSeenOnboarding: Bool = false
 
-    private var currentIndex: Int = 5
+    private var currentIndex: Int = 0
 
     @Published var onboardingPath = NavigationPath()
     @Published var isSurveySkipped: Bool = false
@@ -21,11 +22,6 @@ final class OnboardingViewModel: ObservableObject {
 
     func nextScreen() {
         currentIndex += 1
-        onboardingPath.append(currentIndex)
-    }
-
-    func nextOrSkipScreen(skipOne: Bool = false) {
-        currentIndex += skipOne ? 2 : 1
         onboardingPath.append(currentIndex)
     }
 

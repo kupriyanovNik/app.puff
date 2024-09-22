@@ -9,9 +9,11 @@ import SwiftUI
 
 struct AppPaywallView: View {
 
+    @State private var shouldShowCongratulationView: Bool = false
+
     @State private var withTrial: Bool = false
 
-    var onUserBought: (Bool) -> Void // true if bought, else if skipped
+    var closeScreenAction: () -> Void
 
     @State private var shouldShowBenefits: Bool = false
 
@@ -36,6 +38,27 @@ struct AppPaywallView: View {
     }()
 
     var body: some View {
+        ZStack {
+            Palette.accentColor
+                .ignoresSafeArea()
+                .opacity(shouldShowCongratulationView ? 1 : 0)
+                .animation(.easeOut(duration: 0.3), value: shouldShowCongratulationView)
+
+            Group {
+                if shouldShowCongratulationView {
+                    PremiumCongratulationView(action: closeScreenAction)
+                        .transition(.opacity.animation(.easeOut(duration: 0.2).delay(0.3)))
+                } else {
+                    paywall()
+                        .transition(.opacity.animation(.easeOut(duration: 0.35)))
+                }
+            }
+            .prepareForStackPresentationInOnboarding()
+        }
+    }
+
+    @ViewBuilder
+    private func paywall() -> some View {
         VStack(spacing: isSmallDevice ? 28 : 38) {
             headerView()
 
@@ -44,15 +67,7 @@ struct AppPaywallView: View {
 
                     VStack(spacing: 12) {
                         ForEach(0..<3) { index in
-                            if shouldShowBenefits {
-                                benefitView(index: index)
-                                    .transition(
-                                        .opacity
-                                            .combined(with: .offset(y: 10))
-                                            .animation(.bouncy.delay(0.05 * Double(index)))
-                                    )
-                                    .animation(.bouncy.delay(0.08 * Double(index)))
-                            }
+                            benefitView(index: index)
                         }
                     }
                     .padding(.horizontal, 16)
@@ -61,7 +76,6 @@ struct AppPaywallView: View {
             .vTop()
         }
         .safeAreaInset(edge: .bottom, content: bottomView)
-        .prepareForStackPresentationInOnboarding()
         .onAppear {
             delay(0.25) {
                 shouldShowBenefits = true
@@ -73,16 +87,13 @@ struct AppPaywallView: View {
     private func headerView() -> some View {
         VStack(spacing: isSmallDevice ? 0 : 16) {
             HStack {
-                DelayedButton(afterPressedScale: 1.2) {
-                    onUserBought(false)
-                } content: {
+                DelayedButton(afterPressedScale: 1.2, action: closeScreenAction) {
                     Image(systemName: "xmark")
                         .resizable()
                         .scaledToFit()
                         .foregroundStyle(Palette.textTertiary)
                         .frame(16)
                 }
-
 
                 Spacer()
 
@@ -160,18 +171,26 @@ struct AppPaywallView: View {
     private func benefitView(index: Int) -> some View {
         let imageName = "subscriptionBenefits\(index + 1)Image"
 
-        HStack(spacing: 6) {
-            Image(imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(isSmallDevice ? 24 : 28)
+        if shouldShowBenefits {
+            HStack(spacing: 6) {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(isSmallDevice ? 24 : 28)
 
-            Text(benefits[index])
-                .font(isSmallDevice ? .medium16 : .medium18)
-                .foregroundStyle(Palette.textPrimary)
-                .lineLimit(1)
+                Text(benefits[index])
+                    .font(isSmallDevice ? .medium16 : .medium18)
+                    .foregroundStyle(Palette.textPrimary)
+                    .lineLimit(1)
 
-            Spacer()
+                Spacer()
+            }
+            .transition(
+                .opacity
+                    .combined(with: .offset(y: 10))
+                    .animation(.bouncy.delay(0.05 * Double(index)))
+            )
+            .animation(.bouncy.delay(0.08 * Double(index)))
         }
     }
 
@@ -271,10 +290,10 @@ struct AppPaywallView: View {
     }
 
     private func makePurchase() {
-        onUserBought(true)
+        shouldShowCongratulationView.toggle()
     }
 }
 
 #Preview {
-    AppPaywallView { _ in }
+    AppPaywallView { }
 }

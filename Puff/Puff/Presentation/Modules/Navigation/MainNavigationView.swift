@@ -12,10 +12,15 @@ struct MainNavigationView: View {
     @ObservedObject var navigationVM: NavigationViewModel
 
     var body: some View {
-        content()
-            .safeAreaInset(edge: .bottom) {
-                TabBar(selectedTab: $navigationVM.selectedTab)
-            }
+        ZStack {
+            Color.clear
+                .ignoresSafeArea()
+
+            content()
+                .safeAreaInset(edge: .bottom) {
+                    TabBar(selectedTab: $navigationVM.selectedTab)
+                }
+        }
     }
 
     @ViewBuilder

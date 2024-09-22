@@ -21,9 +21,8 @@ struct OnboardingView: View {
                     case 3: OnboardingSurveyScreen(onboardingVM: onboardingVM)
                     case 4: OnboardingPlanCreatingScreen(onboardingVM: onboardingVM)
                     case 5: OnboardingContractScreen(onboardingVM: onboardingVM)
-                    case 6: AppPaywallView { isPremium in onboardingVM.nextOrSkipScreen(skipOne: !isPremium) }
-                    case 7: Text("купил")
-                    case 8: NotificationRequestView { /*end onb*/ }
+                    case 6: AppPaywallView { onboardingVM.nextScreen() }
+                    case 7: NotificationRequestView { onboardingVM.hasSeenOnboarding = true }
                     default: EmptyView()
                     }
                 }

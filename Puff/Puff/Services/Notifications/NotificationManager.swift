@@ -24,14 +24,14 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().delegate = self
     }
 
-    func requestAuthorization(_ callback: @escaping () -> Void = {}) {
+    func requestAuthorization(_ callback: @escaping () -> Void) {
         UNUserNotificationCenter.current()
             .requestAuthorization(options: [.alert, .badge, .sound, .criticalAlert]) { _, error in
                 if let error {
                     logger.error("DEBUG: \(error.localizedDescription)")
-                } else {
-                    callback()
                 }
+
+                callback()
             }
 
         self.checkNotificationStatus()

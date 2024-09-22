@@ -17,9 +17,15 @@ struct PuffApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            MainNavigationView(navigationVM: navigationVM)
-            OnboardingView(onboardingVM: onboardingVM)
+            MainNavigationView(navigationVM: navigationVM)
                 .preferredColorScheme(.light)
+                .overlay {
+                    if !onboardingVM.hasSeenOnboarding {
+                        OnboardingView(onboardingVM: onboardingVM)
+                            .makeSlideTransition()
+                            .preferredColorScheme(.light)
+                    }
+                }
         }
     }
 }
