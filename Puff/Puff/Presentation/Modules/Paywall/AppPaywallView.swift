@@ -34,7 +34,7 @@ struct AppPaywallView: View {
     }()
 
     var body: some View {
-        VStack(spacing: isSmallDevice ? 20 : 38) {
+        VStack(spacing: isSmallDevice ? 28 : 38) {
             headerView()
 
             VStack(spacing: 18) {
@@ -47,8 +47,7 @@ struct AppPaywallView: View {
                 }
                 .padding(.horizontal, 16)
             }
-
-            Spacer()
+            .vTop()
         }
         .safeAreaInset(edge: .bottom, content: bottomView)
         .prepareForStackPresentationInOnboarding()
@@ -56,7 +55,7 @@ struct AppPaywallView: View {
 
     @ViewBuilder
     private func headerView() -> some View {
-        VStack(spacing: 4) {
+        VStack(spacing: isSmallDevice ? 0 : 16) {
             HStack {
                 DelayedButton(afterPressedScale: 1.2, action: action) {
                     Image(systemName: "xmark")
@@ -79,6 +78,7 @@ struct AppPaywallView: View {
                 .padding(.horizontal, isSmallDevice ? 0 : 20)
         }
         .padding(.horizontal, 16)
+        .padding(.top, isSmallDevice ? 16 : 0)
     }
 
     @ViewBuilder
@@ -119,7 +119,7 @@ struct AppPaywallView: View {
                     .foregroundStyle(Palette.textTertiary)
             }
             .padding(.top, 16)
-            .padding(.leading, 20)
+            .padding(.leading, 35)
         }
 
         .overlay(alignment: .topTrailing) {
@@ -133,7 +133,7 @@ struct AppPaywallView: View {
                     .foregroundStyle(Palette.textTertiary)
             }
             .padding(.top, 16)
-            .padding(.trailing, 20)
+            .padding(.trailing, 35)
         }
     }
 
@@ -145,10 +145,10 @@ struct AppPaywallView: View {
             Image(imageName)
                 .resizable()
                 .scaledToFit()
-                .frame(24)
+                .frame(isSmallDevice ? 24 : 28)
 
             Text(benefits[index])
-                .font(.medium16)
+                .font(isSmallDevice ? .medium16 : .medium18)
                 .foregroundStyle(Palette.textPrimary)
                 .lineLimit(1)
 
@@ -171,6 +171,7 @@ struct AppPaywallView: View {
 
                     linkText("Политика конфиденциальности", urlString: "")
                 }
+                .padding(.bottom, isSmallDevice ? 16 : 0)
             }
         }
         .padding(.horizontal, 12)
@@ -183,7 +184,7 @@ struct AppPaywallView: View {
                 .font(.medium15)
                 .foregroundStyle(Palette.textSecondary)
                 .opacity(!isSmallDevice && withTrial ? 1 : 0)
-                .animation(.smooth, value: withTrial)
+                .animation(.bouncy, value: withTrial)
 
             HStack {
                 if !isSmallDevice {
@@ -201,8 +202,7 @@ struct AppPaywallView: View {
                         .font(.medium15)
                         .foregroundStyle(Palette.textSecondary)
                         .lineLimit(1)
-                        .transition(.opacity.combined(with: .move(edge: .trailing)).animation(.smooth))
-                        .animation(.smooth)
+                        .transition(.opacity.animation(.bouncy))
                 }
             }
         }
@@ -227,11 +227,12 @@ struct AppPaywallView: View {
     @ViewBuilder
     private func linkText(_ text: String, urlString: String) -> some View {
         Text(text)
-            .font(isSmallDevice ? .medium13 : .medium15)
+            .font(.medium12)
             .lineLimit(1)
             .foregroundStyle(Palette.textTertiary)
             .underline(color: Palette.textTertiary)
             .padding(.bottom, 10)
+            .padding(.horizontal, isSmallDevice ? 8 : 14)
             .padding(.top, 4)
             .onTapGesture {
                 if let url = URL(string: urlString) {

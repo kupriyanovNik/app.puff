@@ -74,7 +74,11 @@ struct OnboardingPlanScreen: View {
             .multilineTextAlignment(.center)
 
             VStack(spacing: 12) {
-                LottieView(name: "OnboardingChartAnimation")
+                if isSmallDevice {
+                    LottieView(name: "OnboardingChartSmallAnimation")
+                } else {
+                    LottieView(name: "OnboardingChartAnimation")
+                }
 
                 HStack {
                     Text(todayString)
