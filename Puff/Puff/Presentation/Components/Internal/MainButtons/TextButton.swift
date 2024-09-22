@@ -11,7 +11,7 @@ struct TextButton: View {
 
     var text: String
     var font: Font = .medium15
-    var color: Color = Color(hex: 0x0303034D).opacity(0.3)
+    var color: Color = Palette.textTertiary
     var padding: EdgeInsets = .init(top: 10, leading: 1, bottom: 10, trailing: 1)
 
     var action: () -> Void
@@ -33,7 +33,7 @@ struct TextButton: View {
 
 struct TextButtonStyle: ButtonStyle {
 
-    var pressedOpacity: Double = 0.1
+    var pressedOpacity: Double = 0.8
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

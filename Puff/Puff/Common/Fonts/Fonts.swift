@@ -22,6 +22,7 @@ extension Font {
     static let medium24 = getMedium(size: 24)
     static let medium16 = getMedium(size: 16)
     static let medium15 = getMedium(size: 15)
+    static let medium13 = getMedium(size: 13)
     static let medium12 = getMedium(size: 12)
 }
 

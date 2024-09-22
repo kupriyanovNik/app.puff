@@ -22,7 +22,6 @@ struct OnboardingSurveyScreen: View {
             if !onboardingVM.isSurveySkipped {
                 headerView()
                     .transition(.opacity.animation(.smooth))
-                    .animation(.smooth)
             }
 
             if onboardingVM.isSurveySkipped {

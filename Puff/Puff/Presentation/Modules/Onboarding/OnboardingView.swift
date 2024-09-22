@@ -21,6 +21,7 @@ struct OnboardingView: View {
                     case 3: OnboardingSurveyScreen(onboardingVM: onboardingVM)
                     case 4: OnboardingPlanCreatingScreen(onboardingVM: onboardingVM)
                     case 5: OnboardingContractScreen(onboardingVM: onboardingVM)
+                    case 6: AppPaywallView {}
                     default: EmptyView()
                     }
                 }
