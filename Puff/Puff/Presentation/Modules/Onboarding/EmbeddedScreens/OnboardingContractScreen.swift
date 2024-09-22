@@ -54,6 +54,7 @@ struct OnboardingContractScreen: View {
                 Text("Удерживайте, чтобы\nподтвердить")
                     .font(.medium16)
                     .foregroundStyle(Palette.textTertiary)
+                    .lineLimit(2, reservesSpace: true)
                     .multilineTextAlignment(.center)
                     .opacity(isPressingEnded ? 0 : isPressing ? 0 : 1)
                     .animation(.smooth, value: isPressing)
