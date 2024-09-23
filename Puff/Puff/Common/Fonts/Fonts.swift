@@ -9,6 +9,7 @@ import SwiftUI
 
 extension Font {
     static let bold108 = getBold(size: 108)
+    static let bold52 = getBold(size: 52)
     static let bold32 = getBold(size: 32)
     static let bold28 = getBold(size: 28)
     static let bold22 = getBold(size: 22)
