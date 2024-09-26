@@ -36,8 +36,10 @@ struct PuffApp: App {
                     }
                     .animation(.easeInOut(duration: 0.3), value: onboardingVM.hasSeenOnboarding)
                 }
-                .sheet(isPresented: $a) {
-                    ActionMenuPlanDevelopingView()
+                .makeCustomSheet(isPresented: $a) {
+                    ActionMenuPlanDevelopingView {
+                        a.toggle()
+                    }
                 }
                 .onAppear {
                     a.toggle()

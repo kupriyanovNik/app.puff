@@ -14,7 +14,7 @@ struct ActionMenuPlanDevelopingView: View {
 
     @State private var screenState: ScreenState = .addiction
 
-    @State private var screenHeight: CGFloat = 500
+    var onDismiss: () -> Void = {}
 
     private let minSmokesCount: Int = 100
     private let maxSmokesCount: Int = 1000
@@ -37,43 +37,21 @@ struct ActionMenuPlanDevelopingView: View {
                         ).animation(.easeInOut(duration: 0.3))
                     )
             case .plan:
-                VStack(spacing: 32) {
-                    ActionMenuPlanDevelopingPeriodPicker(selectedOption: $selectedPeriod)
-                        .transition(
-                            .asymmetric(
-                                insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
-                                removal: .opacity
-                            ).animation(.easeInOut(duration: 0.3))
-                        )
-
-                    AccentButton(text: "Далее", action: nextAction)
-                        .padding(.horizontal, 16)
-                        .padding(.top, 24)
-                        .transition(.identity)
-                }
+                ActionMenuPlanDevelopingPeriodPicker(selectedOption: $selectedPeriod)
+                    .transition(
+                        .asymmetric(
+                            insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
+                            removal: .opacity
+                        ).animation(.easeInOut(duration: 0.3))
+                    )
             case .info:
                 Text("выбранный план").makeSlideTransition()
             }
+
+            AccentButton(text: "Далее", action: nextAction)
+                .padding(.horizontal, 16)
         }
-        .fixedSize(horizontal: false, vertical: true)
-//        .safeAreaInset(edge: .bottom) {
-//            AccentButton(text: "Далее", action: nextAction)
-//                .padding(.horizontal, 16)
-//        }
         .padding(.top, 30)
-        .presentationDragIndicator(.visible)
-        .overlay {
-            GeometryReader { geometry in
-                Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
-            }
-        }
-        .onPreferenceChange(InnerHeightPreferenceKey.self) { newHeight in
-            delay(0.4) {
-                    screenHeight = newHeight
-            }
-        }
-        .presentationDetents([.height(screenHeight)])
-        .animation(.smooth, value: screenHeight)
     }
 
     @ViewBuilder
@@ -99,11 +77,6 @@ struct ActionMenuPlanDevelopingView: View {
                 ActionMenuPlanDevelopingSlider(percentage: $sliderPercentage)
                     .padding(.horizontal, 40)
             }
-
-            AccentButton(text: "Далее", action: nextAction)
-                .padding(.horizontal, 16)
-                .padding(.top, 24)
-                .transition(.identity)
         }
     }
 
@@ -141,6 +114,8 @@ struct ActionMenuPlanDevelopingView: View {
                 screenState = .plan
             } else if screenState == .plan {
                 screenState = .info
+            } else if screenState == .info {
+                onDismiss()
             }
         }
     }
@@ -153,12 +128,5 @@ struct ActionMenuPlanDevelopingView: View {
 extension ActionMenuPlanDevelopingView {
     enum ScreenState {
         case addiction, plan, info
-    }
-}
-
-struct InnerHeightPreferenceKey: PreferenceKey {
-    static let defaultValue: CGFloat = .zero
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
     }
 }
