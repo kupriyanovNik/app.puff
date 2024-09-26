@@ -55,7 +55,6 @@ struct CustomSheet<Content: View>: View {
                 Group {
                     if isPresented {
                         content()
-                            .padding(.top, 10)
                             .background {
                                 Color.white
                                     .overlay(alignment: .top) {

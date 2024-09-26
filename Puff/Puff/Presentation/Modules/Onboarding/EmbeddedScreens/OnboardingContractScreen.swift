@@ -17,8 +17,6 @@ struct OnboardingContractScreen: View {
 
     @State private var isPressingEnded: Bool = false
 
-    @State private var engine: CHHapticEngine?
-
     var body: some View {
         VStack(spacing: 70) {
             MarkdownText(

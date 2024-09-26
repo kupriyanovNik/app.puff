@@ -30,6 +30,7 @@ struct ActionMenuPlanDevelopingView: View {
             switch screenState {
             case .addiction:
                 addictionView()
+                    .padding(.bottom, 12)
                     .transition(
                         .asymmetric(
                             insertion: .opacity,
@@ -45,13 +46,24 @@ struct ActionMenuPlanDevelopingView: View {
                         ).animation(.easeInOut(duration: 0.3))
                     )
             case .info:
-                Text("выбранный план").makeSlideTransition()
+                ActionMenuPlanDevelopingInfoView(selectedOption: selectedPeriod)
+                    .padding(.bottom, 12)
+                    .transition(
+                        .asymmetric(
+                            insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
+                            removal: .opacity
+                        ).animation(.easeInOut(duration: 0.3))
+                    )
             }
 
-            AccentButton(text: "Далее", action: nextAction)
-                .padding(.horizontal, 16)
+            AccentButton(
+                text: screenState == .info ? "Начать" : "Далее",
+                action: nextAction
+            )
+            .padding(.horizontal, 12)
         }
         .padding(.top, 30)
+        .padding(.bottom, 16)
     }
 
     @ViewBuilder

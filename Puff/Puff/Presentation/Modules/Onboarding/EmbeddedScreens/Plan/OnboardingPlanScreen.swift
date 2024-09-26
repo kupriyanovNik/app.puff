@@ -14,7 +14,7 @@ struct OnboardingPlanScreen: View {
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
 
-        formatter.dateFormat = "dd MMMM"
+        formatter.setLocalizedDateFormatFromTemplate("dd MMMM")
 
         return formatter
     }()

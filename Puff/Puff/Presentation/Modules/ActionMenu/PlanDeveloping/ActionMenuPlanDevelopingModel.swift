@@ -18,7 +18,7 @@ enum ActionMenuPlanDevelopingPeriod: Int, CaseIterable {
         case .min:
             "\(self.rawValue) дней"
         case .mid:
-            "\(self.rawValue) дней"
+            "\(self.rawValue) день"
         case .max:
             "\(self.rawValue) дней"
         }

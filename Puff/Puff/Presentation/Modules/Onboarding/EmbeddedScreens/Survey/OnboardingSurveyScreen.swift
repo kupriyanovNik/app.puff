@@ -73,7 +73,7 @@ struct OnboardingSurveyScreen: View {
 
                 Spacer()
 
-                if questionIndex != 8 {
+                if ![7, 8].contains(questionIndex) {
                     TextButton(text: "Пропустить", action: skipSurvey)
                         .transition(.opacity.animation(.smooth))
                 }
