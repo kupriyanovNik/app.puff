@@ -77,6 +77,7 @@
 		B756D66C2CA04B6F00DF28CD /* Notification */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notification; sourceTree = "<group>"; };
 		B756D66F2CA04B8000DF28CD /* Notifications */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notifications; sourceTree = "<group>"; };
 		B765E5302CA1E0040037638F /* ActionMenu */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ActionMenu; sourceTree = "<group>"; };
+		B795271A2CA5B9C900ADB323 /* Modifier */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Modifier; sourceTree = "<group>"; };
 		B7F574D12C9C0CCF0059BAB9 /* Navigation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Navigation; sourceTree = "<group>"; };
 		B7F574D62C9C10980059BAB9 /* Statistics */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Statistics; sourceTree = "<group>"; };
 		B7F574E22C9CA2AF0059BAB9 /* Fonts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fonts; sourceTree = "<group>"; };
@@ -223,6 +224,7 @@
 		B7F3775D2C9B67410050C93B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B795271A2CA5B9C900ADB323 /* Modifier */,
 				B7F377632C9B68180050C93B /* Internal */,
 			);
 			path = Components;
@@ -297,6 +299,7 @@
 				B756D66C2CA04B6F00DF28CD /* Notification */,
 				B756D66F2CA04B8000DF28CD /* Notifications */,
 				B765E5302CA1E0040037638F /* ActionMenu */,
+				B795271A2CA5B9C900ADB323 /* Modifier */,
 				B7F574D12C9C0CCF0059BAB9 /* Navigation */,
 				B7F574D62C9C10980059BAB9 /* Statistics */,
 				B7F574E22C9CA2AF0059BAB9 /* Fonts */,

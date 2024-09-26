@@ -10,8 +10,11 @@ import SwiftUI
 struct ActionMenuPlanDevelopingView: View {
 
     @State private var sliderPercentage: Double = 44
+    @State private var selectedPeriod: ActionMenuPlanDevelopingPeriod = .mid
 
     @State private var screenState: ScreenState = .addiction
+
+    @State private var screenHeight: CGFloat = 500
 
     private let minSmokesCount: Int = 100
     private let maxSmokesCount: Int = 1000
@@ -23,55 +26,84 @@ struct ActionMenuPlanDevelopingView: View {
     }
 
     var body: some View {
-        VStack(spacing: 48) {
+        VStack(spacing: 32) {
             switch screenState {
             case .addiction:
-                addictionView().transition(
-                    .asymmetric(
-                        insertion: .move(edge: .trailing),
-                        removal: .move(edge: .leading)
-                    ).animation(.easeInOut(duration: 0.3))
-                )
+                addictionView()
+                    .transition(
+                        .asymmetric(
+                            insertion: .opacity,
+                            removal: .opacity
+                        ).animation(.easeInOut(duration: 0.3))
+                    )
             case .plan:
-                Text("План бросания").makeSlideTransition()
+                VStack(spacing: 32) {
+                    ActionMenuPlanDevelopingPeriodPicker(selectedOption: $selectedPeriod)
+                        .transition(
+                            .asymmetric(
+                                insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
+                                removal: .opacity
+                            ).animation(.easeInOut(duration: 0.3))
+                        )
+
+                    AccentButton(text: "Далее", action: nextAction)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 24)
+                        .transition(.identity)
+                }
             case .info:
                 Text("выбранный план").makeSlideTransition()
             }
-
-            AccentButton(text: "Далее", action: nextAction)
-                .padding(.horizontal, 16)
         }
+        .fixedSize(horizontal: false, vertical: true)
+//        .safeAreaInset(edge: .bottom) {
+//            AccentButton(text: "Далее", action: nextAction)
+//                .padding(.horizontal, 16)
+//        }
+        .padding(.top, 30)
+        .presentationDragIndicator(.visible)
+        .overlay {
+            GeometryReader { geometry in
+                Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
+            }
+        }
+        .onPreferenceChange(InnerHeightPreferenceKey.self) { newHeight in
+            delay(0.4) {
+                    screenHeight = newHeight
+            }
+        }
+        .presentationDetents([.height(screenHeight)])
+        .animation(.smooth, value: screenHeight)
     }
 
     @ViewBuilder
     private func addictionView() -> some View {
-        VStack(spacing: 22) {
-            Capsule()
-                .fill(Palette.textTertiary)
-                .frame(width: 56, height: 4)
+        VStack(spacing: 24) {
+            VStack(spacing: 18) {
+                Text("Сколько затяжек вы делаете в день?")
+                    .font(.bold22)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(Palette.textPrimary)
+                    .padding(.horizontal, 12)
 
-            VStack(spacing: 24) {
-                VStack(spacing: 18) {
-                    Text("Сколько затяжек вы делаете в день?")
-                        .font(.bold22)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(Palette.textPrimary)
-                        .padding(.horizontal, 12)
-
-                    Text("Можно указать примерное число - если в первые дни окажется, что лимит маловат, мы скорректируем его")
-                        .font(.medium16)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(Palette.textSecondary)
-                }
-                .padding(.horizontal, 24)
-
-                VStack(spacing: 20) {
-                    infoView()
-
-                    ActionMenuPlanDevelopingSlider(percentage: $sliderPercentage)
-                        .padding(.horizontal, 40)
-                }
+                Text("Можно указать примерное число - если в первые дни окажется, что лимит маловат, мы скорректируем его")
+                    .font(.medium16)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(Palette.textSecondary)
             }
+            .padding(.horizontal, 24)
+
+            VStack(spacing: 20) {
+                infoView()
+
+                ActionMenuPlanDevelopingSlider(percentage: $sliderPercentage)
+                    .padding(.horizontal, 40)
+            }
+
+            AccentButton(text: "Далее", action: nextAction)
+                .padding(.horizontal, 16)
+                .padding(.top, 24)
+                .transition(.identity)
         }
     }
 
@@ -121,5 +153,12 @@ struct ActionMenuPlanDevelopingView: View {
 extension ActionMenuPlanDevelopingView {
     enum ScreenState {
         case addiction, plan, info
+    }
+}
+
+struct InnerHeightPreferenceKey: PreferenceKey {
+    static let defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
