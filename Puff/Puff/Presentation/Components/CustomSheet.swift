@@ -13,6 +13,7 @@ struct CustomSheet<Content: View>: View {
 
     var ableToDismissWithSwipe: Bool
     var cornerRadius: Double
+    var topPadding: Double
 
     var onDismiss: () -> Void
     var content: () -> Content
@@ -55,7 +56,7 @@ struct CustomSheet<Content: View>: View {
                 Group {
                     if isPresented {
                         content()
-                            .padding(.top, 5)
+                            .padding(.top, topPadding)
                             .background {
                                 Color.white
                                     .overlay(alignment: .top) {
@@ -93,6 +94,7 @@ extension View {
         isPresented: Binding<Bool>,
         ableToDismissWithSwipe: Bool = true,
         cornerRadius: Double = 20,
+        topPadding: Double = 16,
         onDismiss: @escaping () -> Void = {},
         content: @escaping () -> some View
     ) -> some View {
@@ -102,6 +104,7 @@ extension View {
                     isPresented: isPresented,
                     ableToDismissWithSwipe: ableToDismissWithSwipe,
                     cornerRadius: cornerRadius,
+                    topPadding: topPadding,
                     onDismiss: onDismiss,
                     content: content
                 )

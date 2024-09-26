@@ -62,8 +62,8 @@ struct ActionMenuPlanDevelopingView: View {
             )
             .padding(.horizontal, 12)
         }
-        .padding(.top, 30)
         .padding(.bottom, 16)
+        .padding(.top, 20)
     }
 
     @ViewBuilder

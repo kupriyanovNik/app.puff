@@ -11,6 +11,7 @@ struct SecondaryButton: View {
 
     let text: String
     var font: Font = .semibold16
+    var foreground: Color = .black
     var background: Color = Color(hex: 0xE7E7E7)
     var padding: EdgeInsets = .init(
         top: 16,
@@ -30,7 +31,7 @@ struct SecondaryButton: View {
         ) {
             Text(text)
                 .font(font)
-                .foregroundStyle(.black)
+                .foregroundStyle(foreground)
                 .padding(padding)
                 .hCenter()
                 .background {
