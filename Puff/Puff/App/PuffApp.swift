@@ -21,7 +21,8 @@ struct PuffApp: App {
             StatusBarWrapperView {
                 MainNavigationView(
                     navigationVM: navigationVM,
-                    smokesManager: smokesManager
+                    smokesManager: smokesManager,
+                    onboardingVM: onboardingVM
                 )
             }
             .preferredColorScheme(.light)

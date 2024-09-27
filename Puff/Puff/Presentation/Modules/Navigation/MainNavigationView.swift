@@ -11,6 +11,7 @@ struct MainNavigationView: View {
 
     @ObservedObject var navigationVM: NavigationViewModel
     @ObservedObject var smokesManager: SmokesManager
+    @ObservedObject var onboardingVM: OnboardingViewModel
 
     var body: some View {
         ZStack {
@@ -29,7 +30,8 @@ struct MainNavigationView: View {
         switch self.navigationVM.selectedTab {
         case .home: HomeView(
             navigationVM: navigationVM,
-            smokesManager: smokesManager
+            smokesManager: smokesManager,
+            onboardingVM: onboardingVM
         )
         case .statistics: StatisticsView()
         }
@@ -39,6 +41,7 @@ struct MainNavigationView: View {
 #Preview {
     MainNavigationView(
         navigationVM: .init(),
-        smokesManager: .init()
+        smokesManager: .init(),
+        onboardingVM: .init()
     )
 }

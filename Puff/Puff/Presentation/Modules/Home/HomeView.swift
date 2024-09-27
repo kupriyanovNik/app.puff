@@ -7,11 +7,15 @@
 
 import SwiftUI
 import UIKit
+import Combine
 
 struct HomeView: View {
 
     @ObservedObject var navigationVM: NavigationViewModel
     @ObservedObject var smokesManager: SmokesManager
+    @ObservedObject var onboardingVM: OnboardingViewModel
+
+    @State private var isUserPremium = SubscriptionManager.shared.isPremium
 
     var body: some View {
         ZStack {
@@ -32,6 +36,12 @@ struct HomeView: View {
         }
         .onAppear {
             UIApplication.shared.setStatusBarStyle(.darkContent)
+        }
+        .onChange(of: onboardingVM.hasSeenOnboarding) { _ in
+            checkUserStatus()
+        }
+        .onChange(of: navigationVM.shouldShowPaywall) { _ in
+            checkUserStatus()
         }
     }
 
@@ -79,7 +89,7 @@ struct HomeView: View {
     @ViewBuilder
     private func planView() -> some View {
         Group {
-            if !SubscriptionManager.shared.isPremium {
+            if !isUserPremium {
                 HomeViewIsNotPremiumPlanView {
                     navigationVM.shouldShowPaywall.toggle()
                 }
@@ -94,12 +104,19 @@ struct HomeView: View {
             }
         }
     }
+
+    private func checkUserStatus() {
+        animated {
+            isUserPremium = SubscriptionManager.shared.isPremium
+        }
+    }
 }
 
 #Preview {
     HomeView(
         navigationVM: .init(),
-        smokesManager: .init()
+        smokesManager: .init(),
+        onboardingVM: .init()
     )
 }
 

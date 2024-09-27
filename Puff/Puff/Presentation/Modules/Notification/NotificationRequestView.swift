@@ -75,7 +75,9 @@ struct NotificationRequestView: View {
                 NotificationManager.shared.requestAuthorization(action)
             }
 
-            TextButton(text: "Возможно позже", action: action)
+            TextButton(text: "Возможно позже") {
+                delay(0.15, action: action)
+            }
         }
     }
 }
