@@ -9,7 +9,7 @@ import SwiftUI
 
 final class OnboardingViewModel: ObservableObject {
 //    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
-    @Published var hasSeenOnboarding: Bool = false
+    @Published var hasSeenOnboarding: Bool = true
 
     private var currentIndex: Int = 0
 

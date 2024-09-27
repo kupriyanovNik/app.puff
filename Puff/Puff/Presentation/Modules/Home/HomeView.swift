@@ -6,10 +6,28 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct HomeView: View {
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
+
+            Color.white
+                .clipShape(
+                    .rect(
+                        topLeadingRadius: 38,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 0,
+                        topTrailingRadius: 28
+                    )
+                )
+                .ignoresSafeArea(edges: .bottom)
+        }
+        .onAppear {
+            UIApplication.shared.setStatusBarStyle(.darkContent)
+        }
     }
 }
 

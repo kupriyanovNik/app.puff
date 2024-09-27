@@ -21,7 +21,9 @@
 		B73B2E522C9B64A6001EB658 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E502C9B64A6001EB658 /* Logger.swift */; };
 		B73B2E552C9B64CD001EB658 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E542C9B64CD001EB658 /* AppManager.swift */; };
 		B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
+		B78A6A132CA70B180074067B /* StatusBarWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */; };
 		B79527C02CA5C90600ADB323 /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527BF2CA5C90600ADB323 /* CustomSheet.swift */; };
+		B79527CB2CA5F97200ADB323 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */; };
 		B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F3775E2C9B674C0050C93B /* TabBar.swift */; };
 		B7F377622C9B677E0050C93B /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377612C9B677E0050C93B /* TabBarModel.swift */; };
 		B7F377662C9B682A0050C93B /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377652C9B682A0050C93B /* AccentButton.swift */; };
@@ -54,7 +56,9 @@
 		B73B2E502C9B64A6001EB658 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B73B2E542C9B64CD001EB658 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		B75277492C9F4C7B00F8B98D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarWrapperView.swift; sourceTree = "<group>"; };
 		B79527BF2CA5C90600ADB323 /* CustomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
+		B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		B7F3775E2C9B674C0050C93B /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		B7F377612C9B677E0050C93B /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		B7F377652C9B682A0050C93B /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 			children = (
 				B7F3775D2C9B67410050C93B /* Components */,
 				B73B2E462C9B6432001EB658 /* Modules */,
+				B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */,
 				B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */,
 				B75277492C9F4C7B00F8B98D /* Date+Ext.swift */,
+				B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -373,7 +379,9 @@
 				B72CABA12C9DDA4000CD1040 /* Array+Ext.swift in Sources */,
 				B73B2E4A2C9B644C001EB658 /* HomeView.swift in Sources */,
 				B7F377762C9B6C480050C93B /* SecondaryButton.swift in Sources */,
+				B79527CB2CA5F97200ADB323 /* UIApplication+Ext.swift in Sources */,
 				B73B2E522C9B64A6001EB658 /* Logger.swift in Sources */,
+				B78A6A132CA70B180074067B /* StatusBarWrapperView.swift in Sources */,
 				B72CABA92C9E0CF900CD1040 /* PickerCard.swift in Sources */,
 				B7F574DF2C9C9EE10059BAB9 /* String+Ext.swift in Sources */,
 				B7F377702C9B69940050C93B /* Color+Ext.swift in Sources */,
@@ -530,6 +538,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Puff/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Puffless;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -561,6 +570,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Puff/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Puffless;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
