@@ -87,6 +87,7 @@
 		B765E5302CA1E0040037638F /* ActionMenu */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ActionMenu; sourceTree = "<group>"; };
 		B78A6A142CA7196B0074067B /* Subscription */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Subscription; sourceTree = "<group>"; };
 		B78A6A192CA719A70074067B /* Smokes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Smokes; sourceTree = "<group>"; };
+		B78A6A1E2CA736540074067B /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
 		B795271A2CA5B9C900ADB323 /* Modifier */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Modifier; sourceTree = "<group>"; };
 		B7F574D12C9C0CCF0059BAB9 /* Navigation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Navigation; sourceTree = "<group>"; };
 		B7F574D62C9C10980059BAB9 /* Statistics */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Statistics; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 		B73B2E482C9B6447001EB658 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B78A6A1E2CA736540074067B /* Components */,
 				B73B2E492C9B644C001EB658 /* HomeView.swift */,
 			);
 			path = Home;
@@ -317,6 +319,7 @@
 				B765E5302CA1E0040037638F /* ActionMenu */,
 				B78A6A142CA7196B0074067B /* Subscription */,
 				B78A6A192CA719A70074067B /* Smokes */,
+				B78A6A1E2CA736540074067B /* Components */,
 				B795271A2CA5B9C900ADB323 /* Modifier */,
 				B7F574D12C9C0CCF0059BAB9 /* Navigation */,
 				B7F574D62C9C10980059BAB9 /* Statistics */,
