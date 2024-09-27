@@ -22,6 +22,7 @@
 		B73B2E552C9B64CD001EB658 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E542C9B64CD001EB658 /* AppManager.swift */; };
 		B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
 		B78A6A132CA70B180074067B /* StatusBarWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */; };
+		B78A6A1D2CA71A940074067B /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A6A1C2CA71A940074067B /* Optional+Ext.swift */; };
 		B79527C02CA5C90600ADB323 /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527BF2CA5C90600ADB323 /* CustomSheet.swift */; };
 		B79527CB2CA5F97200ADB323 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */; };
 		B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F3775E2C9B674C0050C93B /* TabBar.swift */; };
@@ -57,6 +58,7 @@
 		B73B2E542C9B64CD001EB658 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		B75277492C9F4C7B00F8B98D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarWrapperView.swift; sourceTree = "<group>"; };
+		B78A6A1C2CA71A940074067B /* Optional+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Ext.swift"; sourceTree = "<group>"; };
 		B79527BF2CA5C90600ADB323 /* CustomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
 		B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		B7F3775E2C9B674C0050C93B /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -83,6 +85,8 @@
 		B756D66C2CA04B6F00DF28CD /* Notification */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notification; sourceTree = "<group>"; };
 		B756D66F2CA04B8000DF28CD /* Notifications */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notifications; sourceTree = "<group>"; };
 		B765E5302CA1E0040037638F /* ActionMenu */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ActionMenu; sourceTree = "<group>"; };
+		B78A6A142CA7196B0074067B /* Subscription */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Subscription; sourceTree = "<group>"; };
+		B78A6A192CA719A70074067B /* Smokes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Smokes; sourceTree = "<group>"; };
 		B795271A2CA5B9C900ADB323 /* Modifier */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Modifier; sourceTree = "<group>"; };
 		B7F574D12C9C0CCF0059BAB9 /* Navigation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Navigation; sourceTree = "<group>"; };
 		B7F574D62C9C10980059BAB9 /* Statistics */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Statistics; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 		B73B2E412C9B639F001EB658 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B78A6A192CA719A70074067B /* Smokes */,
+				B78A6A142CA7196B0074067B /* Subscription */,
 				B756D66F2CA04B8000DF28CD /* Notifications */,
 				B73B2E532C9B64C9001EB658 /* App */,
 				B73B2E512C9B64A6001EB658 /* Log */,
@@ -283,6 +289,7 @@
 				B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */,
 				B75277492C9F4C7B00F8B98D /* Date+Ext.swift */,
 				B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */,
+				B78A6A1C2CA71A940074067B /* Optional+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -308,6 +315,8 @@
 				B756D66C2CA04B6F00DF28CD /* Notification */,
 				B756D66F2CA04B8000DF28CD /* Notifications */,
 				B765E5302CA1E0040037638F /* ActionMenu */,
+				B78A6A142CA7196B0074067B /* Subscription */,
+				B78A6A192CA719A70074067B /* Smokes */,
 				B795271A2CA5B9C900ADB323 /* Modifier */,
 				B7F574D12C9C0CCF0059BAB9 /* Navigation */,
 				B7F574D62C9C10980059BAB9 /* Statistics */,
@@ -401,6 +410,7 @@
 				B7F574F12C9CAAAF0059BAB9 /* Text+Ext.swift in Sources */,
 				B79527C02CA5C90600ADB323 /* CustomSheet.swift in Sources */,
 				B73B2E4C2C9B647D001EB658 /* Palette.swift in Sources */,
+				B78A6A1D2CA71A940074067B /* Optional+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

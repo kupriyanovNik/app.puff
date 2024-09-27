@@ -10,6 +10,7 @@ import SwiftUI
 struct MainNavigationView: View {
 
     @ObservedObject var navigationVM: NavigationViewModel
+    @ObservedObject var smokesManager: SmokesManager
 
     var body: some View {
         ZStack {
@@ -26,12 +27,18 @@ struct MainNavigationView: View {
     @ViewBuilder
     private func content() -> some View {
         switch self.navigationVM.selectedTab {
-        case .home: HomeView()
+        case .home: HomeView(
+            navigationVM: navigationVM,
+            smokesManager: smokesManager
+        )
         case .statistics: StatisticsView()
         }
     }
 }
 
 #Preview {
-    MainNavigationView(navigationVM: .init())
+    MainNavigationView(
+        navigationVM: .init(),
+        smokesManager: .init()
+    )
 }

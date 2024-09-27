@@ -12,6 +12,7 @@ struct AppPaywallView: View {
     @State private var shouldShowCongratulationView: Bool = false
 
     @State private var withTrial: Bool = false
+    var showBenefitsDelay: Double = 0.25
 
     var closeScreenAction: () -> Void
 
@@ -39,6 +40,9 @@ struct AppPaywallView: View {
 
     var body: some View {
         ZStack {
+            Color.white
+                .ignoresSafeArea()
+
             Palette.accentColor
                 .ignoresSafeArea()
                 .opacity(shouldShowCongratulationView ? 1 : 0)
@@ -77,7 +81,7 @@ struct AppPaywallView: View {
         }
         .safeAreaInset(edge: .bottom, content: bottomView)
         .onAppear {
-            delay(0.25) {
+            delay(showBenefitsDelay) {
                 shouldShowBenefits = true
             }
         }
@@ -290,6 +294,8 @@ struct AppPaywallView: View {
     }
 
     private func makePurchase() {
+        SubscriptionManager.shared.isPremium = true
+
         shouldShowCongratulationView.toggle()
     }
 }
