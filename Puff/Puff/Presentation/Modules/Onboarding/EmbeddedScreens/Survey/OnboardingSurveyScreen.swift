@@ -73,10 +73,10 @@ struct OnboardingSurveyScreen: View {
 
                 Spacer()
 
-                if ![7, 8].contains(questionIndex) {
-                    TextButton(text: "Пропустить", action: skipSurvey)
-                        .transition(.opacity.animation(.smooth))
+                TextButton(text: "Пропустить") {
+                    selectAnswer(index: 0)
                 }
+                .transition(.opacity.animation(.smooth))
             }
         }
         .padding([.top, .horizontal], 16)
@@ -152,6 +152,10 @@ struct OnboardingSurveyScreen: View {
         }
 
         onboardingVM.questionIndex += 1
+
+        if questionIndex == 9 {
+            onboardingVM.nextScreen()
+        }
     }
 
     private func backQuestion() {

@@ -9,9 +9,9 @@ import SwiftUI
 
 final class OnboardingViewModel: ObservableObject {
 //    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
-    @Published var hasSeenOnboarding: Bool = false
+    @Published var hasSeenOnboarding: Bool = true
 
-    private var currentIndex: Int = 5
+    private var currentIndex: Int = 0
 
     @Published var onboardingPath = NavigationPath()
     @Published var isSurveySkipped: Bool = false
