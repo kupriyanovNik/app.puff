@@ -44,21 +44,20 @@ struct AppPaywallView: View {
                 .ignoresSafeArea()
 
             Palette.accentColor
-                .ignoresSafeArea()
                 .opacity(shouldShowCongratulationView ? 1 : 0)
-                .animation(.easeOut(duration: 0.3), value: shouldShowCongratulationView)
+                .animation(.easeOut(duration: 0.2).delay(0.3), value: shouldShowCongratulationView)
+                .ignoresSafeArea()
 
-            Group {
-                if shouldShowCongratulationView {
-                    PremiumCongratulationView(action: closeScreenAction)
-                        .transition(.opacity.animation(.easeOut(duration: 0.2).delay(0.3)))
-                } else {
-                    paywall()
-                        .transition(.opacity.animation(.easeOut(duration: 0.35)))
-                }
+            paywall()
+                .opacity(shouldShowCongratulationView ? 0 : 1)
+
+            if shouldShowCongratulationView {
+                PremiumCongratulationView(action: closeScreenAction)
+                    .transition(.opacity.animation(.easeOut(duration: 0.2).delay(0.3)))
             }
-            .prepareForStackPresentationInOnboarding()
         }
+        .prepareForStackPresentationInOnboarding()
+        .animation(.easeOut(duration: 0.35), value: shouldShowCongratulationView)
     }
 
     @ViewBuilder

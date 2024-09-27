@@ -11,7 +11,7 @@ struct PremiumCongratulationView: View {
 
     var action: () -> Void
 
-    @State private var shouldShowLottie: Bool = true
+    @State private var shouldShowLottie: Bool = false
 
     var body: some View {
         VStack(spacing: 24) {
@@ -19,8 +19,9 @@ struct PremiumCongratulationView: View {
 
             LottieView(name: "puffPremiumStarAnimation")
                 .frame(120)
+                .cornerRadius(16)
                 .opacity(shouldShowLottie ? 1 : 0)
-                .animation(.smooth, value: shouldShowLottie)
+                .animation(.easeInOut(duration: 0.2), value: shouldShowLottie)
 
             VStack(spacing: 16) {
                 Text("Добро пожаловать")
@@ -42,8 +43,8 @@ struct PremiumCongratulationView: View {
             Spacer()
         }
         .onAppear {
-            delay(3.3) {
-                shouldShowLottie = false
+            delay(0.4) {
+                shouldShowLottie = true
             }
         }
         .onAppear {
