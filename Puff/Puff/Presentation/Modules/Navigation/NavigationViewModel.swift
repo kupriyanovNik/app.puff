@@ -15,4 +15,5 @@ final class NavigationViewModel: ObservableObject {
     @Published var shouldShowPaywall: Bool = false
 
     @Published var shouldShowPlanDevelopingActionMenu: Bool = false
+    @Published var shouldShowReadyToBreakActionMenu: Bool = false
 }

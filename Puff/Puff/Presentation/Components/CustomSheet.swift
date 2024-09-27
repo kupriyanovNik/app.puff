@@ -30,6 +30,10 @@ struct CustomSheet<Content: View>: View {
                 if value.translation.height > 100 {
                     isPresented = false
                     onDismiss()
+
+                    delay(0.4) {
+                        offset = .zero
+                    }
                 } else {
                     withAnimation {
                         offset = .zero

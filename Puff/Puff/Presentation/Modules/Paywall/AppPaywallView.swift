@@ -91,7 +91,7 @@ struct AppPaywallView: View {
     private func headerView() -> some View {
         VStack(spacing: isSmallDevice ? 0 : 16) {
             HStack {
-                DelayedButton(afterPressedScale: 1.2, action: closeScreenAction) {
+                Button(action: closeScreenAction) {
                     Image(systemName: "xmark")
                         .resizable()
                         .scaledToFit()
