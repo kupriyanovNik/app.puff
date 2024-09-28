@@ -33,7 +33,9 @@ struct MainNavigationView: View {
             smokesManager: smokesManager,
             onboardingVM: onboardingVM
         )
-        case .statistics: StatisticsView()
+        case .statistics: StatisticsView(
+            navigationVM: navigationVM
+        )
         }
     }
 }

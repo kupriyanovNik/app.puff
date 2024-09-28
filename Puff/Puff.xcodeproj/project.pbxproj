@@ -11,6 +11,8 @@
 		B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7024D122C9EE5C1006809AC /* LottieView.swift */; };
 		B72CABA12C9DDA4000CD1040 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */; };
 		B72CABA92C9E0CF900CD1040 /* PickerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA82C9E0CF900CD1040 /* PickerCard.swift */; };
+		B7325F5F2CA86630007D8456 /* CircledTopCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7325F5E2CA86630007D8456 /* CircledTopCornersView.swift */; };
+		B7325F612CA866CC007D8456 /* AppHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7325F602CA866CC007D8456 /* AppHeaderView.swift */; };
 		B73B2E322C9B637A001EB658 /* PuffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E312C9B637A001EB658 /* PuffApp.swift */; };
 		B73B2E362C9B637B001EB658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73B2E352C9B637B001EB658 /* Assets.xcassets */; };
 		B73B2E392C9B637B001EB658 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73B2E382C9B637B001EB658 /* Preview Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		B7024D122C9EE5C1006809AC /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		B72CABA82C9E0CF900CD1040 /* PickerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCard.swift; sourceTree = "<group>"; };
+		B7325F5E2CA86630007D8456 /* CircledTopCornersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircledTopCornersView.swift; sourceTree = "<group>"; };
+		B7325F602CA866CC007D8456 /* AppHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderView.swift; sourceTree = "<group>"; };
 		B73B2E2E2C9B637A001EB658 /* Puff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B73B2E312C9B637A001EB658 /* PuffApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffApp.swift; sourceTree = "<group>"; };
 		B73B2E352C9B637B001EB658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,7 +152,6 @@
 			children = (
 				B7F3775D2C9B67410050C93B /* Components */,
 				B73B2E462C9B6432001EB658 /* Modules */,
-				B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -265,6 +268,9 @@
 				B7F574F92C9CB8D50059BAB9 /* MarkdownText.swift */,
 				B72CABA82C9E0CF900CD1040 /* PickerCard.swift */,
 				B7024D122C9EE5C1006809AC /* LottieView.swift */,
+				B7325F5E2CA86630007D8456 /* CircledTopCornersView.swift */,
+				B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */,
+				B7325F602CA866CC007D8456 /* AppHeaderView.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -400,10 +406,12 @@
 				B7F574DA2C9C11470059BAB9 /* TextButton.swift in Sources */,
 				B73B2E4F2C9B6498001EB658 /* HapticManager.swift in Sources */,
 				B7F377662C9B682A0050C93B /* AccentButton.swift in Sources */,
+				B7325F612CA866CC007D8456 /* AppHeaderView.swift in Sources */,
 				B7F574DD2C9C144A0059BAB9 /* MainInputField.swift in Sources */,
 				B7F3776B2C9B68AC0050C93B /* DelayedButton.swift in Sources */,
 				B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */,
 				B73B2E452C9B63E1001EB658 /* AppDelegate.swift in Sources */,
+				B7325F5F2CA86630007D8456 /* CircledTopCornersView.swift in Sources */,
 				B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */,
 				B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */,
 				B7F3776E2C9B68E30050C93B /* Internal+Ext.swift in Sources */,

@@ -12,15 +12,22 @@ enum TabBarModel: CaseIterable {
 
     var selectedImageName: String {
         switch self {
-        case .home: ""
-        case .statistics: ""
+        case .home: "tabBarHomeSelectedImage"
+        case .statistics: "tabBarStatisticsSelectedImage"
         }
     }
 
     var defaultImageName: String {
         switch self {
-        case .home: ""
-        case .statistics: ""
+        case .home: "tabBarHomeDefaultImage"
+        case .statistics: "tabBarStatisticsDefaultImage"
+        }
+    }
+
+    var title: String {
+        switch self {
+        case .home: "Главная"
+        case .statistics: "Прогресс"
         }
     }
 }

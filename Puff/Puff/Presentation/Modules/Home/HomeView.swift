@@ -18,37 +18,19 @@ struct HomeView: View {
     @State private var isUserPremium = SubscriptionManager.shared.isPremium
 
     var body: some View {
-        ZStack {
-            Color.black
-                .ignoresSafeArea()
-
-            Color.white
-                .clipShape(
-                    .rect(
-                        topLeadingRadius: 28,
-                        bottomLeadingRadius: 0,
-                        bottomTrailingRadius: 0,
-                        topTrailingRadius: 28
-                    )
-                )
-                .ignoresSafeArea(edges: .bottom)
-                .overlay(content: viewContent)
-        }
-        .onAppear {
-            UIApplication.shared.setStatusBarStyle(.darkContent)
-        }
-        .onChange(of: onboardingVM.hasSeenOnboarding) { _ in
-            checkUserStatus()
-        }
-        .onChange(of: navigationVM.shouldShowPaywall) { _ in
-            checkUserStatus()
-        }
+        CircledTopCornersView(content: viewContent)
+            .onChange(of: onboardingVM.hasSeenOnboarding) { _ in
+                checkUserStatus()
+            }
+            .onChange(of: navigationVM.shouldShowPaywall) { _ in
+                checkUserStatus()
+            }
     }
 
     @ViewBuilder
     private func viewContent() -> some View {
         VStack(spacing: 10) {
-            headerView()
+            AppHeaderView(title: "Главная", navigationVM: navigationVM)
 
             planView()
 
@@ -59,35 +41,6 @@ struct HomeView: View {
             Spacer()
         }
         .padding(.horizontal, 12)
-    }
-
-    @ViewBuilder
-    private func headerView() -> some View {
-        HStack {
-            Text("Главная")
-                .font(.semibold22)
-                .foregroundStyle(Palette.textPrimary)
-
-            Spacer()
-
-            DelayedButton {
-                navigationVM.shouldShowAccountView.toggle()
-            } content: {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(hex: 0xE7E7E7))
-                    .frame(34)
-                    .overlay {
-                        Image(.homeAccount)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(24)
-                    }
-            }
-
-        }
-        .padding(.bottom, 2)
-        .padding(.top, 16)
-        .padding(.leading, 10)
     }
 
     @ViewBuilder

@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct StatisticsView: View {
+
+    @ObservedObject var navigationVM: NavigationViewModel
+
     var body: some View {
-        Text("Hello, World!")
+        CircledTopCornersView(content: viewContent)
+    }
+
+    @ViewBuilder
+    private func viewContent() -> some View {
+        VStack(spacing: 10) {
+            AppHeaderView(title: "Прогресс", navigationVM: navigationVM)
+
+            Spacer()
+
+            Text("Hello, World!")
+
+            Spacer()
+        }
+        .padding(.horizontal, 12)
     }
 }
 
 #Preview {
-    StatisticsView()
+    StatisticsView(navigationVM: .init())
 }
