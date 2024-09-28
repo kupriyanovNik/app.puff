@@ -34,9 +34,13 @@ struct HomeView: View {
 
             planView()
 
-            HomeViewTodaySmokesView(smokesManager: smokesManager, isUserPremium: $isUserPremium)
+            if !smokesManager.isPlanEnded {
+                HomeViewTodaySmokesView(smokesManager: smokesManager, isUserPremium: $isUserPremium)
 
-            HomeViewSmokeButton(smokesManager: smokesManager)
+                HomeViewSmokeButton(smokesManager: smokesManager)
+            } else {
+                HomeViewPlanEnded(smokesManager: smokesManager)
+            }
 
             Spacer()
         }

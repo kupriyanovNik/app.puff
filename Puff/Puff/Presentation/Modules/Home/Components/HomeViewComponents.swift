@@ -206,6 +206,36 @@ extension HomeView {
             }
         }
     }
+
+    struct HomeViewPlanEnded: View {
+
+        @ObservedObject var smokesManager: SmokesManager
+
+        var withoutSmokingString: String {
+            "1 минута"
+        }
+
+        var body: some View {
+            Image(.homeViewPlanEnded)
+                .resizable()
+                .scaledToFill()
+                .cornerRadius(28)
+                .overlay {
+                    Text(withoutSmokingString)
+                        .font(.bold65)
+                        .monospacedDigit()
+                        .contentTransition(.identity)
+                        .foregroundStyle(Palette.darkBlue)
+                        .hCenter()
+                        .overlay {
+                            Text("Я не парю уже")
+                                .font(.medium24)
+                                .foregroundStyle(Palette.textTertiary)
+                                .offset(y: -45)
+                        }
+                }
+        }
+    }
 }
 
 extension HomeView {
