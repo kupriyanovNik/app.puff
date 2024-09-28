@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// unused now, but so helpful
 extension Optional: @retroactive RawRepresentable where Wrapped: Codable {
     public var rawValue: String {
         guard let data = try? JSONEncoder().encode(self) else {

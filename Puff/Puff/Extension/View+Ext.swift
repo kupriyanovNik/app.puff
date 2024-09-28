@@ -115,3 +115,7 @@ extension View {
             .animation(.easeInOut(duration: 0.3))
     }
 }
+
+extension View {
+    var isSmallDevice: Bool { UIScreen.main.bounds.height < 700 }
+}

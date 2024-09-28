@@ -12,5 +12,5 @@ final class SubscriptionManager {
 
     private init() { }
 
-    var isPremium: Bool = false
+    var isPremium: Bool = true
 }

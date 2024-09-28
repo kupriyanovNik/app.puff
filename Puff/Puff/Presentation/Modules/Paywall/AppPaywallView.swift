@@ -24,8 +24,6 @@ struct AppPaywallView: View {
         "Детальная статистика"
     ]
 
-    let isSmallDevice = UIScreen.main.bounds.height < 700
-
     private var trialString: String {
         if isSmallDevice {
             "Пробный период 3 дня"

@@ -48,6 +48,11 @@ struct PremiumCongratulationView: View {
             }
         }
         .onAppear {
+            delay(3.3) {
+                shouldShowLottie = false
+            }
+        }
+        .onAppear {
             delay(3.5, action: action)
         }
     }

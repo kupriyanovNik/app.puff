@@ -52,6 +52,10 @@ struct HomeView: View {
 
             planView()
 
+            HomeViewTodaySmokesView(smokesManager: smokesManager, isUserPremium: $isUserPremium)
+
+            HomeViewSmokeButton(smokesManager: smokesManager)
+
             Spacer()
         }
         .padding(.horizontal, 12)

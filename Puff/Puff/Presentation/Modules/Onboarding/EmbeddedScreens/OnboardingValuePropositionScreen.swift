@@ -31,8 +31,6 @@ struct OnboardingValuePropositionScreen: View {
         "Процесс может идти как плавно, так и немного интенсивней - это зависит от желаемого срока отказа и силы вашей привычки."
     ]
 
-    private let isSmallDevice = UIScreen.main.bounds.height < 700
-
     var body: some View {
         VStack {
             tabView()

@@ -47,8 +47,6 @@ struct OnboardingPlanScreen: View {
         )
     ]
 
-    private let isSmallDevice: Bool =  UIScreen.main.bounds.height < 700
-
     var body: some View {
         VStack(spacing: isSmallDevice ? 28 : 42) {
             topView()

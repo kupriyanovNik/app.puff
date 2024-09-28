@@ -18,8 +18,6 @@ struct PickerCard: View {
 
     var action: () -> Void
 
-    private let isSmallDevice = UIScreen.main.bounds.height < 700
-
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Spacer()
