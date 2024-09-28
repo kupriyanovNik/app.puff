@@ -42,7 +42,7 @@ final class SmokesManager: ObservableObject {
 
     var todaySmokes: Int { planCounts[currentDayIndex] }
 
-    func startPlan() {
+    func startPlan(period: ActionMenuPlanDevelopingPeriod) {
         isPlanCreated = true
     }
 
@@ -52,5 +52,9 @@ final class SmokesManager: ObservableObject {
         if isPlanCreated {
             planCounts[currentDayIndex] += 1
         }
+    }
+
+    func resetPlan() {
+        
     }
 }

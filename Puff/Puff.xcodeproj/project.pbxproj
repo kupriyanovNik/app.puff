@@ -11,7 +11,6 @@
 		B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7024D122C9EE5C1006809AC /* LottieView.swift */; };
 		B72CABA12C9DDA4000CD1040 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */; };
 		B72CABA92C9E0CF900CD1040 /* PickerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA82C9E0CF900CD1040 /* PickerCard.swift */; };
-		B7325F5F2CA86630007D8456 /* CircledTopCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7325F5E2CA86630007D8456 /* CircledTopCornersView.swift */; };
 		B7325F612CA866CC007D8456 /* AppHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7325F602CA866CC007D8456 /* AppHeaderView.swift */; };
 		B73B2E322C9B637A001EB658 /* PuffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E312C9B637A001EB658 /* PuffApp.swift */; };
 		B73B2E362C9B637B001EB658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73B2E352C9B637B001EB658 /* Assets.xcassets */; };
@@ -23,7 +22,6 @@
 		B73B2E522C9B64A6001EB658 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E502C9B64A6001EB658 /* Logger.swift */; };
 		B73B2E552C9B64CD001EB658 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E542C9B64CD001EB658 /* AppManager.swift */; };
 		B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
-		B78A6A132CA70B180074067B /* StatusBarWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */; };
 		B78A6A1D2CA71A940074067B /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A6A1C2CA71A940074067B /* Optional+Ext.swift */; };
 		B79527C02CA5C90600ADB323 /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527BF2CA5C90600ADB323 /* CustomSheet.swift */; };
 		B79527CB2CA5F97200ADB323 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */; };
@@ -48,7 +46,6 @@
 		B7024D122C9EE5C1006809AC /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		B72CABA82C9E0CF900CD1040 /* PickerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCard.swift; sourceTree = "<group>"; };
-		B7325F5E2CA86630007D8456 /* CircledTopCornersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircledTopCornersView.swift; sourceTree = "<group>"; };
 		B7325F602CA866CC007D8456 /* AppHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderView.swift; sourceTree = "<group>"; };
 		B73B2E2E2C9B637A001EB658 /* Puff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B73B2E312C9B637A001EB658 /* PuffApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffApp.swift; sourceTree = "<group>"; };
@@ -61,7 +58,6 @@
 		B73B2E502C9B64A6001EB658 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B73B2E542C9B64CD001EB658 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		B75277492C9F4C7B00F8B98D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarWrapperView.swift; sourceTree = "<group>"; };
 		B78A6A1C2CA71A940074067B /* Optional+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Ext.swift"; sourceTree = "<group>"; };
 		B79527BF2CA5C90600ADB323 /* CustomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
 		B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
@@ -85,6 +81,8 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B7024D142C9EE5F7006809AC /* Animations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Animations; sourceTree = "<group>"; };
+		B7325F622CA867A9007D8456 /* CircledTopCorners */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CircledTopCorners; sourceTree = "<group>"; };
+		B7325F632CA86813007D8456 /* Account */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Account; sourceTree = "<group>"; };
 		B756D6672CA0240300DF28CD /* Paywall */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Paywall; sourceTree = "<group>"; };
 		B756D66C2CA04B6F00DF28CD /* Notification */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notification; sourceTree = "<group>"; };
 		B756D66F2CA04B8000DF28CD /* Notifications */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notifications; sourceTree = "<group>"; };
@@ -195,6 +193,7 @@
 		B73B2E462C9B6432001EB658 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B7325F632CA86813007D8456 /* Account */,
 				B765E5302CA1E0040037638F /* ActionMenu */,
 				B756D66C2CA04B6F00DF28CD /* Notification */,
 				B756D6672CA0240300DF28CD /* Paywall */,
@@ -268,8 +267,7 @@
 				B7F574F92C9CB8D50059BAB9 /* MarkdownText.swift */,
 				B72CABA82C9E0CF900CD1040 /* PickerCard.swift */,
 				B7024D122C9EE5C1006809AC /* LottieView.swift */,
-				B7325F5E2CA86630007D8456 /* CircledTopCornersView.swift */,
-				B78A6A122CA70B180074067B /* StatusBarWrapperView.swift */,
+				B7325F622CA867A9007D8456 /* CircledTopCorners */,
 				B7325F602CA866CC007D8456 /* AppHeaderView.swift */,
 			);
 			path = Internal;
@@ -319,6 +317,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				B7024D142C9EE5F7006809AC /* Animations */,
+				B7325F622CA867A9007D8456 /* CircledTopCorners */,
+				B7325F632CA86813007D8456 /* Account */,
 				B756D6672CA0240300DF28CD /* Paywall */,
 				B756D66C2CA04B6F00DF28CD /* Notification */,
 				B756D66F2CA04B8000DF28CD /* Notifications */,
@@ -399,7 +399,6 @@
 				B7F377762C9B6C480050C93B /* SecondaryButton.swift in Sources */,
 				B79527CB2CA5F97200ADB323 /* UIApplication+Ext.swift in Sources */,
 				B73B2E522C9B64A6001EB658 /* Logger.swift in Sources */,
-				B78A6A132CA70B180074067B /* StatusBarWrapperView.swift in Sources */,
 				B72CABA92C9E0CF900CD1040 /* PickerCard.swift in Sources */,
 				B7F574DF2C9C9EE10059BAB9 /* String+Ext.swift in Sources */,
 				B7F377702C9B69940050C93B /* Color+Ext.swift in Sources */,
@@ -411,7 +410,6 @@
 				B7F3776B2C9B68AC0050C93B /* DelayedButton.swift in Sources */,
 				B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */,
 				B73B2E452C9B63E1001EB658 /* AppDelegate.swift in Sources */,
-				B7325F5F2CA86630007D8456 /* CircledTopCornersView.swift in Sources */,
 				B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */,
 				B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */,
 				B7F3776E2C9B68E30050C93B /* Internal+Ext.swift in Sources */,

@@ -21,9 +21,9 @@ struct AppHeaderView: View {
 
             Spacer()
 
-            DelayedButton {
+            Button {
                 navigationVM.shouldShowAccountView.toggle()
-            } content: {
+            } label: {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color(hex: 0xE7E7E7))
                     .frame(34)

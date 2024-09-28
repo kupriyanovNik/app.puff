@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CircledTopCornersView<Content: View>: View {
 
+    var radius: Double = 28
+
     var content: () -> Content
 
     var body: some View {
@@ -19,10 +21,10 @@ struct CircledTopCornersView<Content: View>: View {
             Color.white
                 .clipShape(
                     .rect(
-                        topLeadingRadius: 28,
+                        topLeadingRadius: radius,
                         bottomLeadingRadius: 0,
                         bottomTrailingRadius: 0,
-                        topTrailingRadius: 28
+                        topTrailingRadius: radius
                     )
                 )
                 .ignoresSafeArea(edges: .bottom)

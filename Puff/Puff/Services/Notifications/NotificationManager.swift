@@ -24,7 +24,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().delegate = self
     }
 
-    func requestAuthorization(_ callback: @escaping () -> Void) {
+    func requestAuthorization(callback: @escaping () -> Void = {}) {
         if isNotificationEnabled {
             UNUserNotificationCenter.current()
                 .requestAuthorization(options: [.alert, .badge, .sound, .criticalAlert]) { _, error in
@@ -47,6 +47,10 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
         completionHandler([.badge, .sound, .list, .banner])
+    }
+
+    func removeAllNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
     private func checkNotificationStatus() {

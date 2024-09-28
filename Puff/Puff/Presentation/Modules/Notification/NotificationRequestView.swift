@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NotificationRequestView: View {
 
+    @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = true
+
     var action: () -> Void
 
     var body: some View {
@@ -72,11 +74,14 @@ struct NotificationRequestView: View {
     private func bottomView() -> some View {
         VStack(spacing: 6) {
             AccentButton(text: "Разрешить") {
-                NotificationManager.shared.requestAuthorization(action)
+                NotificationManager.shared.requestAuthorization(callback: action)
             }
 
             TextButton(text: "Возможно позже") {
-                delay(0.15, action: action)
+                delay(0.15) {
+                    hasSkippedNotificationRequest = true
+                    action()
+                }
             }
         }
     }

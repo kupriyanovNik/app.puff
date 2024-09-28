@@ -14,6 +14,7 @@ struct ActionMenuPlanDevelopingView: View {
 
     @State private var screenState: ScreenState = .addiction
 
+    var onStartedPlan: (ActionMenuPlanDevelopingPeriod) -> Void = { _ in }
     var onDismiss: () -> Void = {}
 
     private let minSmokesCount: Int = 100
@@ -127,6 +128,8 @@ struct ActionMenuPlanDevelopingView: View {
             } else if screenState == .plan {
                 screenState = .info
             } else if screenState == .info {
+                onStartedPlan(selectedPeriod)
+
                 onDismiss()
             }
         }

@@ -56,9 +56,26 @@ struct PuffApp: App {
                 }
                 .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowPaywall)
             }
+            .overlay {
+                Group {
+                    if navigationVM.shouldShowAccountView {
+                        AccountView(
+                            navigationVM: navigationVM,
+                            smokesManager: smokesManager
+                        )
+                        .preferredColorScheme(.light)
+                        .transition(
+                            .opacity.animation(.easeInOut(duration: 0.3))
+                        )
+                    }
+                }
+                .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountView)
+            }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowPlanDevelopingActionMenu) {
                 ActionMenuPlanDevelopingView {
-                    smokesManager.startPlan()
+                    smokesManager.startPlan(period: $0)
+                    navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
+                } onDismiss: {
                     navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
                 }
             }
