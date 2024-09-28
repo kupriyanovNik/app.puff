@@ -21,9 +21,7 @@ struct ActionMenuPlanDevelopingView: View {
     private let maxSmokesCount: Int = 1000
 
     private var smokesCount: Int {
-        HapticManager.onTabChanged()
-
-        return 10 * Int(round(Double(maxSmokesCount - minSmokesCount) * (sliderPercentage / 100) / 10.0)) + 100
+        10 * Int(round(Double(maxSmokesCount - minSmokesCount) * (sliderPercentage / 100) / 10.0)) + 100
     }
 
     var body: some View {
@@ -65,6 +63,9 @@ struct ActionMenuPlanDevelopingView: View {
         }
         .padding(.bottom, 16)
         .padding(.top, 20)
+        .onChange(of: smokesCount) { _ in
+            HapticManager.onTabChanged()
+        }
     }
 
     @ViewBuilder
