@@ -41,8 +41,6 @@ struct HomeView: View {
             } else {
                 HomeViewPlanEnded(smokesManager: smokesManager)
             }
-
-            Spacer()
         }
         .padding(.horizontal, 12)
     }

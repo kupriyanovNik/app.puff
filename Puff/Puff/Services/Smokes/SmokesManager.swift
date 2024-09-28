@@ -12,23 +12,27 @@ final class SmokesManager: ObservableObject {
 
     // MARK: - Property Wrappers
 
-    @AppStorage("isPlanCreated") var isPlanCreated: Bool = false
+    @AppStorage("isPlanCreated") var isPlanCreated: Bool = true
 //    @Published var isPlanCreated: Bool = false
 
         @AppStorage("isPlanEnded") var isPlanEnded: Bool = false
 //    @Published var isPlanEnded: Bool = false
 
-    @AppStorage("currentDayIndex") var currentDayIndex: Int = 0
-    @AppStorage("daysInPlan") var daysInPlan: Int = 21
-    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 20, count: 21)
-    @AppStorage("planCounts") var planCounts: [Int] = Array(repeating: 0, count: 21)
+//    @AppStorage("currentDayIndex") var currentDayIndex: Int = 0
+//    @AppStorage("daysInPlan") var daysInPlan: Int = 21
+//    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 20, count: 21)
+//    @AppStorage("planCounts") var planCounts: [Int] = Array(repeating: 0, count: 21)
+//    @AppStorage("smokesForDay") var smokesForDay: [Date: Int] = [:]
 
-    @AppStorage("smokesForDay") var smokesForDay: [Date: Int] = [:]
+    @Published var currentDayIndex: Int = 0
+    @Published var daysInPlan: Int = 21
+    @Published var planLimits: [Int] = Array(repeating: 20, count: 21)
+    @Published var planCounts: [Int] = Array(repeating: 0, count: 21)
+
+    @Published var smokesForDay: [Date: Int] = [:]
 
 //    @AppStorage("dateOfLastSmoke") var dateOfLastSmoke: Date?
     @Published var dateOfLastSmoke: Date?
-
-    @AppStorage("smokesCountForDate") var smokesCountForDate: [Int] = []
 
     // MARK: - Private Properties
 
@@ -36,13 +40,14 @@ final class SmokesManager: ObservableObject {
 
     // MARK: - Internal Properties
 
+    var todaySmokes: Int { planCounts[currentDayIndex] }
+
     var todayLimit: Int { planLimits[currentDayIndex] }
 
-    var isLastDay: Bool { currentDayIndex + 1 == daysInPlan }
+    var isLastDayOfPlan: Bool { currentDayIndex + 1 == daysInPlan }
 
     var isTodayLimitExceeded: Bool { todaySmokes > todayLimit }
 
-    var todaySmokes: Int { planCounts[currentDayIndex] }
 
     // MARK: - Internal Functions
 
