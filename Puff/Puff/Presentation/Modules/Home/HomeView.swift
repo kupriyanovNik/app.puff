@@ -54,6 +54,10 @@ struct HomeView: View {
                 HomeViewIsPremiumPlanNotCreatedView {
                     navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
                 }
+            } else if smokesManager.isPlanEnded {
+                HomeViewIsPremiumPlanEnded {
+                    navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
+                }
             } else {
                 HomeViewIsPremiumPlanCreatedView(smokesManager: smokesManager) {
                     navigationVM.shouldShowReadyToBreakActionMenu.toggle()

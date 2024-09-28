@@ -74,7 +74,6 @@ struct PuffApp: App {
             .makeCustomSheet(isPresented: $navigationVM.shouldShowPlanDevelopingActionMenu) {
                 ActionMenuPlanDevelopingView {
                     smokesManager.startPlan(period: $0)
-                    navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
                 } onDismiss: {
                     navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
                 }

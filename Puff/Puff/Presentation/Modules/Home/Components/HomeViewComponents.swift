@@ -177,6 +177,35 @@ extension HomeView {
             }
         }
     }
+
+    struct HomeViewIsPremiumPlanEnded: View {
+
+        var startNewPlan: () -> Void
+
+        var body: some View {
+            DelayedButton(action: startNewPlan) {
+                HStack(spacing: 3) {
+                    Spacer()
+
+                    Image(.homeStartPlanAgain)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(22)
+
+                    Text("Начать план заново")
+                        .font(.semibold16)
+                        .foregroundStyle(.white)
+
+                    Spacer()
+                }
+                .height(44)
+                .background {
+                    Capsule()
+                        .fill(Palette.darkBlue)
+                }
+            }
+        }
+    }
 }
 
 extension HomeView {
