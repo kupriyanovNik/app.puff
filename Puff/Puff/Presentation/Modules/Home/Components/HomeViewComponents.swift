@@ -243,6 +243,8 @@ extension HomeView {
 
         @ObservedObject var smokesManager: SmokesManager
 
+        @State private var isButtonPressed: Bool = false
+
         private var fillColor: Color {
             smokesManager.isTodayLimitExceeded ? Color(hex: 0xFDB9B9) : Color(hex: 0xB5D9FF)
         }
@@ -258,6 +260,10 @@ extension HomeView {
                         endRadius: 200
                     )
                 }
+                .opacity(isButtonPressed ? 0.7 : 1)
+                .scaleEffect(isButtonPressed ? 0.99 : 1)
+                .animation(.easeInOut(duration: 0.15), value: isButtonPressed)
+                .buttonStyle(.plain)
                 .overlay {
                     Group {
                         if smokesManager.isTodayLimitExceeded {
@@ -277,10 +283,18 @@ extension HomeView {
                             .fill(.white)
                     }
                 }
+                .onTapGesture(perform: buttonAction)
                 .animation(.smooth, value: smokesManager.isTodayLimitExceeded)
-                .onTapGesture {
-                    smokesManager.puff()
-                }
+        }
+
+        private func buttonAction() {
+            isButtonPressed = true
+
+            smokesManager.puff()
+
+            delay(0.15) {
+                isButtonPressed = false
+            }
         }
     }
 
@@ -323,8 +337,8 @@ extension HomeView {
                     .frame(width: 500, height: (self.height) + 50 )
                     .offset(y: self.height - (50 * extraOffsetMultiplier))
                     .offset(y: -offset)
-                    .animation(.smooth, value: offset)
-                    .animation(.smooth, value: extraOffsetMultiplier)
+                    .animation(.easeInOut(duration: 0.15), value: offset)
+                    .animation(.easeInOut(duration: 0.15), value: extraOffsetMultiplier)
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 28))
                 .contentShape(RoundedRectangle(cornerRadius: 28))

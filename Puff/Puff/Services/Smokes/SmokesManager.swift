@@ -22,7 +22,7 @@ final class SmokesManager: ObservableObject {
 //    @AppStorage("dateOfLastSmoke") var dateOfLastSmoke: Date?
      var dateOfLastSmoke: Date?
 
-    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 100, count: 21)
+    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 20, count: 21)
     @AppStorage("planCounts") var planCounts: [Int] = Array(repeating: 0, count: 21)
 
     @AppStorage("firstOpenAppDate") var firstOpenAppDate: Date = .now

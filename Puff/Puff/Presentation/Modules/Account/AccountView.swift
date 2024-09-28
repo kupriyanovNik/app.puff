@@ -12,7 +12,7 @@ struct AccountView: View {
     @ObservedObject var navigationVM: NavigationViewModel
     @ObservedObject var smokesManager: SmokesManager
 
-    @State private var isNotificationsEnabled: Bool = false
+    @State private var isNotificationsEnabled: Bool = NotificationManager.shared.isNotificationEnabled
     @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = true
 
     @State private var shouldShowResetWarning: Bool = false
@@ -27,7 +27,7 @@ struct AccountView: View {
                 }
             }
             .onAppear {
-                delay(0.2) {
+                delay(0.6) {
                     isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
                 }
             }
