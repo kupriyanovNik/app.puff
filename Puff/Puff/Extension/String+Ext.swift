@@ -15,7 +15,7 @@ extension String {
 }
 
 extension String {
-    subscript (bounds: CountableRange<Int>) -> String {
+    subscript(bounds: CountableRange<Int>) -> String {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[start..<end])
@@ -29,5 +29,21 @@ extension String {
                 UIApplication.shared.open(url)
             }
         }
+    }
+}
+
+extension String {
+    func formatByDivider(divider: String, count: Int) -> String {
+        guard
+            let range = self.range(of: divider)
+        else { return self }
+
+        let startPosition = self.distance(from: self.startIndex, to: range.lowerBound)
+        let endPosition = self.distance(from: self.startIndex, to: range.upperBound)
+
+        let start = self[0..<startPosition]
+        let end = self[endPosition..<self.count]
+
+        return [start, "\(count)", end].joined(separator: "")
     }
 }

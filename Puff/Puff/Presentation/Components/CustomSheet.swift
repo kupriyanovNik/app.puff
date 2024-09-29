@@ -24,19 +24,23 @@ struct CustomSheet<Content: View>: View {
     private var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                self.offset = value.translation.height
+                if ableToDismissWithSwipe {
+                    self.offset = value.translation.height
+                }
             }
             .onEnded { value in
-                if value.translation.height > 100 {
-                    isPresented = false
-                    onDismiss()
+                if ableToDismissWithSwipe {
+                    if value.translation.height > 100 {
+                        isPresented = false
+                        onDismiss()
 
-                    delay(0.4) {
-                        offset = .zero
-                    }
-                } else {
-                    withAnimation {
-                        offset = .zero
+                        delay(0.4) {
+                            offset = .zero
+                        }
+                    } else {
+                        withAnimation {
+                            offset = .zero
+                        }
                     }
                 }
             }
@@ -50,8 +54,10 @@ struct CustomSheet<Content: View>: View {
                 .opacity(isPresented ? 1 : 0)
                 .animation(.easeOut(duration: 0.25), value: isPresented)
                 .onTapGesture {
-                    isPresented = false
-                    onDismiss()
+                    if ableToDismissWithSwipe {
+                        isPresented = false
+                        onDismiss()
+                    }
                 }
 
             VStack {

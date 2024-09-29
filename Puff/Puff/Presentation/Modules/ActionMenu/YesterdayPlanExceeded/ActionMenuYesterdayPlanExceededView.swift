@@ -18,20 +18,6 @@ struct ActionMenuYesterdayPlanExceededView: View {
     var body: some View {
         Text("Hello, World!")
     }
-
-    private func formatText(text: String, date: Date) -> [String]? {
-        guard
-            let range = text.range(of: "{smokesCount}")
-        else { return nil }
-
-        let startPosition = text.distance(from: text.startIndex, to: range.lowerBound)
-        let endPosition = text.distance(from: text.startIndex, to: range.upperBound)
-
-        let start = text[0..<startPosition]
-        let end = text[endPosition..<text.count]
-
-        return [start, end]
-    }
 }
 
 #Preview {

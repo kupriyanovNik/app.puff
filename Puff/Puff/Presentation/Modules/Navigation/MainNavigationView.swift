@@ -25,14 +25,18 @@ struct MainNavigationView: View {
                     TabBar(selectedTab: $navigationVM.selectedTab)
                 }
         }
-        .makeCustomSheet(isPresented: $a) {
-            ActionMenuSubscriptionLeavingView {
+        .makeCustomSheet(isPresented: $a, ableToDismissWithSwipe: false) {
+            ActionMenuReadyToBreakView(tappedReadyToBreak: false, todayLimit: 0) {
+                // end plan
+            } onNeedOneMoreDay: {
+                // add day
+            } onDismiss: {
                 a = false
             }
         }
-//        .onAppear {
-//            a = true
-//        }
+        .onAppear {
+            a = true
+        }
     }
 
     @ViewBuilder
