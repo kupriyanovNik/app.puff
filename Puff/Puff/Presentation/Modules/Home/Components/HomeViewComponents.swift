@@ -203,7 +203,7 @@ extension HomeView {
 
         private func setTime() {
             if smokesManager.todayLimit == smokesManager.todaySmokes {
-                text = "You’ve reached the limit for today"
+                text = "Вы достигли лимита на сегодня"
             } else {
                 if let dateOfLastSmoke = smokesManager.dateOfLastSmoke {
                     text = getLastSmokeTimeString(for: dateOfLastSmoke)
@@ -220,8 +220,8 @@ extension HomeView {
             let hours = Int(diff / 3600)
             let minutes = Int(diff / 60)
 
-            if Bundle.main.preferredLocalizations[0] != "en" {
-
+            if Bundle.main.preferredLocalizations[0] == "ru" {
+                return "Последняя: " + getLastSmokeTimeRussianString(days, hours, minutes) + " назад"
             } else {
                 if days != 0 {
                     if days == 1 {
@@ -249,9 +249,40 @@ extension HomeView {
                     }
                 }
             }
+        }
 
-
-            return ""
+        private func getLastSmokeTimeRussianString(_ days: Int, _ hours: Int, _ minutes: Int) -> String {
+            if days != 0 {
+                if days % 10 == 1 && days % 100 != 11 {
+                    return "\(days) день"
+                } else if (days % 10 >= 2 && days % 10 <= 4) && !(days % 100 >= 12 && days % 100 <= 14) {
+                    return "\(days) дня"
+                } else {
+                    return "\(days) дней"
+                }
+            } else {
+                if hours != 0 {
+                    if hours % 10 == 1 && hours % 100 != 11 {
+                        return "\(hours) час"
+                    } else if (hours % 10 >= 2 && hours % 10 <= 4) && !(hours % 100 >= 12 && hours % 100 <= 14) {
+                        return "\(hours) часа"
+                    } else {
+                        return "\(hours) часов"
+                    }
+                } else {
+                    if minutes != 0 {
+                        if minutes % 10 == 1 && minutes % 100 != 11 {
+                            return "\(minutes) минуту"
+                        } else if (minutes % 10 >= 2 && minutes % 10 <= 4) && !(minutes % 100 >= 12 && minutes % 100 <= 14) {
+                            return "\(minutes) минуты"
+                        } else {
+                            return "\(minutes) минут"
+                        }
+                    } else {
+                        return "только что"
+                    }
+                }
+            }
         }
     }
 }
