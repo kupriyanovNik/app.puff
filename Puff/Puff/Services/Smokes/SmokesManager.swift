@@ -47,10 +47,12 @@ final class SmokesManager: ObservableObject {
 
         RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
 
-        print("TS", todaySmokes)
-        print("SC", smokesCount)
-        print("SD", smokesDates)
-        print("PC", planCounts[currentDayIndex])
+//        print("TS", todaySmokes)
+//        print("SC", smokesCount)
+//        print("SD", smokesDates)
+//        print("PC", planCounts[currentDayIndex])
+
+        print("SAAA", dateOfLastSmoke)
     }
 
     // MARK: - Private Properties
@@ -111,7 +113,7 @@ final class SmokesManager: ObservableObject {
 
     @objc func checkIsNewDay() {
         if let planStartDate {
-            let diff = Date() - planStartDate
+            let diff = TimeInterval(Date() - planStartDate)
 
             let diffDays = Int(diff / 86400)
 

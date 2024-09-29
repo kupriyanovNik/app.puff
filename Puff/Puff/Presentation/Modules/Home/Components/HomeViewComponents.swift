@@ -86,7 +86,7 @@ extension HomeView {
         private var percentage: Double {
             if !smokesManager.isPlanStarted { return 0 }
 
-            return Double(smokesManager.todaySmokes) / Double(smokesManager.todayLimit)
+            return min(1, Double(smokesManager.todaySmokes) / Double(smokesManager.todayLimit))
         }
 
         private var multiplier: Double { min(1, percentage * extraOffsetMultiplier) }
@@ -152,8 +152,14 @@ extension HomeView {
                 .overlay {
                     Text("\(smokesManager.todaySmokes)")
                         .font(isSmallDevice ? .bold90 : .bold108)
-                        .monospacedDigit()
-                        .contentTransition(.identity)
+                        .transition(
+                            .asymmetric(
+                                insertion: .scale(scale: 1.045),
+                                removal: .identity
+                            )
+                        )
+                        .id(smokesManager.todaySmokes)
+                        .animation(.easeInOut(duration: 0.15), value: smokesManager.todaySmokes)
                         .foregroundStyle(Palette.darkBlue)
                         .hCenter()
                         .overlay {
@@ -164,21 +170,58 @@ extension HomeView {
                         }
                 }
                 .overlay(alignment: .bottom) {
-                    Text(
-                        smokesManager.dateOfLastSmoke == nil ? "Отметьте первую затяжку" : ""
-                    )
-                    .font(.semibold16)
-                    .foregroundStyle(.white)
-                    .lineLimit(1)
-                    .padding(.horizontal, 18)
-                    .padding(.vertical, 4)
-                    .background {
-                        Capsule()
-                            .fill(Color(hex: 0x030303, alpha: 0.1))
-                    }
-                    .padding(.bottom, 20)
+                    HomeViewLastSmokeTimeView(smokesManager: smokesManager)
                 }
                 .animation(.smooth, value: smokesManager.isTodayLimitExceeded)
+        }
+    }
+
+    struct HomeViewLastSmokeTimeView: View {
+
+        @ObservedObject var smokesManager: SmokesManager
+
+        let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+
+        @State private var text: String = ""
+
+        var body: some View {
+            Text(text)
+                .font(.semibold16)
+                .foregroundStyle(.white)
+                .lineLimit(1)
+                .padding(.horizontal, 18)
+                .padding(.vertical, 4)
+                .background {
+                    Capsule()
+                        .fill(Color(hex: 0x030303, alpha: 0.1))
+                }
+                .padding(.bottom, 20)
+                .onReceive(timer) { _ in setTime() }
+                .onChange(of: smokesManager.dateOfLastSmoke) { _ in setTime() }
+                .onAppear { setTime() }
+        }
+
+        private func setTime() {
+            if let dateOfLastSmoke = smokesManager.dateOfLastSmoke {
+                text = getLastSmokeTimeString(for: dateOfLastSmoke)
+            } else {
+                text = "Отметьте первую затяжку"
+            }
+        }
+
+        private func getLastSmokeTimeString(for date: Date) -> String {
+            let diff = TimeInterval(Date() - date)
+
+            print("date", date)
+
+            let days = Int(diff / 86400)
+            let hours = Int(diff / 3600)
+            let minutes = Int(diff / 60)
+
+            print("diff", diff)
+            print("info", days, hours, minutes)
+
+            return ""
         }
     }
 }
