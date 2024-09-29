@@ -13,7 +13,7 @@ struct AccountView: View {
     @ObservedObject var smokesManager: SmokesManager
 
     @State private var isNotificationsEnabled: Bool = NotificationManager.shared.isNotificationEnabled
-    @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = true
+    @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = false
 
     @State private var shouldShowResetWarning: Bool = false
 

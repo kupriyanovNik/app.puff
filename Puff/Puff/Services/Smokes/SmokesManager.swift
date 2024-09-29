@@ -88,7 +88,7 @@ final class SmokesManager: ObservableObject {
         isPlanStarted = true
         isPlanEnded = false
 
-        if smokesPerDay > todaySmokes {
+        if smokesPerDay < todaySmokes {
             if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
                 smokesCount[index] = 0
             }
