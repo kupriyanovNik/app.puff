@@ -8,8 +8,7 @@
 import SwiftUI
 
 final class OnboardingViewModel: ObservableObject {
-//    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
-    @Published var hasSeenOnboarding: Bool = true
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
 
     private var currentIndex: Int = 0
 
@@ -17,7 +16,6 @@ final class OnboardingViewModel: ObservableObject {
     @Published var isSurveySkipped: Bool = false
     @Published var questionIndex: Int = 0
 
-//    @AppStorage("surveyAnswers") var surveyAnswersIndices: [Int] = []
     @Published var surveyAnswersIndices: [Int] = []
 
     func nextScreen() {

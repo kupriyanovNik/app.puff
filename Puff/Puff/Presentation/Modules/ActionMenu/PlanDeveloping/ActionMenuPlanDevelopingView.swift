@@ -22,8 +22,12 @@ struct ActionMenuPlanDevelopingView: View {
     private let minSmokesCount: Int = 100
     private let maxSmokesCount: Int = 1000
 
+    @State private var shouldShowError: Bool = false
+
     private var smokesCount: Int {
-        10 * Int(round(Double(maxSmokesCount - minSmokesCount) * (sliderPercentage / 100) / 10.0)) + 100
+        let count = 10 * Int(round(Double(maxSmokesCount - minSmokesCount) * (sliderPercentage / 100) / 10.0)) + 100
+
+        return count
     }
 
     var body: some View {
@@ -49,6 +53,7 @@ struct ActionMenuPlanDevelopingView: View {
 
             AccentButton(
                 text: screenState == .info ? "Начать" : "Далее",
+                isDisabled: shouldShowError,
                 action: nextAction
             )
             .padding(.horizontal, 12)
@@ -57,6 +62,11 @@ struct ActionMenuPlanDevelopingView: View {
         .padding(.top, 20)
         .onChange(of: smokesCount) { _ in
             HapticManager.onTabChanged()
+        }
+        .onChange(of: smokesCount) { newValue in
+            withAnimation(.easeInOut(duration: 0.25)) {
+                shouldShowError = newValue < todaySmokes
+            }
         }
     }
 
@@ -84,7 +94,21 @@ struct ActionMenuPlanDevelopingView: View {
                     percentage: $sliderPercentage,
                     todaySmokes: todaySmokes
                 )
-                    .padding(.horizontal, 40)
+                .padding(.horizontal, 40)
+                .overlay {
+                    Group {
+                        if shouldShowError {
+                            Text("Это меньше, чем вы уже сделали сегодня")
+                                .font(.medium16)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .foregroundStyle(Color(hex: 0x4AA1FD))
+                                .offset(y: 28)
+                                .padding(.horizontal, 24)
+                                .transition(.opacity)
+                        }
+                    }
+                }
             }
         }
     }

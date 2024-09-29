@@ -32,6 +32,9 @@ struct HomeView: View {
     private func viewContent() -> some View {
         VStack(spacing: 10) {
             AppHeaderView(title: "Главная", navigationVM: navigationVM)
+                .onTapGesture(count: 5) {
+                    onboardingVM.hasSeenOnboarding = false
+                }
 
             planView()
 
