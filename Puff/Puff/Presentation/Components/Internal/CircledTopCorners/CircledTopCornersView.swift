@@ -11,7 +11,7 @@ struct CircledTopCornersView<Content: View>: View {
 
     var radius: Double = 28
     var background: Color = .black
-    var color: Color = .init(hex: 0xF8F8F8)
+    var color: Color = .init(hex: 0xF5F5F5)
 
     var content: () -> Content
 

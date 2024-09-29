@@ -168,8 +168,8 @@ extension HomeView {
                             .rotationEffect(.degrees(-90))
                             .animation(.smooth, value: smokesManager.currentDayIndex)
                     }
-                    .frame(16)
-                    .padding(.vertical, 4)
+                    .frame(14)
+                    .padding(.vertical, 6)
             }
             .padding(.horizontal, 10)
             .background {
