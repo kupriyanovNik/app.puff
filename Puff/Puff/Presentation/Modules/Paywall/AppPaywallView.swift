@@ -207,11 +207,11 @@ struct AppPaywallView: View {
                 )
 
                 HStack {
-                    linkText("Условия использования", urlString: "")
+                    linkText("Условия использования", urlString: "https://sites.google.com/view/puffless/eng-terms-of-use")
 
                     Spacer()
 
-                    linkText("Политика конфиденциальности", urlString: "")
+                    linkText("Политика конфиденциальности", urlString: "https://sites.google.com/view/puffless/eng-privacy-policy")
                 }
                 .padding(.bottom, isSmallDevice ? 16 : 0)
             }
@@ -276,13 +276,7 @@ struct AppPaywallView: View {
             .padding(.bottom, 10)
             .padding(.horizontal, isSmallDevice ? 8 : 14)
             .padding(.top, 4)
-            .onTapGesture {
-                if let url = URL(string: urlString) {
-                    if UIApplication.shared.canOpenURL(url) {
-                        UIApplication.shared.open(url)
-                    }
-                }
-            }
+            .onTapGesture(perform: urlString.openURL)
             .minimumScaleFactor(0.9)
     }
 
