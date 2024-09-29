@@ -30,9 +30,9 @@ struct MainNavigationView: View {
                 a = false
             }
         }
-        .onAppear {
-            a = true
-        }
+//        .onAppear {
+//            a = true
+//        }
     }
 
     @ViewBuilder

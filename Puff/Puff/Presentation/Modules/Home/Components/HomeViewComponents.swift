@@ -60,6 +60,7 @@ extension HomeView {
                     }
                 }
                 .onTapGesture(perform: buttonAction)
+//                .makeRippleEffect(at: origin, trigger: smokesManager.todaySmokes)
                 .animation(.smooth, value: smokesManager.isTodayLimitExceeded)
         }
 
@@ -92,8 +93,34 @@ extension HomeView {
 
         private var offset: Double { height * multiplier }
 
-        private var extraOffsetMultiplier: Double { (height - 50) / height }
+        private var extraOffsetMultiplier: Double { (height - 100) / height }
 
+        private var fillColor: Color {
+            if smokesManager.todaySmokes < smokesManager.todayLimit ||
+                !smokesManager.isPlanStarted {
+                return Color(hex: 0xB5D9FF)
+            }
+
+            return smokesManager.isTodayLimitExceeded ? Color(hex: 0xFDB9B9) : Color(hex: 0x7DADF3)
+        }
+
+        private var endFillColor: Color {
+            if smokesManager.todaySmokes == smokesManager.todayLimit {
+                return Color(hex: 0xC7DEFF)
+            }
+
+            return (smokesManager.isTodayLimitExceeded && smokesManager.isPlanStarted) ? Color(hex: 0xFFDBDB) : Color(hex: 0xD8E4F0)
+        }
+
+        var gradientColors: [Color] {
+            if (percentage > 0 && percentage < 0.3) || !smokesManager.isPlanStarted {
+                return [fillColor, fillColor, fillColor, endFillColor]
+            } else if percentage >= 0.3 && percentage < 0.67 {
+                return [fillColor, fillColor.opacity(0.93), endFillColor]
+            }
+
+            return [fillColor, endFillColor]
+        }
 
         var body: some View {
             RoundedRectangle(cornerRadius: 28)
@@ -101,22 +128,21 @@ extension HomeView {
                 .height(self.height)
                 .overlay {
                     Group {
-                        if smokesManager.isTodayLimitExceeded && smokesManager.isPlanStarted {
-                            Image(.homeViewSmokesCountExceeded)
-                                .resizable()
-                                .scaledToFill()
-                        } else if smokesManager.todaySmokes == smokesManager.todayLimit && smokesManager.isPlanStarted {
-                            Image(.homeViewSmokesCountOnEdge)
-                                .resizable()
-                                .scaledToFill()
-                        } else {
-                            Image(.homeViewSmokesCountNonExceeded)
-                                .resizable()
-                                .scaledToFill()
-                        }
+                        Ellipse()
+                            .fill(
+                                LinearGradient(
+                                    gradient: .init(
+                                        colors: gradientColors
+                                    ),
+                                    startPoint: .bottom,
+                                    endPoint: .top
+                                )
+                            )
+                            .aspectRatio(2.5, contentMode: .fill)
+                            .animation(.smooth, value: self.gradientColors)
                     }
-                    .frame(width: 500, height: (self.height) + 50 )
-                    .offset(y: self.height - (50 * extraOffsetMultiplier))
+                    .frame(width: 500, height: (self.height) + 100)
+                    .offset(y: self.height - (100 * extraOffsetMultiplier))
                     .offset(y: -offset)
                     .animation(.easeInOut(duration: 0.15), value: offset)
                     .animation(.easeInOut(duration: 0.15), value: extraOffsetMultiplier)
