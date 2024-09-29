@@ -34,7 +34,8 @@ struct MainNavigationView: View {
             onboardingVM: onboardingVM
         )
         case .statistics: StatisticsView(
-            navigationVM: navigationVM
+            navigationVM: navigationVM,
+            smokesManager: smokesManager
         )
         }
     }

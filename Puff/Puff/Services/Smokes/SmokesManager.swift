@@ -138,6 +138,6 @@ final class SmokesManager: ObservableObject {
 
     private func addNewDate() {
         smokesDates.append(.now)
-        smokesCount.append(0)
+        smokesCount.append(1)
     }
 }

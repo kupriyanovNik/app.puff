@@ -14,7 +14,7 @@ struct OnboardingValuePropositionScreen: View {
     @ObservedObject var onboardingVM: OnboardingViewModel
 
     private let titles: [String] = [
-        "Puff Away поможет бросить без усилий и навсегда",
+        "Puffless поможет бросить без усилий и навсегда",
         "Отмечайте затяжки и не превышайте дневной лимит",
         "Каждый день лимит будет уменьшаться, пока вы не бросите!"
     ]

@@ -10,6 +10,7 @@ import SwiftUI
 struct StatisticsView: View {
 
     @ObservedObject var navigationVM: NavigationViewModel
+    @ObservedObject var smokesManager: SmokesManager
 
     var body: some View {
         CircledTopCornersView(content: viewContent)
@@ -20,16 +21,29 @@ struct StatisticsView: View {
         VStack(spacing: 10) {
             AppHeaderView(title: "Прогресс", navigationVM: navigationVM)
 
-            Spacer()
-
-            Text("Hello, World!")
-
-            Spacer()
+            ScrollView {
+                planView()
+            }
+            .scrollIndicators(.hidden)
         }
         .padding(.horizontal, 12)
+    }
+
+    @ViewBuilder
+    private func planView() -> some View {
+        if !SubscriptionManager.shared.isPremium {
+            StatisticsViewNotPremiumPlanView(navigationVM: navigationVM)
+        } else if !smokesManager.isPlanStarted {
+            HomeView.HomeViewIsPremiumPlanNotCreatedView {
+                navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
+            }
+        }
     }
 }
 
 #Preview {
-    StatisticsView(navigationVM: .init())
+    StatisticsView(
+        navigationVM: .init(),
+        smokesManager: .init()
+    )
 }
