@@ -11,6 +11,8 @@ struct ActionMenuPlanDevelopingSlider: View {
 
     @Binding var percentage: Double
 
+    var todaySmokes: Int
+
     private let circleSize: Double = 40
     private let sliderHeight: Double = 10
 
@@ -58,11 +60,4 @@ struct ActionMenuPlanDevelopingSlider: View {
                 }
         }
     }
-}
-
-@available(iOS 17, *)
-#Preview {
-    @Previewable @State var ratio: Double = 0.4
-    ActionMenuPlanDevelopingSlider(percentage: $ratio)
-        .padding(.horizontal, 50)
 }

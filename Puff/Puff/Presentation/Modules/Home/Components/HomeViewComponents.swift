@@ -154,7 +154,7 @@ extension HomeView {
                         .font(isSmallDevice ? .bold90 : .bold108)
                         .transition(
                             .asymmetric(
-                                insertion: .scale(scale: 1.045),
+                                insertion: .scale(scale: 1.025),
                                 removal: .identity
                             )
                         )

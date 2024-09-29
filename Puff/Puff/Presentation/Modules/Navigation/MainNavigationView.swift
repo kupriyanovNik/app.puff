@@ -25,18 +25,52 @@ struct MainNavigationView: View {
                     TabBar(selectedTab: $navigationVM.selectedTab)
                 }
         }
-        .makeCustomSheet(isPresented: $a, ableToDismissWithSwipe: false) {
-            ActionMenuReadyToBreakView(tappedReadyToBreak: false, todayLimit: 0) {
-                // end plan
-            } onNeedOneMoreDay: {
-                // add day
-            } onDismiss: {
-                a = false
+        .overlay {
+            Group {
+                if !onboardingVM.hasSeenOnboarding {
+                    OnboardingView(onboardingVM: onboardingVM)
+                        .preferredColorScheme(.light)
+                        .transition(
+                            .asymmetric(
+                                insertion: .identity.animation(.none),
+                                removal: .move(edge: .top).animation(.easeInOut(duration: 0.3))
+                            )
+                        )
+                }
             }
+            .animation(.easeInOut(duration: 0.3), value: onboardingVM.hasSeenOnboarding)
         }
-//        .onAppear {
-//            a = true
-//        }
+        .overlay {
+            Group {
+                if navigationVM.shouldShowPaywall {
+                    AppPaywallView(showBenefitsDelay: 0.4) {
+                        navigationVM.shouldShowPaywall.toggle()
+                    }
+                    .preferredColorScheme(.light)
+                    .transition(
+                        .opacity.combined(with: .offset(y: 50))
+                        .animation(.easeInOut(duration: 0.3))
+                    )
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowPaywall)
+        }
+        .overlay {
+            Group {
+                if navigationVM.shouldShowAccountView {
+                    AccountView(
+                        navigationVM: navigationVM,
+                        smokesManager: smokesManager
+                    )
+                    .preferredColorScheme(.light)
+                    .transition(
+                        .opacity.combined(with: .offset(y: 50))
+                            .animation(.easeInOut(duration: 0.3))
+                    )
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountView)
+        }
     }
 
     @ViewBuilder

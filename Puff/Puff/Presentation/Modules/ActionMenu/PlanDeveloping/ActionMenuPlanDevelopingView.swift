@@ -14,6 +14,8 @@ struct ActionMenuPlanDevelopingView: View {
 
     @State private var screenState: ScreenState = .addiction
 
+    var todaySmokes: Int
+
     var onStartedPlan: (ActionMenuPlanDevelopingPeriod, Int) -> Void = { _, _ in }
     var onDismiss: () -> Void = {}
 
@@ -78,7 +80,10 @@ struct ActionMenuPlanDevelopingView: View {
             VStack(spacing: 20) {
                 infoView()
 
-                ActionMenuPlanDevelopingSlider(percentage: $sliderPercentage)
+                ActionMenuPlanDevelopingSlider(
+                    percentage: $sliderPercentage,
+                    todaySmokes: todaySmokes
+                )
                     .padding(.horizontal, 40)
             }
         }
@@ -125,10 +130,6 @@ struct ActionMenuPlanDevelopingView: View {
             }
         }
     }
-}
-
-#Preview {
-    ActionMenuPlanDevelopingView()
 }
 
 extension ActionMenuPlanDevelopingView {

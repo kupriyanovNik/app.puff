@@ -27,57 +27,23 @@ struct PuffApp: App {
             }
             .ignoresSafeArea(.keyboard)
             .preferredColorScheme(.light)
-            .overlay {
-                Group {
-                    if !onboardingVM.hasSeenOnboarding {
-                        OnboardingView(onboardingVM: onboardingVM)
-                            .preferredColorScheme(.light)
-                            .transition(
-                                .asymmetric(
-                                    insertion: .identity.animation(.none),
-                                    removal: .move(edge: .top).animation(.easeInOut(duration: 0.3))
-                                )
-                            )
-                    }
-                }
-                .animation(.easeInOut(duration: 0.3), value: onboardingVM.hasSeenOnboarding)
-            }
-            .overlay {
-                Group {
-                    if navigationVM.shouldShowPaywall {
-                        AppPaywallView(showBenefitsDelay: 0.4) {
-                            navigationVM.shouldShowPaywall.toggle()
-                        }
-                        .preferredColorScheme(.light)
-                        .transition(
-                            .opacity.combined(with: .offset(y: 50))
-                            .animation(.easeInOut(duration: 0.3))
-                        )
-                    }
-                }
-                .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowPaywall)
-            }
-            .overlay {
-                Group {
-                    if navigationVM.shouldShowAccountView {
-                        AccountView(
-                            navigationVM: navigationVM,
-                            smokesManager: smokesManager
-                        )
-                        .preferredColorScheme(.light)
-                        .transition(
-                            .opacity.combined(with: .offset(y: 50))
-                                .animation(.easeInOut(duration: 0.3))
-                        )
-                    }
-                }
-                .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountView)
-            }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowPlanDevelopingActionMenu) {
-                ActionMenuPlanDevelopingView {
+                ActionMenuPlanDevelopingView(todaySmokes: smokesManager.todaySmokes) {
                     smokesManager.startPlan(period: $0, smokesPerDay: $1)
                 } onDismiss: {
                     navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
+                }
+            }
+            .makeCustomSheet(
+                isPresented: $navigationVM.shouldShowReadyToBreakActionMenu,
+                ableToDismissWithSwipe: false
+            ) {
+                ActionMenuReadyToBreakView(tappedReadyToBreak: false, todayLimit: 0) {
+                    smokesManager.endPlan()
+                } onNeedOneMoreDay: {
+                    smokesManager.addDay()
+                } onDismiss: {
+                    navigationVM.shouldShowReadyToBreakActionMenu = false
                 }
             }
         }
