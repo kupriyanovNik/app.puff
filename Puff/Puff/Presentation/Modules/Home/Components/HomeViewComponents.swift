@@ -197,15 +197,19 @@ extension HomeView {
                 }
                 .padding(.bottom, 20)
                 .onReceive(timer) { _ in setTime() }
-                .onChange(of: smokesManager.dateOfLastSmoke) { _ in setTime() }
+                .onChange(of: smokesManager.todaySmokes) { _ in setTime() }
                 .onAppear { setTime() }
         }
 
         private func setTime() {
-            if let dateOfLastSmoke = smokesManager.dateOfLastSmoke {
-                text = getLastSmokeTimeString(for: dateOfLastSmoke)
+            if smokesManager.todayLimit == smokesManager.todaySmokes {
+                text = "You’ve reached the limit for today"
             } else {
-                text = "Отметьте первую затяжку"
+                if let dateOfLastSmoke = smokesManager.dateOfLastSmoke {
+                    text = getLastSmokeTimeString(for: dateOfLastSmoke)
+                } else {
+                    text = "Отметьте первую затяжку"
+                }
             }
         }
 
@@ -215,6 +219,37 @@ extension HomeView {
             let days = Int(diff / 86400)
             let hours = Int(diff / 3600)
             let minutes = Int(diff / 60)
+
+            if Bundle.main.preferredLocalizations[0] != "en" {
+
+            } else {
+                if days != 0 {
+                    if days == 1 {
+                        return "Last one: 1 day ago"
+                    } else {
+                        return "Last one: \(days) days ago"
+                    }
+                } else {
+                    if hours != 0 {
+                        if hours == 1 {
+                            return "Last one: 1 hour ago"
+                        } else {
+                            return "Last one: \(hours) hours ago"
+                        }
+                    } else {
+                        if minutes != 0 {
+                            if minutes == 1 {
+                                return "Last one: 1 minute ago"
+                            } else {
+                                return "Last one: \(minutes) minutes ago"
+                            }
+                        } else {
+                            return "Last one: just now"
+                        }
+                    }
+                }
+            }
+
 
             return ""
         }

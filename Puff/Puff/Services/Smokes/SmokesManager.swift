@@ -70,7 +70,7 @@ final class SmokesManager: ObservableObject {
     }
 
     var todayLimit: Int {
-        if planLimits.count < currentDayIndex {
+        if planLimits.count > currentDayIndex {
             return planLimits[currentDayIndex]
         }
 
@@ -100,7 +100,7 @@ final class SmokesManager: ObservableObject {
         dateOfLastSmoke = Int(Date().timeIntervalSince1970)
 
         if isPlanStarted {
-            if planCounts.count < currentDayIndex {
+            if planCounts.count > currentDayIndex {
                 planCounts[currentDayIndex] += 1
             }
         }
@@ -121,7 +121,6 @@ final class SmokesManager: ObservableObject {
     }
 
     func resetPlan() {
-        dateOfLastSmoke = nil
         isPlanStarted = false
         isPlanEnded = false
     }
