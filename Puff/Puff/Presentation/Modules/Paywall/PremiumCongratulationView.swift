@@ -28,7 +28,7 @@ struct PremiumCongratulationView: View {
                     .font(.bold32)
                     .foregroundStyle(.white)
 
-                Text("Puff Premium")
+                Text("Puffless Premium")
                     .font(.semibold26)
                     .foregroundStyle(Palette.accentColor)
                     .padding(.vertical, 3)

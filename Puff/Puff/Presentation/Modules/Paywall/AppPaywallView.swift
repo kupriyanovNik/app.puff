@@ -128,7 +128,7 @@ struct AppPaywallView: View {
         .padding(.horizontal, 12)
         .cornerRadius(24)
         .overlay(alignment: .top) {
-            Text("Puff Premium")
+            Text("Puffless Premium")
                 .font(.semibold16)
                 .foregroundStyle(.white)
                 .padding(.vertical, 5)

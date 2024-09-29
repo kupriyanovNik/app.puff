@@ -65,7 +65,8 @@ struct PuffApp: App {
                         )
                         .preferredColorScheme(.light)
                         .transition(
-                            .opacity.animation(.easeInOut(duration: 0.3))
+                            .opacity.combined(with: .offset(y: 50))
+                                .animation(.easeInOut(duration: 0.3))
                         )
                     }
                 }

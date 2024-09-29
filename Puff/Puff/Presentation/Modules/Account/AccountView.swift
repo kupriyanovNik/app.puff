@@ -17,10 +17,30 @@ struct AccountView: View {
 
     @State private var shouldShowResetWarning: Bool = false
 
+    @State private var offset: Double = .zero
+
     @Environment(\.scenePhase) var scenePhase
 
+    private var gesture: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                self.offset = max(0, value.translation.height)
+            }
+            .onEnded { value in
+                if value.translation.height > 100 {
+                    navigationVM.shouldShowAccountView = false
+
+                    delay(0.3) {
+                        offset = .zero
+                    }
+                } else {
+                    offset = .zero
+                }
+            }
+    }
+
     var body: some View {
-        CircledTopCornersView(content: viewContent)
+        CircledTopCornersView(color: .clear, content: viewContent)
             .onChange(of: scenePhase) { newValue in
                 if newValue == .active {
                     isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
@@ -31,6 +51,8 @@ struct AccountView: View {
                     isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
                 }
             }
+            .offset(y: offset)
+            .animation(.easeOut(duration: 0.25), value: offset)
     }
 
     @ViewBuilder
@@ -42,6 +64,8 @@ struct AccountView: View {
 
             Spacer()
         }
+        .contentShape(.rect)
+        .simultaneousGesture(gesture)
         .makeCustomSheet(isPresented: $shouldShowResetWarning, content: resetWarning)
     }
 
@@ -49,7 +73,7 @@ struct AccountView: View {
     private func headerView() -> some View {
         HStack(spacing: 8) {
             Button {
-                navigationVM.shouldShowAccountView.toggle()
+                navigationVM.shouldShowAccountView = false
             } label: {
                 Image(.accountBack)
                     .resizable()

@@ -62,7 +62,7 @@ struct OnboardingContractScreen: View {
         .padding(.horizontal, 20)
         .overlay {
             if isPressing || isPressingEnded {
-                Text(isPressingEnded ? "Добро пожаловать в\nPuff Away!" : "Продолжайте\nудерживать!")
+                Text(isPressingEnded ? "Добро пожаловать в\nPuffless!" : "Продолжайте\nудерживать!")
                     .font(.bold22)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.white)

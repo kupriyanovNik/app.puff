@@ -10,12 +10,13 @@ import SwiftUI
 struct CircledTopCornersView<Content: View>: View {
 
     var radius: Double = 28
+    var color: Color = .black
 
     var content: () -> Content
 
     var body: some View {
         ZStack {
-            Color.black
+            color
                 .ignoresSafeArea()
 
             Color.white

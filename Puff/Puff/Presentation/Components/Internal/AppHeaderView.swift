@@ -34,6 +34,7 @@ struct AppHeaderView: View {
                             .frame(24)
                     }
             }
+            .buttonStyle(.plain)
 
         }
         .padding(.bottom, 2)
