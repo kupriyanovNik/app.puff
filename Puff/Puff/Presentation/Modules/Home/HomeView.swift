@@ -53,7 +53,7 @@ struct HomeView: View {
                 HomeViewIsNotPremiumPlanView {
                     navigationVM.shouldShowPaywall.toggle()
                 }
-            } else if !smokesManager.isPlanCreated {
+            } else if !smokesManager.isPlanStarted {
                 HomeViewIsPremiumPlanNotCreatedView {
                     navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
                 }

@@ -40,7 +40,7 @@ struct AccountView: View {
     }
 
     var body: some View {
-        CircledTopCornersView(color: .clear, content: viewContent)
+        CircledTopCornersView(background: .clear, content: viewContent)
             .onChange(of: scenePhase) { newValue in
                 if newValue == .active {
                     isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled

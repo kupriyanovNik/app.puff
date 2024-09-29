@@ -12,42 +12,25 @@ final class SmokesManager: ObservableObject {
 
     // MARK: - Property Wrappers
 
-    @AppStorage("isPlanCreated") var isPlanCreated: Bool = false
-//    @Published var isPlanCreated: Bool = false
-
-        @AppStorage("isPlanEnded") var isPlanEnded: Bool = false
-//    @Published var isPlanEnded: Bool = false
+    @AppStorage("isPlanStarted") var isPlanStarted: Bool = false
+    @AppStorage("isPlanEnded") var isPlanEnded: Bool = false
 
     @AppStorage("currentDayIndex") var currentDayIndex: Int = 0 {
         didSet {
             // чтобы обновление для реактивно пришло в просто тапалку для юзеров без премиума
-            smokesForDay[Date()] = 0
+            addNewDate()
         }
     }
 
     @AppStorage("daysInPlan") var daysInPlan: Int = 21
-    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 20, count: 21)
+    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 0, count: 21)
     @AppStorage("planCounts") var planCounts: [Int] = Array(repeating: 0, count: 21)
 
-    @AppStorage("smokesForDay") var smokesForDay: [Date: Int] = [:]
     @AppStorage("planStartDate") var planStartDate: Date?
     @AppStorage("dateOfLastSmoke") var dateOfLastSmoke: Date?
 
-//    @Published var currentDayIndex: Int = 0 {
-//        didSet {
-//            // чтобы обновление для реактивно пришло в просто тапалку для юзеров без премиума
-//            smokesForDay[Date()] = 0
-//        }
-//    }
-//    @Published var daysInPlan: Int = 21
-//
-//    @Published var planLimits: [Int] = Array(repeating: 20, count: 21)
-//    @Published var planCounts: [Int] = Array(repeating: 0, count: 21)
-//    @Published var smokesForDay: [Date: Int] = [:]
-
-//    @Published var planStartDate: Date?
-
-//    @Published var dateOfLastSmoke: Date?
+    @AppStorage("smokesCount") var smokesCount: [Int] = []
+    @AppStorage("smokesDates") var smokesDates: [Date] = []
 
     // MARK: - Inits
 
@@ -61,6 +44,11 @@ final class SmokesManager: ObservableObject {
         )
 
         RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
+
+        print("TS", todaySmokes)
+        print("SC", smokesCount)
+        print("SD", smokesDates)
+        print("PC", planCounts[currentDayIndex])
     }
 
     // MARK: - Private Properties
@@ -71,7 +59,13 @@ final class SmokesManager: ObservableObject {
 
     // MARK: - Internal Properties
 
-    var todaySmokes: Int { planCounts[currentDayIndex] }
+    var todaySmokes: Int {
+        if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
+            return smokesCount[index]
+        }
+
+        return 0
+    }
 
     var todayLimit: Int { planLimits[currentDayIndex] }
 
@@ -83,7 +77,7 @@ final class SmokesManager: ObservableObject {
     // MARK: - Internal Functions
 
     func startPlan(period: ActionMenuPlanDevelopingPeriod, smokesPerDay: Int) {
-        isPlanCreated = true
+        isPlanStarted = true
 
         planStartDate = .now
 
@@ -96,27 +90,31 @@ final class SmokesManager: ObservableObject {
     func puff() {
         dateOfLastSmoke = .now
 
-        if isPlanCreated {
+        if isPlanStarted {
             planCounts[currentDayIndex] += 1
         }
 
-        if let index = smokesForDay.firstIndex(where: { key, value in
-            calendar.isDateInToday(key)
-        }) {
-            let value = smokesForDay.keys[index]
-
-            if let _ = smokesForDay[value] {
-                smokesForDay[value]! += 1
-            }
+        if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
+            smokesCount[index] += 1
         } else {
-            smokesForDay[Date()] = 1
+            addNewDate()
         }
     }
 
     func resetPlan() {
         dateOfLastSmoke = nil
-        isPlanCreated = false
+        isPlanStarted = false
         isPlanEnded = false
+    }
+
+    @objc func checkIsNewDay() {
+        if let planStartDate {
+            let diff = Date() - planStartDate
+
+            let diffDays = Int(diff / 86400)
+
+            currentDayIndex = diffDays
+        }
     }
 
     // MARK: - Private Functions
@@ -138,13 +136,8 @@ final class SmokesManager: ObservableObject {
         return limits
     }
 
-    @objc func checkIsNewDay() {
-        if let planStartDate {
-            let diff = Date() - planStartDate
-
-            let diffDays = Int(diff / 86400)
-
-            currentDayIndex = diffDays
-        }
+    private func addNewDate() {
+        smokesDates.append(.now)
+        smokesCount.append(0)
     }
 }
