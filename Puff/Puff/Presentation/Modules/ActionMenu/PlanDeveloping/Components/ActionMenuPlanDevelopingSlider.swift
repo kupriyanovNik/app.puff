@@ -49,11 +49,7 @@ struct ActionMenuPlanDevelopingSlider: View {
                             DragGesture(minimumDistance: 0)
                                 .onChanged { value in
                                     self.percentage = min(
-                                        100,
-                                        max(
-                                            0,
-                                            Double(value.location.x / size.width * 100)
-                                        )
+                                        100, max(0, Double(value.location.x / size.width * 100))
                                     )
                                 }
                         )

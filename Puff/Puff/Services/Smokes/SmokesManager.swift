@@ -106,7 +106,7 @@ final class SmokesManager: ObservableObject {
     }
 
     func addDay() {
-
+        
     }
 
     func endPlan() {
