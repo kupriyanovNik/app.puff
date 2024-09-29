@@ -25,6 +25,7 @@ struct PuffApp: App {
                     onboardingVM: onboardingVM
                 )
             }
+            .ignoresSafeArea(.keyboard)
             .preferredColorScheme(.light)
             .overlay {
                 Group {

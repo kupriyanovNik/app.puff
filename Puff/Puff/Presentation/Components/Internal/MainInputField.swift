@@ -13,7 +13,6 @@ struct MainInputField: View {
 
     @FocusState var isFocused: Bool
 
-
     var placeholder: String = "Обратная связь"
     var placeholderFont: Font = .medium16
     var fieldFont: UIFont = .medium15
@@ -28,6 +27,7 @@ struct MainInputField: View {
 
     var body: some View {
         TextEditor(text: $text)
+            .focused($isFocused)
             .height(height)
             .overlay(alignment: .topLeading) {
                 if text.removeExtraSpaces().isEmpty {

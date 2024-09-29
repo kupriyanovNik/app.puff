@@ -13,6 +13,8 @@ struct MainNavigationView: View {
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var onboardingVM: OnboardingViewModel
 
+    @State var a = false
+
     var body: some View {
         ZStack {
             Color.clear
@@ -22,6 +24,14 @@ struct MainNavigationView: View {
                 .safeAreaInset(edge: .bottom) {
                     TabBar(selectedTab: $navigationVM.selectedTab)
                 }
+        }
+        .makeCustomSheet(isPresented: $a) {
+            ActionMenuSubscriptionLeavingView {
+                a = false
+            }
+        }
+        .onAppear {
+            a = true
         }
     }
 

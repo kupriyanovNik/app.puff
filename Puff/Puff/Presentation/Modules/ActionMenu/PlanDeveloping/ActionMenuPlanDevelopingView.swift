@@ -26,34 +26,24 @@ struct ActionMenuPlanDevelopingView: View {
 
     var body: some View {
         VStack(spacing: 32) {
-            switch screenState {
-            case .addiction:
-                addictionView()
-                    .padding(.bottom, 12)
-                    .transition(
-                        .asymmetric(
-                            insertion: .opacity,
-                            removal: .opacity
-                        ).animation(.easeInOut(duration: 0.3))
-                    )
-            case .plan:
-                ActionMenuPlanDevelopingPeriodPicker(selectedOption: $selectedPeriod)
-                    .transition(
-                        .asymmetric(
-                            insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
-                            removal: .opacity
-                        ).animation(.easeInOut(duration: 0.3))
-                    )
-            case .info:
-                ActionMenuPlanDevelopingInfoView(selectedOption: selectedPeriod)
-                    .padding(.bottom, 12)
-                    .transition(
-                        .asymmetric(
-                            insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
-                            removal: .opacity
-                        ).animation(.easeInOut(duration: 0.3))
-                    )
+            Group {
+                switch screenState {
+                case .addiction:
+                    addictionView()
+                        .padding(.bottom, 12)
+                case .plan:
+                    ActionMenuPlanDevelopingPeriodPicker(selectedOption: $selectedPeriod)
+                case .info:
+                    ActionMenuPlanDevelopingInfoView(selectedOption: selectedPeriod)
+                        .padding(.bottom, 12)
+                }
             }
+            .transition(
+                .asymmetric(
+                    insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
+                    removal: .opacity
+                ).animation(.easeInOut(duration: 0.3))
+            )
 
             AccentButton(
                 text: screenState == .info ? "Начать" : "Далее",
