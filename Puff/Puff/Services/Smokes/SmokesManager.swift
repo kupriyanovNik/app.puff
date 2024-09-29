@@ -18,9 +18,9 @@ final class SmokesManager: ObservableObject {
     @AppStorage("currentDayIndex") var currentDayIndex: Int = 0 {
         didSet {
             if currentDayIndex != oldValue {
+                // чтобы обновление для реактивно пришло в просто тапалку для юзеров без премиума
                 addNewDate()
             }
-            // чтобы обновление для реактивно пришло в просто тапалку для юзеров без премиума
         }
     }
 
