@@ -48,7 +48,7 @@ struct CustomSheet<Content: View>: View {
                 .opacity(0.3)
                 .ignoresSafeArea()
                 .opacity(isPresented ? 1 : 0)
-                .animation(.easeOut(duration: 0.4), value: isPresented)
+                .animation(.easeOut(duration: 0.25), value: isPresented)
                 .onTapGesture {
                     isPresented = false
                     onDismiss()
@@ -84,7 +84,7 @@ struct CustomSheet<Content: View>: View {
                             .transition(.move(edge: .bottom).animation(.easeOut(duration: 0.4)))
                     }
                 }
-                .animation(.easeOut(duration: 0.4), value: isPresented)
+                .animation(.easeOut(duration: 0.25), value: isPresented)
                 .offset(y: ableToDismissWithSwipe ? max(0, offset) : 0)
                 .gesture(gesture)
             }

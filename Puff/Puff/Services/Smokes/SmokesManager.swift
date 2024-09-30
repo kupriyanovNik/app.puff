@@ -12,7 +12,7 @@ final class SmokesManager: ObservableObject {
 
     // MARK: - Property Wrappers
 
-    @AppStorage("isPlanCreated") var isPlanCreated: Bool = true
+    @AppStorage("isPlanCreated") var isPlanCreated: Bool = false
 //    @Published var isPlanCreated: Bool = false
 
         @AppStorage("isPlanEnded") var isPlanEnded: Bool = false
@@ -23,20 +23,39 @@ final class SmokesManager: ObservableObject {
 //    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 20, count: 21)
 //    @AppStorage("planCounts") var planCounts: [Int] = Array(repeating: 0, count: 21)
 //    @AppStorage("smokesForDay") var smokesForDay: [Date: Int] = [:]
+    @AppStorage("planStartDate") var planStartDate: Date?
+//    @AppStorage("dateOfLastSmoke") var dateOfLastSmoke: Date?
 
     @Published var currentDayIndex: Int = 0
     @Published var daysInPlan: Int = 21
+
     @Published var planLimits: [Int] = Array(repeating: 20, count: 21)
     @Published var planCounts: [Int] = Array(repeating: 0, count: 21)
-
     @Published var smokesForDay: [Date: Int] = [:]
 
-//    @AppStorage("dateOfLastSmoke") var dateOfLastSmoke: Date?
+//    @Published var planStartDate: Date?
+
     @Published var dateOfLastSmoke: Date?
+
+    // MARK: - Inits
+
+    init() {
+        timer = .scheduledTimer(
+            timeInterval: 10,
+            target: self,
+            selector: #selector(timerTick),
+            userInfo: nil,
+            repeats: true
+        )
+
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
+    }
 
     // MARK: - Private Properties
 
     private let calendar = Calendar.current
+
+    private weak var timer: Timer?
 
     // MARK: - Internal Properties
 
@@ -53,6 +72,8 @@ final class SmokesManager: ObservableObject {
 
     func startPlan(period: ActionMenuPlanDevelopingPeriod) {
         isPlanCreated = true
+
+        planStartDate = .now
 
         daysInPlan = period.rawValue
 
@@ -90,5 +111,15 @@ final class SmokesManager: ObservableObject {
 
     private func getLimits(for period: ActionMenuPlanDevelopingPeriod) -> [Int] {
         [20, 20]
+    }
+
+    @objc func timerTick() {
+        if let planStartDate {
+            let diff = Date() - planStartDate
+
+            let diffDays = Int(diff / 86400)
+
+            currentDayIndex = diffDays
+        }
     }
 }
