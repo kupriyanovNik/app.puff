@@ -50,6 +50,8 @@ extension HomeView {
 
     struct HomeViewIsPremiumPlanNotCreatedView: View {
 
+        var text: String = "Начать план бросания"
+
         var action: () -> Void
 
         var body: some View {
@@ -62,7 +64,7 @@ extension HomeView {
                         .scaledToFit()
                         .frame(22)
 
-                    Text("Начать план бросания")
+                    Text(text)
                         .font(.semibold16)
                         .foregroundStyle(.white)
 
@@ -212,17 +214,17 @@ extension HomeView {
 
         @ObservedObject var smokesManager: SmokesManager
 
-        var withoutSmokingString: String {
-            "1 минута"
-        }
+        let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
 
+        @State private var text: String = ""
+        
         var body: some View {
             Image(.homeViewPlanEnded)
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .cornerRadius(28)
                 .overlay {
-                    Text(withoutSmokingString)
+                    Text(text)
                         .font(.bold65)
                         .monospacedDigit()
                         .contentTransition(.identity)
@@ -235,6 +237,81 @@ extension HomeView {
                                 .offset(y: -45)
                         }
                 }
+                .onReceive(timer) { _ in setTime() }
+                .onChange(of: smokesManager.todaySmokes) { _ in setTime() }
+                .onAppear { setTime() }
+        }
+
+        private func setTime() {
+            if let dateOfLastSmoke = smokesManager.dateOfLastSmoke {
+                text = getLastSmokeTimeString(for: dateOfLastSmoke)
+            } else {
+                text = "Очень давно"
+            }
+        }
+
+        private func getLastSmokeTimeString(for dateInt: Int) -> String {
+            let diff = Double(Date().timeIntervalSince1970) - Double(dateInt)
+
+            let days = Int(diff / 86400)
+            let hours = Int(diff / 3600)
+            let minutes = Int(diff / 60)
+
+            if Bundle.main.preferredLocalizations[0] == "ru" {
+                return getLastSmokeTimeRussianString(days, hours, minutes)
+            } else {
+                if days != 0 {
+                    if days == 1 {
+                        return "1 day"
+                    } else {
+                        return "\(days) days"
+                    }
+                } else {
+                    if hours != 0 {
+                        if hours == 1 {
+                            return "1 hour"
+                        } else {
+                            return "\(hours) hours"
+                        }
+                    } else {
+                        if minutes == 1 || minutes == 0 {
+                            return "1 minute"
+                        } else {
+                            return "\(minutes) minutes"
+                        }
+                    }
+                }
+            }
+        }
+
+        private func getLastSmokeTimeRussianString(_ days: Int, _ hours: Int, _ minutes: Int) -> String {
+            if days != 0 {
+                if days % 10 == 1 && days % 100 != 11 {
+                    return "\(days) день"
+                } else if (days % 10 >= 2 && days % 10 <= 4) && !(days % 100 >= 12 && days % 100 <= 14) {
+                    return "\(days) дня"
+                } else {
+                    return "\(days) дней"
+                }
+            } else {
+                if hours != 0 {
+                    if hours % 10 == 1 && hours % 100 != 11 {
+                        return "\(hours) час"
+                    } else if (hours % 10 >= 2 && hours % 10 <= 4) && !(hours % 100 >= 12 && hours % 100 <= 14) {
+                        return "\(hours) часа"
+                    } else {
+                        return "\(hours) часов"
+                    }
+                } else {
+                    if (minutes % 10 == 1 && minutes % 100 != 11) || minutes == 1 {
+                        return "\(minutes) минуту"
+                    } else if (minutes % 10 >= 2 && minutes % 10 <= 4) && !(minutes % 100 >= 12 && minutes % 100 <= 14) {
+                        return "\(minutes) минуты"
+                    } else {
+                        return "\(minutes) минут"
+                    }
+                }
+            }
         }
     }
 }

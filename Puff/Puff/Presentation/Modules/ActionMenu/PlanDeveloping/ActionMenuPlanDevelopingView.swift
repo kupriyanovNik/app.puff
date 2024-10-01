@@ -103,7 +103,7 @@ struct ActionMenuPlanDevelopingView: View {
                                 .multilineTextAlignment(.center)
                                 .lineLimit(2)
                                 .foregroundStyle(Color(hex: 0x4AA1FD))
-                                .offset(y: 28)
+                                .offset(y: 38)
                                 .padding(.horizontal, 24)
                                 .transition(.opacity)
                         }

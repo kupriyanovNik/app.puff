@@ -37,6 +37,14 @@ struct StatisticsView: View {
             HomeView.HomeViewIsPremiumPlanNotCreatedView {
                 navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
             }
+        } else if smokesManager.isLastDayOfPlan && !smokesManager.isPlanEnded {
+            HomeView.HomeViewIsPremiumPlanNotCreatedView(text: "Я готов бросить") {
+                navigationVM.shouldShowReadyToBreakActionMenu.toggle()
+            }
+        } else if smokesManager.isPlanEnded {
+            HomeView.HomeViewIsPremiumPlanEnded {
+                navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
+            }
         }
     }
 }
