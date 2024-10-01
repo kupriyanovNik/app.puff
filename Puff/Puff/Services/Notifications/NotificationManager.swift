@@ -53,7 +53,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
-    private func checkNotificationStatus() {
+    func checkNotificationStatus() {
         UNUserNotificationCenter.current()
             .getNotificationSettings { status in
                 switch status.authorizationStatus {

@@ -228,8 +228,10 @@ extension HomeView {
                 if days != 0 {
                     if days == 1 {
                         return "Last one: 1 day ago"
-                    } else {
+                    } else if days < 31 {
                         return "Last one: \(days) days ago"
+                    } else {
+                        return "Last one: a long time ago"
                     }
                 } else {
                     if hours != 0 {
@@ -255,12 +257,16 @@ extension HomeView {
 
         private func getLastSmokeTimeRussianString(_ days: Int, _ hours: Int, _ minutes: Int) -> String {
             if days != 0 {
-                if days % 10 == 1 && days % 100 != 11 {
-                    return "\(days) день"
-                } else if (days % 10 >= 2 && days % 10 <= 4) && !(days % 100 >= 12 && days % 100 <= 14) {
-                    return "\(days) дня"
+                if days < 31 {
+                    if days % 10 == 1 && days % 100 != 11 {
+                        return "\(days) день"
+                    } else if (days % 10 >= 2 && days % 10 <= 4) && !(days % 100 >= 12 && days % 100 <= 14) {
+                        return "\(days) дня"
+                    } else {
+                        return "\(days) дней"
+                    }
                 } else {
-                    return "\(days) дней"
+                    return "Последняя: давно"
                 }
             } else {
                 if hours != 0 {

@@ -12,6 +12,8 @@ final class SmokesManager: ObservableObject {
 
     // MARK: - Property Wrappers
 
+    @Published var realPlanDayIndex: Int = 0
+
     @AppStorage("isPlanStarted") private(set) var isPlanStarted: Bool = false
     @AppStorage("isPlanEnded") private(set) var isPlanEnded: Bool = false
 
@@ -46,8 +48,6 @@ final class SmokesManager: ObservableObject {
         )
 
         RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
-
-        print("startOfPlan", Date(timeIntervalSince1970: TimeInterval(planStartDate ?? 0)))
     }
 
     // MARK: - Private Properties
@@ -66,13 +66,7 @@ final class SmokesManager: ObservableObject {
         return 0
     }
 
-    var todayLimit: Int {
-        if planLimits.count > currentDayIndex {
-            return planLimits[currentDayIndex]
-        }
-
-        return 0
-    }
+    var todayLimit: Int { planLimits[currentDayIndex] }
 
     var isLastDayOfPlan: Bool { currentDayIndex + 1 >= daysInPlan }
 
@@ -139,15 +133,8 @@ final class SmokesManager: ObservableObject {
 
             let diffDays = Int(diff / 86400)
 
-            print(
-                "today",
-                Date(timeIntervalSince1970: startOfToday.timeIntervalSince1970),
-                "splan",
-                Date(timeIntervalSince1970: TimeInterval(startOfStartOfPlan)),
-                diffDays
-            )
-
-            currentDayIndex = diffDays
+            currentDayIndex = min(planLimits.count, diffDays)
+            realPlanDayIndex = diffDays
         }
     }
 

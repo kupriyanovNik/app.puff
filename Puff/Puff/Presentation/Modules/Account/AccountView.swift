@@ -24,10 +24,10 @@ struct AccountView: View {
     private var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                self.offset = max(0, value.translation.height / 10)
+                self.offset = max(0, value.translation.height)
             }
             .onEnded { value in
-                if value.translation.height > 100 {
+                if value.translation.height > 15 {
                     navigationVM.shouldShowAccountView = false
 
                     delay(0.3) {
@@ -43,15 +43,15 @@ struct AccountView: View {
         CircledTopCornersView(background: .clear, content: viewContent)
             .onChange(of: scenePhase) { newValue in
                 if newValue == .active {
-                    isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
+                    checkNotifications()
                 }
             }
             .onAppear {
                 delay(0.6) {
-                    isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
+                    checkNotifications()
                 }
             }
-            .offset(y: offset)
+            .offset(y: min(15, offset))
             .animation(.easeOut(duration: 0.25), value: offset)
     }
 
@@ -155,17 +155,23 @@ struct AccountView: View {
                 content: Toggle("", isOn: $isNotificationsEnabled).labelsHidden()
             ) { isNotificationsEnabled.toggle() }
 
-            cell(
-                "Сбросить план бросания",
-                imageName: "accountResetImage",
-                withDivider: false,
-                color: Color(hex: 0xFF7D7D)
-            ) { shouldShowResetWarning.toggle() }
+            if smokesManager.isPlanStarted {
+                cell(
+                    "Сбросить план бросания",
+                    imageName: "accountResetImage",
+                    withDivider: false,
+                    color: Color(hex: 0xFF7D7D)
+                ) { shouldShowResetWarning.toggle() }
+            }
         }
         .roundedCornerWithBorder(lineWidth: 1, borderColor: Color(hex: 0xF0F0F0), radius: 16, corners: .allCorners)
         .padding(.horizontal, 12)
         .onChange(of: isNotificationsEnabled) { newValue in
-            handleChangeOfNotificationStatus(newValue)
+            if newValue {
+                requestNotifications()
+            } else {
+                NotificationManager.shared.removeAllNotifications()
+            }
         }
     }
 
@@ -192,6 +198,10 @@ struct AccountView: View {
                 AccentButton(text: "Да, сбросить план", background: Color(hex: 0xFF7D7D)) {
                     smokesManager.resetPlan()
                     shouldShowResetWarning = false
+
+                    delay(0.4) {
+                        navigationVM.shouldShowAccountView = false
+                    }
                 }
 
                 SecondaryButton(text: "Отмена") {
@@ -204,16 +214,18 @@ struct AccountView: View {
         .padding(.top, 20)
     }
 
-    private func handleChangeOfNotificationStatus(_ value: Bool) {
-        if !value {
-            NotificationManager.shared.removeAllNotifications()
-            return
-        }
+    private func checkNotifications() {
+        NotificationManager.shared.checkNotificationStatus()
+        isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
+    }
 
-        if hasSkippedNotificationRequest {
-            NotificationManager.shared.requestAuthorization()
-        } else {
-            UIApplication.openNotificationSettingsURLString.openURL()
+    private func requestNotifications() {
+        if !isNotificationsEnabled {
+            if hasSkippedNotificationRequest {
+                NotificationManager.shared.requestAuthorization()
+            } else {
+                UIApplication.openNotificationSettingsURLString.openURL()
+            }
         }
     }
 }

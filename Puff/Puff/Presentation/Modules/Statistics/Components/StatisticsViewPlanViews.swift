@@ -36,6 +36,7 @@ extension StatisticsView {
                                     .fill(.white)
                             }
                             .padding([.top, .trailing], 20)
+                            .vTop()
                     }
 
                     HStack(spacing: 18) {
