@@ -214,7 +214,7 @@ extension HomeView {
 
         @ObservedObject var smokesManager: SmokesManager
 
-        let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+        let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
 
         @State private var text: String = ""
         

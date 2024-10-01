@@ -12,5 +12,6 @@ enum Palette {
     static let textPrimary = Color(hex: 0x030303)
     static let textSecondary = Color(hex: 0x030303, alpha: 0.56)
     static let textTertiary = Color(hex: 0x030303, alpha: 0.3)
+    static let textQuaternary = Color(hex: 0x030303, alpha: 0.22)
     static let darkBlue = Color(hex: 0x262C33)
 }

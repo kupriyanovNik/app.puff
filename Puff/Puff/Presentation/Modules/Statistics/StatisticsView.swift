@@ -22,7 +22,11 @@ struct StatisticsView: View {
             AppHeaderView(title: "Прогресс", navigationVM: navigationVM)
 
             ScrollView {
-                planView()
+                VStack(spacing: 10) {
+                    planView()
+
+                    StatisticsPlanDailyView(smokesManager: smokesManager)
+                }
             }
             .scrollIndicators(.hidden)
         }
