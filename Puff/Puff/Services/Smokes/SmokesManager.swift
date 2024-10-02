@@ -48,6 +48,9 @@ final class SmokesManager: ObservableObject {
         )
 
         RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
+
+        print("l", planLimits)
+        print("c", planCounts)
     }
 
     // MARK: - Private Properties
@@ -90,6 +93,10 @@ final class SmokesManager: ObservableObject {
 
         planLimits = getLimits(for: period, smokesPerDay: smokesPerDay)
         planCounts = Array(repeating: 0, count: daysInPlan)
+        
+        if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
+            planCounts[0] = smokesCount[index]
+        }
     }
 
     func puff() {
@@ -111,13 +118,21 @@ final class SmokesManager: ObservableObject {
     func addDay() {
         // надобавлять до 28 дня с лимитом как в 21
 
-        let diff: Int = realPlanDayIndex - daysInPlan + 1
+        let diff: Int = realPlanDayIndex - planCounts.count
+        
+        print("diff", diff)
 
-        if let limit = planLimits.last {
-            for i in 0..<diff {
-                planLimits.append(limit)
-                planCounts.append(0)
+        // если -1, то сам тыкнул что готов бросить
+
+        if diff > -1 {
+            if let limit = planLimits.last {
+                for i in 0..<diff {
+                    planLimits.append(limit)
+                    planCounts.append(0)
+                }
             }
+            
+            print("limits", planLimits)
         }
     }
 

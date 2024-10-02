@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 @main
 struct PuffApp: App {
@@ -15,6 +16,8 @@ struct PuffApp: App {
     @StateObject var navigationVM = NavigationViewModel()
     @StateObject var onboardingVM = OnboardingViewModel()
     @StateObject var smokesManager = SmokesManager()
+
+    @Environment(\.requestReview) var requestReview
 
     var body: some Scene {
         WindowGroup {
@@ -38,8 +41,13 @@ struct PuffApp: App {
                 isPresented: $navigationVM.shouldShowReadyToBreakActionMenu,
                 ableToDismissWithSwipe: false
             ) {
-                ActionMenuReadyToBreakView(tappedReadyToBreak: false, todayLimit: 0) {
+                ActionMenuReadyToBreakView(
+                    tappedReadyToBreak: false,
+                    todayLimit: smokesManager.todayLimit
+                ) {
                     smokesManager.endPlan()
+
+                    delay(0.4) { requestReview() }
                 } onNeedOneMoreDay: {
                     smokesManager.addDay()
                 } onDismiss: {
