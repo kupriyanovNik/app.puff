@@ -209,17 +209,12 @@ extension HomeView {
             }
         }
 
-        private func getLastSmokeTimeString(for date: Date) -> String {
-            let diff = TimeInterval(Date() - date)
-
-            print("date", date)
+        private func getLastSmokeTimeString(for dateInt: Int) -> String {
+            let diff = Double(Date().timeIntervalSince1970) - Double(dateInt)
 
             let days = Int(diff / 86400)
             let hours = Int(diff / 3600)
             let minutes = Int(diff / 60)
-
-            print("diff", diff)
-            print("info", days, hours, minutes)
 
             return ""
         }
