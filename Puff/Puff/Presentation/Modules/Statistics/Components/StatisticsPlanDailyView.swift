@@ -26,7 +26,7 @@ struct StatisticsPlanDailyView: View {
             ScrollViewReader { proxy in
                 ScrollView(.horizontal) {
                     HStack(spacing: 6) {
-                        ForEach(0..<smokesManager.realPlanDayIndex + 1) { index in
+                        ForEach(0..<max(smokesManager.planLimits.count, smokesManager.realPlanDayIndex + 1)) { index in
                             dayCell(index: index, proxy: proxy)
                         }
                     }
