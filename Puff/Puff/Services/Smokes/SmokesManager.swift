@@ -23,7 +23,7 @@ final class SmokesManager: ObservableObject {
     }
 
     @AppStorage("daysInPlan") var daysInPlan: Int = 21
-    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 0, count: 21)
+    @AppStorage("planLimits") var planLimits: [Int] = Array(repeating: 100, count: 21)
     @AppStorage("planCounts") var planCounts: [Int] = Array(repeating: 0, count: 21)
 
     @AppStorage("planStartDate") var planStartDate: Date?

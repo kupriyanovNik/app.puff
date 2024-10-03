@@ -15,7 +15,8 @@ extension HomeView {
         @State private var isButtonPressed: Bool = false
 
         private var fillColor: Color {
-            if smokesManager.todaySmokes < smokesManager.todayLimit {
+            if smokesManager.todaySmokes < smokesManager.todayLimit ||
+                !smokesManager.isPlanStarted {
                 return Color(hex: 0xB5D9FF)
             }
 
@@ -36,13 +37,12 @@ extension HomeView {
                 .opacity(isButtonPressed ? 0.7 : 1)
                 .scaleEffect(isButtonPressed ? 0.99 : 1)
                 .animation(.easeInOut(duration: 0.15), value: isButtonPressed)
-                .buttonStyle(.plain)
                 .overlay {
                     Group {
-                        if smokesManager.isTodayLimitExceeded {
+                        if smokesManager.isTodayLimitExceeded && smokesManager.isPlanStarted {
                             Image(.homeSmokeExceededButton)
                                 .resizable()
-                        } else if smokesManager.todaySmokes == smokesManager.todayLimit {
+                        } else if smokesManager.todaySmokes == smokesManager.todayLimit && smokesManager.isPlanStarted {
                             Image(.homeSmokeOnEdgeButton)
                                 .resizable()
                         } else {
@@ -83,7 +83,8 @@ extension HomeView {
         private var height: Double { isSmallDevice ? 250 : 350 }
 
         private var percentage: Double {
-            if !isUserPremium { return 0 }
+            if !smokesManager.isPlanStarted { return 0 }
+
             return Double(smokesManager.todaySmokes) / Double(smokesManager.todayLimit)
         }
 
@@ -100,11 +101,11 @@ extension HomeView {
                 .height(self.height)
                 .overlay {
                     Group {
-                        if smokesManager.isTodayLimitExceeded {
+                        if smokesManager.isTodayLimitExceeded && smokesManager.isPlanStarted {
                             Image(.homeViewSmokesCountExceeded)
                                 .resizable()
                                 .scaledToFill()
-                        } else if smokesManager.todaySmokes == smokesManager.todayLimit {
+                        } else if smokesManager.todaySmokes == smokesManager.todayLimit && smokesManager.isPlanStarted {
                             Image(.homeViewSmokesCountOnEdge)
                                 .resizable()
                                 .scaledToFill()

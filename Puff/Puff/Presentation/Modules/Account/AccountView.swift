@@ -24,7 +24,7 @@ struct AccountView: View {
     private var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                self.offset = max(0, value.translation.height)
+                self.offset = max(0, value.translation.height / 10)
             }
             .onEnded { value in
                 if value.translation.height > 100 {
