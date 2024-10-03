@@ -74,12 +74,7 @@ final class SmokesManager: ObservableObject {
 
     var isTodayLimitExceeded: Bool { todaySmokes > todayLimit }
 
-    var isDayAfterPlanEnded: Bool {
-        print(realPlanDayIndex > planLimits.count, realPlanDayIndex, planLimits)
-
-
-        return realPlanDayIndex > planLimits.count
-    }
+    var isDayAfterPlanEnded: Bool { realPlanDayIndex > planLimits.count }
 
     // MARK: - Internal Functions
 
@@ -121,13 +116,23 @@ final class SmokesManager: ObservableObject {
         }
     }
 
+    func addMoreSmokes(_ count: Int) {
+        if let period = ActionMenuPlanDevelopingPeriod(rawValue: planLimits.count) {
+            if let firstDayLimit = planLimits.first {
+                let newPlan = getLimits(for: period, smokesPerDay: firstDayLimit + count)
+
+                if currentDayIndex == 0 {
+                    planLimits = newPlan
+                } else if currentDayIndex == 1 {
+                    planLimits = [firstDayLimit] + newPlan[1..<newPlan.count]
+                }
+            }
+        }
+    }
+
     func addDay() {
         // надобавлять до 28 дня с лимитом как в 21
-
         let diff: Int = realPlanDayIndex - planCounts.count
-        
-        print("diff", diff)
-
         // если -1, то сам тыкнул что готов бросить
 
         if diff > -1 {
@@ -137,8 +142,6 @@ final class SmokesManager: ObservableObject {
                     planCounts.append(0)
                 }
             }
-            
-            print("limits", planLimits)
         }
     }
 

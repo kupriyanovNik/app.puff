@@ -19,7 +19,6 @@ struct CustomSheet<Content: View>: View {
     var content: () -> Content
 
     @State private var offset: Double = .zero
-    @State private var height: CGFloat = .zero
 
     private var gesture: some Gesture {
         DragGesture()
@@ -95,7 +94,6 @@ struct CustomSheet<Content: View>: View {
                 .gesture(gesture)
             }
         }
-        .getHeight(height: $height)
     }
 }
 
@@ -108,16 +106,15 @@ extension View {
         onDismiss: @escaping () -> Void = {},
         content: @escaping () -> some View
     ) -> some View {
-        self
-            .overlay {
-                CustomSheet(
-                    isPresented: isPresented,
-                    ableToDismissWithSwipe: ableToDismissWithSwipe,
-                    cornerRadius: cornerRadius,
-                    topPadding: topPadding,
-                    onDismiss: onDismiss,
-                    content: content
-                )
-            }
+        overlay {
+            CustomSheet(
+                isPresented: isPresented,
+                ableToDismissWithSwipe: ableToDismissWithSwipe,
+                cornerRadius: cornerRadius,
+                topPadding: topPadding,
+                onDismiss: onDismiss,
+                content: content
+            )
+        }
     }
 }

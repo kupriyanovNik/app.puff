@@ -55,6 +55,11 @@ struct PuffApp: App {
                     navigationVM.shouldShowReadyToBreakActionMenu = false
                 }
             }
+            .makeCustomSheet(isPresented: $navigationVM.shouldShowAddingMoreSmokesActionMenu) {
+                ActionMenuAddingMoreSmokesView(onAddedMoreSmokes: smokesManager.addMoreSmokes) {
+                    navigationVM.shouldShowAddingMoreSmokesActionMenu = false
+                }
+            }
             .onChange(of: smokesManager.todaySmokes) { newValue in
                 if newValue == smokesManager.todayLimit && smokesManager.isDayAfterPlanEnded {
                     navigationVM.shouldShowReadyToBreakActionMenu = true
@@ -63,6 +68,11 @@ struct PuffApp: App {
             .onAppear {
                 if smokesManager.isDayAfterPlanEnded {
                     navigationVM.shouldShowReadyToBreakActionMenu = true
+                }
+            }
+            .onChange(of: smokesManager.todaySmokes) { newValue in
+                if smokesManager.isTodayLimitExceeded {
+                    navigationVM.shouldShowAddingMoreSmokesActionMenu = true
                 }
             }
         }

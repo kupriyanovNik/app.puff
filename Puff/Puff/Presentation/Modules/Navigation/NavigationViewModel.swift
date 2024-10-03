@@ -16,4 +16,5 @@ final class NavigationViewModel: ObservableObject {
 
     @Published var shouldShowPlanDevelopingActionMenu: Bool = false
     @Published var shouldShowReadyToBreakActionMenu: Bool = false
+    @Published var shouldShowAddingMoreSmokesActionMenu: Bool = false
 }
