@@ -89,6 +89,7 @@
 		B7024D142C9EE5F7006809AC /* Animations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Animations; sourceTree = "<group>"; };
 		B7325F622CA867A9007D8456 /* CircledTopCorners */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CircledTopCorners; sourceTree = "<group>"; };
 		B7325F632CA86813007D8456 /* Account */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Account; sourceTree = "<group>"; };
+		B73BF5ED2CEA7D6300D9A065 /* Update */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Update; sourceTree = "<group>"; };
 		B756D6672CA0240300DF28CD /* Paywall */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Paywall; sourceTree = "<group>"; };
 		B756D66C2CA04B6F00DF28CD /* Notification */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notification; sourceTree = "<group>"; };
 		B756D66F2CA04B8000DF28CD /* Notifications */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notifications; sourceTree = "<group>"; };
@@ -163,6 +164,7 @@
 		B73B2E412C9B639F001EB658 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B73BF5ED2CEA7D6300D9A065 /* Update */,
 				B78A6A192CA719A70074067B /* Smokes */,
 				B78A6A142CA7196B0074067B /* Subscription */,
 				B756D66F2CA04B8000DF28CD /* Notifications */,
@@ -328,6 +330,7 @@
 				B7024D142C9EE5F7006809AC /* Animations */,
 				B7325F622CA867A9007D8456 /* CircledTopCorners */,
 				B7325F632CA86813007D8456 /* Account */,
+				B73BF5ED2CEA7D6300D9A065 /* Update */,
 				B756D6672CA0240300DF28CD /* Paywall */,
 				B756D66C2CA04B6F00DF28CD /* Notification */,
 				B756D66F2CA04B8000DF28CD /* Notifications */,
@@ -566,7 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Puff/Common/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7HDF545ZQ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Puff/App/Info.plist;
@@ -581,7 +584,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kupriyanov.Puffll;
+				PRODUCT_BUNDLE_IDENTIFIER = kupriyanov.Pufflllllllling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -601,7 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Puff/Common/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7HDF545ZQ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Puff/App/Info.plist;
@@ -616,7 +619,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kupriyanov.Puffll;
+				PRODUCT_BUNDLE_IDENTIFIER = kupriyanov.Pufflllllllling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

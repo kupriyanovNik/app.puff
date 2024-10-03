@@ -93,6 +93,13 @@ struct PuffApp: App {
 
                 delay(0.4) { requestReview() }
             }
+            .makeCustomSheet(isPresented: $navigationVM.shouldShowUpdateActionMenu) {
+                ActionMenuUpdateAppView {
+                    navigationVM.seenUpdateActionMenu()
+                }
+            } onDismiss: {
+                navigationVM.seenUpdateActionMenu()
+            }
             .onChange(of: smokesManager.todaySmokes) { newValue in
                 if smokesManager.isPlanStarted {
                     if newValue == smokesManager.todayLimit && (smokesManager.isLastDayOfPlan) {
@@ -122,6 +129,25 @@ struct PuffApp: App {
                     if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
                         navigationVM.shouldShowAddingMoreSmokesActionMenu = true
                     }
+                }
+            }
+            .task {
+                do {
+                    let response = try await UpdateManager().getLatestAvailableVersion()
+
+                    if let response {
+                        if let actualVersion = response.version.components(separatedBy: ".").first {
+                            if let appVersion = Bundle.main.appVersion.components(separatedBy: ".").first {
+                                if (Int(actualVersion) ?? 0) > (Int(appVersion) ?? 0) {
+                                    if navigationVM.ableToShowUpdateActionMenu {
+                                        navigationVM.shouldShowUpdateActionMenu = true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch {
+                    print(error.localizedDescription)
                 }
             }
         }
