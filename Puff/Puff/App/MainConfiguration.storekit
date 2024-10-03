@@ -1,0 +1,160 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "A5D7D83E",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6717609578",
+    "_developerTeamID" : "J9834KZMZC",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 749687407.14690399,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21546319",
+      "localizations" : [
+
+      ],
+      "name" : "Premium Access",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6736493636",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Access to all premium features",
+              "displayName" : "Premium Access (1 Month)",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Доступ ко всем премиум-функциям",
+              "displayName" : "Премиум-доступ (1 месяц)",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "com.quitvaping.month1",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Premium Access [No Trial]",
+          "subscriptionGroupID" : "21546319",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6717609860",
+          "introductoryOffer" : {
+            "internalID" : "52431651",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
+          "localizations" : [
+            {
+              "description" : "Access to all premium features",
+              "displayName" : "Premium Access (1 Month)",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Доступ ко всем премиум-функциям",
+              "displayName" : "Премиум-доступ (1 месяц)",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "com.quitvaping.month",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Premium Access [Trial]",
+          "subscriptionGroupID" : "21546319",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

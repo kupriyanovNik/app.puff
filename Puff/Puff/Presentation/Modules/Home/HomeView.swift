@@ -14,17 +14,10 @@ struct HomeView: View {
     @ObservedObject var navigationVM: NavigationViewModel
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var onboardingVM: OnboardingViewModel
-
-    @State private var isUserPremium = SubscriptionManager.shared.isPremium
+    @ObservedObject var subscriptionsManager: SubscriptionsManager
 
     var body: some View {
         CircledTopCornersView(content: viewContent)
-            .onChange(of: onboardingVM.hasSeenOnboarding) { _ in
-                checkUserStatus()
-            }
-            .onChange(of: navigationVM.shouldShowPaywall) { _ in
-                checkUserStatus()
-            }
             .onAppear(perform: smokesManager.checkIsNewDay)
     }
 
@@ -39,7 +32,7 @@ struct HomeView: View {
             planView()
 
             if !smokesManager.isPlanEnded {
-                HomeViewTodaySmokesView(smokesManager: smokesManager, isUserPremium: $isUserPremium)
+                HomeViewTodaySmokesView(smokesManager: smokesManager)
 
                 HomeViewSmokeButton(smokesManager: smokesManager)
             } else {
@@ -52,7 +45,7 @@ struct HomeView: View {
     @ViewBuilder
     private func planView() -> some View {
         Group {
-            if !isUserPremium {
+            if !subscriptionsManager.isPremium {
                 HomeViewIsNotPremiumPlanView {
                     navigationVM.shouldShowPaywall.toggle()
                 }
@@ -72,18 +65,13 @@ struct HomeView: View {
             }
         }
     }
-
-    private func checkUserStatus() {
-        animated {
-            isUserPremium = SubscriptionManager.shared.isPremium
-        }
-    }
 }
 
 #Preview {
     HomeView(
         navigationVM: .init(),
         smokesManager: .init(),
-        onboardingVM: .init()
+        onboardingVM: .init(),
+        subscriptionsManager: .init()
     )
 }

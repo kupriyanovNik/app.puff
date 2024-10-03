@@ -17,6 +17,7 @@ struct PuffApp: App {
     @StateObject var onboardingVM = OnboardingViewModel()
     @StateObject var smokesManager = SmokesManager()
     @StateObject var reviewManager = ReviewManager()
+    @StateObject var subscriptionsManager = SubscriptionsManager()
 
     var body: some Scene {
         WindowGroup {
@@ -26,6 +27,7 @@ struct PuffApp: App {
                     smokesManager: smokesManager,
                     onboardingVM: onboardingVM,
                     reviewManager: reviewManager,
+                    subscriptionsManager: subscriptionsManager,
                     requestReview: requestReview
                 )
             }
@@ -106,6 +108,9 @@ struct PuffApp: App {
                 }
             } onDismiss: {
                 navigationVM.seenUpdateActionMenu()
+            }
+            .task {
+                await subscriptionsManager.updatePurchasedProducts()
             }
         }
     }

@@ -11,12 +11,17 @@ struct AppPaywallView: View {
 
     @State private var shouldShowCongratulationView: Bool = false
 
+    @ObservedObject var subscriptionsManager: SubscriptionsManager
+
     @State private var withTrial: Bool = false
     var showBenefitsDelay: Double = 0.25
 
     var closeScreenAction: () -> Void
 
     @State private var shouldShowBenefits: Bool = false
+
+    @State private var errorText: String = ""
+    @State private var shouldShowError: Bool = false
 
     private let benefits: [String] = [
         "Доступ к плану бросания",
@@ -32,9 +37,13 @@ struct AppPaywallView: View {
         }
     }
 
-    private let priceString: String = {
-        "299₽/месяц"
-    }()
+    private var priceString: String {
+        if let product = subscriptionsManager.products.first {
+            return product.displayPrice + "/месяц"
+        } else {
+            return "Error while fetching price"
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -56,6 +65,12 @@ struct AppPaywallView: View {
         }
         .prepareForStackPresentationInOnboarding()
         .animation(.easeOut(duration: 0.35), value: shouldShowCongratulationView)
+        .alert(isPresented: $shouldShowError) {
+            Alert(title: Text(errorText))
+        }
+        .task {
+            await subscriptionsManager.loadProducts()
+        }
     }
 
     @ViewBuilder
@@ -98,7 +113,18 @@ struct AppPaywallView: View {
 
                 Spacer()
 
-                TextButton(text: "Восстановить покупки", action: restorePurchases)
+                TextButton(text: "Восстановить покупки") {
+                    Task {
+                        await subscriptionsManager.restorePurchases { error in
+                            if let error {
+                                errorText = error
+                                shouldShowError = true
+                            } else {
+                                shouldShowCongratulationView.toggle()
+                            }
+                        }
+                    }
+                }
             }
 
             Text("Начните свой план\nбросания")
@@ -280,17 +306,20 @@ struct AppPaywallView: View {
             .minimumScaleFactor(0.9)
     }
 
-    private func restorePurchases() {
-        
-    }
-
     private func makePurchase() {
-        SubscriptionManager.shared.isPremium = true
-
-        shouldShowCongratulationView.toggle()
+        Task {
+            await subscriptionsManager.buyProduct(withTrial: withTrial) { error in
+                if let error {
+                    errorText = error
+                    shouldShowError = true
+                } else {
+                    shouldShowCongratulationView.toggle()
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    AppPaywallView { }
+    AppPaywallView(subscriptionsManager: .init()) { }
 }

@@ -13,6 +13,7 @@ struct MainNavigationView: View {
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var onboardingVM: OnboardingViewModel
     @ObservedObject var reviewManager: ReviewManager
+    @ObservedObject var subscriptionsManager: SubscriptionsManager
 
     var requestReview: () -> Void
 
@@ -29,7 +30,7 @@ struct MainNavigationView: View {
         .overlay {
             Group {
                 if !onboardingVM.hasSeenOnboarding {
-                    OnboardingView(onboardingVM: onboardingVM)
+                    OnboardingView(onboardingVM: onboardingVM, subscriptionsManager: subscriptionsManager)
                         .preferredColorScheme(.light)
                         .transition(
                             .asymmetric(
@@ -44,7 +45,7 @@ struct MainNavigationView: View {
         .overlay {
             Group {
                 if navigationVM.shouldShowPaywall {
-                    AppPaywallView(showBenefitsDelay: 0.4) {
+                    AppPaywallView(subscriptionsManager: subscriptionsManager, showBenefitsDelay: 0.4) {
                         navigationVM.shouldShowPaywall.toggle()
                     }
                     .preferredColorScheme(.light)
@@ -135,11 +136,13 @@ struct MainNavigationView: View {
         case .home: HomeView(
             navigationVM: navigationVM,
             smokesManager: smokesManager,
-            onboardingVM: onboardingVM
+            onboardingVM: onboardingVM,
+            subscriptionsManager: subscriptionsManager
         )
         case .statistics: StatisticsView(
             navigationVM: navigationVM,
-            smokesManager: smokesManager
+            smokesManager: smokesManager,
+            subscriptionsManager: subscriptionsManager
         )
         }
     }
@@ -150,6 +153,7 @@ struct MainNavigationView: View {
         navigationVM: .init(),
         smokesManager: .init(),
         onboardingVM: .init(),
-        reviewManager: .init()
+        reviewManager: .init(),
+        subscriptionsManager: .init()
     ) { }
 }

@@ -11,6 +11,7 @@
 		B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7024D122C9EE5C1006809AC /* LottieView.swift */; };
 		B72CABA12C9DDA4000CD1040 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */; };
 		B72CABA92C9E0CF900CD1040 /* PickerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CABA82C9E0CF900CD1040 /* PickerCard.swift */; };
+		B72FC5552CAF526B00F95B92 /* MainConfiguration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = B72FC5542CAF526B00F95B92 /* MainConfiguration.storekit */; };
 		B7325F612CA866CC007D8456 /* AppHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7325F602CA866CC007D8456 /* AppHeaderView.swift */; };
 		B7325F692CA89188007D8456 /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7325F682CA89188007D8456 /* Dictionary+Ext.swift */; };
 		B73B2E322C9B637A001EB658 /* PuffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E312C9B637A001EB658 /* PuffApp.swift */; };
@@ -49,6 +50,7 @@
 		B7024D122C9EE5C1006809AC /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		B72CABA82C9E0CF900CD1040 /* PickerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCard.swift; sourceTree = "<group>"; };
+		B72FC5542CAF526B00F95B92 /* MainConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = MainConfiguration.storekit; sourceTree = "<group>"; };
 		B7325F602CA866CC007D8456 /* AppHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderView.swift; sourceTree = "<group>"; };
 		B7325F682CA89188007D8456 /* Dictionary+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
 		B73B2E2E2C9B637A001EB658 /* Puff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puff.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +198,7 @@
 				B7F574EC2C9CA3130059BAB9 /* Info.plist */,
 				B73B2E312C9B637A001EB658 /* PuffApp.swift */,
 				B73B2E442C9B63E1001EB658 /* AppDelegate.swift */,
+				B72FC5542CAF526B00F95B92 /* MainConfiguration.storekit */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7F574E12C9CA1940059BAB9 /* Launch Screen.storyboard in Resources */,
+				B72FC5552CAF526B00F95B92 /* MainConfiguration.storekit in Resources */,
 				B73B2E392C9B637B001EB658 /* Preview Assets.xcassets in Resources */,
 				B73B2E362C9B637B001EB658 /* Assets.xcassets in Resources */,
 			);
@@ -587,7 +591,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kupriyanov.Pufflllllllling;
+				PRODUCT_BUNDLE_IDENTIFIER = kupriyanov.Puffllllllllingggin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -622,7 +626,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kupriyanov.Pufflllllllling;
+				PRODUCT_BUNDLE_IDENTIFIER = kupriyanov.Puffllllllllingggin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

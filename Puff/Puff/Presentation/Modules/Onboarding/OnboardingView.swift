@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingView: View {
 
     @ObservedObject var onboardingVM: OnboardingViewModel
+    @ObservedObject var subscriptionsManager: SubscriptionsManager
 
     var body: some View {
         NavigationStack(path: $onboardingVM.onboardingPath) {
@@ -21,7 +22,7 @@ struct OnboardingView: View {
                     case 3: OnboardingSurveyScreen(onboardingVM: onboardingVM)
                     case 4: OnboardingPlanCreatingScreen(onboardingVM: onboardingVM)
                     case 5: OnboardingContractScreen(onboardingVM: onboardingVM)
-                    case 6: AppPaywallView { onboardingVM.nextScreen() }
+                    case 6: AppPaywallView(subscriptionsManager: subscriptionsManager) { onboardingVM.nextScreen() }
                     case 7: NotificationRequestView { onboardingVM.hasSeenOnboarding = true }
                     default: EmptyView()
                     }
@@ -31,5 +32,8 @@ struct OnboardingView: View {
 }
 
 #Preview {
-    OnboardingView(onboardingVM: .init())
+    OnboardingView(
+        onboardingVM: .init(),
+        subscriptionsManager: .init()
+    )
 }

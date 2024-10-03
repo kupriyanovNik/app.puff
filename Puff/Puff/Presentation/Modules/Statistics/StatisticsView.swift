@@ -11,6 +11,7 @@ struct StatisticsView: View {
 
     @ObservedObject var navigationVM: NavigationViewModel
     @ObservedObject var smokesManager: SmokesManager
+    @ObservedObject var subscriptionsManager: SubscriptionsManager
 
     var body: some View {
         CircledTopCornersView(content: viewContent)
@@ -37,7 +38,7 @@ struct StatisticsView: View {
 
     @ViewBuilder
     private func planView() -> some View {
-        if !SubscriptionManager.shared.isPremium {
+        if !subscriptionsManager.isPremium {
             StatisticsViewNotPremiumPlanView(navigationVM: navigationVM)
         } else if !smokesManager.isPlanStarted {
             HomeView.HomeViewIsPremiumPlanNotCreatedView {
@@ -59,6 +60,7 @@ struct StatisticsView: View {
 #Preview {
     StatisticsView(
         navigationVM: .init(),
-        smokesManager: .init()
+        smokesManager: .init(),
+        subscriptionsManager: .init()
     )
 }

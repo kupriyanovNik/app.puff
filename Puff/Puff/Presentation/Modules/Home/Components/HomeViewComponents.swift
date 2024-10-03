@@ -79,8 +79,6 @@ extension HomeView {
 
         @ObservedObject var smokesManager: SmokesManager
 
-        @Binding var isUserPremium: Bool
-
         private var height: Double { isSmallDevice ? 250 : 350 }
 
         private var percentage: Double {
