@@ -166,6 +166,7 @@ extension HomeView {
                             )
                             .stroke(Palette.textPrimary, style: .init(lineWidth: 4, lineCap: .round))
                             .rotationEffect(.degrees(-90))
+                            .animation(.smooth, value: smokesManager.currentDayIndex)
                     }
                     .frame(16)
                     .padding(.vertical, 4)

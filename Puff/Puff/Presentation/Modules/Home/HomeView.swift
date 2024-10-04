@@ -25,6 +25,7 @@ struct HomeView: View {
             .onChange(of: navigationVM.shouldShowPaywall) { _ in
                 checkUserStatus()
             }
+            .onAppear(perform: smokesManager.checkIsNewDay)
     }
 
     @ViewBuilder
