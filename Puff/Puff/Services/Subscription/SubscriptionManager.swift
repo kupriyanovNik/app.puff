@@ -107,9 +107,6 @@ extension SubscriptionsManager {
     func restorePurchases(callback: @escaping (String?) -> Void) async {
         do {
             try await AppStore.sync()
-
-            callback(nil)
-            self.isPremium = !self.purchasedProductIDs.isEmpty
         } catch {
             callback(error.localizedDescription)
         }
