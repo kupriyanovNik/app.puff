@@ -22,6 +22,7 @@ struct AccountView: View {
     @State private var offset: Double = .zero
 
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.locale) var locale
 
     private var gesture: some Gesture {
         DragGesture()
@@ -39,6 +40,14 @@ struct AccountView: View {
                     offset = .zero
                 }
             }
+    }
+
+    private var communityUrlString: String {
+        if locale == .init(languageCode: "ru") {
+            return "https://t.me/puffless_app_ru"
+        }
+
+        return "https://t.me/puffless_app"
     }
 
     var body: some View {
@@ -154,7 +163,7 @@ struct AccountView: View {
             cell(
                 "Связаться с нами",
                 imageName: "accountTgImage"
-            ) { "OUR TELEGRAM".openURL() }
+            ) { "https://t.me/puffless_support".openURL() }
 
             cell(
                 "Подписка",
@@ -168,9 +177,9 @@ struct AccountView: View {
             }
 
             cell(
-                "Сменить язык",
+                "Вступить в комьюнити",
                 imageName: "accountLanguageImage"
-            ) { UIApplication.openSettingsURLString.openURL() }
+            ) { communityUrlString.openURL() }
 
             cell(
                 "Уведомления",
