@@ -131,15 +131,8 @@ struct StatisticsMonthlyChart: View {
     private func chartView() -> some View {
         VStack(spacing: 8) {
             HStack(spacing: 4) {
-                let symbols: [String] = {
-                    var weekdaySymbols = Calendar(identifier: .iso8601).shortWeekdaySymbols
-                    weekdaySymbols.append(weekdaySymbols.remove(at: weekdaySymbols.startIndex))
-
-                    return weekdaySymbols.map { $0.prefix(2).capitalized }
-                }()
-
                 StatisticsMainChart(
-                    keys: symbols,
+                    keys: ["01-07", "08-15", "16-23", "24-31"],
                     realValues: $statisticsMVM.currentMonthRealValues,
                     estimatedValues: $statisticsMVM.currentMonthEstimatedValues,
                     selectedIndex: $statisticsMVM.selectedIndex,
