@@ -81,8 +81,8 @@ struct StatisticsMainChart: View {
 
             HStack(spacing: spacingBetweenChartCells) {
                 ForEach(realValues.indices) { index in
-                    let realValue: Int? = realValues[index]
-                    let estimatedValue: Int? = estimatedValues[index]
+                    let realValue: Int? = realValues[min(index, realValues.count - 1)]
+                    let estimatedValue: Int? = estimatedValues[min(index, estimatedValues.count - 1)]
 
                     let isSelected = selectedIndex == index
 

@@ -30,7 +30,6 @@ final class StatisticsMonthlyViewModel: ObservableObject {
 
     init() {
         updateMonth()
-        print("CMMM", currentMonth)
         updateMonthValues()
     }
 
@@ -38,29 +37,23 @@ final class StatisticsMonthlyViewModel: ObservableObject {
         currentMonthRealValues = []
         currentMonthEstimatedValues = []
 
-        var newRealValues: [Int?] = []
-        var newEstimatedValues: [Int?] = []
-
         for day in currentMonth {
             let limit = getLimitForDate(day)
 
             if let index = smokesDates.firstIndex(where: { calendar.isDate(day, inSameDayAs: $0) }) {
-                newRealValues.append(smokesCount[index])
-                newEstimatedValues.append(limit)
+                currentMonthRealValues.append(smokesCount[index])
+                currentMonthEstimatedValues.append(limit)
             } else {
-                newRealValues.append(nil)
-                newEstimatedValues.append(limit)
+                currentMonthRealValues.append(nil)
+                currentMonthEstimatedValues.append(limit)
             }
         }
-
-        currentMonthRealValues = newRealValues
-        currentMonthEstimatedValues = newEstimatedValues
     }
 
     private func updateMonth() {
         var monthDates: [Date] = []
 
-        var current: Date = (currentMonth.last ?? .now).tomorrow.startOfMonth.startOfDate
+        var current: Date = monthForDate.startOfMonth.startOfDate
         var end: Date = current.endOfMonth.startOfDate
 
         while current <= end {
