@@ -11,8 +11,6 @@ final class StatisticsFrequencyViewModel: ObservableObject {
     @AppStorage("smokesHours") var smokesHours: [Int] = Array(repeating: 0, count: 24)
 
     private var hasSmoked: Bool {
-        smokesHours.count { $0 == 0 } != smokesHours.count
+        smokesHours.filter { $0 == 0 }.count != smokesHours.count
     }
-
-    
 }

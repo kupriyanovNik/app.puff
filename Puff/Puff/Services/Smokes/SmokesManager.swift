@@ -135,7 +135,7 @@ final class SmokesManager: ObservableObject {
             dateOfFirstSmoke = Int(Date().timeIntervalSince1970)
         }
 
-        smokesHours[calendar.component(.hour, from: .now) - 1] += 1
+        smokesHours[calendar.component(.hour, from: .now)] += 1
 
         if isPlanStarted {
             if planCounts.count > currentDayIndex {

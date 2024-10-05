@@ -16,7 +16,7 @@ class SubscriptionsManager: NSObject, ObservableObject {
     @Published private(set) var activeTransactions: Set<StoreKit.Transaction> = []
     @Published var products: [Product] = []
 
-    @AppStorage("isPremium") var isPremium: Bool = true
+    @AppStorage("isPremium") var isPremium: Bool = false
 
     @AppStorage("withTrial") var withTrial: Bool = false
 
@@ -101,7 +101,7 @@ extension SubscriptionsManager {
             }
         }
 
-//        self.isPremium = !self.purchasedProductIDs.isEmpty
+        self.isPremium = !self.purchasedProductIDs.isEmpty
     }
 
     func restorePurchases(callback: @escaping (String?) -> Void) async {

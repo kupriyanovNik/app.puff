@@ -32,7 +32,7 @@ struct StatisticsFrequencyChart: View {
             return "\(index + 1):00"
         }
 
-        if (statisticsFrequencyViewModel.smokesHours.count { $0 != 0 } < 5),
+        if (statisticsFrequencyViewModel.smokesHours.filter { $0 != 0 }.count < 5),
             let index = statisticsFrequencyViewModel.smokesHours.firstIndex(of: biggestValue) {
             return "\(index + 1):00"
         }
@@ -161,11 +161,15 @@ struct StatisticsFrequencyChart: View {
                         }
                     }
                     .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(Color(hex: 0xB5D9FF, alpha: 0.28))
-                            .frame(width: summaryRectangleWidth)
-                            .hLeading()
-                            .offset(x: summaryRectangleOffset + summaryRectangleWidth / 2 - 2)
+                        if !isFirstDay {
+                            if statisticsFrequencyViewModel.smokesHours.filter { $0 != 0 }.count > 4 {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(Color(hex: 0xB5D9FF, alpha: 0.28))
+                                    .frame(width: summaryRectangleWidth)
+                                    .hLeading()
+                                    .offset(x: summaryRectangleOffset + summaryRectangleWidth / 2 - 2)
+                            }
+                        }
                     }
                 }
                 .height(chartCellHeight)
