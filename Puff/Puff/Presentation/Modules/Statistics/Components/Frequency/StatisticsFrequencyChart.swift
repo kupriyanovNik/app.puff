@@ -12,7 +12,7 @@ struct StatisticsFrequencyChart: View {
     @ObservedObject var statisticsFrequencyViewModel: StatisticsFrequencyViewModel
     @ObservedObject var smokesManager: SmokesManager
 
-    var spacingBetweenChartCells: CGFloat = 6
+    var spacingBetweenChartCells: CGFloat = 3.5
     var chartCellHeight: CGFloat = 100
 
     private let calendar = Calendar.current
@@ -32,7 +32,7 @@ struct StatisticsFrequencyChart: View {
             return "\(index + 1):00"
         }
 
-        if (statisticsFrequencyViewModel.smokesHours.count { $0 != 0 } < 4),
+        if (statisticsFrequencyViewModel.smokesHours.count { $0 != 0 } < 5),
             let index = statisticsFrequencyViewModel.smokesHours.firstIndex(of: biggestValue) {
             return "\(index + 1):00"
         }
@@ -90,8 +90,13 @@ struct StatisticsFrequencyChart: View {
             VStack(spacing: 10) {
                 GeometryReader { proxy in
                     let size = proxy.size
+                    let startIndex = getActiveRangeStartIndex()
 
-                    HStack(spacing: 3.5) {
+                    let widthOfBar: Double = ((size.width - (23 * spacingBetweenChartCells))) / 24.0
+                    let summaryRectangleWidth: Double = (4 * spacingBetweenChartCells) + (5 * widthOfBar)
+                    let summaryRectangleOffset: Double = (Double(startIndex - 1) * spacingBetweenChartCells) + (Double(startIndex) * widthOfBar)
+
+                    HStack(spacing: spacingBetweenChartCells) {
                         ForEach(statisticsFrequencyViewModel.smokesHours.indices) { index in
                             let value = statisticsFrequencyViewModel.smokesHours[index]
 
@@ -102,61 +107,68 @@ struct StatisticsFrequencyChart: View {
                                         .height(6)
                                         .vBottom()
                                 } else {
-                                    let heightOfReal = (max(0, Double(value - 6)) / Double(max(1, biggestValue))) * size.height + 6
+                                    let height = (max(0, Double(value - 6)) / Double(max(1, biggestValue))) * size.height + 6
 
                                     RoundedRectangle(cornerRadius: 8)
                                         .fill(Color(hex: 0xB5D9FF))
-                                        .height(heightOfReal)
+                                        .height(height)
                                         .vBottom()
                                 }
                             }
                         }
                     }
+                    .background {
+                        VStack {
+                            Rectangle()
+                                .fill(Color(hex: 0xEFEFEF))
+                                .height(1)
+
+                            Spacer()
+
+                            Rectangle()
+                                .fill(Color(hex: 0xEFEFEF))
+                                .height(1)
+
+                            Spacer()
+
+                            Rectangle()
+                                .fill(Color(hex: 0xEFEFEF))
+                                .height(1)
+                        }
+                        .padding(.trailing, 3)
+                    }
+                    .background {
+                        HStack {
+                            Spacer()
+
+                            Rectangle()
+                                .fill(Color(hex: 0xEFEFEF))
+                                .width(1)
+
+                            Spacer()
+
+                            Rectangle()
+                                .fill(Color(hex: 0xEFEFEF))
+                                .width(1)
+
+                            Spacer()
+
+                            Rectangle()
+                                .fill(Color(hex: 0xEFEFEF))
+                                .width(1)
+
+                            Spacer()
+                        }
+                    }
+                    .background {
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(Color(hex: 0xB5D9FF, alpha: 0.28))
+                            .frame(width: summaryRectangleWidth)
+                            .hLeading()
+                            .offset(x: summaryRectangleOffset + summaryRectangleWidth / 2 - 2)
+                    }
                 }
                 .height(chartCellHeight)
-                .background {
-                    VStack {
-                        Rectangle()
-                            .fill(Color(hex: 0xEFEFEF))
-                            .height(1)
-
-                        Spacer()
-
-                        Rectangle()
-                            .fill(Color(hex: 0xEFEFEF))
-                            .height(1)
-
-                        Spacer()
-
-                        Rectangle()
-                            .fill(Color(hex: 0xEFEFEF))
-                            .height(1)
-                    }
-                    .padding(.trailing, 3)
-                }
-                .background {
-                    HStack {
-                        Spacer()
-
-                        Rectangle()
-                            .fill(Color(hex: 0xEFEFEF))
-                            .width(1)
-
-                        Spacer()
-
-                        Rectangle()
-                            .fill(Color(hex: 0xEFEFEF))
-                            .width(1)
-
-                        Spacer()
-
-                        Rectangle()
-                            .fill(Color(hex: 0xEFEFEF))
-                            .width(1)
-
-                        Spacer()
-                    }
-                }
 
                 xMarks()
             }
@@ -180,7 +192,8 @@ struct StatisticsFrequencyChart: View {
                     .font(.medium11)
                     .foregroundStyle(Palette.textQuaternary)
                     .padding(.vertical, 2)
-                    .hCenter()
+
+                Spacer()
             }
         }
     }
@@ -206,20 +219,26 @@ struct StatisticsFrequencyChart: View {
         .padding(.bottom, 26)
     }
 
-    private func getActiveRange() -> String {
+    private func getActiveRangeStartIndex() -> Int {
         var maxSum = Int.min
         var startIndex = 0
 
         let arr = statisticsFrequencyViewModel.smokesHours
 
-        for i in 0...(arr.count - 4) {
-            let currentSum = arr[i] + arr[i + 1] + arr[i + 2] + arr[i + 3]
+        for i in 0...(arr.count - 5) {
+            let currentSum = arr[i] + arr[i + 1] + arr[i + 2] + arr[i + 3] + arr[i + 4]
 
             if currentSum > maxSum {
                 maxSum = currentSum
                 startIndex = i
             }
         }
+
+        return startIndex
+    }
+
+    private func getActiveRange() -> String {
+        let startIndex = getActiveRangeStartIndex()
 
         return "\(startIndex + 1):00 - \(startIndex + 5):00"
     }
