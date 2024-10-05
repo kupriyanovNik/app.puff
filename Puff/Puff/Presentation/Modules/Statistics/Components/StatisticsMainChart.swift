@@ -42,7 +42,7 @@ struct StatisticsMainChart: View {
     }
 
     private var gesture: some Gesture {
-        DragGesture(minimumDistance: 0)
+        DragGesture(minimumDistance: 0, coordinateSpace: .local)
             .onChanged { value in
                 handleDragGesture(
                     startLocation: value.startLocation,
@@ -96,7 +96,13 @@ struct StatisticsMainChart: View {
 
             yMarks()
         }
-
+        .onChange(of: selectedIndex) { newValue in
+            if let newValue {
+                HapticManager.onTabChanged()
+            } else {
+                HapticManager.onTappedPlus()
+            }
+        }
     }
 
     @ViewBuilder
