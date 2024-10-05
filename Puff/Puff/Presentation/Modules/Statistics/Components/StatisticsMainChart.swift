@@ -64,8 +64,8 @@ struct StatisticsMainChart: View {
     }
 
     var body: some View {
-        HStack(spacing: 4) {
-            VStack(spacing: 8) {
+        HStack(spacing: 7) {
+            VStack(spacing: 10) {
                 chartView()
                     .height(chartCellHeight)
                     .getWidth(width: $chartWidth)
@@ -88,7 +88,6 @@ struct StatisticsMainChart: View {
                                 .height(1)
                         }
                         .padding(.trailing, 3)
-                        .padding(.top, 8)
                     }
                     .gesture(self.gesture)
 
@@ -180,11 +179,12 @@ struct StatisticsMainChart: View {
     private func yMarks() -> some View {
         VStack {
             Text("\(biggestValue == 0 ? 500 : biggestValue)")
+                .offset(y: -6)
 
             Spacer()
 
             Text("\(biggestValue == 0 ? 250 : Int(biggestValue / 2))")
-                .offset(y: 3)
+                .offset(y: -2)
 
             Spacer()
 

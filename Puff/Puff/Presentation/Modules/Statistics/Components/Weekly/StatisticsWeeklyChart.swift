@@ -41,61 +41,63 @@ struct StatisticsWeeklyChart: View {
     }
 
     var body: some View {
-        VStack(spacing: 10) {
-            HStack(spacing: 3) {
-                Image(.statisticsCloud)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(18)
+        VStack(spacing: 16) {
+            VStack(spacing: 10) {
+                HStack(spacing: 3) {
+                    Image(.statisticsCloud)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(18)
 
-                MarkdownText(
-                    text: text,
-                    markdowns: ["Затяжки,"],
-                    foregroundColor: Palette.textQuaternary
-                )
-                .font(.semibold14)
-                .contentTransition(.identity)
+                    MarkdownText(
+                        text: text,
+                        markdowns: ["Затяжки,"],
+                        foregroundColor: Palette.textQuaternary
+                    )
+                    .font(.semibold14)
+                    .contentTransition(.identity)
 
-                Spacer()
+                    Spacer()
 
-                if subscriptionsManager.isPremium && smokesManager.dateOfFirstSmoke != nil {
-                    HStack(spacing: 15) {
-                        changeWeekButton(future: false, isDisabled: !ableToChangeWeekToBackward)
-                        changeWeekButton(future: true, isDisabled: !ableToChangeWeekToForward)
-                    }
-                }
-            }
-
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(weekSmokesText)
-                        .font(.bold22)
-                        .foregroundStyle(Palette.darkBlue)
-                        .contentTransition(.identity)
-
-                    Text("Затяжек")
-                        .font(.medium12)
-                        .foregroundStyle(Palette.textQuaternary)
-                }
-
-
-                Spacer()
-
-                Group {
-                    if let limit = statisticsWVM.limitForSelectedIndex {
-                        VStack(alignment: .trailing, spacing: 4) {
-                            Text("\(limit)")
-                                .font(.bold22)
-                                .foregroundStyle(Palette.darkBlue)
-                                .contentTransition(.identity)
-
-                            Text("Лимит")
-                                .font(.medium12)
-                                .foregroundStyle(Palette.textQuaternary)
+                    if subscriptionsManager.isPremium && smokesManager.dateOfFirstSmoke != nil {
+                        HStack(spacing: 15) {
+                            changeWeekButton(future: false, isDisabled: !ableToChangeWeekToBackward)
+                            changeWeekButton(future: true, isDisabled: !ableToChangeWeekToForward)
                         }
                     }
                 }
-                .transition(.opacity.animation(.easeInOut(duration: 0.25)))
+
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(weekSmokesText)
+                            .font(.bold22)
+                            .foregroundStyle(Palette.darkBlue)
+                            .contentTransition(.identity)
+
+                        Text("Затяжек")
+                            .font(.medium12)
+                            .foregroundStyle(Palette.textQuaternary)
+                    }
+
+
+                    Spacer()
+
+                    Group {
+                        if let limit = statisticsWVM.limitForSelectedIndex {
+                            VStack(alignment: .trailing, spacing: 4) {
+                                Text("\(limit)")
+                                    .font(.bold22)
+                                    .foregroundStyle(Palette.darkBlue)
+                                    .contentTransition(.identity)
+
+                                Text("Лимит")
+                                    .font(.medium12)
+                                    .foregroundStyle(Palette.textQuaternary)
+                            }
+                        }
+                    }
+                    .transition(.opacity.animation(.easeInOut(duration: 0.25)))
+                }
             }
 
             chartView()

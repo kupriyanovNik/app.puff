@@ -29,6 +29,7 @@ struct CircledTopCornersView<Content: View>: View {
                         topTrailingRadius: radius
                     )
                 )
+                .padding(.top, isSmallDevice ? 10 : 0)
                 .ignoresSafeArea(edges: .bottom)
                 .overlay(content: content)
         }
