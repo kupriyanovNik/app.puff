@@ -306,16 +306,18 @@ struct AppPaywallView: View {
     }
 
     private func makePurchase() {
-        Task {
-            await subscriptionsManager.buyProduct() { error in
-                if let error {
-                    errorText = error
-                    shouldShowError = true
-                } else {
-                    shouldShowCongratulationView.toggle()
-                }
-            }
-        }
+//        Task {
+//            await subscriptionsManager.buyProduct() { error in
+//                if let error {
+//                    errorText = error
+//                    shouldShowError = true
+//                } else {
+//                    shouldShowCongratulationView.toggle()
+//                }
+//            }
+//        }
+
+        self.shouldShowCongratulationView.toggle()
     }
 }
 

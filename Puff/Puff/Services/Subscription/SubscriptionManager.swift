@@ -16,7 +16,7 @@ class SubscriptionsManager: NSObject, ObservableObject {
     @Published private(set) var activeTransactions: Set<StoreKit.Transaction> = []
     @Published var products: [Product] = []
 
-    @AppStorage("isPremium") var isPremium: Bool = false
+    @AppStorage("isPremium") var isPremium: Bool = true
 
     @AppStorage("withTrial") var withTrial: Bool = false
 
@@ -101,7 +101,7 @@ extension SubscriptionsManager {
             }
         }
 
-        self.isPremium = !self.purchasedProductIDs.isEmpty
+//        self.isPremium = !self.purchasedProductIDs.isEmpty
     }
 
     func restorePurchases(callback: @escaping (String?) -> Void) async {
@@ -126,11 +126,11 @@ extension SubscriptionsManager {
 }
 
 extension SubscriptionsManager: SKPaymentTransactionObserver {
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    nonisolated func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
 
     }
 
-    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+    nonisolated func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
         return true
     }
 }
