@@ -34,8 +34,7 @@ final class StatisticsViewModel: ObservableObject {
         updateWeekValues()
     }
 
-    // need to be fixed
-    private func updateWeekValues() {
+    func updateWeekValues() {
         currentWeekRealValues = []
         currentWeekEstimatedValues = []
 
