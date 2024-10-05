@@ -22,6 +22,7 @@ struct TabBar: View {
                 .fill(Palette.textTertiary)
                 .frame(width: 1, height: 22)
         }
+        .background(Color(hex: 0xF5F5F5))
     }
 
     @ViewBuilder

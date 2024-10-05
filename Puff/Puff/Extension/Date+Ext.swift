@@ -13,7 +13,7 @@ extension Date {
     }
 }
 
-extension Date: RawRepresentable {
+extension Date: @retroactive RawRepresentable {
     static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -36,5 +36,20 @@ extension Date {
 
     var tomorrow: Date {
         Calendar.current.date(byAdding: .day, value: 1, to: self) ?? .now
+    }
+
+    var startOfWeek: Date {
+        var calendar = Calendar.current
+        calendar.firstWeekday = 2
+
+        return calendar.date(
+            from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)
+        ) ?? .now
+    }
+
+    var endOfWeek: Date {
+        let calendar = Calendar.current
+
+        return calendar.date(byAdding: .day, value: 6, to: self.startOfWeek) ?? .now
     }
 }

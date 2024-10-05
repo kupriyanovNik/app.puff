@@ -31,6 +31,7 @@ extension Font {
     static let medium15 = getMedium(size: 15)
     static let medium13 = getMedium(size: 13)
     static let medium12 = getMedium(size: 12)
+    static let medium11 = getMedium(size: 11)
 }
 
 extension UIFont {

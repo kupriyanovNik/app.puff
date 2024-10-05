@@ -13,6 +13,8 @@ struct StatisticsView: View {
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
+    @StateObject var statisticsVM = StatisticsViewModel()
+
     var body: some View {
         CircledTopCornersView(content: viewContent)
     }
@@ -29,6 +31,8 @@ struct StatisticsView: View {
                     if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
                         StatisticsPlanDailyView(smokesManager: smokesManager)
                     }
+
+                    StatisticsWeeklyChart(statisticsVM: statisticsVM)
                 }
             }
             .scrollIndicators(.hidden)
