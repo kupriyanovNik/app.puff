@@ -16,6 +16,10 @@ final class StatisticsWeeklyViewModel: ObservableObject {
     @AppStorage("isPlanStarted") private(set) var isPlanStarted: Bool = false
     @AppStorage("planStartDate") private(set) var planStartDate: Int?
 
+    @Published var selectedIndex: Int?
+
+    @Published var limitForSelectedIndex: Int?
+
     @Published var currentWeekRealValues: [Int?] = []
     @Published var currentWeekEstimatedValues: [Int?] = []
 
@@ -77,5 +81,17 @@ final class StatisticsWeeklyViewModel: ObservableObject {
         }
 
         return nil
+    }
+
+    func checkCurrentLimit() {
+        if let selectedIndex {
+            if selectedIndex >= currentWeekEstimatedValues.count {
+                limitForSelectedIndex = nil
+            } else {
+                limitForSelectedIndex = currentWeekEstimatedValues[selectedIndex]
+            }
+        } else {
+            limitForSelectedIndex = nil
+        }
     }
 }

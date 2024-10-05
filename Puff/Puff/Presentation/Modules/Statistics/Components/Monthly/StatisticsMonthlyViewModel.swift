@@ -15,6 +15,10 @@ final class StatisticsMonthlyViewModel: ObservableObject {
     @AppStorage("isPlanStarted") private(set) var isPlanStarted: Bool = false
     @AppStorage("planStartDate") private(set) var planStartDate: Int?
 
+    @Published var selectedIndex: Int?
+
+    @Published var limitForSelectedIndex: Int?
+
     @Published var currentMonthRealValues: [Int?] = []
     @Published var currentMonthEstimatedValues: [Int?] = []
 
@@ -78,5 +82,17 @@ final class StatisticsMonthlyViewModel: ObservableObject {
         }
 
         return nil
+    }
+
+    func checkCurrentLimit() {
+        if let selectedIndex {
+            if selectedIndex >= currentMonthEstimatedValues.count {
+                limitForSelectedIndex = nil
+            } else {
+                limitForSelectedIndex = currentMonthEstimatedValues[selectedIndex]
+            }
+        } else {
+            limitForSelectedIndex = nil
+        }
     }
 }

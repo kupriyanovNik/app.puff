@@ -13,8 +13,6 @@ struct StatisticsMonthlyChart: View {
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
-    @State private var selectedIndex: Int?
-
     @State private var ableToChangeMonthToBackward: Bool = false
     @State private var ableToChangeMonthToForward: Bool = false
 
@@ -28,7 +26,7 @@ struct StatisticsMonthlyChart: View {
     }()
 
     private var monthSmokesText: String {
-        if let selectedIndex {
+        if let selectedIndex = statisticsMVM.selectedIndex {
             let realValue: Int? = statisticsMVM.currentMonthRealValues[selectedIndex]
             let estimatedValue: Int? = statisticsMVM.currentMonthEstimatedValues[selectedIndex]
 
@@ -68,17 +66,36 @@ struct StatisticsMonthlyChart: View {
                 }
             }
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(monthSmokesText)
-                    .font(.bold22)
-                    .foregroundStyle(Palette.darkBlue)
-                    .contentTransition(.identity)
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(monthSmokesText)
+                        .font(.bold22)
+                        .foregroundStyle(Palette.darkBlue)
+                        .contentTransition(.identity)
 
-                Text("Затяжек")
-                    .font(.medium12)
-                    .foregroundStyle(Palette.textQuaternary)
+                    Text("Затяжек")
+                        .font(.medium12)
+                        .foregroundStyle(Palette.textQuaternary)
+                }
+
+                Spacer()
+
+                Group {
+                    if let limit = statisticsMVM.limitForSelectedIndex {
+                        VStack(alignment: .trailing, spacing: 4) {
+                            Text("\(limit)")
+                                .font(.bold22)
+                                .foregroundStyle(Palette.darkBlue)
+                                .contentTransition(.identity)
+
+                            Text("Лимит")
+                                .font(.medium12)
+                                .foregroundStyle(Palette.textQuaternary)
+                        }
+                    }
+                }
+                .transition(.opacity.animation(.easeInOut(duration: 0.25)))
             }
-            .hLeading()
 
             chartView()
         }
@@ -89,9 +106,12 @@ struct StatisticsMonthlyChart: View {
                 .cornerRadius(22)
         }
         .onChange(of: statisticsMVM.monthForDate) { _ in
-            selectedIndex = nil
+            statisticsMVM.selectedIndex = nil
             checkAbilityToChangeWeek()
             setText()
+        }
+        .onChange(of: statisticsMVM.selectedIndex) { _ in
+            statisticsMVM.checkCurrentLimit()
         }
         .onAppear {
             checkAbilityToChangeWeek()
@@ -120,7 +140,7 @@ struct StatisticsMonthlyChart: View {
                     keys: symbols,
                     realValues: $statisticsMVM.currentMonthRealValues,
                     estimatedValues: $statisticsMVM.currentMonthEstimatedValues,
-                    selectedIndex: $selectedIndex,
+                    selectedIndex: $statisticsMVM.selectedIndex,
                     spacingBetweenChartCells: 3
                 )
             }

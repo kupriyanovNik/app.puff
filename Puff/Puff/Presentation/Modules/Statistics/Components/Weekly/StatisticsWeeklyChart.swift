@@ -13,8 +13,6 @@ struct StatisticsWeeklyChart: View {
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
-    @State private var selectedIndex: Int?
-
     @State private var ableToChangeWeekToBackward: Bool = false
     @State private var ableToChangeWeekToForward: Bool = false
 
@@ -28,7 +26,7 @@ struct StatisticsWeeklyChart: View {
     }()
 
     private var weekSmokesText: String {
-        if let selectedIndex {
+        if let selectedIndex = statisticsWVM.selectedIndex {
             let realValue: Int? = statisticsWVM.currentWeekRealValues[selectedIndex]
             let estimatedValue: Int? = statisticsWVM.currentWeekEstimatedValues[selectedIndex]
 
@@ -68,17 +66,37 @@ struct StatisticsWeeklyChart: View {
                 }
             }
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(weekSmokesText)
-                    .font(.bold22)
-                    .foregroundStyle(Palette.darkBlue)
-                    .contentTransition(.identity)
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(weekSmokesText)
+                        .font(.bold22)
+                        .foregroundStyle(Palette.darkBlue)
+                        .contentTransition(.identity)
 
-                Text("Затяжек")
-                    .font(.medium12)
-                    .foregroundStyle(Palette.textQuaternary)
+                    Text("Затяжек")
+                        .font(.medium12)
+                        .foregroundStyle(Palette.textQuaternary)
+                }
+
+
+                Spacer()
+
+                Group {
+                    if let limit = statisticsWVM.limitForSelectedIndex {
+                        VStack(alignment: .trailing, spacing: 4) {
+                            Text("\(limit)")
+                                .font(.bold22)
+                                .foregroundStyle(Palette.darkBlue)
+                                .contentTransition(.identity)
+
+                            Text("Лимит")
+                                .font(.medium12)
+                                .foregroundStyle(Palette.textQuaternary)
+                        }
+                    }
+                }
+                .transition(.opacity.animation(.easeInOut(duration: 0.25)))
             }
-            .hLeading()
 
             chartView()
         }
@@ -89,9 +107,12 @@ struct StatisticsWeeklyChart: View {
                 .cornerRadius(22)
         }
         .onChange(of: statisticsWVM.weekForDate) { _ in
-            selectedIndex = nil
+            statisticsWVM.selectedIndex = nil
             checkAbilityToChangeWeek()
             setText()
+        }
+        .onChange(of: statisticsWVM.selectedIndex) { _ in
+            statisticsWVM.checkCurrentLimit()
         }
         .onAppear {
             checkAbilityToChangeWeek()
@@ -120,7 +141,7 @@ struct StatisticsWeeklyChart: View {
                     keys: symbols,
                     realValues: $statisticsWVM.currentWeekRealValues,
                     estimatedValues: $statisticsWVM.currentWeekEstimatedValues,
-                    selectedIndex: $selectedIndex,
+                    selectedIndex: $statisticsWVM.selectedIndex,
                     spacingBetweenChartCells: 6
                 )
             }
