@@ -36,6 +36,9 @@ final class StatisticsViewModel: ObservableObject {
 
     // need to be fixed
     private func updateWeekValues() {
+        currentWeekRealValues = []
+        currentWeekEstimatedValues = []
+
         for day in currentWeek {
             let limit = getLimitForDate(day)
 

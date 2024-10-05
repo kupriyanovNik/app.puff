@@ -14,6 +14,8 @@ final class SmokesManager: ObservableObject {
 
     @Published var realPlanDayIndex: Int = 0
 
+    @AppStorage("firstSmokeDate") var dateOfFirstSmoke: Int?
+
     @AppStorage("isPlanStarted") private(set) var isPlanStarted: Bool = false
     @AppStorage("isPlanEnded") private(set) var isPlanEnded: Bool = false {
         didSet {
@@ -126,6 +128,10 @@ final class SmokesManager: ObservableObject {
 
     func puff() {
         dateOfLastSmoke = Int(Date().timeIntervalSince1970)
+
+        if dateOfFirstSmoke == nil {
+            dateOfFirstSmoke = Int(Date().timeIntervalSince1970)
+        }
 
         if isPlanStarted {
             if planCounts.count > currentDayIndex {

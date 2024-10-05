@@ -32,7 +32,11 @@ struct StatisticsView: View {
                         StatisticsPlanDailyView(smokesManager: smokesManager)
                     }
 
-                    StatisticsWeeklyChart(statisticsVM: statisticsVM)
+                    StatisticsWeeklyChart(
+                        statisticsVM: statisticsVM,
+                        smokesManager: smokesManager,
+                        subscriptionsManager: subscriptionsManager
+                    )
                 }
             }
             .scrollIndicators(.hidden)
