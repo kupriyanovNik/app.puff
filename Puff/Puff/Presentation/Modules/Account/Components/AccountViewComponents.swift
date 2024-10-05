@@ -78,11 +78,10 @@ extension AccountView {
 
                     if let expirationDate = transaction.expirationDate {
                         cell(
-                            title: "Списание средств",
+                            title: "Истекает",
                             subtitle: formatter.string(from: expirationDate)
                         )
                     }
-
                 }
 
                 Spacer()

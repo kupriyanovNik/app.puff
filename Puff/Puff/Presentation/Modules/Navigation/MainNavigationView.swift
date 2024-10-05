@@ -93,13 +93,13 @@ struct MainNavigationView: View {
             }
         }
         .onAppear {
-            if smokesManager.isPlanStarted {
+            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
                 if smokesManager.isDayAfterPlanEnded || (smokesManager.todaySmokes == smokesManager.todayLimit) {
                     navigationVM.shouldShowReadyToBreakActionMenu = true
                 }
             }
 
-            if smokesManager.isPlanStarted {
+            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
                 if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
                     if smokesManager.isYesterdayLimitExceeded {
                         navigationVM.shouldShowPlanExtendingActionMenu = true
@@ -110,7 +110,7 @@ struct MainNavigationView: View {
             }
         }
         .onChange(of: smokesManager.todaySmokes) { newValue in
-            if smokesManager.isPlanStarted {
+            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
                 if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
                     navigationVM.shouldShowAddingMoreSmokesActionMenu = true
                 }
