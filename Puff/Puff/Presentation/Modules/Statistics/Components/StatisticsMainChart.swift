@@ -18,6 +18,8 @@ struct StatisticsMainChart: View {
     var spacingBetweenChartCells: CGFloat = 6
     var chartCellHeight: CGFloat = 100
 
+    @State private var chartWidth: CGFloat = .zero
+
     private var biggestValue: Int {
         let realValues = realValues.compactMap { $0 }
         let estimatedValues = estimatedValues.compactMap { $0 }
@@ -39,11 +41,34 @@ struct StatisticsMainChart: View {
         return max(maxEst, maxReal)
     }
 
+    private var gesture: some Gesture {
+        DragGesture(minimumDistance: 0)
+            .onChanged { value in
+                handleDragGesture(
+                    startLocation: value.startLocation,
+                    translation: value.translation
+                )
+
+            }
+            .onEnded { value in
+                selectedIndex = nil
+            }
+    }
+
+    private func handleDragGesture(startLocation: CGPoint, translation: CGSize) {
+        let widthPointX = startLocation.x + translation.width
+        let part: Double = widthPointX / chartWidth
+        let maxCount = max(realValues.count, estimatedValues.count)
+
+        selectedIndex = max(0, min(Int(Double(part) * Double(maxCount)), maxCount - 1))
+    }
+
     var body: some View {
         HStack(spacing: 4) {
             VStack(spacing: 8) {
                 chartView()
                     .height(chartCellHeight)
+                    .getWidth(width: $chartWidth)
                     .background {
                         VStack {
                             Line()
@@ -65,6 +90,7 @@ struct StatisticsMainChart: View {
                         .padding(.trailing, 3)
                         .padding(.top, 8)
                     }
+                    .gesture(self.gesture)
 
                 xMarks()
             }
@@ -132,13 +158,6 @@ struct StatisticsMainChart: View {
                         }
                         .animation(.easeInOut(duration: 0.25), value: isSelected)
                         .contentShape(RoundedRectangle(cornerRadius: 8))
-                        .onTapGesture {
-                            if selectedIndex == index {
-                                selectedIndex = nil
-                            } else {
-                                selectedIndex = index
-                            }
-                        }
                 }
             }
         }
@@ -175,13 +194,13 @@ struct StatisticsMainChart: View {
         .foregroundStyle(Palette.textQuaternary)
         .padding(.bottom, 26)
     }
-}
 
-struct Line: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: rect.width, y: 0))
-        return path
+    struct Line: Shape {
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            path.move(to: CGPoint(x: 0, y: 0))
+            path.addLine(to: CGPoint(x: rect.width, y: 0))
+            return path
+        }
     }
 }
