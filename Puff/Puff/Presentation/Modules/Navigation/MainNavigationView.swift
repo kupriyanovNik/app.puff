@@ -17,7 +17,7 @@ struct MainNavigationView: View {
 
     var requestReview: () -> Void
 
-    @State private var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    @State private var timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
 
     var body: some View {
         ZStack {
@@ -96,7 +96,7 @@ struct MainNavigationView: View {
         }
         .onAppear {
             if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
-                if smokesManager.isDayAfterPlanEnded || (smokesManager.todaySmokes == smokesManager.todayLimit) {
+                if smokesManager.isDayAfterPlanEnded || ((smokesManager.todaySmokes == smokesManager.todayLimit) && smokesManager.isLastDayOfPlan) {
                     navigationVM.shouldShowReadyToBreakActionMenu = true
                 }
             }

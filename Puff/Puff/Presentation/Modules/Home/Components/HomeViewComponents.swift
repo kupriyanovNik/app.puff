@@ -69,6 +69,8 @@ extension HomeView {
 
             smokesManager.puff()
 
+            HapticManager.feedback(style: .light, intensity: 0.75)
+
             delay(0.15) {
                 isButtonPressed = false
             }

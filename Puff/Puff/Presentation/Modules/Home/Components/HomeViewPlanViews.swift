@@ -159,14 +159,14 @@ extension HomeView {
                 .font(.semibold14)
 
                 Circle()
-                    .stroke(Color(hex: 0xE7E7E7), style: .init(lineWidth: 4))
+                    .stroke(Color(hex: 0xE7E7E7), style: .init(lineWidth: 3))
                     .overlay {
                         Circle()
                             .trim(
                                 from: 0,
                                 to: Double(smokesManager.currentDayIndex + 1) / Double(smokesManager.daysInPlan)
                             )
-                            .stroke(Palette.textPrimary, style: .init(lineWidth: 4, lineCap: .round))
+                            .stroke(Palette.textPrimary, style: .init(lineWidth: 3, lineCap: .round))
                             .rotationEffect(.degrees(-90))
                             .animation(.smooth, value: smokesManager.currentDayIndex)
                     }
