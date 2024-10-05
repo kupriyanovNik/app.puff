@@ -154,13 +154,3 @@ struct MainNavigationView: View {
         }
     }
 }
-
-#Preview {
-    MainNavigationView(
-        navigationVM: .init(),
-        smokesManager: .init(),
-        onboardingVM: .init(),
-        reviewManager: .init(),
-        subscriptionsManager: .init()
-    ) { }
-}

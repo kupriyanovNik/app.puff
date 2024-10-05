@@ -68,9 +68,7 @@ struct AppPaywallView: View {
             Alert(title: Text(errorText))
         }
         .task {
-            if subscriptionsManager.products.isEmpty {
-                await subscriptionsManager.loadProducts()
-            }
+            await subscriptionsManager.loadProducts()
         }
     }
 

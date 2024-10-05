@@ -13,7 +13,7 @@ extension Date {
     }
 }
 
-extension Date: @retroactive RawRepresentable {
+extension Date: RawRepresentable {
     static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long

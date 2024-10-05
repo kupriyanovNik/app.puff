@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Dictionary: @retroactive RawRepresentable where Key == Date, Value == Int {
+extension Dictionary: RawRepresentable where Key == Date, Value == Int {
     public init?(rawValue: String) {
         let jsonDecoder = JSONDecoder()
 
