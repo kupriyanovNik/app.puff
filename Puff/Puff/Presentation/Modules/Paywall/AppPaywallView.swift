@@ -202,10 +202,10 @@ struct AppPaywallView: View {
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(isSmallDevice ? 24 : 28)
+                    .frame(isSmallDevice ? 22 : 24)
 
                 Text(benefits[index])
-                    .font(isSmallDevice ? .medium16 : .medium18)
+                    .font(isSmallDevice ? .medium15 : .medium16)
                     .foregroundStyle(Palette.textPrimary)
                     .lineLimit(1)
 
@@ -228,15 +228,22 @@ struct AppPaywallView: View {
             VStack(spacing: 5) {
                 AccentButton(
                     text: subscriptionsManager.withTrial ? "Начать пробный период" : "Продолжить",
+                    isDisabled: subscriptionsManager.products.isEmpty,
                     action: makePurchase
                 )
 
                 HStack {
-                    linkText("Условия использования", urlString: "https://sites.google.com/view/puffless/eng-terms-of-use")
+                    linkText(
+                        "Условия использования",
+                        urlString: "https://sites.google.com/view/puffless/eng-terms-of-use"
+                    )
 
                     Spacer()
 
-                    linkText("Политика конфиденциальности", urlString: "https://sites.google.com/view/puffless/eng-privacy-policy")
+                    linkText(
+                        "Политика конфиденциальности",
+                        urlString: "https://sites.google.com/view/puffless/eng-privacy-policy"
+                    )
                 }
                 .padding(.bottom, isSmallDevice ? 16 : 0)
             }
