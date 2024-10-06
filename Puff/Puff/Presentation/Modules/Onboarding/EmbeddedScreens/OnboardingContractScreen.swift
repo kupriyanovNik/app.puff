@@ -20,8 +20,8 @@ struct OnboardingContractScreen: View {
     var body: some View {
         VStack(spacing: 70) {
             MarkdownText(
-                text: "Я верю, что у меня всё получится и что уже скоро я брошу парить!",
-                markdowns: ["верю", "брошу парить!"]
+                text: "OnboardingContractScreen.Title".l,
+                markdowns: ["верю", "брошу парить!", "determined", "I will succeed!"]
             )
             .font(.bold22)
             .multilineTextAlignment(.center)
@@ -50,7 +50,7 @@ struct OnboardingContractScreen: View {
                         }
                     }
 
-                Text("Удерживайте, чтобы\nподтвердить")
+                Text("OnboardingContractScreen.HoldToConfirm")
                     .font(.medium16)
                     .foregroundStyle(Palette.textTertiary)
                     .lineLimit(2, reservesSpace: true)
@@ -62,18 +62,20 @@ struct OnboardingContractScreen: View {
         .padding(.horizontal, 20)
         .overlay {
             if isPressing || isPressingEnded {
-                Text(isPressingEnded ? "Добро пожаловать в\nPuffless!" : "Продолжайте\nудерживать!")
-                    .font(.bold22)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.white)
-                    .offset(y: -50)
-                    .id(isPressingEnded ? "A" : "B")
-                    .transition(
-                        .asymmetric(
-                            insertion: .opacity.animation(.smooth.delay(0.3)),
-                            removal: .opacity.animation(.smooth)
-                        )
+                Text(
+                    isPressingEnded ? "OnboardingContractScreen.Welcome".l : "OnboardingContractScreen.KeepHolding".l
+                )
+                .font(.bold22)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.white)
+                .offset(y: -50)
+                .id(isPressingEnded ? "A" : "B")
+                .transition(
+                    .asymmetric(
+                        insertion: .opacity.animation(.smooth.delay(0.3)),
+                        removal: .opacity.animation(.smooth)
                     )
+                )
             }
         }
         .prepareForStackPresentationInOnboarding()

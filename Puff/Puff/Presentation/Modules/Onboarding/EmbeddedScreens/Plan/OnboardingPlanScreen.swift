@@ -29,23 +29,13 @@ struct OnboardingPlanScreen: View {
         return dateFormatter.string(from: end)
     }
 
-    private let planDescription: [(title: String, desc: String, imageName: String)] = [
+    private let planDescription: [(title: String, desc: String, imageName: String)] = (1...3).map {
         (
-            title: "Сегодня",
-            desc: "Выберем стартовое количество затяжек и начнем план",
-            imageName: "onboardingPlan1Image"
-        ),
-        (
-            title: "Дни 2-20",
-            desc: "Лимит затяжек на день будет постепенно уменьшаться",
-            imageName: "onboardingPlan2Image"
-        ),
-        (
-            title: "День 21",
-            desc: "Вы сделаете свою последнюю затяжку и бросите парить",
-            imageName: "onboardingPlan3Image"
+            title: "OnboardingPlanInfo.Title\($0)".l,
+            desc: "OnboardingPlanInfo.Description\($0)".l,
+            imageName: "onboardingPlan\($0)Image"
         )
-    ]
+    }
 
     var body: some View {
         VStack(spacing: isSmallDevice ? 28 : 42) {
