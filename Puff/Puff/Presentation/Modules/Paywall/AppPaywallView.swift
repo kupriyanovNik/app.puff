@@ -22,26 +22,30 @@ struct AppPaywallView: View {
     @State private var errorText: String = ""
     @State private var shouldShowError: Bool = false
 
-    private let benefits: [String] = [
-        "Доступ к плану бросания",
-        "Адаптивный темп и лимиты",
-        "Детальная статистика"
-    ]
+    private let benefits: [String] = Array((1...3).map { "Paywall.Benefit\($0)".l })
 
     private var trialString: String {
         if isSmallDevice {
-            "Пробный период 3 дня"
+            "Paywall.FreeTrialDescSmall".l
         } else {
-            "Пробный период 3 дня, затем"
+            "Paywall.FreeTrialDesc".l
         }
     }
 
     private var priceString: String {
         if let product = subscriptionsManager.products.first {
-            return product.displayPrice + "/месяц"
+            return product.displayPrice + "Paywall.Month".l
         } else {
             return "Error while fetching price"
         }
+    }
+
+    private var purchaseText: String {
+        if subscriptionsManager.withTrial {
+            return "Paywall.StartTrial".l
+        }
+
+        return "Continue".l
     }
 
     var body: some View {
@@ -119,7 +123,7 @@ struct AppPaywallView: View {
 
                 Spacer()
 
-                TextButton(text: "Восстановить покупки") {
+                TextButton(text: "Paywall.Restore".l) {
                     Task {
                         await subscriptionsManager.restorePurchases { error in
                             if let error {
@@ -133,7 +137,7 @@ struct AppPaywallView: View {
                 }
             }
 
-            Text("Начните свой план\nбросания")
+            Text("Paywall.Title".l)
                 .font(.bold28)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Palette.textPrimary)
@@ -177,7 +181,7 @@ struct AppPaywallView: View {
                     .font(.bold18)
                     .foregroundStyle(Palette.textPrimary)
 
-                Text("Затяжки")
+                Text("Paywall.Puffs".l)
                     .font(.semibold14)
                     .foregroundStyle(Palette.textTertiary)
             }
@@ -191,7 +195,7 @@ struct AppPaywallView: View {
                     .font(.bold18)
                     .foregroundStyle(Palette.textPrimary)
 
-                Text("Лимит")
+                Text("Paywall.Limit".l)
                     .font(.semibold14)
                     .foregroundStyle(Palette.textTertiary)
             }
@@ -234,23 +238,25 @@ struct AppPaywallView: View {
 
             VStack(spacing: 5) {
                 AccentButton(
-                    text: subscriptionsManager.withTrial ? "Начать пробный период" : "Продолжить",
+                    text: purchaseText,
                     isDisabled: subscriptionsManager.products.isEmpty,
                     action: makePurchase
                 )
 
-                HStack {
-                    linkText(
-                        "Условия использования",
-                        urlString: "https://sites.google.com/view/puffless/eng-terms-of-use"
-                    )
-
+                HStack(spacing: 12) {
                     Spacer()
 
                     linkText(
-                        "Политика конфиденциальности",
+                        "Paywall.TermsOfUse".l,
+                        urlString: "https://sites.google.com/view/puffless/eng-terms-of-use"
+                    )
+
+                    linkText(
+                        "Paywall.PrivacyPolicy".l,
                         urlString: "https://sites.google.com/view/puffless/eng-privacy-policy"
                     )
+
+                    Spacer()
                 }
                 .padding(.bottom, isSmallDevice ? 16 : 0)
             }
@@ -289,7 +295,7 @@ struct AppPaywallView: View {
         }
 
         HStack {
-            Text("Пробный период")
+            Text("Paywall.FreeTrial".l)
                 .font(.medium16)
                 .foregroundStyle(Palette.textSecondary)
 

@@ -11,6 +11,7 @@
 "Start" = "Начать";
 "Next" = "Далее";
 "Skip" = "Пропустить";
+"Continue" = "Продолжить";
 
 // MARK: - Images
 
@@ -94,9 +95,31 @@
 "OnboardingPlanInfo.Description2" = "Лимит затяжек на день будет постепенно уменьшаться";
 "OnboardingPlanInfo.Description3" = "Вы сделаете свою последнюю затяжку и бросите парить";
 
-"OnboardingContractScreen.Title" = "I’m determined to quit vaping, and I’m sure that I will succeed!";
-
 "OnboardingContractScreen.Title" = "Я верю, что у меня всё получится и что уже скоро я брошу парить!";
 "OnboardingContractScreen.HoldToConfirm" = "Удерживайте, чтобы\nподтвердить";
 "OnboardingContractScreen.KeepHolding" = "Продолжайте\nудерживать!";
 "OnboardingContractScreen.Welcome" = "Добро пожаловать в\nPuffless!";
+
+// MARK: - Paywall
+
+"Paywall.Title" = "Начните свой план бросания";
+
+"Paywall.Restore" = "Восстановить покупки";
+"Paywall.FreeTrial" = "Пробный период";
+"Paywall.FreeTrialDesc" = "Пробный период 3 дня, затем";
+"Paywall.FreeTrialDescSmall" = "Пробный период 3 дня";
+"Paywall.Puffs" = "Затяжки";
+"Paywall.Limit" = "Лимит";
+
+"Paywall.Benefit1" = "Доступ к плану бросания";
+"Paywall.Benefit2" = "Адаптивный темп и лимиты";
+"Paywall.Benefit3" = "Детальная статистика";
+"Paywall.Month" = "/месяц";
+
+"Paywall.TermsOfUse" = "Условия использования";
+"Paywall.PrivacyPolicy" = "Политика конфиденциальности";
+
+"Paywall.StartTrial" = "Начать пробный период";
+
+"Paywall.Welcome" = "Добро пожаловать";
+"Paywall.Purchased" = "Подписка оформлена";

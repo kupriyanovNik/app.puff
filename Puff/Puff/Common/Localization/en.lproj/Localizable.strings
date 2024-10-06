@@ -10,7 +10,8 @@
 
 "Start" = "Start";
 "Next" = "Next";
-"Skip" = "Пропустить";
+"Skip" = "Skip";
+"Continue" = "Continue";
 
 // MARK: - Images
 
@@ -98,3 +99,27 @@
 "OnboardingContractScreen.HoldToConfirm" = "Hold to confirm";
 "OnboardingContractScreen.KeepHolding" = "Keep holding!";
 "OnboardingContractScreen.Welcome" = "Welcome to\nPuffless!";
+
+// MARK: - Paywall
+
+"Paywall.Title" = "Start your quit plan today";
+
+"Paywall.Restore" = "Restore purchases";
+"Paywall.FreeTrial" = "Free Trial";
+"Paywall.FreeTrialDesc" = "3-day free trial, then";
+"Paywall.FreeTrialDescSmall" = "3-day free trial";
+"Paywall.Puffs" = "Puffs";
+"Paywall.Limit" = "Limit";
+
+"Paywall.Benefit1" = "Access to the quit plan";
+"Paywall.Benefit2" = "Adaptive pace and limits";
+"Paywall.Benefit3" = "Detailed statistics";
+"Paywall.Month" = "/month";
+
+"Paywall.TermsOfUse" = "Terms of Use";
+"Paywall.PrivacyPolicy" = "Privacy Policy";
+
+"Paywall.StartTrial" = "Start free trial";
+
+"Paywall.Welcome" = "Welcome";
+"Paywall.Purchased" = "Subscription activated";

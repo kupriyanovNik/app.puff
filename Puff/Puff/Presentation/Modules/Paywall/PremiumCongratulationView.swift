@@ -42,6 +42,11 @@ struct PremiumCongratulationView: View {
 
             Spacer()
         }
+        .overlay {
+            Text("Paywall.Purchased".l)
+                .font(.semibold18)
+                .foregroundStyle(.white.opacity(0.56))
+        }
         .onAppear {
             delay(0.4) {
                 shouldShowLottie = true
