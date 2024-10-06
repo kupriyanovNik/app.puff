@@ -54,7 +54,7 @@ struct OnboardingPlanScreen: View {
             bottomView()
                 .vTop()
 
-            AccentButton(text: "Далее", action: onboardingVM.nextScreen)
+            AccentButton(text: "Next".l, action: onboardingVM.nextScreen)
                 .padding(.horizontal, 12)
                 .padding(.bottom, 16)
         }
@@ -64,8 +64,8 @@ struct OnboardingPlanScreen: View {
     private func topView() -> some View {
         VStack(spacing: isSmallDevice ? 4 : 20) {
             MarkdownText(
-                text: "Оптимальный план:\n21 день",
-                markdown: "21 день"
+                text: "OnboardingPlanInfo.OptimalPlanTitle".l,
+                markdowns: ["21 день", "21 days"]
             )
             .font(.bold28)
             .lineLimit(2)

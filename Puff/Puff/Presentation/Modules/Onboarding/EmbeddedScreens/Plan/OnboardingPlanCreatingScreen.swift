@@ -25,8 +25,8 @@ struct OnboardingPlanCreatingScreen: View {
                     loaderView()
 
                     MarkdownText(
-                        text: "Определяем наиболее подходящий вам план бросания...",
-                        markdown: "план бросания..."
+                        text: "OnboardingPlanCreating.Title".l,
+                        markdowns: ["план бросания...", "the best quit plan"]
                     )
                     .font(.bold22)
                     .multilineTextAlignment(.center)

@@ -12,7 +12,7 @@ struct OnboardingEffectsBaseScreen: View {
     @State var selectedIndices: [Int] = []
 
     let text: String
-    let markdown: String
+    let markdowns: [String]
     var nextButtonText: String
     let items: [(name: String, image: String)]
 
@@ -23,7 +23,7 @@ struct OnboardingEffectsBaseScreen: View {
         VStack(spacing: 20) {
             MarkdownText(
                 text: text,
-                markdown: markdown
+                markdowns: markdowns
             )
             .font(.bold28)
             .multilineTextAlignment(.center)

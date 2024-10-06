@@ -12,18 +12,15 @@ struct OnboardingSurveyNegativeEffectScreen: View {
     @ObservedObject var onboardingVM: OnboardingViewModel
     @Binding var isForwardDirection: Bool
 
-    private let items: [(name: String, image: String)] = [
-        (name: "Здоровье, самочувствие", image: "onboardingNegativeEffect1Image"),
-        (name: "Эмоциональное состояние", image: "onboardingNegativeEffect2Image"),
-        (name: "Отношения с близкими", image: "onboardingNegativeEffect3Image"),
-        (name: "Финансы", image: "onboardingNegativeEffect4Image")
-    ]
+    private let items: [(name: String, image: String)] = (1...4).map {
+        (name: "OnboardingSurveyNegativeEffect.Answer\($0)".l, image: "onboardingNegativeEffect\($0)Image")
+    }
 
     var body: some View {
         OnboardingEffectsBaseScreen(
-            text: "На что в вашей жизни парение оказывает негативный эффект?",
-            markdown: "негативный эффект?",
-            nextButtonText: "Далее",
+            text: "OnboardingSurveyNegativeEffect.Title".l,
+            markdowns: ["негативный эффект?", "negative effects"],
+            nextButtonText: "Next".l,
             items: items
         ) {
             onboardingVM.questionIndex = 8

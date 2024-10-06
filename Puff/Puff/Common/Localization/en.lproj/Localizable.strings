@@ -65,3 +65,31 @@
 "OnboardingSurvey.Question6.Answer2" = "Stress";
 "OnboardingSurvey.Question6.Answer3" = "Influence of others";
 "OnboardingSurvey.Question6.Answer4" = "I don't know";
+
+"OnboardingSurveyNegativeEffect.Title" = "What negative effects does vaping have on your life?";
+"OnboardingSurveyNegativeEffect.Answer1" = "Health,\nwell-being";
+"OnboardingSurveyNegativeEffect.Answer2" = "Emotional\nstate";
+"OnboardingSurveyNegativeEffect.Answer3" = "Relationships with loved ones";
+"OnboardingSurveyNegativeEffect.Answer4" = "Finances";
+
+"OnboardingSurveySideEffects.Title" = "What side effects from vaping do you notice?";
+"OnboardingSurveySideEffects.Answer1" = "Cough";
+"OnboardingSurveySideEffects.Answer2" = "Throat irritation";
+"OnboardingSurveySideEffects.Answer3" = "Shortness of breath";
+"OnboardingSurveySideEffects.Answer4" = "Headaches/dizziness";
+"OnboardingSurveySideEffects.Answer5" = "Increased fatigue";
+"OnboardingSurveySideEffects.Answer6" = "Nausea";
+
+"OnboardingSurveySideEffects.GetTheQuitPlan" = "Get the quit plan";
+
+"OnboardingPlanCreating.Title" = "Identifying the best quit plan for you...";
+
+"OnboardingPlanInfo.OptimalPlanTitle" = "Optimal plan:\n21 days";
+
+"OnboardingPlanInfo.Title1" = "Today";
+"OnboardingPlanInfo.Title2" = "Days 2-20";
+"OnboardingPlanInfo.Title3" = "Day 21";
+
+"OnboardingPlanInfo.Description1" = "We'll pick a starting number of puffs and start the plan";
+"OnboardingPlanInfo.Description2" = "The puff limit for the day will be gradually reducing";
+"OnboardingPlanInfo.Description3" = "You will take your last puff and quit vaping for good";

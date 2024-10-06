@@ -65,3 +65,31 @@
 "OnboardingSurvey.Question6.Answer2" = "Стресс";
 "OnboardingSurvey.Question6.Answer3" = "Влияние окружающих";
 "OnboardingSurvey.Question6.Answer4" = "Не знаю";
+
+"OnboardingSurveyNegativeEffect.Title" = "На что в вашей жизни парение оказывает негативный эффект?";
+"OnboardingSurveyNegativeEffect.Answer1" = "Здоровье,\nсамочувствие";
+"OnboardingSurveyNegativeEffect.Answer2" = "Эмоциональное\nсостояние";
+"OnboardingSurveyNegativeEffect.Answer3" = "Отношения с\nблизкими";
+"OnboardingSurveyNegativeEffect.Answer4" = "Финансы";
+
+"OnboardingSurveySideEffects.Title" = "Какие побочные эффекты от парения вы замечаете?";
+"OnboardingSurveySideEffects.Answer1" = "Кашель";
+"OnboardingSurveySideEffects.Answer2" = "Раздражение в горле";
+"OnboardingSurveySideEffects.Answer3" = "Одышка";
+"OnboardingSurveySideEffects.Answer4" = "Головные боли/головокружение";
+"OnboardingSurveySideEffects.Answer5" = "Повышенная утомляемость";
+"OnboardingSurveySideEffects.Answer6" = "Тошнота";
+
+"OnboardingSurveySideEffects.GetTheQuitPlan" = "Определить план бросания";
+
+"OnboardingPlanCreating.Title" = "Определяем наиболее подходящий вам план бросания...";
+
+"OnboardingPlanInfo.OptimalPlanTitle" = "Оптимальный план:\n21 день";
+
+"OnboardingPlanInfo.Title1" = "Сегодня";
+"OnboardingPlanInfo.Title2" = "Дни 2-20";
+"OnboardingPlanInfo.Title3" = "День 21";
+
+"OnboardingPlanInfo.Description1" = "Выберем стартовое количество затяжек и начнем план";
+"OnboardingPlanInfo.Description2" = "Лимит затяжек на день будет постепенно уменьшаться";
+"OnboardingPlanInfo.Description3" = "Вы сделаете свою последнюю затяжку и бросите парить";
