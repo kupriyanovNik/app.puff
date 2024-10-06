@@ -50,7 +50,7 @@ struct OnboardingContractScreen: View {
                         }
                     }
 
-                Text("OnboardingContractScreen.HoldToConfirm")
+                Text("OnboardingContractScreen.HoldToConfirm".l)
                     .font(.medium16)
                     .foregroundStyle(Palette.textTertiary)
                     .lineLimit(2, reservesSpace: true)

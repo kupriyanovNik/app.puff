@@ -94,7 +94,7 @@
 "OnboardingPlanInfo.Description2" = "Лимит затяжек на день будет постепенно уменьшаться";
 "OnboardingPlanInfo.Description3" = "Вы сделаете свою последнюю затяжку и бросите парить";
 
-"OnboardingContractScreen.Title" = "I’m determined to quit vaping, and I’m sure that I will succeed!",
+"OnboardingContractScreen.Title" = "I’m determined to quit vaping, and I’m sure that I will succeed!";
 
 "OnboardingContractScreen.Title" = "Я верю, что у меня всё получится и что уже скоро я брошу парить!";
 "OnboardingContractScreen.HoldToConfirm" = "Удерживайте, чтобы\nподтвердить";
