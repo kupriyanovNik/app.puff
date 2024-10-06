@@ -253,7 +253,8 @@ struct AppPaywallView: View {
 
                     linkText(
                         "Paywall.TermsOfUse".l,
-                        urlString: "https://sites.google.com/view/puffless/eng-terms-of-use"
+                        urlString: "https://sites.google.com/view/puffless/eng-terms-of-use",
+                        edge: .leading
                     )
 
                     Spacer()
@@ -261,7 +262,8 @@ struct AppPaywallView: View {
 
                     linkText(
                         "Paywall.PrivacyPolicy".l,
-                        urlString: "https://sites.google.com/view/puffless/eng-privacy-policy"
+                        urlString: "https://sites.google.com/view/puffless/eng-privacy-policy",
+                        edge: .trailing
                     )
 
                     Spacer()
@@ -320,17 +322,16 @@ struct AppPaywallView: View {
     }
 
     @ViewBuilder
-    private func linkText(_ text: String, urlString: String) -> some View {
+    private func linkText(_ text: String, urlString: String, edge: Edge.Set) -> some View {
         Text(text)
             .font(.medium12)
             .lineLimit(1)
             .foregroundStyle(Palette.textTertiary)
             .underline(color: Palette.textTertiary)
             .padding(.bottom, 10)
-            .padding(.horizontal, isSmallDevice ? 8 : 14)
+            .padding(edge, isSmallDevice ? 8 : 14)
             .padding(.top, 4)
             .onTapGesture(perform: urlString.openURL)
-            .minimumScaleFactor(0.9)
     }
 
     private func makePurchase() {

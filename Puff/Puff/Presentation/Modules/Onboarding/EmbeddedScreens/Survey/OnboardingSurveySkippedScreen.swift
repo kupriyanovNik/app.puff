@@ -69,7 +69,7 @@ struct OnboardingSurveySkippedScreen: View {
 
             tabView()
 
-            AccentButton(text: "Далее", action: nextButtonAction)
+            AccentButton(text: "Next".l, action: nextButtonAction)
                 .padding(.horizontal, 12)
                 .padding(.bottom, -16)
         }
