@@ -60,7 +60,7 @@ extension HomeView {
                     }
                 }
                 .onTapGesture(perform: buttonAction)
-//                .makeRippleEffect(at: origin, trigger: smokesManager.todaySmokes)
+//                .makeRippleEffect(at: .init(x: 0, y: 0), trigger: smokesManager.todaySmokes)
                 .animation(.smooth, value: smokesManager.isTodayLimitExceeded)
         }
 
@@ -188,7 +188,7 @@ extension HomeView {
             Text(text)
                 .font(.semibold16)
                 .foregroundStyle(.white)
-                .lineLimit(1)
+                .lineLimit(2, reservesSpace: false)
                 .padding(.horizontal, 18)
                 .padding(.vertical, 4)
                 .background {
@@ -204,6 +204,8 @@ extension HomeView {
         private func setTime() {
             if smokesManager.todayLimit == smokesManager.todaySmokes {
                 text = "Вы достигли лимита на сегодня"
+            } else if smokesManager.todayLimit + 1 == smokesManager.todaySmokes {
+                text = "Лимит обновится в 00:00"
             } else {
                 if let dateOfLastSmoke = smokesManager.dateOfLastSmoke {
                     text = getLastSmokeTimeString(for: dateOfLastSmoke)

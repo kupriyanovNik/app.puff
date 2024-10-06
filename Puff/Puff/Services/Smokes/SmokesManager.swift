@@ -19,7 +19,7 @@ final class SmokesManager: ObservableObject {
         didSet {
             if currentDayIndex != oldValue {
                 // чтобы обновление для реактивно пришло в просто тапалку для юзеров без премиума
-                addNewDate()
+                addNewDate(auto: false)
             }
         }
     }
@@ -47,10 +47,7 @@ final class SmokesManager: ObservableObject {
 
         RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
 
-//        print("TS", todaySmokes)
-//        print("SC", smokesCount)
-//        print("SD", smokesDates)
-//        print("PC", planCounts[currentDayIndex])
+        print("startOfPlan", Date(timeIntervalSince1970: TimeInterval(planStartDate ?? 0)))
     }
 
     // MARK: - Private Properties
@@ -133,9 +130,22 @@ final class SmokesManager: ObservableObject {
 
     @objc func checkIsNewDay() {
         if let planStartDate {
-            let diff = Int(Date().timeIntervalSince1970) - planStartDate
+            let startOfToday = calendar.startOfDay(for: .now)
+            let startOfStartOfPlan = calendar.startOfDay(
+                for: Date(timeIntervalSince1970: TimeInterval(planStartDate))
+            ).timeIntervalSince1970
+
+            let diff = Int(startOfToday.timeIntervalSince1970) - Int(startOfStartOfPlan)
 
             let diffDays = Int(diff / 86400)
+
+            print(
+                "today",
+                Date(timeIntervalSince1970: startOfToday.timeIntervalSince1970),
+                "splan",
+                Date(timeIntervalSince1970: TimeInterval(startOfStartOfPlan)),
+                diffDays
+            )
 
             currentDayIndex = diffDays
         }
@@ -160,8 +170,8 @@ final class SmokesManager: ObservableObject {
         return limits
     }
 
-    private func addNewDate() {
+    private func addNewDate(auto: Bool = true) {
         smokesDates.append(.now)
-        smokesCount.append(1)
+        smokesCount.append(auto ? 1 : 0)
     }
 }

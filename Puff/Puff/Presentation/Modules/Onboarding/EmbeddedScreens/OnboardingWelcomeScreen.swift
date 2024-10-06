@@ -26,6 +26,9 @@ struct OnboardingWelcomeScreen: View {
                     .frame(72)
                     .scaleEffect(imageScale)
                     .animation(.smooth, value: imageScale)
+                    .onTapGesture(count: 5) {
+                        onboardingVM.hasSeenOnboarding = true
+                    }
 
                 VStack(spacing: 12) {
                     if shouldShow {
