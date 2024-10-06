@@ -25,7 +25,9 @@ struct OnboardingSurveySideEffectScreen: View {
             nextButtonText: "OnboardingSurveySideEffects.GetTheQuitPlan".l,
             items: items
         ) {
-            onboardingVM.nextScreen()
+            delay(0.02) {
+                onboardingVM.nextScreen()
+            }
         } actionWithoutDelay: {
             isForwardDirection = true
         }

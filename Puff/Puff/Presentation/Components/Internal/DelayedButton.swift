@@ -12,7 +12,7 @@ struct DelayedButton<Content: View>: View {
     var afterPressedScale: Double = 0.93
     var afterPressedScaleAnchor: UnitPoint = .center
     var afterPressedOpacity: Double = 1
-    var delayTime: Double = 0.15
+    var delayTime: Double = 0.1
 
     var isDisabled: Bool = false
 
@@ -47,14 +47,13 @@ struct DelayedButton<Content: View>: View {
             isButtonPressed = true
             actionWithoutDelay()
 
+            action()
+
+
             delay(delayTime) {
                 viewScale = 1
                 viewOpacity = 1
-
-                delay(delayTime + 0.05) {
-                    action()
-                    isButtonPressed = false
-                }
+                isButtonPressed = false
             }
         }
     }

@@ -42,10 +42,11 @@ struct PremiumCongratulationView: View {
 
             Spacer()
         }
-        .overlay {
+        .overlay(alignment: .bottom) {
             Text("Paywall.Purchased".l)
                 .font(.semibold18)
                 .foregroundStyle(.white.opacity(0.56))
+                .padding(.bottom, 30)
         }
         .onAppear {
             delay(0.4) {

@@ -78,7 +78,7 @@ struct AppPaywallView: View {
         }
         .onChange(of: subscriptionsManager.isPremium) { newValue in
             if newValue {
-                shouldShowCongratulationView.toggle()
+                shouldShowCongratulationView = true
             }
         }
     }
@@ -239,17 +239,25 @@ struct AppPaywallView: View {
             VStack(spacing: 5) {
                 AccentButton(
                     text: purchaseText,
-                    isDisabled: subscriptionsManager.products.isEmpty,
-                    action: makePurchase
-                )
+                    isDisabled: subscriptionsManager.products.isEmpty
+                ) {
+                    if !subscriptionsManager.isPremium {
+                        makePurchase()
+                    } else {
+                        shouldShowCongratulationView = true
+                    }
+                }
 
-                HStack(spacing: 12) {
+                HStack {
                     Spacer()
 
                     linkText(
                         "Paywall.TermsOfUse".l,
                         urlString: "https://sites.google.com/view/puffless/eng-terms-of-use"
                     )
+
+                    Spacer()
+                        .frame(maxWidth: 12)
 
                     linkText(
                         "Paywall.PrivacyPolicy".l,

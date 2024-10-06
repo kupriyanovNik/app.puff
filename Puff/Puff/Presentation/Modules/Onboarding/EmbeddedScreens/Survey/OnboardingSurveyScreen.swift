@@ -143,7 +143,9 @@ struct OnboardingSurveyScreen: View {
         let text = question.answers[index]
 
         DelayedButton(delayTime: 0.08) {
-            selectAnswer(index: index)
+            delay(0.02) {
+                selectAnswer(index: index)
+            }
         } actionWithoutDelay: {
             isForwardDirection = true
         } content: {
