@@ -163,12 +163,12 @@ struct AccountView: View {
 //            cell("Виджеты", imageName: "accountWidgetsImage")
 
             cell(
-                "Связаться с нами",
+                "Account.ContactUs".l,
                 imageName: "accountTgImage"
             ) { "https://t.me/puffless_support".openURL() }
 
             cell(
-                "Подписка",
+                "Account.Subscription".l,
                 imageName: "accountSubscriptionImage"
             ) {
                 if subscriptionsManager.isPremium {
@@ -179,19 +179,19 @@ struct AccountView: View {
             }
 
             cell(
-                "Наш Telegram-канал",
+                "Account.OurChannel".l,
                 imageName: "accountLanguageImage"
             ) { communityUrlString.openURL() }
 
             cell(
-                "Уведомления",
+                "Account.Notifications".l,
                 imageName: "accountNotificationsImage",
                 content: Toggle("", isOn: $isNotificationsEnabled).labelsHidden()
             ) { isNotificationsEnabled.toggle() }
 
             if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
                 cell(
-                    "Сбросить план бросания",
+                    "Account.ResetQuittingPlan".l,
                     imageName: "accountResetImage",
                     withDivider: false,
                     color: Color(hex: 0xFF7D7D)
@@ -214,14 +214,14 @@ struct AccountView: View {
         VStack(spacing: 32) {
             VStack(spacing: 18) {
                 MarkdownText(
-                    text: "Вы уверены, что хотите сбросить план бросания?",
-                    markdowns: ["сбросить план бросания?"],
+                    text: "AccountPlanQuitting.Title".l,
+                    markdowns: ["сбросить план бросания?", "reset your quit plan?"],
                     accentColor: Color(hex: 0xFF7D7D)
                 )
                 .font(.bold22)
                 .multilineTextAlignment(.center)
 
-                Text("Это не затронет статистику затяжек - все данные о том, сколько вы парили ранее, сохранятся.\n\nВ любое время вы сможете заново начать любой план бросания.")
+                Text("AccountPlanQuitting.Description".l)
                     .font(.medium16)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Palette.textSecondary)
@@ -229,7 +229,7 @@ struct AccountView: View {
             .padding(.horizontal, 24)
 
             VStack(spacing: 10) {
-                AccentButton(text: "Да, сбросить план", background: Color(hex: 0xFF7D7D)) {
+                AccentButton(text: "AccountPlanQuitting.Reset".l, background: Color(hex: 0xFF7D7D)) {
                     smokesManager.resetPlan()
                     shouldShowResetWarning = false
 
@@ -238,7 +238,7 @@ struct AccountView: View {
                     }
                 }
 
-                SecondaryButton(text: "Отмена") {
+                SecondaryButton(text: "Cancel".l) {
                     shouldShowResetWarning = false
                 }
             }

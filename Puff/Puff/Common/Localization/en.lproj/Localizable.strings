@@ -13,6 +13,7 @@
 "Skip" = "Skip";
 "Continue" = "Continue";
 "Allow" = "Allow";
+"Cancel" = "Отмена";
 
 // MARK: - Images
 
@@ -140,3 +141,14 @@
 "NotificationRequest.Title" = "Let's help you remember to track your puffs";
 "NotificationRequest.Description" = "Allow us to send you notifications so we can help you develop a new habit";
 "NotificationRequest.MaybeLater" = "Maybe later";
+
+// MARK: - Account
+
+"Account.ContactUs" = "Contact us";
+"Account.Subscription" = "Subscription";
+"Account.OurChannel" = "Our Telegram-channel";
+"Account.Notifications" = "Notifications";
+"Account.ResetQuittingPlan" = "Reset quit plan";
+"AccountPlanQuitting.Title" = "Are you sure you want to reset your quit plan?";
+"AccountPlanQuitting.Description" = "This will not affect your puff statistics - all data about how much you have previously vaped will be saved.\n\nYou can restart any quit plan at any time.";
+"AccountPlanQuitting.Reset" = "Yes, reset quit plan";

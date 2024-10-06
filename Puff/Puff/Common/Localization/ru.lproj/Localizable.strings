@@ -13,6 +13,7 @@
 "Skip" = "Пропустить";
 "Continue" = "Продолжить";
 "Allow" = "Разрешить";
+"Cancel" = "Отмена";
 
 // MARK: - Images
 
@@ -140,3 +141,14 @@
 "NotificationRequest.Title" = "Поможем не забывать отмечать затяжки";
 "NotificationRequest.Description" = "Разрешите присылать вам уведомления, чтобы мы смогли помочь вам сформировать новую привычку";
 "NotificationRequest.MaybeLater" = "Возможно позже";
+
+// MARK: - Account
+
+"Account.ContactUs" = "Связаться с нами";
+"Account.Subscription" = "Подписка";
+"Account.OurChannel" = "Наш Telegram-канал";
+"Account.Notifications" = "Уведомления";
+"Account.ResetQuittingPlan" = "Сбросить план бросания";
+"AccountPlanQuitting.Title" = "Вы уверены, что хотите сбросить план бросания?";
+"AccountPlanQuitting.Description" = "Это не затронет статистику затяжек - все данные о том, сколько вы парили ранее, сохранятся.\n\nВ любое время вы сможете заново начать любой план бросания.";
+"AccountPlanQuitting.Reset" = "Да, сбросить план";
