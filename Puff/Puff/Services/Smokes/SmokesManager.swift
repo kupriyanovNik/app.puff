@@ -124,6 +124,9 @@ final class SmokesManager: ObservableObject {
             planCounts[0] = smokesCount[index]
         }
 
+        realPlanDayIndex = 0
+        currentDayIndex = 0
+
         isPlanStarted = true
         isPlanEnded = false
     }
@@ -204,6 +207,7 @@ final class SmokesManager: ObservableObject {
         isPlanStarted = false
         isPlanEnded = false
         currentDayIndex = 0
+        realPlanDayIndex = 0
         planStartDate = nil
     }
 

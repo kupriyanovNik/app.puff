@@ -179,7 +179,7 @@ struct AccountView: View {
             }
 
             cell(
-                "Вступить в комьюнити",
+                "Наш Telegram-канал",
                 imageName: "accountLanguageImage"
             ) { communityUrlString.openURL() }
 
@@ -189,7 +189,7 @@ struct AccountView: View {
                 content: Toggle("", isOn: $isNotificationsEnabled).labelsHidden()
             ) { isNotificationsEnabled.toggle() }
 
-            if smokesManager.isPlanStarted {
+            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
                 cell(
                     "Сбросить план бросания",
                     imageName: "accountResetImage",

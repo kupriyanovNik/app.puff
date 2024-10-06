@@ -68,6 +68,11 @@ struct ActionMenuPlanDevelopingView: View {
                 shouldShowError = newValue < todaySmokes
             }
         }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.25)) {
+                shouldShowError = smokesCount < todaySmokes
+            }
+        }
     }
 
     @ViewBuilder
