@@ -23,11 +23,11 @@ struct OnboardingSurveyNegativeEffectScreen: View {
             nextButtonText: "Next".l,
             items: items
         ) {
+            isForwardDirection = true
+            
             delay(0.02) {
                 onboardingVM.questionIndex = 8
             }
-        } actionWithoutDelay: {
-            isForwardDirection = true
         }
     }
 }

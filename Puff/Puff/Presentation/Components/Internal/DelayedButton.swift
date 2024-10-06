@@ -17,7 +17,6 @@ struct DelayedButton<Content: View>: View {
     var isDisabled: Bool = false
 
     let action: () -> Void
-    var actionWithoutDelay: () -> Void = {}
     let content: () -> Content
 
     @State private var viewScale: Double = 1
@@ -45,7 +44,6 @@ struct DelayedButton<Content: View>: View {
             viewScale = afterPressedScale
             viewOpacity = afterPressedOpacity
             isButtonPressed = true
-            actionWithoutDelay()
 
             action()
 

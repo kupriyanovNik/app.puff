@@ -25,11 +25,11 @@ struct OnboardingSurveySideEffectScreen: View {
             nextButtonText: "OnboardingSurveySideEffects.GetTheQuitPlan".l,
             items: items
         ) {
+            isForwardDirection = true
+
             delay(0.02) {
                 onboardingVM.nextScreen()
             }
-        } actionWithoutDelay: {
-            isForwardDirection = true
-        }
+        } 
     }
 }
