@@ -164,7 +164,7 @@ struct StatisticsMainChart: View {
                                         (max(0, Double(realValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
                                     )
 
-                                    if heightOfReal <= heightOfEstimated {
+                                    if realValue <= estimatedValue {
                                         RoundedRectangle(cornerRadius: 8)
                                             .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
                                             .overlay(alignment: .bottom) {
