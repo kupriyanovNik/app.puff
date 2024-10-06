@@ -43,7 +43,7 @@ struct OnboardingSurveySkippedScreen: View {
         }()
 
         return [
-            reasonIndex != nil ? first : ["Резкий отказ", "срыву"],
+            reasonIndex != nil ? first : ["Резкий отказ", "срыву", "cold turkey", "relapse"],
             ["постепенного бросания", "gradual quitting approach"],
             ["Навсегда", "Forever"]
         ]
