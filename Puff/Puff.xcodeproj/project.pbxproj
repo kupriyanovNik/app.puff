@@ -329,7 +329,6 @@
 			children = (
 				B7C886002CC39FFA004B6E9D /* Account */,
 				B7C886162CC39FFA004B6E9D /* ActionMenu */,
-				B7C886232CC39FFA004B6E9D /* Notification */,
 				B7C886272CC39FFA004B6E9D /* Paywall */,
 				B7C8863B2CC39FFA004B6E9D /* Onboarding */,
 				B7C886502CC39FFA004B6E9D /* Statistics */,
@@ -659,6 +658,7 @@
 		B7C8863B2CC39FFA004B6E9D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				B7C886232CC39FFA004B6E9D /* Notification */,
 				B7C886382CC39FFA004B6E9D /* EmbeddedScreens */,
 				B7C886392CC39FFA004B6E9D /* OnboardingView.swift */,
 				B7C8863A2CC39FFA004B6E9D /* OnboardingViewModel.swift */,

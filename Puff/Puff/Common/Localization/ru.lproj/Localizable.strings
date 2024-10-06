@@ -124,3 +124,9 @@
 
 "Paywall.Welcome" = "Добро пожаловать";
 "Paywall.Purchased" = "Подписка оформлена";
+
+// MARK: - NotificationRequest
+
+"NotificationRequest.Title" = "Поможем не забывать отмечать затяжки";
+"NotificationRequest.Description" = "Разрешите присылать вам уведомления, чтобы мы смогли помочь вам сформировать новую привычку";
+"NotificationRequest.MaybeLater" = "Возможно позже";

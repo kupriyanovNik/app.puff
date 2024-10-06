@@ -22,11 +22,11 @@ struct NotificationRequestView: View {
                 .padding(.horizontal, 60)
 
             VStack(spacing: 16) {
-                Text("Поможем не забывать отмечать затяжки")
+                Text("NotificationRequest.Title".l)
                     .font(.bold28)
                     .foregroundStyle(Palette.textPrimary)
 
-                Text("Разрешите присылать вам уведомления, чтобы мы смогли помочь вам сформировать новую привычку")
+                Text("NotificationRequest.Description".l)
                     .font(.medium16)
                     .foregroundStyle(Palette.textSecondary)
                     .padding(.horizontal, 10)
@@ -45,14 +45,14 @@ struct NotificationRequestView: View {
     @ViewBuilder
     private func bottomView() -> some View {
         VStack(spacing: 6) {
-            AccentButton(text: "Разрешить") {
+            AccentButton(text: "Allow".l) {
                 NotificationManager.shared.requestAuthorization {
                     NotificationManager.shared.sendFirstDaysNotifications()
                     action()
                 }
             }
 
-            TextButton(text: "Возможно позже") {
+            TextButton(text: "NotificationRequest.MaybeLater") {
                 delay(0.15) {
                     hasSkippedNotificationRequest = true
                     action()

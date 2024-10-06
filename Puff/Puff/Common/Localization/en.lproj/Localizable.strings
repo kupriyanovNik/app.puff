@@ -124,3 +124,9 @@
 
 "Paywall.Welcome" = "Welcome";
 "Paywall.Purchased" = "Subscription activated";
+
+// MARK: - NotificationRequest
+
+"NotificationRequest.Title" = "Let's help you remember to track your puffs";
+"NotificationRequest.Description" = "Allow us to send you notifications so we can help you develop a new habit";
+"NotificationRequest.MaybeLater" = "Maybe later";
