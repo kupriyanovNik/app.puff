@@ -17,6 +17,7 @@ struct OnboardingEffectsBaseScreen: View {
     let items: [(name: String, image: String)]
 
     var action: () -> Void
+    var actionWithoutDelay: () -> Void = {}
 
     var body: some View {
         VStack(spacing: 20) {
@@ -32,9 +33,14 @@ struct OnboardingEffectsBaseScreen: View {
 
             Spacer()
 
-            AccentButton(text: nextButtonText, isDisabled: selectedIndices.isEmpty, action: action)
-                .padding(.horizontal, 12)
-                .padding(.bottom, -16)
+            AccentButton(
+                text: nextButtonText,
+                isDisabled: selectedIndices.isEmpty,
+                action: action,
+                actionWithoutDelay: actionWithoutDelay
+            )
+            .padding(.horizontal, 12)
+            .padding(.bottom, -16)
         }
     }
 

@@ -11,6 +11,8 @@ struct OnboardingSurveyScreen: View {
 
     private let maxIndex: Int = 9
 
+    @State private var isForwardDirection: Bool = true
+
     @ObservedObject var onboardingVM: OnboardingViewModel
 
     var questionIndex: Int {
@@ -34,14 +36,40 @@ struct OnboardingSurveyScreen: View {
                 if questionIndex <= 5 {
                     questionView(for: OnboardingSurveyScreen.questions[questionIndex])
                         .id(questionIndex)
-                        .makeSlideTransition()
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: isForwardDirection ? .trailing : .leading) ,
+                                removal: .move(edge: isForwardDirection ? .leading : .trailing)
+                            ).animation(.easeInOut(duration: 0.3))
+                        )
+                        .animation(.easeInOut(duration: 0.3))
                 } else {
                     if questionIndex == 7 {
-                        OnboardingSurveyNegativeEffectScreen(onboardingVM: onboardingVM)
-                            .makeSlideTransition()
+                        OnboardingSurveyNegativeEffectScreen(
+                            onboardingVM: onboardingVM,
+                            isForwardDirection: $isForwardDirection
+                        )
+                        .id(questionIndex)
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: isForwardDirection ? .trailing : .leading) ,
+                                removal: .move(edge: isForwardDirection ? .leading : .trailing)
+                            ).animation(.easeInOut(duration: 0.3))
+                        )
+                        .animation(.easeInOut(duration: 0.3))
                     } else if questionIndex == 8 {
-                        OnboardingSurveySideEffectScreen(onboardingVM: onboardingVM)
-                            .makeSlideTransition()
+                        OnboardingSurveySideEffectScreen(
+                            onboardingVM: onboardingVM,
+                            isForwardDirection: $isForwardDirection
+                        )
+                        .id(questionIndex)
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: isForwardDirection ? .trailing : .leading) ,
+                                removal: .move(edge: isForwardDirection ? .leading : .trailing)
+                            ).animation(.easeInOut(duration: 0.3))
+                        )
+                        .animation(.easeInOut(duration: 0.3))
                     }
                 }
             }
@@ -74,7 +102,11 @@ struct OnboardingSurveyScreen: View {
                 Spacer()
 
                 TextButton(text: "Пропустить") {
-                    selectAnswer(index: 0)
+                    isForwardDirection = true
+
+                    delay(0.04) {
+                        selectAnswer(index: 0)
+                    }
                 }
                 .transition(.opacity.animation(.smooth))
             }
@@ -128,8 +160,10 @@ struct OnboardingSurveyScreen: View {
     private func answerCell(_ index: Int, question: Question) -> some View {
         let text = question.answers[index]
 
-        DelayedButton {
+        DelayedButton(delayTime: 0.08) {
             selectAnswer(index: index)
+        } actionWithoutDelay: {
+            isForwardDirection = true
         } content: {
             Text(text)
                 .font(.semibold16)
@@ -159,14 +193,18 @@ struct OnboardingSurveyScreen: View {
     }
 
     private func backQuestion() {
-        if questionIndex == 7 {
-            return
-        }
+        isForwardDirection = false
 
-        onboardingVM.questionIndex = max(0, questionIndex - 1)
+        delay(0.04) {
+            if questionIndex == 7 {
+                return
+            }
 
-        if !onboardingVM.surveyAnswersIndices.isEmpty {
-            onboardingVM.surveyAnswersIndices.removeLast()
+            onboardingVM.questionIndex = max(0, questionIndex - 1)
+
+            if !onboardingVM.surveyAnswersIndices.isEmpty {
+                onboardingVM.surveyAnswersIndices.removeLast()
+            }
         }
     }
 

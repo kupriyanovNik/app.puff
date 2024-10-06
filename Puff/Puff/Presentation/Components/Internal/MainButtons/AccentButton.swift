@@ -21,12 +21,14 @@ struct AccentButton: View {
     var isDisabled: Bool = false
 
     var action: () -> Void
+    var actionWithoutDelay: () -> Void = {}
 
     var body: some View {
         DelayedButton(
             afterPressedOpacity: 0.88,
             isDisabled: isDisabled,
-            action: action
+            action: action,
+            actionWithoutDelay: actionWithoutDelay
         ) {
             Text(text)
                 .font(font)

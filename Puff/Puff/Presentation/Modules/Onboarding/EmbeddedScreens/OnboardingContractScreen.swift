@@ -29,7 +29,7 @@ struct OnboardingContractScreen: View {
 
             VStack(spacing: 23) {
                 touchidButton()
-                    .onLongPressGesture(minimumDuration: 4, maximumDistance: 50) {
+                    .onLongPressGesture(minimumDuration: 3.75, maximumDistance: 50) {
                         isPressingEnded = true
                         HapticManager.feedback(style: .heavy)
                     } onPressingChanged: { isPressed in

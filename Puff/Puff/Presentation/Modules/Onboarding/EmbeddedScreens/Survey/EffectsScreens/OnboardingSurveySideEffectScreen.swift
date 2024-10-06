@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingSurveySideEffectScreen: View {
 
     @ObservedObject var onboardingVM: OnboardingViewModel
+    @Binding var isForwardDirection: Bool
 
     @State var selectedIndices: [Int] = []
 
@@ -30,6 +31,8 @@ struct OnboardingSurveySideEffectScreen: View {
             items: items
         ) {
             onboardingVM.nextScreen()
+        } actionWithoutDelay: {
+            isForwardDirection = true
         }
     }
 }

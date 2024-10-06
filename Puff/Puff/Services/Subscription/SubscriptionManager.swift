@@ -62,26 +62,13 @@ extension SubscriptionsManager {
 
             switch result {
             case let .success(.verified(transaction)):
-                // Successful purhcase
                 await transaction.finish()
                 await self.updatePurchasedProducts()
                 await fetchActiveTransactions()
                 callback(nil)
-            case let .success(.unverified(_, error)):
-                // Successful purchase but transaction/receipt can't be verified
-                // Could be a jailbroken phone
-                print("Unverified purchase. Might be jailbroken. Error: \(error)")
-                break
-            case .pending:
-                // Transaction waiting on SCA (Strong Customer Authentication) or
-                // approval from Ask to Buy
-                break
-            case .userCancelled:
-                print("User cancelled!")
-                break
-            @unknown default:
-                print("Failed to purchase the product!")
-                break
+
+            case let .success(.unverified(_, error)): break
+            case .pending, .userCancelled: break
             }
         } catch {
             callback(error.localizedDescription)

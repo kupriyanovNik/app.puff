@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingSurveyNegativeEffectScreen: View {
 
     @ObservedObject var onboardingVM: OnboardingViewModel
+    @Binding var isForwardDirection: Bool
 
     private let items: [(name: String, image: String)] = [
         (name: "Здоровье, самочувствие", image: "onboardingNegativeEffect1Image"),
@@ -26,6 +27,8 @@ struct OnboardingSurveyNegativeEffectScreen: View {
             items: items
         ) {
             onboardingVM.questionIndex += 1
+        } actionWithoutDelay: {
+            isForwardDirection = true
         }
     }
 }
