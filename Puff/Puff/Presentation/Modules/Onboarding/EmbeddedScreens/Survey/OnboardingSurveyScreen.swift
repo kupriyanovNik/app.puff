@@ -36,13 +36,7 @@ struct OnboardingSurveyScreen: View {
                 if questionIndex <= 5 {
                     questionView(for: OnboardingSurveyScreen.questions[questionIndex])
                         .id(questionIndex)
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: isForwardDirection ? .trailing : .leading) ,
-                                removal: .move(edge: isForwardDirection ? .leading : .trailing)
-                            ).animation(.easeInOut(duration: 0.3))
-                        )
-                        .animation(.easeInOut(duration: 0.3))
+                        .makeSlideTransition(isForwardDirection: isForwardDirection)
                 } else {
                     if questionIndex == 7 {
                         OnboardingSurveyNegativeEffectScreen(
@@ -50,26 +44,14 @@ struct OnboardingSurveyScreen: View {
                             isForwardDirection: $isForwardDirection
                         )
                         .id(questionIndex)
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: isForwardDirection ? .trailing : .leading) ,
-                                removal: .move(edge: isForwardDirection ? .leading : .trailing)
-                            ).animation(.easeInOut(duration: 0.3))
-                        )
-                        .animation(.easeInOut(duration: 0.3))
+                        .makeSlideTransition(isForwardDirection: isForwardDirection)
                     } else if questionIndex == 8 {
                         OnboardingSurveySideEffectScreen(
                             onboardingVM: onboardingVM,
                             isForwardDirection: $isForwardDirection
                         )
                         .id(questionIndex)
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: isForwardDirection ? .trailing : .leading) ,
-                                removal: .move(edge: isForwardDirection ? .leading : .trailing)
-                            ).animation(.easeInOut(duration: 0.3))
-                        )
-                        .animation(.easeInOut(duration: 0.3))
+                        .makeSlideTransition(isForwardDirection: isForwardDirection)
                     }
                 }
             }

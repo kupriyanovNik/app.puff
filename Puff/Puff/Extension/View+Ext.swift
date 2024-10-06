@@ -114,6 +114,17 @@ extension View {
             )
             .animation(.easeInOut(duration: 0.3))
     }
+
+    func makeSlideTransition(isForwardDirection: Bool) -> some View {
+        self
+            .transition(
+                .asymmetric(
+                    insertion: .move(edge: isForwardDirection ? .trailing : .leading) ,
+                    removal: .move(edge: isForwardDirection ? .leading : .trailing)
+                ).animation(.easeInOut(duration: 0.3))
+            )
+            .animation(.easeInOut(duration: 0.3))
+    }
 }
 
 extension View {
