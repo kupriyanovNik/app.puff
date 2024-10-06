@@ -63,6 +63,16 @@
 "OnboardingSurvey.Question5.Answer2" = "Yes, 1-2 times";
 "OnboardingSurvey.Question5.Answer3" = "Yes, many times";
 
+"OnboardingSurvey.SkippedScreen.Title1WithReason1" = "Quitting bad habit cold turkey almost always leads to intense cravings and subsequent relapse";
+"OnboardingSurvey.SkippedScreen.Title1WithReason2" = "Quitting bad habit cold turkey almost always leads to intense stress and subsequent relapse";
+"OnboardingSurvey.SkippedScreen.Title1WithReason3" = "Quitting cold turkey, if not met with support from those around you, almost always leads to a relapse";
+"OnboardingSurvey.SkippedScreen.Title1WithourReason" = "Quitting bad habit cold turkey almost always leads to a relapse";
+"OnboardingSurvey.SkippedScreen.Title2" = "Puffless uses a gradual quitting approach";
+"OnboardingSurvey.SkippedScreen.Title3" = "The habit of vaping will be a thing of the past. Forever";
+"OnboardingSurvey.SkippedScreen.Description1" = "The body struggles to cope with sudden changes. This can lead to intense cravings that push you to resume the habit.";
+"OnboardingSurvey.SkippedScreen.Description2" = "We will build your personal quit plan based on the strength of your habit and the desired quit period.";
+"OnboardingSurvey.SkippedScreen.Description3" = "A gradual quitting process will allow your body to easily adapt to the changes - you won’t just quit for good, but you’ll also get rid of the urge to vape!";
+
 "OnboardingSurvey.Question6.Answer1" = "Cravings";
 "OnboardingSurvey.Question6.Answer2" = "Stress";
 "OnboardingSurvey.Question6.Answer3" = "Influence of others";

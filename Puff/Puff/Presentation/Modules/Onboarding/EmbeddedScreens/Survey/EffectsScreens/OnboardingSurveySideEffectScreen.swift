@@ -14,7 +14,7 @@ struct OnboardingSurveySideEffectScreen: View {
 
     @State var selectedIndices: [Int] = []
 
-    private let items: [(name: String, image: String)] = (1...5).map {
+    private let items: [(name: String, image: String)] = (1...6).map {
         (name: "OnboardingSurveySideEffects.Answer\($0)".l, image: "onboardingSideEffect\($0)Image")
     }
 
@@ -30,6 +30,6 @@ struct OnboardingSurveySideEffectScreen: View {
             delay(0.02) {
                 onboardingVM.nextScreen()
             }
-        } 
+        }
     }
 }

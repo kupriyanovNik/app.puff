@@ -52,7 +52,7 @@ struct NotificationRequestView: View {
                 }
             }
 
-            TextButton(text: "NotificationRequest.MaybeLater") {
+            TextButton(text: "NotificationRequest.MaybeLater".l) {
                 delay(0.15) {
                     hasSkippedNotificationRequest = true
                     action()

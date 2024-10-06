@@ -16,52 +16,41 @@ struct OnboardingSurveySkippedScreen: View {
     var reasonIndex: Int?
 
     private var titles: [String] {
-
-        let withReason = reasonIndex != nil
-
-        let first: String = {
-            switch reasonIndex {
-            case 0: "Резкий отказ от вредной привычки почти всегда приводит к сильной ломке и дальнейшему срыву"
-            case 1: "Резкий отказ от вредной привычки почти всегда приводит к сильному стрессу и дальнейшему срыву"
-            case 2: "Резкий отказ, если не встречает поддержки среди окружающих, почти всегда приводит к срыву"
-            default: "Резкий отказ от вредной привычки почти всегда приводит к срыву"
-            }
-        }()
+        if let reasonIndex, reasonIndex < 3 {
+            return [
+                "OnboardingSurvey.SkippedScreen.Title1WithReason\(reasonIndex + 1)".l,
+                "OnboardingSurvey.SkippedScreen.Title2".l,
+                "OnboardingSurvey.SkippedScreen.Title3".l
+            ]
+        }
 
         return [
-            withReason ? first : "Резкий отказ от вредной привычки почти всегда приводит к срыву",
-            "Puffless использует метод постепенного бросания",
-            "Привычка парить останется в прошлом. Навсегда"
+            "OnboardingSurvey.SkippedScreen.Title1WithourReason".l,
+            "OnboardingSurvey.SkippedScreen.Title2".l,
+            "OnboardingSurvey.SkippedScreen.Title3".l
         ]
     }
 
 
     private var titleMarks: [[String]] {
-
-        let withReason = reasonIndex != nil
-
         let first: [String] = {
             switch reasonIndex {
-            case 0: ["Резкий отказ", "сильной ломке"]
-            case 1: ["Резкий отказ", "сильному стрессу"]
-            case 2: ["Резкий отказ", "поддержки среди окружающих,"]
-            default: ["Резкий отказ", "срыву"]
+            case 0: ["Резкий отказ", "сильной ломке", "cold turkey", "intense cravings"]
+            case 1: ["Резкий отказ", "сильному стрессу", "cold turkey", "intense stress"]
+            case 2: ["Резкий отказ", "поддержки среди окружающих,", "cold turkey,", "those around you,"]
+            default: ["Резкий отказ", "срыву", "cold turkey", "relapse"]
             }
         }()
 
         return [
-            withReason ? first : ["Резкий отказ", "срыву"],
-            ["постепенного бросания"],
-            ["Навсегда"]
+            reasonIndex != nil ? first : ["Резкий отказ", "срыву"],
+            ["постепенного бросания", "gradual quitting approach"],
+            ["Навсегда", "Forever"]
         ]
 
     }
 
-    private let descriptions: [String] = [
-        "Организму сложно справиться с внезапными изменениями. Появляется сильнейшая ломка, заставляющая возобновить привычку.",
-        "Мы построим ваш личный план бросания, опираясь на силу вашей привычки и срок, за который вы хотите бросить.",
-        "Плавный отказ позволит организму легко привыкнуть к изменениям - вы не только окончательно бросите, но и навсегда избавитесь от тяги к парению!"
-    ]
+    private let descriptions: [String] = Array((1...3).map { "OnboardingSurvey.SkippedScreen.Description\($0)".l })
 
     var body: some View {
         VStack(spacing: 35) {

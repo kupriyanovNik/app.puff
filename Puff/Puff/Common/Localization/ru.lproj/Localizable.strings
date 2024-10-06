@@ -63,6 +63,16 @@
 "OnboardingSurvey.Question5.Answer2" = "Да, 1-2 раза";
 "OnboardingSurvey.Question5.Answer3" = "Да, много раз";
 
+"OnboardingSurvey.SkippedScreen.Title1WithReason1" = "Резкий отказ от вредной привычки почти всегда приводит к сильной ломке и дальнейшему срыву";
+"OnboardingSurvey.SkippedScreen.Title1WithReason2" = "Резкий отказ от вредной привычки почти всегда приводит к сильному стрессу и дальнейшему срыву";
+"OnboardingSurvey.SkippedScreen.Title1WithReason3" = "Резкий отказ, если не встречает поддержки среди окружающих, почти всегда приводит к срыву";
+"OnboardingSurvey.SkippedScreen.Title1WithourReason" = "Резкий отказ от вредной привычки почти всегда приводит к срыву";
+"OnboardingSurvey.SkippedScreen.Title2" = "Puffless использует метод постепенного бросания";
+"OnboardingSurvey.SkippedScreen.Title3" = "Привычка парить останется в прошлом. Навсегда";
+"OnboardingSurvey.SkippedScreen.Description1" = "Организму сложно справиться с внезапными изменениями. Появляется сильнейшая ломка, заставляющая возобновить привычку.";
+"OnboardingSurvey.SkippedScreen.Description2" = "Мы построим ваш личный план бросания, опираясь на силу вашей привычки и срок, за который вы хотите бросить.";
+"OnboardingSurvey.SkippedScreen.Description3" = "Плавный отказ позволит организму легко привыкнуть к изменениям - вы не только окончательно бросите, но и навсегда избавитесь от тяги к парению!";
+
 "OnboardingSurvey.Question6.Answer1" = "Ломка";
 "OnboardingSurvey.Question6.Answer2" = "Стресс";
 "OnboardingSurvey.Question6.Answer3" = "Влияние окружающих";
