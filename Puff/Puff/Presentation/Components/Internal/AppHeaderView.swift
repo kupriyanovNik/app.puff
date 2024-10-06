@@ -22,7 +22,7 @@ struct AppHeaderView: View {
             Spacer()
 
             Button {
-                navigationVM.shouldShowAccountView.toggle()
+                navigationVM.shouldShowAccountView = true
             } label: {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color(hex: 0xE7E7E7))

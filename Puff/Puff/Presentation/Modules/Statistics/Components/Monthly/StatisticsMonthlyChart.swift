@@ -165,8 +165,6 @@ struct StatisticsMonthlyChart: View {
                             to: statisticsMVM.monthForDate
                         ) ?? .now
                     }
-
-                    print("MFD", statisticsMVM.monthForDate)
                 }
             }
     }

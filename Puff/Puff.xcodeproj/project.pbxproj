@@ -28,6 +28,8 @@
 		B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
 		B76AEF5C2CA97ECB000003F8 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */; };
 		B76AEF6D2CA9DE57000003F8 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76AEF6C2CA9DE57000003F8 /* Bundle+Ext.swift */; };
+		B77E2DFC2CB19B27001B4F8C /* StatisticsFrequencyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77E2DFB2CB19B27001B4F8C /* StatisticsFrequencyChart.swift */; };
+		B77E2DFE2CB19F82001B4F8C /* StatisticsFrequencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77E2DFD2CB19F82001B4F8C /* StatisticsFrequencyViewModel.swift */; };
 		B78A6A1D2CA71A940074067B /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A6A1C2CA71A940074067B /* Optional+Ext.swift */; };
 		B79527C02CA5C90600ADB323 /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527BF2CA5C90600ADB323 /* CustomSheet.swift */; };
 		B79527CB2CA5F97200ADB323 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */; };
@@ -129,6 +131,8 @@
 		B75277492C9F4C7B00F8B98D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
 		B76AEF6C2CA9DE57000003F8 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
+		B77E2DFB2CB19B27001B4F8C /* StatisticsFrequencyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsFrequencyChart.swift; sourceTree = "<group>"; };
+		B77E2DFD2CB19F82001B4F8C /* StatisticsFrequencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsFrequencyViewModel.swift; sourceTree = "<group>"; };
 		B78A6A1C2CA71A940074067B /* Optional+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Ext.swift"; sourceTree = "<group>"; };
 		B79527BF2CA5C90600ADB323 /* CustomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
 		B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
@@ -354,6 +358,15 @@
 				B73B2E542C9B64CD001EB658 /* AppManager.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		B77E2DF82CB19B16001B4F8C /* Frequency */ = {
+			isa = PBXGroup;
+			children = (
+				B77E2DFB2CB19B27001B4F8C /* StatisticsFrequencyChart.swift */,
+				B77E2DFD2CB19F82001B4F8C /* StatisticsFrequencyViewModel.swift */,
+			);
+			path = Frequency;
 			sourceTree = "<group>";
 		};
 		B7B55EAB2CC126100057EA61 /* Weekly */ = {
@@ -647,6 +660,7 @@
 				B7C886492CC39FFA004B6E9D /* StatisticsMainChart.swift */,
 				B7C8864A2CC39FFA004B6E9D /* StatisticsPlanDailyView.swift */,
 				B7C8864B2CC39FFA004B6E9D /* StatisticsViewPlanViews.swift */,
+				B77E2DF82CB19B16001B4F8C /* Frequency */,
 				B7B55EAD2CC143AD0057EA61 /* Monthly */,
 				B7B55EAB2CC126100057EA61 /* Weekly */,
 			);
@@ -864,6 +878,7 @@
 				B7B55EB12CC144020057EA61 /* StatisticsMonthlyChart.swift in Sources */,
 				B73B2E4F2C9B6498001EB658 /* HapticManager.swift in Sources */,
 				B7F377662C9B682A0050C93B /* AccentButton.swift in Sources */,
+				B77E2DFE2CB19F82001B4F8C /* StatisticsFrequencyViewModel.swift in Sources */,
 				B7325F612CA866CC007D8456 /* AppHeaderView.swift in Sources */,
 				B7F574DD2C9C144A0059BAB9 /* MainInputField.swift in Sources */,
 				B7F3776B2C9B68AC0050C93B /* DelayedButton.swift in Sources */,
@@ -913,6 +928,7 @@
 				B78A6A1D2CA71A940074067B /* Optional+Ext.swift in Sources */,
 				B7C8865F2CC39FFA004B6E9D /* HomeViewComponents.swift in Sources */,
 				B7C886602CC39FFA004B6E9D /* HomeViewPlanViews.swift in Sources */,
+				B77E2DFC2CB19B27001B4F8C /* StatisticsFrequencyChart.swift in Sources */,
 				B7C886242CC39FFA004B6E9D /* NotificationRequestView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

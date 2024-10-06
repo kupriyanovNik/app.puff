@@ -197,6 +197,7 @@ struct StatisticsMainChart: View {
             Text("0")
         }
         .font(.medium11)
+        .width(27)
         .foregroundStyle(Palette.textQuaternary)
         .padding(.bottom, 26)
     }

@@ -42,6 +42,8 @@ final class SmokesManager: ObservableObject {
     @AppStorage("smokesCount") private(set) var smokesCount: [Int] = []
     @AppStorage("smokesDates") private(set) var smokesDates: [Date] = []
 
+    @AppStorage("smokesHours") var smokesHours: [Int] = Array(repeating: 0, count: 24)
+
     // MARK: - Inits
 
     init() {
@@ -132,6 +134,8 @@ final class SmokesManager: ObservableObject {
         if dateOfFirstSmoke == nil {
             dateOfFirstSmoke = Int(Date().timeIntervalSince1970)
         }
+
+        smokesHours[calendar.component(.hour, from: .now) - 1] += 1
 
         if isPlanStarted {
             if planCounts.count > currentDayIndex {
