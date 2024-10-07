@@ -239,3 +239,22 @@
 "ActionMenuYesterdayExceeded.ExtendPlan" = "Extend the plan by 1 day";
 
 "ActionMenuYesterdayExceeded.PlanExtended" = "The plan has been extended by 1 day";
+
+// MARK: - Tab Bar
+
+"TabBar.Home" = "Home";
+"TabBar.Progress" = "Progress";
+
+// MARK: - Home
+
+"Home.StartPlan" = "Start the quit plan";
+"Home.LimitForToday" = "Limit for today";
+"Home.Day" = "Day";
+"Home.ReadyToQuit" = "I’m ready to quit";
+"Home.RestartPlan" = "Restart the plan";
+"Home.DontSmokeFor" = "I haven’t vaped for";
+"Home.TrackFirstPuff" = "Track your first puff";
+"Home.ReachedLimitFor" = "You’ve reached the limit for today";
+"Home.LimitWillBeUpdated" = "Limit will be updated at 12:00 AM";
+"Home.Puffs" = "Puffs";
+"Home.RealyLongTime" = "Long time ago";

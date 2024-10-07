@@ -239,3 +239,22 @@
 "ActionMenuYesterdayExceeded.ExtendPlan" = "Продлить план на 1 день";
 
 "ActionMenuYesterdayExceeded.PlanExtended" = "План продлен на 1 день";
+
+// MARK: - Tab Bar
+
+"TabBar.Home" = "Главная";
+"TabBar.Progress" = "Прогресс";
+
+// MARK: - Home
+
+"Home.StartPlan" = "Начать план бросания";
+"Home.LimitForToday" = "Лимит сегодня";
+"Home.Day" = "День";
+"Home.ReadyToQuit" = "Я готов бросить";
+"Home.RestartPlan" = "Начать план заново";
+"Home.DontSmokeFor" = "Я не парю уже";
+"Home.TrackFirstPuff" = "Отметьте первую затяжку";
+"Home.ReachedLimitFor" = "Вы достигли лимита на сегодня";
+"Home.LimitWillBeUpdated" = "Лимит обновится в 00:00";
+"Home.Puffs" = "Затяжек";
+"Home.RealyLongTime" = "Очень давно";

@@ -163,7 +163,7 @@ extension HomeView {
                         .foregroundStyle(Palette.darkBlue)
                         .hCenter()
                         .overlay {
-                            Text("Затяжек")
+                            Text("Home.Puffs".l)
                                 .font(isSmallDevice ? .medium22 : .medium24)
                                 .foregroundStyle(Palette.textTertiary)
                                 .offset(y: -75)
@@ -203,14 +203,14 @@ extension HomeView {
 
         private func setTime() {
             if smokesManager.todayLimit == smokesManager.todaySmokes {
-                text = "Вы достигли лимита на сегодня"
+                text = "Home.ReachedLimitFor".l
             } else if smokesManager.todayLimit + 1 == smokesManager.todaySmokes {
-                text = "Лимит обновится в 00:00"
+                text = "Home.LimitWillBeUpdated".l
             } else {
                 if let dateOfLastSmoke = smokesManager.dateOfLastSmoke {
                     text = getLastSmokeTimeString(for: dateOfLastSmoke)
                 } else {
-                    text = "Отметьте первую затяжку"
+                    text = "Home.TrackFirstPuff".l
                 }
             }
         }

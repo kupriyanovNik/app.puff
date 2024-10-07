@@ -26,8 +26,8 @@ enum TabBarModel: CaseIterable {
 
     var title: String {
         switch self {
-        case .home: "Главная"
-        case .statistics: "Прогресс"
+        case .home: "TabBar.Home".l
+        case .statistics: "TabBar.Progress".l
         }
     }
 }

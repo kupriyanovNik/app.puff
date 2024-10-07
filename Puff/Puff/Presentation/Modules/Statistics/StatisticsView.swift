@@ -26,7 +26,7 @@ struct StatisticsView: View {
     @ViewBuilder
     private func viewContent() -> some View {
         VStack(spacing: 10) {
-            AppHeaderView(title: "Прогресс", navigationVM: navigationVM)
+            AppHeaderView(title: "TabBar.Progress".l, navigationVM: navigationVM)
 
             ScrollView {
                 VStack(spacing: 10) {
@@ -71,7 +71,7 @@ struct StatisticsView: View {
                 navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
             }
         } else if smokesManager.isLastDayOfPlan && !smokesManager.isPlanEnded {
-            HomeView.HomeViewIsPremiumPlanNotCreatedView(text: "Я готов бросить") {
+            HomeView.HomeViewIsPremiumPlanNotCreatedView {
                 navigationVM.tappedReadyToBreak = true
                 navigationVM.shouldShowReadyToBreakActionMenu = true
             }

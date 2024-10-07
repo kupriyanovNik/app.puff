@@ -24,7 +24,7 @@ struct HomeView: View {
     @ViewBuilder
     private func viewContent() -> some View {
         VStack(spacing: 10) {
-            AppHeaderView(title: "Главная", navigationVM: navigationVM)
+            AppHeaderView(title: "TabBar.Home".l, navigationVM: navigationVM)
                 .onTapGesture(count: 5) {
                     onboardingVM.hasSeenOnboarding = false
                 }

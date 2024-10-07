@@ -21,7 +21,7 @@ extension HomeView {
                         .frame(22)
                         .opacity(0.56)
 
-                    Text("Начать план бросания")
+                    Text("Home.StartPlan".l)
                         .font(.semibold16)
                         .foregroundStyle(.white.opacity(0.56))
 
@@ -50,8 +50,6 @@ extension HomeView {
 
     struct HomeViewIsPremiumPlanNotCreatedView: View {
 
-        var text: String = "Начать план бросания"
-
         var action: () -> Void
 
         var body: some View {
@@ -64,7 +62,7 @@ extension HomeView {
                         .scaledToFit()
                         .frame(22)
 
-                    Text(text)
+                    Text("Home.StartPlan".l)
                         .font(.semibold16)
                         .foregroundStyle(.white)
 
@@ -126,7 +124,7 @@ extension HomeView {
                         .fill(Palette.darkBlue)
                 }
 
-            Text("Лимит сегодня")
+            Text("Home.LimitForToday".l)
                 .font(.semibold16)
                 .foregroundStyle(Palette.textTertiary)
 
@@ -135,7 +133,7 @@ extension HomeView {
 
         @ViewBuilder
         private func lastDayView() -> some View {
-            Text("Я готов бросить")
+            Text("Home.ReadyToQuit".l)
                 .font(.semibold14)
                 .foregroundStyle(Palette.textPrimary)
                 .padding(.horizontal, 10)
@@ -148,9 +146,10 @@ extension HomeView {
 
         @ViewBuilder
         private func nonLastDayView() -> some View {
+            let day = "Home.Day".l
             HStack(spacing: 8) {
                 (
-                    Text("День \(smokesManager.currentDayIndex + 1)")
+                    Text(day + " \(smokesManager.currentDayIndex + 1)")
                         .foregroundColor(Palette.textPrimary)
                     +
                     Text("/\(smokesManager.daysInPlan)")
@@ -195,7 +194,7 @@ extension HomeView {
                         .scaledToFit()
                         .frame(22)
 
-                    Text("Начать план заново")
+                    Text("Home.RestartPlan".l)
                         .font(.semibold16)
                         .foregroundStyle(.white)
 
@@ -231,7 +230,7 @@ extension HomeView {
                         .foregroundStyle(Palette.darkBlue)
                         .hCenter()
                         .overlay {
-                            Text("Я не парю уже")
+                            Text("Home.DontSmokeFor".l)
                                 .font(.medium24)
                                 .foregroundStyle(Palette.textTertiary)
                                 .offset(y: -45)
@@ -246,7 +245,7 @@ extension HomeView {
             if let dateOfLastSmoke = smokesManager.dateOfLastSmoke {
                 text = getLastSmokeTimeString(for: dateOfLastSmoke)
             } else {
-                text = "Очень давно"
+                text = "Home.RealyLongTime".l
             }
         }
 
