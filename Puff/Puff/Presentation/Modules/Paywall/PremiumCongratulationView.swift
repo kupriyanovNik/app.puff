@@ -24,7 +24,7 @@ struct PremiumCongratulationView: View {
                 .animation(.easeInOut(duration: 0.2), value: shouldShowLottie)
 
             VStack(spacing: 16) {
-                Text("Добро пожаловать")
+                Text("Paywall.Welcome".l)
                     .font(.bold32)
                     .foregroundStyle(.white)
 

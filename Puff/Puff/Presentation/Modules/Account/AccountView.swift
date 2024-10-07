@@ -109,7 +109,7 @@ struct AccountView: View {
                     .frame(26)
             }
 
-            Text("Настройки")
+            Text("Account.Title".l)
                 .font(.semibold22)
                 .foregroundStyle(Palette.textPrimary)
 

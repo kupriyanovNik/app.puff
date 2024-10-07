@@ -13,7 +13,7 @@
 "Skip" = "Skip";
 "Continue" = "Continue";
 "Allow" = "Allow";
-"Cancel" = "Отмена";
+"Cancel" = "Cancel";
 
 // MARK: - Images
 
@@ -144,6 +144,7 @@
 
 // MARK: - Account
 
+"Account.Title" = "Settings";
 "Account.ContactUs" = "Contact us";
 "Account.Subscription" = "Subscription";
 "Account.OurChannel" = "Our Telegram-channel";
@@ -152,3 +153,11 @@
 "AccountPlanQuitting.Title" = "Are you sure you want to reset your quit plan?";
 "AccountPlanQuitting.Description" = "This will not affect your puff statistics - all data about how much you have previously vaped will be saved.\n\nYou can restart any quit plan at any time.";
 "AccountPlanQuitting.Reset" = "Yes, reset quit plan";
+
+"AccountSubscription.Title" = "Subscription";
+"AccountSubscription.SubscriptionType" = "Subscription Type";
+"AccountSubscription.SubscriptionTypeMonthly" = "Monthly";
+"AccountSubscription.SubscriptionTypeMonthlyWithTrial" = "Monthly with trial";
+"AccountSubscription.StartDate" = "Start Date";
+"AccountSubscription.BillingDate" = "Billing Date";
+"AccountSubscription.CancelSubscription" = "Cancel Subscription";

@@ -144,6 +144,7 @@
 
 // MARK: - Account
 
+"Account.Title" = "Настройки";
 "Account.ContactUs" = "Связаться с нами";
 "Account.Subscription" = "Подписка";
 "Account.OurChannel" = "Наш Telegram-канал";
@@ -152,3 +153,13 @@
 "AccountPlanQuitting.Title" = "Вы уверены, что хотите сбросить план бросания?";
 "AccountPlanQuitting.Description" = "Это не затронет статистику затяжек - все данные о том, сколько вы парили ранее, сохранятся.\n\nВ любое время вы сможете заново начать любой план бросания.";
 "AccountPlanQuitting.Reset" = "Да, сбросить план";
+
+"AccountSubscription.Title" = "Подписка";
+"AccountSubscription.SubscriptionType" = "Subscription Type";
+"AccountSubscription.SubscriptionTypeMonthly" = "Месячная";
+"AccountSubscription.SubscriptionTypeMonthlyWithTrial" = "Месячная с пробным периодом";
+"AccountSubscription.StartDate" = "Дата начала";
+"AccountSubscription.BillingDate" = "Списание средств";
+"AccountSubscription.CancelSubscription" = "Отменить подписку";
+
+// MARK: - Action Menus 

@@ -26,7 +26,11 @@ extension AccountView {
         }()
 
         private var subscriptionTypeText: String {
-            subscriptionsManager.withTrial ? "Месячная с пробным периодом" : "Месячная"
+            if subscriptionsManager.withTrial {
+                return "AccountSubscription.SubscriptionTypeMonthlyWithTrial".l
+            }
+
+            return "AccountSubscription.SubscriptionTypeMonthly".l
         }
 
         private var gesture: some Gesture {
@@ -67,18 +71,18 @@ extension AccountView {
 
                 if let transaction = subscriptionsManager.activeTransactions.first {
                     cell(
-                        title: "Тип подписки",
+                        title: "AccountSubscription.SubscriptionType".l,
                         subtitle: subscriptionTypeText
                     )
 
                     cell(
-                        title: "Дата начала",
+                        title: "AccountSubscription.StartDate".l,
                         subtitle: formatter.string(from: transaction.originalPurchaseDate)
                     )
 
                     if let expirationDate = transaction.expirationDate {
                         cell(
-                            title: "Истекает",
+                            title: "AccountSubscription.BillingDate".l,
                             subtitle: formatter.string(from: expirationDate)
                         )
                     }
@@ -86,7 +90,7 @@ extension AccountView {
 
                 Spacer()
 
-                TextButton(text: "Отменить подписку") {
+                TextButton(text: "AccountSubscription.CancelSubscription".l) {
                     shouldShowSubscriptionEndingView = true
                 }
                 .padding(.bottom, isSmallDevice ? 16 : 0)
@@ -108,7 +112,7 @@ extension AccountView {
                         .frame(26)
                 }
 
-                Text("Подписка")
+                Text("Account.Title".l)
                     .font(.semibold22)
                     .foregroundStyle(Palette.textPrimary)
 
