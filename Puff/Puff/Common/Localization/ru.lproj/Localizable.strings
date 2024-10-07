@@ -217,3 +217,13 @@
 "ActionMenuReadyToBreakView.Broke.Title" = "Вы сделали это!\nПоздравляем!!";
 "ActionMenuReadyToBreakView.Broke.Description" = "Вы успешно справились с планом и бросили парить. Гордимся вами!";
 "ActionMenuReadyToBreakView.Broke.Yay" = "Ура!";
+
+"ActionMenuUpdateApp.Title" = "Обновите Puffless";
+"ActionMenuUpdateApp.Description" = "Посмотрите, что мы изменили";
+"ActionMenuUpdateApp.GoToAppStore" = "Перейти в AppStore";
+
+"ActionMenuYesterdaySuccessed.Title" = "Вы справились со вчерашним лимитом. Так держать!";
+"ActionMenuYesterdaySuccessed.Description" = "Сегодняшний лимит - {count} затяжки.";
+"ActionMenuYesterdaySuccessed.LastDay" = "Сегодня - последний день плана!\n";
+"ActionMenuYesterdaySuccessed.1DayLeast" = "До конца плана остался всего 1 день!\n";
+"ActionMenuYesterdaySuccessed.3DaysLeast" = "До конца плана осталось всего 3 дня!\n";

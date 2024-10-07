@@ -217,3 +217,13 @@
 "ActionMenuReadyToBreakView.Broke.Title" = "You made it!\nCongratulations!";
 "ActionMenuReadyToBreakView.Broke.Description" = "You have successfully completed the plan and quit vaping. We are proud of you!";
 "ActionMenuReadyToBreakView.Broke.Yay" = "Yay!";
+
+"ActionMenuUpdateApp.Title" = "Update Puffless";
+"ActionMenuUpdateApp.Description" = "Check out what we’ve changed";
+"ActionMenuUpdateApp.GoToAppStore" = "Go to AppStore";
+
+"ActionMenuYesterdaySuccessed.Title" = "You met yesterday’s limit.\nKeep it up!";
+"ActionMenuYesterdaySuccessed.Description" = "Today’s limit is {count} puffs";
+"ActionMenuYesterdaySuccessed.LastDay" = "Today is the last day of the plan!\n";
+"ActionMenuYesterdaySuccessed.1DayLeast" = "Only 1 day left until the end of the plan!\n";
+"ActionMenuYesterdaySuccessed.3DaysLeast" = "Only 3 days left until the end of the plan!\n";

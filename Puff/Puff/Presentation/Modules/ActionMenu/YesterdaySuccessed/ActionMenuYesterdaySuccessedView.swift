@@ -17,14 +17,14 @@ struct ActionMenuYesterdaySuccessedView: View {
         var firstPart: String = ""
 
         if daysToEnd == 0 {
-            firstPart = "Сегодня - последний день плана!\n"
+            firstPart = "ActionMenuYesterdaySuccessed.LastDay".l
         } else if daysToEnd == 1 {
-            firstPart = "До конца плана остался всего 1 день!\n"
+            firstPart = "ActionMenuYesterdaySuccessed.1DayLeast".l
         } else {
-            firstPart = "До конца плана осталось всего 3 дня!\n"
+            firstPart = "ActionMenuYesterdaySuccessed.3DaysLeast".l
         }
 
-        let secondPart = "Сегодняшний лимит - {count} затяжек.".formatByDivider(
+        let secondPart = "ActionMenuYesterdaySuccessed.Description".l.formatByDivider(
             divider: "{count}",
             count: todayLimit
         )
@@ -42,8 +42,8 @@ struct ActionMenuYesterdaySuccessedView: View {
                     .padding(.bottom, -14)
 
                 MarkdownText(
-                    text: "Вы справились со вчерашним лимитом.\nТак держать!",
-                    markdowns: ["Так держать!"],
+                    text: "ActionMenuYesterdaySuccessed.Title".l,
+                    markdowns: ["Так держать!", "Keep it up!"],
                     accentColor: .init(hex: 0xFABC18)
                 )
                 .font(.bold22)

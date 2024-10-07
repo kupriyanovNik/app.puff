@@ -20,20 +20,19 @@ struct ActionMenuUpdateAppView: View {
                 .padding(.bottom, -14)
 
             VStack(spacing: 18) {
-                Text("Обновите Puffless")
+                Text("ActionMenuUpdateApp.Title".l)
                     .font(.bold22)
                     .foregroundStyle(Palette.textPrimary)
 
-                Text("Мы исправили критические баги и добавили новый функционал.")
+                Text("ActionMenuUpdateApp.Description".l)
                     .font(.semibold16)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Palette.textSecondary)
             }
             .padding(.horizontal, 12)
 
-            AccentButton(text: "Обновить") {
-                // TODO: INSERT APP LINK
-                "".openURL()
+            AccentButton(text: "ActionMenuUpdateApp.GoToAppStore".l) {
+                "https://apps.apple.com/app/id6717609578".openURL()
 
                 delay(0.5, action: onDismiss)
             }
