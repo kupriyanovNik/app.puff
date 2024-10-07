@@ -162,4 +162,19 @@
 "AccountSubscription.BillingDate" = "Списание средств";
 "AccountSubscription.CancelSubscription" = "Отменить подписку";
 
-// MARK: - Action Menus 
+// MARK: - Action Menus
+
+"AccountSubscription.Leaving.Base.Title" = "Почему вы уходите?";
+"AccountSubscription.Leaving.Base.Reason1" = "Я уже успешно бросил (а)";
+"AccountSubscription.Leaving.Base.Reason2" = "Приложение не помогло бросить";
+"AccountSubscription.Leaving.Base.Reason3" = "Нет нужных мне функций";
+"AccountSubscription.Leaving.Base.Reason4" = "Приложение слишком сложное";
+"AccountSubscription.Leaving.Base.Reason5" = "Слишком дорого";
+"AccountSubscription.Leaving.Base.Reason6" = "Другое";
+
+"AccountSubscription.Leaving.Improvements.Feedback" = "Расскажите, что мы можем улучшить?";
+"AccountSubscription.Leaving.Improvements.FeedbackPlaceholder" = "Обратная связь";
+
+"AccountSubscription.Leaving.Cancel.StayPremium" = "Оставить Premium";
+"AccountSubscription.Leaving.Cancel.Thanks" = "Спасибо!";
+"AccountSubscription.Leaving.Cancel.ThanksFor" = "Рады, что вы были с нами. Теперь вы можете отменить подписку";

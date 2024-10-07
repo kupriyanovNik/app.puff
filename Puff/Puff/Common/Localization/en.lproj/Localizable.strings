@@ -161,3 +161,20 @@
 "AccountSubscription.StartDate" = "Start Date";
 "AccountSubscription.BillingDate" = "Billing Date";
 "AccountSubscription.CancelSubscription" = "Cancel Subscription";
+
+// MARK: - Action Menus
+
+"AccountSubscription.Leaving.Base.Title" = "Why are you leaving?";
+"AccountSubscription.Leaving.Base.Reason1" = "I've already successfully quit";
+"AccountSubscription.Leaving.Base.Reason2" = "The app didn't help me quit";
+"AccountSubscription.Leaving.Base.Reason3" = "The app lacks the features I need";
+"AccountSubscription.Leaving.Base.Reason4" = "The app is too complicated";
+"AccountSubscription.Leaving.Base.Reason5" = "It’s too expensive";
+"AccountSubscription.Leaving.Base.Reason6" = "Other";
+
+"AccountSubscription.Leaving.Improvements.Feedback" = "Please tell us what we can improve";
+"AccountSubscription.Leaving.Improvements.FeedbackPlaceholder" = "Feedback";
+
+"AccountSubscription.Leaving.Cancel.StayPremium" = "Keep Premium";
+"AccountSubscription.Leaving.Cancel.Thanks" = "Thank you!";
+"AccountSubscription.Leaving.Cancel.ThanksFor" = "We’re glad you've been with us. You can now unsubscribe";

@@ -17,14 +17,7 @@ struct ActionMenuSubscriptionLeavingView: View {
     var onCancelSubscription: ([Int], String) -> Void = { _, _ in }
     var onDismiss: () -> Void = {}
 
-    private let reasons: [String] = [
-        "Я уже успешно бросил (а)",
-        "Приложение не помогло бросить",
-        "Нет нужных мне функций",
-        "Приложение слишком сложное",
-        "Слишком дорого",
-        "Другое"
-    ]
+    private let reasons: [String] = Array((1...6).map { "AccountSubscription.Leaving.Base.Reason\($0)".l })
 
     private var nextButtonDisabled: Bool {
         if screenState == .reasons { return reasonsIndices.isEmpty }
@@ -50,14 +43,14 @@ struct ActionMenuSubscriptionLeavingView: View {
 
             VStack(spacing: 10) {
                 AccentButton(
-                    text: screenState == .cancel ? "Отменить подписку" : "Далее",
+                    text: screenState == .cancel ? "AccountSubscription.CancelSubscription".l : "Next".l,
                     isDisabled: nextButtonDisabled,
                     action: nextAction
                 )
 
                 Group {
                     if screenState == .cancel {
-                        TextButton(text: "Оставить Premium", font: .medium16) {
+                        TextButton(text: "AccountSubscription.Leaving.Cancel.StayPremium".l, font: .medium16) {
                             onDismiss()
                         }
                         .hCenter()
@@ -76,7 +69,7 @@ struct ActionMenuSubscriptionLeavingView: View {
     @ViewBuilder
     private func reasonsView() -> some View {
         VStack(spacing: 18) {
-            Text("Почему вы уходите?")
+            Text("AccountSubscription.Leaving.Base.Title".l)
                 .font(.bold22)
                 .foregroundStyle(Palette.textPrimary)
                 .padding(.horizontal, 24)
@@ -119,8 +112,8 @@ struct ActionMenuSubscriptionLeavingView: View {
     private func improvementsView() -> some View {
         VStack(spacing: 18) {
             MarkdownText(
-                text: "Расскажите, что мы можем улучшить?",
-                markdowns: ["улучшить?"]
+                text: "AccountSubscription.Leaving.Improvements.Feedback".l,
+                markdowns: ["улучшить?", "improve"]
             )
             .font(.bold22)
             .multilineTextAlignment(.center)
@@ -129,7 +122,7 @@ struct ActionMenuSubscriptionLeavingView: View {
 
             MainInputField(
                 text: $improvementsString,
-                placeholder: "Обратная связь",
+                placeholder: "AccountSubscription.Leaving.Improvements.FeedbackPlaceholder".l,
                 height: 140
             )
             .onTapContinueEditing()
@@ -140,12 +133,12 @@ struct ActionMenuSubscriptionLeavingView: View {
     @ViewBuilder
     private func cancelView() -> some View {
         VStack(spacing: 18) {
-            Text("Спасибо!")
+            Text("AccountSubscription.Leaving.Cancel.Thanks".l)
                 .font(.bold22)
                 .foregroundStyle(Palette.textPrimary)
                 .padding(.horizontal, 24)
 
-            Text("Рады, что вы были с нами. Теперь вы можете отменить подписку")
+            Text("AccountSubscription.Leaving.Cancel.ThanksFor".l)
                 .font(.medium16)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Palette.textSecondary)
