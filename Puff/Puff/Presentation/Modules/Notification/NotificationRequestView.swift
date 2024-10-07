@@ -43,41 +43,13 @@ struct NotificationRequestView: View {
     }
 
     @ViewBuilder
-    private func mockNotificationView() -> some View {
-        HStack(spacing: 14) {
-            Image(.appIcon)
-                .resizable()
-                .scaledToFit()
-                .frame(44)
-
-            VStack(alignment: .leading, spacing: 7) {
-                Capsule()
-                    .fill(Color(hex: 0xCFCFCF))
-                    .frame(width: 150, height: 7)
-
-                Capsule()
-                    .fill(Color(hex: 0xDEDEDE))
-                    .frame(width: 100, height: 7)
-
-                Capsule()
-                    .fill(Color(hex: 0xDEDEDE))
-                    .frame(width: 50, height: 7)
-            }
-            .padding(.trailing, 8)
-
-        }
-        .padding(14)
-        .background {
-            Color(hex: 0xF0F0F0)
-                .cornerRadius(20)
-        }
-    }
-
-    @ViewBuilder
     private func bottomView() -> some View {
         VStack(spacing: 6) {
             AccentButton(text: "Разрешить") {
-                NotificationManager.shared.requestAuthorization(callback: action)
+                NotificationManager.shared.requestAuthorization {
+                    NotificationManager.shared.sendFirstDayNotification()
+                    action()
+                }
             }
 
             TextButton(text: "Возможно позже") {

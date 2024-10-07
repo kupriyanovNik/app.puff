@@ -86,6 +86,11 @@ struct MainNavigationView: View {
                 }
             }
         }
+        .onChange(of: smokesManager.isPlanStarted) { newValue in
+            if newValue {
+                NotificationManager.shared.deleteFirstDayNotification()
+            }
+        }
         .onAppear {
             if smokesManager.isPlanStarted {
                 if smokesManager.isDayAfterPlanEnded || (smokesManager.todaySmokes == smokesManager.todayLimit) {
@@ -97,7 +102,7 @@ struct MainNavigationView: View {
                 if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
                     if smokesManager.isYesterdayLimitExceeded {
                         navigationVM.shouldShowPlanExtendingActionMenu = true
-                    } else {
+                    } else if smokesManager.currentDayIndex > 0 {
                         navigationVM.shouldShowYesterdayResult = true
                     }
                 }
