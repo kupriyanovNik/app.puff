@@ -13,7 +13,7 @@
 				<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
 				<key>NSPrivacyAccessedAPITypeReasons</key>
 				<array>
- 					<string>CA92.1</string>
+ 					<string>1C8F.1</string>
 				</array>
 			</dict>
 		</array>
@@ -21,12 +21,42 @@
 		<array>
 			<dict>
 				<key>NSPrivacyCollectedDataType</key>
-				<string>NSPrivacyCollectedDataTypeCrashData</string>
+				<string>NSPrivacyCollectedDataTypeCustomerSupport</string>
+				<key>NSPrivacyCollectedDataTypePurposes</key>
+				<array>
+					<string>
+						NSPrivacyCollectedDataTypePurposeOther
+					</string>
+					<string>
+						NSPrivacyCollectedDataTypePurposeAnalytics
+					</string>
+				</array>
+			</dict>
+			<dict>
+				<key>NSPrivacyCollectedDataType</key>
+				<string>NSPrivacyCollectedDataTypeDeviceID</string>
+				<key>NSPrivacyCollectedDataTypePurposes</key>
+				<array>
+					<string>
+						NSPrivacyCollectedDataTypePurposeAnalytics
+					</string>
+				</array>
+			</dict>
+			<dict>
+				<key>NSPrivacyCollectedDataType</key>
+				<string>NSPrivacyCollectedDataTypePurchaseHistory</string>
 				<key>NSPrivacyCollectedDataTypePurposes</key>
 				<array>
 					<string>
 						NSPrivacyCollectedDataTypePurposeAppFunctionality
 					</string>
+				</array>
+			</dict>
+			<dict>
+				<key>NSPrivacyCollectedDataType</key>
+				<string>NSPrivacyCollectedDataTypeCrashData</string>
+				<key>NSPrivacyCollectedDataTypePurposes</key>
+				<array>
 					<string>
 						NSPrivacyCollectedDataTypePurposeAnalytics
 					</string>
@@ -38,9 +68,6 @@
 				<key>NSPrivacyCollectedDataTypePurposes</key>
 				<array>
 					<string>
-						NSPrivacyCollectedDataTypePurposeAppFunctionality
-					</string>
-					<string>
 						NSPrivacyCollectedDataTypePurposeAnalytics
 					</string>
 				</array>
@@ -50,9 +77,6 @@
 				<string>NSPrivacyCollectedDataTypeOtherDiagnosticData</string>
 				<key>NSPrivacyCollectedDataTypePurposes</key>
 				<array>
-					<string>
-						NSPrivacyCollectedDataTypePurposeAppFunctionality
-					</string>
 					<string>
 						NSPrivacyCollectedDataTypePurposeAnalytics
 					</string>
