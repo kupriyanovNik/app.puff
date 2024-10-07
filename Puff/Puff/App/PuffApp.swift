@@ -18,6 +18,7 @@ struct PuffApp: App {
     @StateObject var smokesManager = SmokesManager()
     @StateObject var reviewManager = ReviewManager()
     @StateObject var subscriptionsManager = SubscriptionsManager()
+    @StateObject var appManager = AppManager()
 
     var body: some Scene {
         WindowGroup {
@@ -87,20 +88,10 @@ struct PuffApp: App {
                     daysToEnd: smokesManager.daysInPlan - smokesManager.currentDayIndex - 1,
                     todayLimit: smokesManager.todayLimit
                 ) {
-                    seenYesterdayResult()
-
-                    if !reviewManager.hasSeenReviewRequestAfterFirstSuccessDay {
-                        delay(0.4) { requestReview() }
-                        reviewManager.hasSeenReviewRequestAfterFirstSuccessDay = true
-                    }
+                    yesterdaySuccessedDismissAction()
                 }
             } onDismiss: {
-                seenYesterdayResult()
-
-                if !reviewManager.hasSeenReviewRequestAfterFirstSuccessDay {
-                    delay(0.4) { requestReview() }
-                    reviewManager.hasSeenReviewRequestAfterFirstSuccessDay = true
-                }
+                yesterdaySuccessedDismissAction()
             }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowUpdateActionMenu) {
                 ActionMenuUpdateAppView {
@@ -111,6 +102,14 @@ struct PuffApp: App {
             }
             .task {
                 await subscriptionsManager.updatePurchasedProducts()
+            }
+            .onAppear {
+                if !subscriptionsManager.isPremium {
+                    if navigationVM.ableToShowDailyPaywall || (onboardingVM.hasSeenOnboarding && appManager.appOpensCount == 2) {
+                        showPaywall()
+                        navigationVM.seenDailyPaywall()
+                    }
+                }
             }
         }
     }
@@ -133,6 +132,19 @@ struct PuffApp: App {
                 requestReview()
                 reviewManager.hasSeenReviewRequestOn5Day = true
             }
+        }
+    }
+
+    private func showPaywall() {
+        navigationVM.shouldShowPaywall = true
+    }
+
+    private func yesterdaySuccessedDismissAction() {
+        seenYesterdayResult()
+
+        if !reviewManager.hasSeenReviewRequestAfterFirstSuccessDay {
+            delay(0.4) { requestReview() }
+            reviewManager.hasSeenReviewRequestAfterFirstSuccessDay = true
         }
     }
 }

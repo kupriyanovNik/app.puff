@@ -65,7 +65,7 @@ struct MainNavigationView: View {
             Group {
                 if navigationVM.shouldShowPaywall {
                     AppPaywallView(subscriptionsManager: subscriptionsManager, showBenefitsDelay: 0.4) {
-                        navigationVM.shouldShowPaywall.toggle()
+                        navigationVM.shouldShowPaywall = false
                     }
                     .preferredColorScheme(.light)
                     .transition(
