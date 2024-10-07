@@ -162,7 +162,7 @@ struct StatisticsFrequencyChart: View {
                     }
                     .background {
                         if !isFirstDay {
-                            if statisticsFrequencyViewModel.smokesHours.filter { $0 != 0 }.count > 4 {
+                            if statisticsFrequencyViewModel.smokesHours.filter(where: { $0 != 0 }).count > 4 {
                                 RoundedRectangle(cornerRadius: 5)
                                     .fill(Color(hex: 0xB5D9FF, alpha: 0.28))
                                     .frame(width: summaryRectangleWidth)

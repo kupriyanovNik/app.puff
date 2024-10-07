@@ -58,7 +58,7 @@ final class StatisticsMonthlyViewModel: ObservableObject {
         var monthDates: [Date] = []
 
         var current: Date = monthForDate.startOfMonth.startOfDate
-        var end: Date = current.endOfMonth.startOfDate
+        let end: Date = current.endOfMonth.startOfDate
 
         while current <= end {
             monthDates.append(current)

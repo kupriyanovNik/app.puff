@@ -112,7 +112,7 @@ struct StatisticsMainChart: View {
             yMarks()
         }
         .onChange(of: selectedIndex) { newValue in
-            if let newValue {
+            if let _ = newValue {
                 HapticManager.onTabChanged()
             } else {
                 HapticManager.onTappedPlus()

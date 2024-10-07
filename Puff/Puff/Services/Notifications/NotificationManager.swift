@@ -157,7 +157,7 @@ extension NotificationManager {
 
             for index in (0...15) {
                 let title: String = "Начнем новый день!"
-                var body = "Следите за своими затяжками"
+                let body = "Следите за своими затяжками"
 
                 var dateComp = calendar.dateComponents([.year, .month, .day], from: dates[index])
                 dateComp.hour = 10
@@ -172,7 +172,7 @@ extension NotificationManager {
 
             for index in limits.indices {
                 let title: String = "Начнем новый день!"
-                var body = "Лимит затяжек на сегодня — {count}".formatByDivider(divider: "{count}", count: limits[index])
+                let body = "Лимит затяжек на сегодня — {count}".formatByDivider(divider: "{count}", count: limits[index])
 
                 var dateComp = calendar.dateComponents([.year, .month, .day], from: dates[index])
                 dateComp.hour = 10
