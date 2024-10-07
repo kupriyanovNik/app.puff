@@ -71,6 +71,23 @@ struct StatisticsFrequencyChart: View {
 
 
                     Spacer()
+
+                    Group {
+                        if !statisticsFrequencyViewModel.averageIntervalText.isEmpty &&
+                            statisticsFrequencyViewModel.smokesDates.count > 1 {
+                            VStack(alignment: .trailing, spacing: 4) {
+                                Text(statisticsFrequencyViewModel.averageIntervalText)
+                                    .font(.bold22)
+                                    .foregroundStyle(Palette.darkBlue)
+                                    .contentTransition(.identity)
+
+                                Text("StatisticsFrequency.AverageBreak".l)
+                                    .font(.medium12)
+                                    .foregroundStyle(Palette.textQuaternary)
+                            }
+                        }
+                    }
+                    .transition(.opacity.animation(.easeInOut(duration: 0.25)))
                 }
             }
 
