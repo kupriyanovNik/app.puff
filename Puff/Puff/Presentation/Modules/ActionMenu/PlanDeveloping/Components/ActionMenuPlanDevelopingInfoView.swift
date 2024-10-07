@@ -17,25 +17,31 @@ struct ActionMenuPlanDevelopingInfoView: View {
         "onboardingPlan3Image"
     ]
 
-    let descriptions: [String] = [
-        "Выберем стартовое количество затяжек и начнем план",
-        "Лимит затяжек на день будет постепенно уменьшаться",
-        "Вы сделаете свою последнюю затяжку и бросите парить"
-    ]
+    let descriptions: [String] = Array((1...3).map { "OnboardingPlanInfo.Description\($0)".l })
 
     var titles: [String] {
         [
-            "Сегодня",
-            "Дни 2-\(selectedOption.rawValue-1)",
-            "День \(selectedOption.rawValue)"
+            "OnboardingPlanInfo.Title1".l,
+            "ActionMenuPlanDeveloping.Info.Description2Title".l.formatByDivider(
+                divider: "{count}",
+                count: (selectedOption.rawValue-1)
+            ),
+            "ActionMenuPlanDeveloping.Info.Description3Title".l.formatByDivider(
+                divider: "{count}",
+                count: (selectedOption.rawValue)
+            )
         ]
     }
 
     var body: some View {
         VStack(spacing: 28) {
             MarkdownText(
-                text: "Выбранный план: \(selectedOption.title)",
-                markdowns: ["\(selectedOption.rawValue) дней", "\(selectedOption.rawValue) день"]
+                text: "ActionMenuPlanDeveloping.Info.Title".l + selectedOption.title,
+                markdowns: [
+                    "\(selectedOption.rawValue) дней",
+                    "\(selectedOption.rawValue) день",
+                    "\(selectedOption.rawValue) days"
+                ]
             )
             .font(.bold22)
 

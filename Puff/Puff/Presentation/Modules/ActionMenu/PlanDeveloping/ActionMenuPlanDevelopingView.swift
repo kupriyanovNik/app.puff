@@ -52,7 +52,7 @@ struct ActionMenuPlanDevelopingView: View {
             )
 
             AccentButton(
-                text: screenState == .info ? "Начать" : "Далее",
+                text: screenState == .info ? "Start".l : "Next".l,
                 isDisabled: shouldShowError && todaySmokes < 1000,
                 action: nextAction
             )
@@ -79,13 +79,13 @@ struct ActionMenuPlanDevelopingView: View {
     private func addictionView() -> some View {
         VStack(spacing: 24) {
             VStack(spacing: 18) {
-                Text("Сколько затяжек вы делаете в день?")
+                Text("ActionMenuPlanDeveloping.Addiction.HowMany".l)
                     .font(.bold22)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Palette.textPrimary)
                     .padding(.horizontal, 12)
 
-                Text("Можно указать примерное число - если в первые дни окажется, что лимит маловат, мы скорректируем его")
+                Text("ActionMenuPlanDeveloping.Addiction.Description".l)
                     .font(.medium16)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Palette.textSecondary)
@@ -103,7 +103,7 @@ struct ActionMenuPlanDevelopingView: View {
                 .overlay {
                     Group {
                         if shouldShowError && todaySmokes < 1000 {
-                            Text("Это меньше, чем вы уже сделали сегодня")
+                            Text("ActionMenuPlanDeveloping.Addiction.LessThenToday".l)
                                 .font(.medium16)
                                 .multilineTextAlignment(.center)
                                 .lineLimit(2)
@@ -122,10 +122,9 @@ struct ActionMenuPlanDevelopingView: View {
     private func infoView() -> some View {
         let addiction: String = {
             switch smokesCount {
-            case 99...249: "Умеренная зависимость"
-            case 250...399: "Серьезная зависимость"
-            case 400...799: "Сильная зависимость"
-            default: "Высочайшая зависимость"
+            case 99...249: "ActionMenuPlanDeveloping.Addiction.InfoText1".l
+            case 250...799: "ActionMenuPlanDeveloping.Addiction.InfoText2".l
+            default: "ActionMenuPlanDeveloping.Addiction.InfoText3".l
             }
         }()
 

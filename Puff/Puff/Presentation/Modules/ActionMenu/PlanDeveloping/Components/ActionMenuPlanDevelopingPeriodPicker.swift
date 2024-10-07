@@ -15,7 +15,7 @@ struct ActionMenuPlanDevelopingPeriodPicker: View {
 
     var body: some View {
         VStack(spacing: 18) {
-            Text("План бросания")
+            Text("ActionMenuPlanDeveloping.Plan.QuitPlan".l)
                 .font(.bold22)
                 .foregroundStyle(Palette.textPrimary)
 

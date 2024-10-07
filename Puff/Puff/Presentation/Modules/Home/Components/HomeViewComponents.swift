@@ -223,7 +223,7 @@ extension HomeView {
             let minutes = Int(diff / 60)
 
             if Bundle.main.preferredLocalizations[0] == "ru" {
-                return "Последняя: " + getLastSmokeTimeRussianString(days, hours, minutes) + " назад"
+                return "Последняя: " + getLastSmokeTimeRussianString(days, hours, minutes)
             } else {
                 if days != 0 {
                     if days == 1 {
@@ -259,11 +259,11 @@ extension HomeView {
             if days != 0 {
                 if days < 31 {
                     if days % 10 == 1 && days % 100 != 11 {
-                        return "\(days) день"
+                        return "\(days) день назад"
                     } else if (days % 10 >= 2 && days % 10 <= 4) && !(days % 100 >= 12 && days % 100 <= 14) {
-                        return "\(days) дня"
+                        return "\(days) дня назад"
                     } else {
-                        return "\(days) дней"
+                        return "\(days) дней назад"
                     }
                 } else {
                     return "Последняя: давно"
@@ -271,20 +271,20 @@ extension HomeView {
             } else {
                 if hours != 0 {
                     if hours % 10 == 1 && hours % 100 != 11 {
-                        return "\(hours) час"
+                        return "\(hours) час назад"
                     } else if (hours % 10 >= 2 && hours % 10 <= 4) && !(hours % 100 >= 12 && hours % 100 <= 14) {
-                        return "\(hours) часа"
+                        return "\(hours) часа назад"
                     } else {
-                        return "\(hours) часов"
+                        return "\(hours) часов назад"
                     }
                 } else {
                     if minutes != 0 {
                         if minutes % 10 == 1 && minutes % 100 != 11 {
-                            return "\(minutes) минуту"
+                            return "\(minutes) минуту назад"
                         } else if (minutes % 10 >= 2 && minutes % 10 <= 4) && !(minutes % 100 >= 12 && minutes % 100 <= 14) {
-                            return "\(minutes) минуты"
+                            return "\(minutes) минуты назад"
                         } else {
-                            return "\(minutes) минут"
+                            return "\(minutes) минут назад"
                         }
                     } else {
                         return "только что"

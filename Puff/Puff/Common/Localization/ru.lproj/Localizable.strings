@@ -178,3 +178,25 @@
 "AccountSubscription.Leaving.Cancel.StayPremium" = "Оставить Premium";
 "AccountSubscription.Leaving.Cancel.Thanks" = "Спасибо!";
 "AccountSubscription.Leaving.Cancel.ThanksFor" = "Рады, что вы были с нами. Теперь вы можете отменить подписку";
+
+"ActionMenuPlanDeveloping.Addiction.HowMany" = "Сколько затяжек вы делаете в день?";
+"ActionMenuPlanDeveloping.Addiction.Description" = "Можно указать примерное число - если в первые дни окажется, что лимит маловат, мы скорректируем его";
+
+"ActionMenuPlanDeveloping.Addiction.LessThenToday" = "Это меньше, чем вы уже сделали сегодня";
+"ActionMenuPlanDeveloping.Addiction.InfoText1" = "Умеренная зависимость";
+"ActionMenuPlanDeveloping.Addiction.InfoText2" = "Серьезная зависимость";
+"ActionMenuPlanDeveloping.Addiction.InfoText3" = "Высочайшая зависимость";
+
+"ActionMenuPlanDeveloping.Plan.QuitPlan" = "План бросания";
+"ActionMenuPlanDeveloping.Plan.Plan1Title" = "Самый\nбыстрый";
+"ActionMenuPlanDeveloping.Plan.Plan2Title" = "Золотая\nсередина";
+"ActionMenuPlanDeveloping.Plan.Plan3Title" = "Самый\nплавный";
+
+"ActionMenuPlanDeveloping.Plan.Plan1Description" = "Ощутимое снижение лимита затяжек. Для тех, кто хочет и готов бросить в кратчайший срок";
+"ActionMenuPlanDeveloping.Plan.Plan2Description" = "Оптимальный темп снижения лимита затяжек. Для тех, кто ищет баланс между скоростью бросания и комфортом";
+"ActionMenuPlanDeveloping.Plan.Plan3Description" = "Почти незаметное снижение лимита затяжек. Для тех, кто не спешит и хочет бросить без ощущения ограничений";
+
+"ActionMenuPlanDeveloping.Info.Title" = "Выбранный план: ";
+"ActionMenuPlanDeveloping.Info.Description2Title" = "Дни 2-{count}";
+"ActionMenuPlanDeveloping.Info.Description3Title" = "День {count}";
+

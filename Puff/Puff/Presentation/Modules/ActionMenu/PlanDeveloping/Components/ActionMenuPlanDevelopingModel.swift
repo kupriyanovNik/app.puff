@@ -14,35 +14,39 @@ enum ActionMenuPlanDevelopingPeriod: Int, CaseIterable {
 
 
     var title: String {
-        switch self {
-        case .min:
-            "\(self.rawValue) дней"
-        case .mid:
-            "\(self.rawValue) день"
-        case .max:
-            "\(self.rawValue) дней"
+        if Bundle.main.preferredLocalizations[0] == "ru" {
+            switch self {
+            case .min:
+                return "\(self.rawValue) дней"
+            case .mid:
+                return "\(self.rawValue) день"
+            case .max:
+                return "\(self.rawValue) дней"
+            }
         }
+
+        return "\(self.rawValue) days"
     }
 
     var subtitle: String {
         switch self {
         case .min:
-            "Самый быстрый"
+            "ActionMenuPlanDeveloping.Plan.Plan1Title".l
         case .mid:
-            "Золотая середина"
+            "ActionMenuPlanDeveloping.Plan.Plan2Title".l
         case .max:
-            "Самый плавный"
+            "ActionMenuPlanDeveloping.Plan.Plan3Title".l
         }
     }
 
     var description: String {
         switch self {
         case .min:
-            "Ощутимое снижение лимита затяжек. Для тех, кто хочет и готов бросить в кратчайший срок"
+            "ActionMenuPlanDeveloping.Plan.Plan1Description".l
         case .mid:
-            "Оптимальный темп снижения лимита затяжек. Для тех, кто ищет баланс между скоростью бросания и комфортом"
+            "ActionMenuPlanDeveloping.Plan.Plan2Description".l
         case .max:
-            "Почти незаметное снижение лимита затяжек. Для тех, кто не спешит и хочет бросить без ощущения ограничений"
+            "ActionMenuPlanDeveloping.Plan.Plan3Description".l
         }
     }
 }
