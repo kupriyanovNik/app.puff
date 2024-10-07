@@ -273,3 +273,7 @@
 "StatisticsWeekly.ThisWeek" = "Затяжки, эта неделя";
 "StatisticsWeekly.ThisMonth" = "Затяжки, этот месяц";
 "Statistics.Puffs" = "Затяжек";
+
+"StatisticsFrequency.Title" = "Частота затяжек";
+"StatisticsFrequency.Description" = "Самый активный период";
+"StatisticsFrequency.AverageBreak" = "Перерыв в среднем";

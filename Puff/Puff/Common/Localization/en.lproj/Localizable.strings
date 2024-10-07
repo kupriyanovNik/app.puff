@@ -273,3 +273,7 @@
 "StatisticsWeekly.ThisWeek" = "Puffs, this week";
 "StatisticsWeekly.ThisMonth" = "Puffs, this month";
 "Statistics.Puffs" = "Puffs";
+
+"StatisticsFrequency.Title" = "Puff Frequency";
+"StatisticsFrequency.Description" = "Most active period";
+"StatisticsFrequency.AverageBreak" = "Average break";

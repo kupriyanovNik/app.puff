@@ -49,7 +49,7 @@ struct StatisticsFrequencyChart: View {
                         .scaledToFit()
                         .frame(18)
 
-                    Text("Частота затяжек")
+                    Text("StatisticsFrequency.Title".l)
                         .font(.semibold14)
                         .foregroundStyle(Palette.accentColor)
                         .contentTransition(.identity)
@@ -64,7 +64,7 @@ struct StatisticsFrequencyChart: View {
                             .foregroundStyle(Palette.darkBlue)
                             .contentTransition(.identity)
 
-                        Text("Самый активный период")
+                        Text("StatisticsFrequency.Description".l)
                             .font(.medium12)
                             .foregroundStyle(Palette.textQuaternary)
                     }
@@ -93,8 +93,8 @@ struct StatisticsFrequencyChart: View {
                     let startIndex = getActiveRangeStartIndex()
 
                     let widthOfBar: Double = ((size.width - (23 * spacingBetweenChartCells))) / 24.0
-                    let summaryRectangleWidth: Double = (4 * spacingBetweenChartCells) + (5 * widthOfBar)
-                    let summaryRectangleOffset: Double = (Double(startIndex - 1) * spacingBetweenChartCells) + (Double(startIndex) * widthOfBar)
+                    let summaryRectangleWidth: Double = (4 * spacingBetweenChartCells) + (5 * widthOfBar) + 5
+                    let summaryRectangleOffset: Double = (Double(startIndex - 1) * spacingBetweenChartCells) + (Double(startIndex) * widthOfBar) - ((spacingBetweenChartCells + widthOfBar) * 2) - 5
 
                     HStack(spacing: spacingBetweenChartCells) {
                         ForEach(statisticsFrequencyViewModel.smokesHours.indices) { index in
