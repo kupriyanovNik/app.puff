@@ -24,38 +24,40 @@ struct ActionMenuYesterdayPlanExceededView: View {
     }
 
     private var criticalText: String {
-        let firstPart = "Не переживайте, такое бывает.\n\n"
+        let firstPart = "ActionMenuYesterdayExceeded.Critical.First".l
         var secondPart = ""
 
-        if daysToEnd == 1 {
-            secondPart = "До конца плана остался всего 1 день!\n"
+        if daysToEnd == 0 {
+            secondPart = "ActionMenuYesterdaySuccessed.LastDay".l
+        } else if daysToEnd == 1 {
+            secondPart = "ActionMenuYesterdaySuccessed.1DayLeast".l
         } else {
-            secondPart = "До конца плана осталось всего 3 дня!\n"
+            secondPart = "ActionMenuYesterdaySuccessed.3DaysLeast".l
         }
 
-        let thirdPart = "Сегодняшний лимит - {exc} затяжки. Если уверены, что справитесь - продолжаем!\n\nА если вам нужно чуть больше времени - можем продлить план на 1 день. Лимит будет такой же, как вчера.".formatByDivider(
-            divider: "{exc}",
+        let thirdPart = "ActionMenuYesterdayExceeded.Critical.Third".l.formatByDivider(
+            divider: "{count}",
             count: todayLimit
         )
 
-        return [1, 3].contains(daysToEnd) ? (firstPart + secondPart + thirdPart) : (firstPart + thirdPart)
+        return [0, 1, 3].contains(daysToEnd) ? (firstPart + secondPart + thirdPart) : (firstPart + thirdPart)
     }
 
     private var nonCriticalText: String {
-        let firstPart = "Не переживайте, такое бывает. Продолжаем двигаться вперед!\n\n"
+        let firstPart = "ActionMenuYesterdayExceeded.NonCritical.First".l
 
         var secondPart: String = ""
 
         if daysToEnd == 0 {
-            secondPart = "Сегодня - последний день плана!\n"
+            secondPart = "ActionMenuYesterdaySuccessed.LastDay".l
         } else if daysToEnd == 1 {
-            secondPart = "До конца плана остался всего 1 день!\n"
+            secondPart = "ActionMenuYesterdaySuccessed.1DayLeast".l
         } else {
-            secondPart = "До конца плана осталось всего 3 дня!\n"
+            secondPart = "ActionMenuYesterdaySuccessed.3DaysLeast".l
         }
 
-        let thirdPart = "Сегодняшний лимит - {exc} затяжек.".formatByDivider(
-            divider: "{exc}",
+        let thirdPart = "ActionMenuYesterdayExceeded.NonCritical.Third".l.formatByDivider(
+            divider: "{count}",
             count: todayLimit
         )
 
@@ -83,11 +85,14 @@ struct ActionMenuYesterdayPlanExceededView: View {
             )
 
             VStack(spacing: 10) {
-                AccentButton(text: isCriticallyExceeded ? "Я справлюсь!" : "Ok", action: onDismiss)
+                AccentButton(
+                    text: isCriticallyExceeded ? "ActionMenuYesterdayExceeded.CanDoIt".l : "Ok",
+                    action: onDismiss
+                )
 
                 Group {
                     if isCriticallyExceeded && !shouldShowPlanExtendedWarning {
-                        SecondaryButton(text: "Продлить план на 1 день") {
+                        SecondaryButton(text: "ActionMenuYesterdayExceeded.ExtendPlan".l) {
                             extendPlan()
                         }
                         .transition(.opacity.combined(with: .move(edge: .bottom)))
@@ -111,9 +116,10 @@ struct ActionMenuYesterdayPlanExceededView: View {
                 .padding(.bottom, -14)
 
             MarkdownText(
-                text: "Вчера вы превысили лимит на {exc} затяжек".formatByDivider(divider: "{exc}", count: yesterdedExceed),
+                text: "ActionMenuYesterdayExceeded.Critical.Title".l.formatByDivider(divider: "{count}", count: yesterdedExceed),
                 markdowns: [
-                    "{exc} затяжек".formatByDivider(divider: "{exc}", count: yesterdedExceed)
+                    "{count} затяжек".formatByDivider(divider: "{count}", count: yesterdedExceed),
+                    "{count} puffs".formatByDivider(divider: "{count}", count: yesterdedExceed)
                 ],
                 accentColor: Color(hex: 0xFF7D7D)
             )
@@ -138,9 +144,10 @@ struct ActionMenuYesterdayPlanExceededView: View {
                 .padding(.bottom, -14)
 
             MarkdownText(
-                text: "Вчера вы превысили лимит на {exc} затяжек".formatByDivider(divider: "{exc}", count: yesterdedExceed),
+                text: "ActionMenuYesterdayExceeded.Critical.Title".l.formatByDivider(divider: "{count}", count: yesterdedExceed),
                 markdowns: [
-                    "{exc} затяжек".formatByDivider(divider: "{exc}", count: yesterdedExceed)
+                    "{count} затяжек".formatByDivider(divider: "{count}", count: yesterdedExceed),
+                    "{count} puffs".formatByDivider(divider: "{count}", count: yesterdedExceed)
                 ]
             )
             .font(.bold22)
@@ -164,15 +171,15 @@ struct ActionMenuYesterdayPlanExceededView: View {
                 .padding(.bottom, -14)
 
             MarkdownText(
-                text: "План продлен на 1 день",
-                markdowns: ["1 день"]
+                text: "ActionMenuYesterdayExceeded.PlanExtended".l,
+                markdowns: ["1 день", "1 day"]
             )
             .font(.bold22)
             .multilineTextAlignment(.center)
 
             Text(
-                "Сегодняшний лимит — {exc} затяжек".formatByDivider(
-                    divider: "{exc}",
+                "ActionMenuYesterdayExceeded.NonCritical.Third".l.formatByDivider(
+                    divider: "{count}",
                     count: todayLimit
                 )
             )

@@ -76,7 +76,7 @@ final class SmokesManager: ObservableObject {
         return 0
     }
 
-    var todayLimit: Int { planLimits[min(currentDayIndex, daysInPlan - 1)] }
+    var todayLimit: Int { planLimits[max(0, min(currentDayIndex, daysInPlan - 1))] }
 
     var isLastDayOfPlan: Bool { currentDayIndex + 1 >= daysInPlan }
 

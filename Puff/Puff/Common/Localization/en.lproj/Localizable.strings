@@ -227,3 +227,15 @@
 "ActionMenuYesterdaySuccessed.LastDay" = "Today is the last day of the plan!\n";
 "ActionMenuYesterdaySuccessed.1DayLeast" = "Only 1 day left until the end of the plan!\n";
 "ActionMenuYesterdaySuccessed.3DaysLeast" = "Only 3 days left until the end of the plan!\n";
+
+"ActionMenuYesterdayExceeded.NonCritical.First" = "Don’t worry, it happens. Keep moving forward!\n\n";
+"ActionMenuYesterdayExceeded.NonCritical.Third" = "Today’s limit is {count} puffs.";
+
+"ActionMenuYesterdayExceeded.Critical.Title" = "Yesterday, you were {count} puffs over the limit";
+"ActionMenuYesterdayExceeded.Critical.First" = "Don’t worry, it happens.\n\n";
+"ActionMenuYesterdayExceeded.Critical.Third" = "Today’s limit is {count} puffs. If you're sure you can handle it, let's keep going!\n\nIf you need a little more time, we can extend the plan by 1 day. The limit will be the same as yesterday.";
+
+"ActionMenuYesterdayExceeded.CanDoIt" = "I can do it!";
+"ActionMenuYesterdayExceeded.ExtendPlan" = "Extend the plan by 1 day";
+
+"ActionMenuYesterdayExceeded.PlanExtended" = "The plan has been extended by 1 day";
