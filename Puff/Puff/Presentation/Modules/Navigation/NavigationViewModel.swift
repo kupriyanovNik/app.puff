@@ -69,8 +69,6 @@ final class NavigationViewModel: ObservableObject {
     func checkAbilityToShowDailyPaywall() {
         if let dateOfSeenDailyPaywall {
             ableToShowDailyPaywall = !Calendar.current.isDateInToday(dateOfSeenDailyPaywall)
-        } else {
-            ableToShowDailyPaywall = true
         }
     }
 

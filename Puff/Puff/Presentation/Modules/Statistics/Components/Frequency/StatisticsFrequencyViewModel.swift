@@ -23,9 +23,11 @@ final class StatisticsFrequencyViewModel: ObservableObject {
         let allSeconds = smokesDates.count * 86400
         let allSmokes = smokesCount.reduce(0, +)
 
-        print(allSeconds / allSmokes)
+        if allSmokes > 0 {
+            return allSeconds / allSmokes
+        }
 
-        return allSeconds / allSmokes
+        return 0
     }
 
     private func getLastSmokeTimeString(for diff: Int) -> String {
