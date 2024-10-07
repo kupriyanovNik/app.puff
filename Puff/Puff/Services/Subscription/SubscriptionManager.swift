@@ -70,8 +70,9 @@ extension SubscriptionsManager {
                     callback(nil)
                 }
 
-            case .success(.unverified(_, _)): break
-            case .pending, .userCancelled: break
+            case .success(.unverified(_, let error)): callback(error.localizedDescription); break
+            case .pending: break
+            case .userCancelled: callback("Paywal.Cancelled".l); break
             @unknown default: break
             }
         } catch {

@@ -114,6 +114,8 @@
 
 // MARK: - Paywall
 
+"Paywal.Cancelled" = "You've cancelled your purchase";
+
 "Paywall.Title" = "Start your quit plan today";
 
 "Paywall.Restore" = "Restore purchases";

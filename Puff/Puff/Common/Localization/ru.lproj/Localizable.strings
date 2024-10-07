@@ -114,6 +114,8 @@
 
 // MARK: - Paywall
 
+"Paywal.Cancelled" = "Вы отменили оплату";
+
 "Paywall.Title" = "Начните свой план бросания";
 
 "Paywall.Restore" = "Восстановить покупки";
