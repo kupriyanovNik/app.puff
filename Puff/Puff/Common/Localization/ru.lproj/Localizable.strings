@@ -203,3 +203,17 @@
 "ActionMenuAddingMoreSmokes.Title" = "Кажется, мы немного ошиблись со стартовым лимитом затяжек";
 "ActionMenuAddingMoreSmokes.Description" = "Хотите добавить к сегодняшнему лимиту еще немного затяжек, чтобы начать бросать с этого числа?\n\nЭтот вопрос задаем только сегодня, на старте вашего пути :)";
 "ActionMenuAddingMoreSmokes.NoItWasLast" = "Нет! Это была последняя!";
+
+"ActionMenuReadyToBreakView.Base.Title1" = "Вы готовы бросить?";
+"ActionMenuReadyToBreakView.Base.Title2" = "Это была последняя затяжка";
+"ActionMenuReadyToBreakView.Base.Description" = "Вы прошли долгий путь. Сейчас - решающий момент. Вы готовы бросить парить?";
+"ActionMenuReadyToBreakView.Base.YesImBreaking" = "Да! Бросаем!";
+"ActionMenuReadyToBreakView.Base.Need1Day" = "Мне нужен еще 1 день";
+"ActionMenuReadyToBreakView.Base.NotReady" = "Нет, еще не готов";
+
+"ActionMenuReadyToBreakView.NeedDay.Title" = "План продлен на 1 день";
+"ActionMenuReadyToBreakView.NeedDay.TodayLimit" = "Сегодняшний лимит — {count} затяжки";
+
+"ActionMenuReadyToBreakView.Broke.Title" = "Вы сделали это!\nПоздравляем!!";
+"ActionMenuReadyToBreakView.Broke.Description" = "Вы успешно справились с планом и бросили парить. Гордимся вами!";
+"ActionMenuReadyToBreakView.Broke.Yay" = "Ура!";

@@ -203,3 +203,17 @@
 "ActionMenuAddingMoreSmokes.Title" = "It seems we got a starting puff limit a bit wrong";
 "ActionMenuAddingMoreSmokes.Description" = "Would you like to add some more puffs to today's limit so that you can start quitting from this number?\n\nWe ask this question only today, at the beginning of your journey!";
 "ActionMenuAddingMoreSmokes.NoItWasLast" = "No! That was the last one!";
+
+"ActionMenuReadyToBreakView.Base.Title1" = "Are you ready to quit?";
+"ActionMenuReadyToBreakView.Base.Title2" = "It was your last puff";
+"ActionMenuReadyToBreakView.Base.Description" = "You've come a long way. This is the decisive moment. Are you ready to quit vaping?";
+"ActionMenuReadyToBreakView.Base.YesImBreaking" = "Yes! I’m quitting!";
+"ActionMenuReadyToBreakView.Base.Need1Day" = "I need 1 more day";
+"ActionMenuReadyToBreakView.Base.NotReady" = "I need 1 more day";
+
+"ActionMenuReadyToBreakView.NeedDay.Title" = "The plan has been extended by 1 day";
+"ActionMenuReadyToBreakView.NeedDay.TodayLimit" = "Today’s limit is {count} puffs";
+
+"ActionMenuReadyToBreakView.Broke.Title" = "You made it!\nCongratulations!";
+"ActionMenuReadyToBreakView.Broke.Description" = "You have successfully completed the plan and quit vaping. We are proud of you!";
+"ActionMenuReadyToBreakView.Broke.Yay" = "Yay!";

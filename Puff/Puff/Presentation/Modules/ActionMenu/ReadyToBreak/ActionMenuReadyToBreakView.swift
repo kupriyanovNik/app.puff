@@ -20,10 +20,6 @@ struct ActionMenuReadyToBreakView: View {
     var onDismiss: () -> Void = {}
     var onTappedWowButton: () -> Void = {}
 
-    private var accentButtonText: String {
-        screenState == .ready ? "Ура!" : screenState == .needDay ? "Ok" : "Да! Бросаем!"
-    }
-
     var body: some View {
         VStack(spacing: 32) {
             Group {
@@ -42,7 +38,7 @@ struct ActionMenuReadyToBreakView: View {
 
             VStack(spacing: 10) {
                 AccentButton(
-                    text: accentButtonText,
+                    text: screenState.accentText,
                     background: screenState == .ready ? Color(hex: 0xFABC18) : Palette.accentColor
                 ) {
                     nextButtonAction(needOneMoreDay: false)
@@ -51,7 +47,7 @@ struct ActionMenuReadyToBreakView: View {
                 Group {
                     if screenState == .base {
                         SecondaryButton(
-                            text: tappedReadyToBreak ? "Нет, еще не готов" : "Мне нужен еще 1 день"
+                            text: tappedReadyToBreak ? "ActionMenuReadyToBreakView.Base.NotReady".l : "ActionMenuReadyToBreakView.Base.Need1Day".l
                         ) {
                             nextButtonAction(needOneMoreDay: true)
                         }
@@ -75,14 +71,20 @@ struct ActionMenuReadyToBreakView: View {
                     .frame(68)
 
                 MarkdownText(
-                    text: isLastSmoke ? "Это была последняя затяжка" : "Вы готовы бросить?",
-                    markdowns: ["последняя затяжка", "бросить?"]
+                    text: isLastSmoke ? "ActionMenuReadyToBreakView.Base.Title2".l :
+                        "ActionMenuReadyToBreakView.Base.Title1".l,
+                    markdowns: [
+                        "последняя затяжка",
+                        "бросить?",
+                        "last puff",
+                        "quit"
+                    ]
                 )
                 .font(.bold22)
                 .multilineTextAlignment(.center)
             }
 
-            Text("Вы прошли долгий путь. Сейчас - решающий момент. Вы готовы бросить парить?")
+            Text("ActionMenuReadyToBreakView.Base.Description".l)
                 .font(.medium16)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Palette.textSecondary)
@@ -100,13 +102,18 @@ struct ActionMenuReadyToBreakView: View {
                 .padding(.bottom, -14)
 
             MarkdownText(
-                text: "План продлен на 1 день",
-                markdowns: ["1 день"]
+                text: "ActionMenuReadyToBreakView.NeedDay.Title".l,
+                markdowns: ["1 день", "1 day"]
             )
             .font(.bold22)
             .lineLimit(2)
 
-            Text("Сегодняшний лимит — {count} затяжки".formatByDivider(divider: "{count}", count: todayLimit))
+            Text(
+                "ActionMenuReadyToBreakView.NeedDay.TodayLimit".l.formatByDivider(
+                    divider: "{count}",
+                    count: todayLimit
+                )
+            )
                 .font(.medium16)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Palette.textSecondary)
@@ -124,15 +131,15 @@ struct ActionMenuReadyToBreakView: View {
                 .padding(.bottom, -14)
 
             MarkdownText(
-                text: "Вы сделали это!\nПоздравляем!",
-                markdowns: ["Поздравляем!"],
+                text: "ActionMenuReadyToBreakView.Broke.Title".l,
+                markdowns: ["Поздравляем!", "Congratulations!"],
                 accentColor: Color(hex: 0xFABC18)
             )
             .font(.bold22)
             .multilineTextAlignment(.center)
             .lineLimit(3)
 
-            Text("Вы успешно справились с планом и бросили парить. Гордимся вами!")
+            Text("ActionMenuReadyToBreakView.Broke.Description".l)
                 .font(.medium16)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Palette.textSecondary)
@@ -143,12 +150,13 @@ struct ActionMenuReadyToBreakView: View {
     private func nextButtonAction(needOneMoreDay: Bool) {
         if screenState == .base {
             if needOneMoreDay {
-                if tappedReadyToBreak {
+                if tappedReadyToBreak && !isLastSmoke {
                     onDismiss()
                 } else {
                     withAnimation(.easeInOut(duration: 0.3)) {
                         screenState = .needDay
                     }
+
                     onNeedOneMoreDay()
                 }
             } else {
@@ -176,9 +184,9 @@ private extension ActionMenuReadyToBreakView {
 
         var accentText: String {
             switch self {
-            case .base: "Да! Бросаем!"
+            case .base: "ActionMenuReadyToBreakView.Base.YesImBreaking".l
             case .needDay: "Ок"
-            case .ready: "Ура!"
+            case .ready: "ActionMenuReadyToBreakView.Broke.Yay".l
             }
         }
     }
