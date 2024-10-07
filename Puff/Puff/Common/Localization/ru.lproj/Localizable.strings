@@ -155,7 +155,7 @@
 "AccountPlanQuitting.Reset" = "Да, сбросить план";
 
 "AccountSubscription.Title" = "Подписка";
-"AccountSubscription.SubscriptionType" = "Subscription Type";
+"AccountSubscription.SubscriptionType" = "Тип подписки";
 "AccountSubscription.SubscriptionTypeMonthly" = "Месячная";
 "AccountSubscription.SubscriptionTypeMonthlyWithTrial" = "Месячная с пробным периодом";
 "AccountSubscription.StartDate" = "Дата начала";

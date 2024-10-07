@@ -209,7 +209,7 @@
 "ActionMenuReadyToBreakView.Base.Description" = "You've come a long way. This is the decisive moment. Are you ready to quit vaping?";
 "ActionMenuReadyToBreakView.Base.YesImBreaking" = "Yes! I’m quitting!";
 "ActionMenuReadyToBreakView.Base.Need1Day" = "I need 1 more day";
-"ActionMenuReadyToBreakView.Base.NotReady" = "I need 1 more day";
+"ActionMenuReadyToBreakView.Base.NotReady" = "I'm not ready yet";
 
 "ActionMenuReadyToBreakView.NeedDay.Title" = "The plan has been extended by 1 day";
 "ActionMenuReadyToBreakView.NeedDay.TodayLimit" = "Today’s limit is {count} puffs";

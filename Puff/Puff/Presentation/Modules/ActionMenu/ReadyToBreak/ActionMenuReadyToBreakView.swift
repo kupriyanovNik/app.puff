@@ -65,7 +65,7 @@ struct ActionMenuReadyToBreakView: View {
     private func baseView() -> some View {
         VStack(spacing: 18) {
             VStack(spacing: 4) {
-                Image(.onboardingPlanEnding)
+                Image(.actionMenuReadyToBreak)
                     .resizable()
                     .scaledToFit()
                     .frame(68)
@@ -106,6 +106,7 @@ struct ActionMenuReadyToBreakView: View {
                 markdowns: ["1 день", "1 day"]
             )
             .font(.bold22)
+            .multilineTextAlignment(.center)
             .lineLimit(2)
 
             Text(
@@ -114,9 +115,9 @@ struct ActionMenuReadyToBreakView: View {
                     count: todayLimit
                 )
             )
-                .font(.medium16)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(Palette.textSecondary)
+            .font(.medium16)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(Palette.textSecondary)
         }
         .padding(.horizontal, 24)
     }

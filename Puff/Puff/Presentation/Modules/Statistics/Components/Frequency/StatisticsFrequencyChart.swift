@@ -74,7 +74,8 @@ struct StatisticsFrequencyChart: View {
 
                     Group {
                         if !statisticsFrequencyViewModel.averageIntervalText.isEmpty &&
-                            statisticsFrequencyViewModel.smokesDates.count > 1 {
+                            statisticsFrequencyViewModel.smokesDates.count > 1 &&
+                            statisticsFrequencyViewModel.smokesCount.reduce(0, +) > 1 {
                             VStack(alignment: .trailing, spacing: 4) {
                                 Text(statisticsFrequencyViewModel.averageIntervalText)
                                     .font(.bold22)

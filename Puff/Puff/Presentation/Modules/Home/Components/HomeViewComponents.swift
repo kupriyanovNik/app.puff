@@ -266,7 +266,7 @@ extension HomeView {
                         return "\(days) дней назад"
                     }
                 } else {
-                    return "Последняя: давно"
+                    return "давно"
                 }
             } else {
                 if hours != 0 {

@@ -71,7 +71,7 @@ struct StatisticsView: View {
                 navigationVM.shouldShowPlanDevelopingActionMenu.toggle()
             }
         } else if smokesManager.isLastDayOfPlan && !smokesManager.isPlanEnded {
-            HomeView.HomeViewIsPremiumPlanNotCreatedView {
+            HomeView.HomeViewIsPremiumPlanNotCreatedView(text: "Home.ReadyToQuit".l) {
                 navigationVM.tappedReadyToBreak = true
                 navigationVM.shouldShowReadyToBreakActionMenu = true
             }

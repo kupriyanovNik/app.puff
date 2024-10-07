@@ -78,7 +78,7 @@ final class SmokesManager: ObservableObject {
 
     var todayLimit: Int { planLimits[max(0, min(currentDayIndex, daysInPlan - 1))] }
 
-    var isLastDayOfPlan: Bool { currentDayIndex + 1 >= daysInPlan }
+    var isLastDayOfPlan: Bool { currentDayIndex + 1 == daysInPlan }
 
     var isTodayLimitExceeded: Bool { todaySmokes > todayLimit }
 
@@ -194,7 +194,14 @@ final class SmokesManager: ObservableObject {
                 for _ in 0..<diff + 1 {
                     planLimits.append(limit)
                     planCounts.append(0)
+                    daysInPlan += 1
                 }
+            }
+        } else {
+            if let last = planLimits.last {
+                planLimits.append(last)
+                planCounts.append(0)
+                daysInPlan += 1
             }
         }
     }

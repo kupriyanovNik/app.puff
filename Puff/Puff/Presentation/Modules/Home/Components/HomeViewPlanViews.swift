@@ -50,6 +50,8 @@ extension HomeView {
 
     struct HomeViewIsPremiumPlanNotCreatedView: View {
 
+        var text: String = "Home.StartPlan".l
+
         var action: () -> Void
 
         var body: some View {
@@ -62,7 +64,7 @@ extension HomeView {
                         .scaledToFit()
                         .frame(22)
 
-                    Text("Home.StartPlan".l)
+                    Text(text)
                         .font(.semibold16)
                         .foregroundStyle(.white)
 
