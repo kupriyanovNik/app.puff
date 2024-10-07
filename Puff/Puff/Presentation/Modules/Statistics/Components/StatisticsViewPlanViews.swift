@@ -18,7 +18,7 @@ extension StatisticsView {
             } content: {
                 VStack(spacing: 36) {
                     HStack(spacing: 12) {
-                        Text("Начните свой план бросания")
+                        Text("Statistics.StartYourQuitPlan".l)
                             .font(.semibold22)
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
@@ -46,7 +46,7 @@ extension StatisticsView {
                             .frame(18)
                             .padding(.trailing, -15)
 
-                        Text("План бросания")
+                        Text("Statistics.QuitPlan".l)
 
                         Image(.statisticsStatistics)
                             .resizable()
@@ -54,7 +54,7 @@ extension StatisticsView {
                             .frame(18)
                             .padding(.trailing, -15)
 
-                        Text("Детальная статистика")
+                        Text("Statistics.DetailedStatistics".l)
                             .hLeading()
 
                     }

@@ -18,7 +18,7 @@ struct StatisticsWeeklyChart: View {
     @State private var ableToChangeWeekToBackward: Bool = false
     @State private var ableToChangeWeekToForward: Bool = false
 
-    @State private var text: String = "Затяжки, эта неделя"
+    @State private var text: String = "StatisticsWeekly.ThisWeek".l
 
     private let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -52,7 +52,7 @@ struct StatisticsWeeklyChart: View {
 
                     MarkdownText(
                         text: text,
-                        markdowns: ["Затяжки,"],
+                        markdowns: ["Затяжки,", "Puffs"],
                         foregroundColor: Palette.textQuaternary
                     )
                     .font(.semibold14)
@@ -75,7 +75,7 @@ struct StatisticsWeeklyChart: View {
                             .foregroundStyle(Palette.darkBlue)
                             .contentTransition(.identity)
 
-                        Text("Затяжек")
+                        Text("Statistics.Puffs".l)
                             .font(.medium12)
                             .foregroundStyle(Palette.textQuaternary)
                     }
@@ -91,7 +91,7 @@ struct StatisticsWeeklyChart: View {
                                     .foregroundStyle(Palette.darkBlue)
                                     .contentTransition(.identity)
 
-                                Text("Лимит")
+                                Text("Paywall.Limit".l)
                                     .font(.medium12)
                                     .foregroundStyle(Palette.textQuaternary)
                             }
@@ -219,11 +219,11 @@ struct StatisticsWeeklyChart: View {
         let endOfWeek = date.endOfWeek
 
         if Date().startOfWeek == startOfWeek {
-            text = "Затяжки, эта неделя"
+            text = "StatisticsWeekly.ThisWeek".l
             return
         }
 
-        text = "Затяжки, \(formatter.string(from: startOfWeek))–\(formatter.string(from: endOfWeek))"
+        text = "Paywall.Puffs".l + ", \(formatter.string(from: startOfWeek))–\(formatter.string(from: endOfWeek))"
     }
 }
 

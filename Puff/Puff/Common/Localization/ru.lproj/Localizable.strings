@@ -258,3 +258,18 @@
 "Home.LimitWillBeUpdated" = "Лимит обновится в 00:00";
 "Home.Puffs" = "Затяжек";
 "Home.RealyLongTime" = "Очень давно";
+
+// MARK: - Statistics
+
+"Statistics.QuitPlan" = "План бросания";
+"Statistics.DetailedStatistics" = "Детальная статистика";
+"Statistics.StartYourQuitPlan" = "Начните свой план бросания";
+
+"StatisticsDaily.TodaySmokes" = "Затяжек сегодня";
+"StatisticsDaily.FromStartOfPlan" = "С начала плана";
+"StatisticsDaily.SmokesForDay" = "Затяжек за {number} день";
+"StatisticsDaily.LimitForFuture" = "Лимит в {number} день";
+
+"StatisticsWeekly.ThisWeek" = "Затяжки, эта неделя";
+"StatisticsWeekly.ThisMonth" = "Затяжки, этот месяц";
+"Statistics.Puffs" = "Затяжек";

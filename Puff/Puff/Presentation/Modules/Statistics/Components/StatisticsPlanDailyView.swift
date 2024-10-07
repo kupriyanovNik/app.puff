@@ -55,7 +55,7 @@ struct StatisticsPlanDailyView: View {
                 .scaledToFit()
                 .frame(18)
 
-            Text("План бросания")
+            Text("Statistics.QuitPlan".l)
                 .font(.semibold14)
                 .foregroundStyle(Palette.textAccent)
 
@@ -78,12 +78,12 @@ struct StatisticsPlanDailyView: View {
 
         let leadingText: String = {
             if selectedIndex == dayIndex {
-                return "Затяжек сегодня"
+                return "StatisticsDaily.TodaySmokes".l
             } else if selectedIndex > dayIndex {
-                return "Лимит за {number} день".formatByDivider(divider: "{number}", count: selectedIndex + 1)
+                return "StatisticsDaily.LimitForFuture".l.formatByDivider(divider: "{number}", count: selectedIndex + 1)
             }
 
-            return "Затяжек за {number} день".formatByDivider(divider: "{number}", count: selectedIndex + 1)
+            return "StatisticsDaily.SmokesForDay".l.formatByDivider(divider: "{number}", count: selectedIndex + 1)
         }()
 
         HStack {
@@ -124,7 +124,7 @@ struct StatisticsPlanDailyView: View {
                                 .foregroundStyle(Palette.darkBlue)
                         }
 
-                        Text("С начала плана")
+                        Text("StatisticsDaily.FromStartOfPlan".l)
                             .font(.medium12)
                             .foregroundStyle(Palette.textQuaternary)
                     }

@@ -258,3 +258,18 @@
 "Home.LimitWillBeUpdated" = "Limit will be updated at 12:00 AM";
 "Home.Puffs" = "Puffs";
 "Home.RealyLongTime" = "Long time ago";
+
+// MARK: - Statistics
+
+"Statistics.QuitPlan" = "Quit plan";
+"Statistics.DetailedStatistics" = "Detailed statistics";
+"Statistics.StartYourQuitPlan" = "Start your personal quit plan";
+
+"StatisticsDaily.TodaySmokes" = "Puffs today";
+"StatisticsDaily.FromStartOfPlan" = "Since day 1";
+"StatisticsDaily.SmokesForDay" = "Puffs, day {number}";
+"StatisticsDaily.LimitForFuture" = "Limit, day {number}";
+
+"StatisticsWeekly.ThisWeek" = "Puffs, this week";
+"StatisticsWeekly.ThisMonth" = "Puffs, this month";
+"Statistics.Puffs" = "Puffs";

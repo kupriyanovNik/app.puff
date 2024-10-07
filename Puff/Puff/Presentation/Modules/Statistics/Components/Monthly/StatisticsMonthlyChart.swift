@@ -18,11 +18,11 @@ struct StatisticsMonthlyChart: View {
     @State private var ableToChangeMonthToBackward: Bool = false
     @State private var ableToChangeMonthToForward: Bool = false
 
-    @State private var text: String = "Затяжки, этот месяц"
+    @State private var text: String = "StatisticsWeekly.ThisMonth".l
 
     private let formatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM"
+        formatter.dateFormat = "MMMM"
 
         return formatter
     }()
@@ -52,7 +52,7 @@ struct StatisticsMonthlyChart: View {
 
                     MarkdownText(
                         text: text,
-                        markdowns: ["Затяжки,"],
+                        markdowns: ["Затяжки,", "Puffs"],
                         foregroundColor: Palette.textQuaternary
                     )
                     .font(.semibold14)
@@ -75,7 +75,7 @@ struct StatisticsMonthlyChart: View {
                             .foregroundStyle(Palette.darkBlue)
                             .contentTransition(.identity)
 
-                        Text("Затяжек")
+                        Text("Statistics.Puffs".l)
                             .font(.medium12)
                             .foregroundStyle(Palette.textQuaternary)
                     }
@@ -90,7 +90,7 @@ struct StatisticsMonthlyChart: View {
                                     .foregroundStyle(Palette.darkBlue)
                                     .contentTransition(.identity)
 
-                                Text("Лимит")
+                                Text("Paywall.Limit".l)
                                     .font(.medium12)
                                     .foregroundStyle(Palette.textQuaternary)
                             }
@@ -211,11 +211,11 @@ struct StatisticsMonthlyChart: View {
         let endOfMonth = date.endOfMonth
 
         if Date().startOfMonth == startOfMonth {
-            text = "Затяжки, этот месяц"
+            text = "StatisticsWeekly.ThisMonth".l
             return
         }
 
-        text = "Затяжки, \(formatter.string(from: startOfMonth))–\(formatter.string(from: endOfMonth))"
+        text = "Paywall.Puffs".l + ", \(formatter.string(from: startOfMonth))"
     }
 }
 
