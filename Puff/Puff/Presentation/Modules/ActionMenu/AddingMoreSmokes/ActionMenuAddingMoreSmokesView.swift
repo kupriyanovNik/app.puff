@@ -21,14 +21,14 @@ struct ActionMenuAddingMoreSmokesView: View {
                     .frame(68)
 
                 MarkdownText(
-                    text: "Кажется, мы немного ошиблись со стартовым лимитом затяжек",
-                    markdowns: ["немного ошиблись"]
+                    text: "ActionMenuAddingMoreSmokes.Title".l,
+                    markdowns: ["немного ошиблись", "a bit wrong"]
                 )
                 .font(.bold22)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
 
-                Text("Хотите добавить к сегодняшнему лимиту еще немного затяжек, чтобы начать бросать с этого числа?\n\nЭтот вопрос задаем только сегодня, на старте вашего пути :)")
+                Text("ActionMenuAddingMoreSmokes.Description".l)
                     .font(.medium16)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Palette.textSecondary)
@@ -44,7 +44,7 @@ struct ActionMenuAddingMoreSmokesView: View {
     @ViewBuilder
     private func buttons() -> some View {
         VStack(spacing: 10) {
-            AccentButton(text: "Нет! Это была последняя!", action: onDismiss)
+            AccentButton(text: "ActionMenuAddingMoreSmokes.NoItWasLast".l, action: onDismiss)
 
             HStack(spacing: 10) {
                 SecondaryButton(text: "+10", foreground: Palette.textSecondary) {

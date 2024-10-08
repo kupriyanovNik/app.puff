@@ -200,3 +200,6 @@
 "ActionMenuPlanDeveloping.Info.Description2Title" = "Days 2-{count}";
 "ActionMenuPlanDeveloping.Info.Description3Title" = "Day {count}";
 
+"ActionMenuAddingMoreSmokes.Title" = "It seems we got a starting puff limit a bit wrong";
+"ActionMenuAddingMoreSmokes.Description" = "Would you like to add some more puffs to today's limit so that you can start quitting from this number?\n\nWe ask this question only today, at the beginning of your journey!";
+"ActionMenuAddingMoreSmokes.NoItWasLast" = "No! That was the last one!";

@@ -200,3 +200,6 @@
 "ActionMenuPlanDeveloping.Info.Description2Title" = "Дни 2-{count}";
 "ActionMenuPlanDeveloping.Info.Description3Title" = "День {count}";
 
+"ActionMenuAddingMoreSmokes.Title" = "Кажется, мы немного ошиблись со стартовым лимитом затяжек";
+"ActionMenuAddingMoreSmokes.Description" = "Хотите добавить к сегодняшнему лимиту еще немного затяжек, чтобы начать бросать с этого числа?\n\nЭтот вопрос задаем только сегодня, на старте вашего пути :)";
+"ActionMenuAddingMoreSmokes.NoItWasLast" = "Нет! Это была последняя!";
