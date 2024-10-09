@@ -17,7 +17,7 @@ struct PremiumCongratulationView: View {
         VStack(spacing: 24) {
             Spacer()
 
-            LottieView(name: "puffPremiumStarAnimation")
+            LottieView(name: "PaywallPuffPremiumStarAnimation")
                 .frame(120)
                 .cornerRadius(16)
                 .opacity(shouldShowLottie ? 1 : 0)
