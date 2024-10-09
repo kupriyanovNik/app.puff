@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -13,6 +14,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
+        FirebaseApp.configure()
+
         return true
     }
 }
