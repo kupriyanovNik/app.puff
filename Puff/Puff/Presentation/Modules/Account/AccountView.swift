@@ -27,7 +27,7 @@ struct AccountView: View {
     private var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                self.offset = max(0, value.translation.height)
+                self.offset = max(0, value.translation.height / 30)
             }
             .onEnded { value in
                 if value.translation.height > 15 {
@@ -58,6 +58,8 @@ struct AccountView: View {
                 }
             }
             .onAppear {
+                NotificationManager.shared.checkNotificationStatus()
+
                 delay(0.6) {
                     checkNotifications()
                 }
@@ -248,16 +250,19 @@ struct AccountView: View {
 
     private func checkNotifications() {
         NotificationManager.shared.checkNotificationStatus()
+
         isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
     }
 
     private func requestNotifications() {
-        if !isNotificationsEnabled {
-            if hasSkippedNotificationRequest {
-                NotificationManager.shared.requestAuthorization()
-            } else {
-                UIApplication.openNotificationSettingsURLString.openURL()
-            }
+        if NotificationManager.shared.isNotificationEnabled {
+            return
+        }
+
+        if hasSkippedNotificationRequest {
+            NotificationManager.shared.requestAuthorization()
+        } else {
+            UIApplication.openNotificationSettingsURLString.openURL()
         }
     }
 }

@@ -50,8 +50,8 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         completionHandler([.badge, .sound, .list, .banner])
     }
 
-    func removeNotification(with id: String) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+    func removeNotifications(with ids: [String]) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
     }
 
     func removeAllNotifications() {
@@ -71,45 +71,69 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
                 }
             }
     }
-}
 
-// MARK: - First Day Notification
-extension NotificationManager {
-    func sendFirstDayNotification() {
-        if let _ = defaults.value(forKey: "firstDayNotificationID") {
-            return
-        }
-
-        let title: String = "🔥 Сегодня - тот самый день"
-        let body: String = "Начните план бросания"
-
-        let id = UUID().uuidString
-
-        var dateComponents = calendar.dateComponents([.year, .month, .day], from: .now)
-        dateComponents.hour = 22
-        dateComponents.minute = 0
-
+    @discardableResult
+    private func sendNotification(title: String, body: String, dateComponents: DateComponents) -> String {
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
 
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
-        content.sound = UNNotificationSound.default
+        content.sound = .default
+
+        let id = UUID().uuidString
 
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error {
                 print("DEBUG: unable to send notification: \(error)")
+            } else {
+                print("added notification", title, body, dateComponents)
             }
         }
 
-        defaults.set(id, forKey: "firstDayNotificationID")
+        return id
+    }
+}
+
+// MARK: - First Day Notification
+extension NotificationManager {
+    func sendFirstDaysNotifications() {
+        if let _ = defaults.value(forKey: "firstDaysNotificationsIDs") {
+            return
+        }
+
+        var ids: [String] = []
+
+        let titles = [
+            "🔥 Сегодня - тот самый день",
+            "⚡️ Время действовать!",
+            "🕺 Сделайте первый шаг"
+        ]
+        let body = "Начните план бросания"
+        let dates = [
+            Date(),
+            Date().tomorrow,
+            Date().tomorrow.tomorrow
+        ]
+
+        for index in 0..<3 {
+            var dateComp = calendar.dateComponents([.year, .month, .day], from: dates[index])
+            dateComp.hour = 22
+            dateComp.minute = 0
+            let title = titles[index]
+
+            ids.append(sendNotification(title: title, body: body, dateComponents: dateComp))
+        }
+
+        defaults.set(ids, forKey: "firstDaysNotificationsIDs")
     }
 
     func deleteFirstDayNotification() {
-        if let id = defaults.value(forKey: "firstDayNotificationID") as? String {
-            removeNotification(with: id)
+        if let ids = defaults.value(forKey: "firstDaysNotificationsIDs") as? [String] {
+            removeNotifications(with: ids)
+            defaults.set(nil, forKey: "firstDaysNotificationsIDs")
         }
     }
 }

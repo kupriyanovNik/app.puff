@@ -32,7 +32,7 @@ extension AccountView {
         private var gesture: some Gesture {
             DragGesture()
                 .onChanged { value in
-                    self.offset = max(0, value.translation.height)
+                    self.offset = max(0, value.translation.height / 30)
                 }
                 .onEnded { value in
                     if value.translation.height > 15 {

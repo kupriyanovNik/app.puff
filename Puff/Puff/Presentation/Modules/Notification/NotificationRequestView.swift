@@ -47,7 +47,7 @@ struct NotificationRequestView: View {
         VStack(spacing: 6) {
             AccentButton(text: "Разрешить") {
                 NotificationManager.shared.requestAuthorization {
-                    NotificationManager.shared.sendFirstDayNotification()
+                    NotificationManager.shared.sendFirstDaysNotifications()
                     action()
                 }
             }

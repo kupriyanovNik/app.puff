@@ -28,3 +28,13 @@ extension Date: RawRepresentable {
         self = Date.dateFormatter.date(from: rawValue) ?? Date()
     }
 }
+
+extension Date {
+    var yesterday: Date {
+        Calendar.current.date(byAdding: .day, value: -1, to: self) ?? .now
+    }
+
+    var tomorrow: Date {
+        Calendar.current.date(byAdding: .day, value: 1, to: self) ?? .now
+    }
+}
