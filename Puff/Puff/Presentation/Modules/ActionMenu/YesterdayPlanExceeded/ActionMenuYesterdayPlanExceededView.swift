@@ -109,9 +109,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
     @ViewBuilder
     private func criticalExceededView() -> some View {
         VStack(spacing: 18) {
-            Image(.yesterdayPlanExceededBadImageSvg)
-                .resizable()
-                .scaledToFit()
+            LottieView(name: "ActionMenuYesterdayPlanExceededCriticalAnimation", delay: 0.3)
                 .frame(68)
                 .padding(.bottom, -14)
 
@@ -137,9 +135,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
     @ViewBuilder
     private func nonCriticalExceededView() -> some View {
         VStack(spacing: 18) {
-            Image(.yesterdayPlanExceededNormal)
-                .resizable()
-                .scaledToFit()
+            LottieView(name: "ActionMenuYesterdayPlanExceededNonCriticalAnimation", delay: 0.3)
                 .frame(68)
                 .padding(.bottom, -14)
 
@@ -164,7 +160,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
     @ViewBuilder
     private func planExtendedView() -> some View {
         VStack(spacing: 18) {
-            Image(.yesterdayPlanExceededNormal)
+            Image(.actionMenuPlanExtended)
                 .resizable()
                 .scaledToFit()
                 .frame(68)

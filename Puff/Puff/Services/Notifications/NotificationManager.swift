@@ -147,7 +147,7 @@ extension NotificationManager {
         limits: [Int] = []
     ) {
         var ids: [String] = []
-        print (limits)
+
         if limits.isEmpty {
             let dates: [Date] = (0...15).map {
                 calendar.date(byAdding: .day, value: $0, to: .now) ?? .now

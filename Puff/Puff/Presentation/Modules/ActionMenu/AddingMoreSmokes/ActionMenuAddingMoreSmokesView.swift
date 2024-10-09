@@ -15,9 +15,7 @@ struct ActionMenuAddingMoreSmokesView: View {
     var body: some View {
         VStack(spacing: 32) {
             VStack(spacing: 4) {
-                Image(.actionMenuAddMoreSmokes)
-                    .resizable()
-                    .scaledToFit()
+                LottieView(name: "ActionMenuAddingMoreSmokesAnimation", delay: 0.3)
                     .frame(68)
 
                 MarkdownText(

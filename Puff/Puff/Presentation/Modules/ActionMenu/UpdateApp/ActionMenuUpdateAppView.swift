@@ -13,9 +13,7 @@ struct ActionMenuUpdateAppView: View {
 
     var body: some View {
         VStack(spacing: 32) {
-            Image(.update)
-                .resizable()
-                .scaledToFit()
+            LottieView(name: "ActionMenuUpdateAppAnimation", loopMode: .loop, delay: 0.3)
                 .frame(68)
                 .padding(.bottom, -14)
 

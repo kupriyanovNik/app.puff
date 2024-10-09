@@ -65,9 +65,7 @@ struct ActionMenuReadyToBreakView: View {
     private func baseView() -> some View {
         VStack(spacing: 18) {
             VStack(spacing: 4) {
-                Image(.actionMenuReadyToBreak)
-                    .resizable()
-                    .scaledToFit()
+                LottieView(name: "ActionMenuReadyToBreakBaseAnimation", loopMode: .loop, delay: 0.3)
                     .frame(68)
 
                 MarkdownText(
@@ -95,9 +93,7 @@ struct ActionMenuReadyToBreakView: View {
     @ViewBuilder
     private func needDayView() -> some View {
         VStack(spacing: 18) {
-            Image(.homeOK)
-                .resizable()
-                .scaledToFit()
+            LottieView(name: "ActionMenuReadyToBreakNeedDayAnimation", delay: 0.3)
                 .frame(68)
                 .padding(.bottom, -14)
 
@@ -125,9 +121,7 @@ struct ActionMenuReadyToBreakView: View {
     @ViewBuilder
     private func readyView() -> some View {
         VStack(spacing: 18) {
-            Image(.actionMenuBroke)
-                .resizable()
-                .scaledToFit()
+            LottieView(name: "ActionMenuReadyToBreakReadyAnimation", loopMode: .loop, delay: 0.3)
                 .frame(68)
                 .padding(.bottom, -14)
 
