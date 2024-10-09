@@ -74,9 +74,12 @@ final class NavigationViewModel: ObservableObject {
 
     private func checkAbilityToShowUpdateActionMenu() {
         if let dateOfSeenUpdateSheet {
+            print("aaaa", TimeInterval(Date() - dateOfSeenUpdateSheet) / 86400)
+
             if TimeInterval(Date() - dateOfSeenUpdateSheet) / 86400 < 3 {
                 ableToShowUpdateActionMenu = false
             } else {
+                ableToShowUpdateActionMenu = true
             }
         } else {
             ableToShowUpdateActionMenu = true

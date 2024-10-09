@@ -113,22 +113,14 @@ struct MainNavigationView: View {
             }
         }
         .task {
-            do {
-                let response = try await UpdateManager().getLatestAvailableVersion()
+            if navigationVM.shouldShowUpdateActionMenu {
+                do {
+                    let response = try await UpdateManager().getLatestAvailableVersion()
 
-                if let response {
-                    if let actualVersion = response.version.components(separatedBy: ".").first {
-                        if let appVersion = Bundle.main.appVersion.components(separatedBy: ".").first {
-                            if (Int(actualVersion) ?? 0) > (Int(appVersion) ?? 0) {
-                                if navigationVM.ableToShowUpdateActionMenu {
-                                    navigationVM.shouldShowUpdateActionMenu = true
-                                }
-                            }
-                        }
-                    }
+                    handleNewVersion(response)
+                } catch {
+                    print(error.localizedDescription)
                 }
-            } catch {
-                print(error.localizedDescription)
             }
         }
     }
@@ -184,6 +176,30 @@ struct MainNavigationView: View {
             NotificationManager.shared.scheduleNotifications(limits: smokesManager.planLimits)
         } else {
             NotificationManager.shared.removeAllNotifications()
+        }
+    }
+
+    private func handleNewVersion(_ response: UpdateManager.LatestAppStoreVersion?) {
+        if let response {
+            let actualAppInfo = response.version.components(separatedBy: ".")
+            let currentAppInfo = Bundle.main.appVersion.components(separatedBy: ".")
+
+            if (actualAppInfo.count >= 2) && (currentAppInfo.count >= 2) {
+                let actualAppVersion = Int(actualAppInfo[0]) ?? 0
+                let actualAppBuild = Int(actualAppInfo[1]) ?? 0
+
+                let currentAppVersion = Int(currentAppInfo[0]) ?? 0
+                let currentAppBuild = Int(currentAppInfo[1]) ?? 0
+
+                let isFutureVersion: Bool = actualAppVersion > currentAppVersion
+                let isActualVersion: Bool = actualAppVersion == currentAppVersion
+
+                if isFutureVersion || ((isActualVersion) && (actualAppBuild > currentAppBuild)) {
+                    navigationVM.shouldShowUpdateActionMenu = true
+                }
+            }
+        } else {
+            print("DEBUG: unable to get UpdateManager.LatestAppStoreVersion response")
         }
     }
 }

@@ -11,34 +11,19 @@ extension Bundle {
 
     // MARK: - Internal Properties
 
-    var appName: String {
-        getInfo("CFBundleName")
-    }
+    var appName: String { getInfo("CFBundleName") }
 
-    var displayName: String {
-        getInfo("CFBundleDisplayName")
-    }
+    var displayName: String { getInfo("CFBundleDisplayName") }
 
-    var language: String {
-        getInfo("CFBundleDevelopmentRegion")
-    }
+    var language: String { getInfo("CFBundleDevelopmentRegion") }
 
-    var identifier: String {
-        getInfo("CFBundleIdentifier")
-    }
+    var identifier: String { getInfo("CFBundleIdentifier") }
 
-    var copyright: String {
-        getInfo("NSHumanReadableCopyright")
-            .replacingOccurrences(of: "\\\\n", with: "\n")
-    }
+    var copyright: String { getInfo("NSHumanReadableCopyright") .replacingOccurrences(of: "\\\\n", with: "\n") }
 
-    var appBuild: String {
-        getInfo("CFBundleVersion")
-    }
+    var appBuild: String { getInfo("CFBundleVersion") }
 
-    var appVersion: String {
-        getInfo("CFBundleShortVersionString")
-    }
+    var appVersion: String { getInfo("CFBundleShortVersionString") }
 
     // MARK: - Private Functions
 
