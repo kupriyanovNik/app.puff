@@ -19,6 +19,11 @@ struct HomeView: View {
     var body: some View {
         CircledTopCornersView(content: viewContent)
             .onAppear(perform: smokesManager.checkIsNewDay)
+            .onChange(of: smokesManager.isPlanEnded) { newvalue in
+                if newvalue {
+                    NotificationManager.shared.removeAllNotifications()
+                }
+            }
     }
 
     @ViewBuilder

@@ -150,6 +150,7 @@
 "Account.ContactUs" = "Связаться с нами";
 "Account.Subscription" = "Подписка";
 "Account.OurChannel" = "Наш Telegram-канал";
+"Account.OurChannel.Link" = "https://t.me/puffless_app_ru";
 "Account.Notifications" = "Уведомления";
 "Account.ResetQuittingPlan" = "Сбросить план бросания";
 "AccountPlanQuitting.Title" = "Вы уверены, что хотите сбросить план бросания?";
@@ -279,3 +280,14 @@
 "StatisticsFrequency.Title" = "Частота затяжек";
 "StatisticsFrequency.Description" = "Самый активный период";
 "StatisticsFrequency.AverageBreak" = "Перерыв в среднем";
+
+// MARK: - Notifications
+
+"Notifications.FirstDaysNotificationSubheader" = "Начните план бросания";
+"Notifications.FistDayNotificationHeader1" = "🔥 Сегодня - тот самый день";
+"Notifications.FistDayNotificationHeader2" = "⚡️ Время действовать!";
+"Notifications.FistDayNotificationHeader3" = "🕺 Сделайте первый шаг";
+
+"Notifications.DailyNotifications" = "Начнем новый день!";
+"Notifications.DailyNotificationsFreeBody" = "Следите за своими затяжками";
+"Notifications.DailyNotificationsPremiumBody" = "Лимит затяжек на сегодня — {count}";

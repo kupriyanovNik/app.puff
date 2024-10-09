@@ -91,10 +91,7 @@ struct MainNavigationView: View {
             }
         }
         .onChange(of: smokesManager.isPlanStarted) { newValue in
-            if newValue {
-                NotificationManager.shared.removeAllNotifications()
-                NotificationManager.shared.scheduleNotifications(limits: smokesManager.planLimits)
-            }
+            handlePlanStarting(isStarted: newValue)
         }
         .onAppear {
             checkIsNowDayAfterEndOfPlan()
@@ -178,6 +175,15 @@ struct MainNavigationView: View {
                     navigationVM.selectedTab = .home
                 }
             }
+        }
+    }
+    
+    private func handlePlanStarting(isStarted: Bool) {
+        if isStarted {
+            NotificationManager.shared.removeAllNotifications()
+            NotificationManager.shared.scheduleNotifications(limits: smokesManager.planLimits)
+        } else {
+            NotificationManager.shared.removeAllNotifications()
         }
     }
 }

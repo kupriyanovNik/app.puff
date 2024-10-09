@@ -91,8 +91,6 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().add(request) { error in
             if let error {
                 print("DEBUG: unable to send notification: \(error)")
-            } else {
-                print("sendedNotifications", request)
             }
         }
 
@@ -117,11 +115,11 @@ extension NotificationManager {
         var ids: [String] = []
 
         let titles = [
-            "🔥 Сегодня - тот самый день",
-            "⚡️ Время действовать!",
-            "🕺 Сделайте первый шаг"
+            "Notifications.FistDayNotificationHeader1".l,
+            "Notifications.FistDayNotificationHeader2".l,
+            "Notifications.FistDayNotificationHeader3".l
         ]
-        let body = "Начните план бросания"
+        let body = "Notifications.FirstDaysNotificationSubheader".l
         let dates = [
             Date(),
             Date().tomorrow,
@@ -149,15 +147,15 @@ extension NotificationManager {
         limits: [Int] = []
     ) {
         var ids: [String] = []
-
+        print (limits)
         if limits.isEmpty {
             let dates: [Date] = (0...15).map {
                 calendar.date(byAdding: .day, value: $0, to: .now) ?? .now
             }
 
             for index in (0...15) {
-                let title: String = "Начнем новый день!"
-                let body = "Следите за своими затяжками"
+                let title: String = "Notifications.DailyNotifications".l
+                let body = "Notifications.DailyNotificationsFreeBody".l
 
                 var dateComp = calendar.dateComponents([.year, .month, .day], from: dates[index])
                 dateComp.hour = 10
@@ -171,8 +169,11 @@ extension NotificationManager {
             }
 
             for index in limits.indices {
-                let title: String = "Начнем новый день!"
-                let body = "Лимит затяжек на сегодня — {count}".formatByDivider(divider: "{count}", count: limits[index])
+                let title: String = "Notifications.DailyNotifications".l
+                let body = "Notifications.DailyNotificationsPremiumBody".l.formatByDivider(
+                    divider: "{count}",
+                    count: limits[index]
+                )
 
                 var dateComp = calendar.dateComponents([.year, .month, .day], from: dates[index])
                 dateComp.hour = 10

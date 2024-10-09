@@ -150,6 +150,7 @@
 "Account.ContactUs" = "Contact us";
 "Account.Subscription" = "Subscription";
 "Account.OurChannel" = "Our Telegram channel";
+"Account.OurChannel.Link" = "https://t.me/puffless_app";
 "Account.Notifications" = "Notifications";
 "Account.ResetQuittingPlan" = "Reset quit plan";
 "AccountPlanQuitting.Title" = "Are you sure you want to reset your quit plan?";
@@ -195,7 +196,7 @@
 "ActionMenuPlanDeveloping.Plan.Plan3Title" = "The\nsmoothest";
 
 "ActionMenuPlanDeveloping.Plan.Plan1Description" = "Significant reduction in puff limits. For those who want and are ready to quit in the shortest time possible";
-"ActionMenuPlanDeveloping.Plan.Plan2Description" = "Optimal pace for reducing puff limits. For those seeking a balance between quitting speed and comfort.";
+"ActionMenuPlanDeveloping.Plan.Plan2Description" = "Optimal pace for reducing puff limits. For those seeking a balance between quitting speed and comfort";
 "ActionMenuPlanDeveloping.Plan.Plan3Description" = "Barely noticeable reduction in puff limits. For those who are not in a hurry and want to quit without feeling restricted";
 
 "ActionMenuPlanDeveloping.Info.Title" = "Selected Plan: ";
@@ -279,3 +280,15 @@
 "StatisticsFrequency.Title" = "Puff Frequency";
 "StatisticsFrequency.Description" = "Most active period";
 "StatisticsFrequency.AverageBreak" = "Average break";
+
+// MARK: - Notifications
+
+"Notifications.FirstDaysNotificationSubheader" = "Start your quit plan";
+"Notifications.FistDayNotificationHeader1" = "🔥 Today is the day";
+"Notifications.FistDayNotificationHeader2" = "⚡️ It's time for action!";
+"FistDayNotificationHeader3" = "🕺 Take the first step";
+
+"Notifications.DailyNotifications" = "Let's start a new day!";
+"Notifications.DailyNotificationsFreeBody" = "Track your puffs";
+"Notifications.DailyNotificationsPremiumBody" = "Puff limit for today is {count}";
+

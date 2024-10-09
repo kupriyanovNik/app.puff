@@ -181,7 +181,7 @@ struct AccountView: View {
             cell(
                 "Account.OurChannel".l,
                 imageName: "accountLanguageImage"
-            ) { communityUrlString.openURL() }
+            ) { "Account.OurChannel.Link".l.openURL() }
 
             cell(
                 "Account.Notifications".l,
