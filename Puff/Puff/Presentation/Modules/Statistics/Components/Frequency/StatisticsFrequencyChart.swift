@@ -12,6 +12,8 @@ struct StatisticsFrequencyChart: View {
     @ObservedObject var statisticsFrequencyViewModel: StatisticsFrequencyViewModel
     @ObservedObject var smokesManager: SmokesManager
 
+    @State private var shouldShowMostActivePeriodRectangle: Bool = false
+
     var spacingBetweenChartCells: CGFloat = 3.5
     var chartCellHeight: CGFloat = 100
 
@@ -179,14 +181,12 @@ struct StatisticsFrequencyChart: View {
                         }
                     }
                     .background {
-                        if !isFirstDay {
-                            if statisticsFrequencyViewModel.smokesHours.filter({ $0 != 0 }).count > 4 {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(Color(hex: 0xB5D9FF, alpha: 0.28))
-                                    .frame(width: summaryRectangleWidth)
-                                    .hLeading()
-                                    .offset(x: summaryRectangleOffset + summaryRectangleWidth / 2 - 2)
-                            }
+                        if shouldShowMostActivePeriodRectangle {
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Color(hex: 0xB5D9FF, alpha: 0.28))
+                                .frame(width: summaryRectangleWidth)
+                                .hLeading()
+                                .offset(x: summaryRectangleOffset + summaryRectangleWidth / 2 - 2)
                         }
                     }
                 }
@@ -197,6 +197,7 @@ struct StatisticsFrequencyChart: View {
 
             yMarks()
         }
+        .onAppear(perform: checkAbilityToShowRectangle)
     }
 
     @ViewBuilder
@@ -263,6 +264,19 @@ struct StatisticsFrequencyChart: View {
         let startIndex = getActiveRangeStartIndex()
 
         return "\(startIndex):00 - \(startIndex + 4):00"
+    }
+
+    private func checkAbilityToShowRectangle() {
+        let index = getActiveRangeStartIndex()
+        let arr = statisticsFrequencyViewModel.smokesHours
+
+        if !isFirstDay {
+            if statisticsFrequencyViewModel.smokesHours.filter({ $0 != 0 }).count > 4 {
+                if (arr[index] != 0) && (arr[index + 1] != 0) && (arr[index + 2] != 0) && (arr[index + 3] != 0) && (arr[index + 4] != 0)  {
+                    shouldShowMostActivePeriodRectangle = true
+                }
+            }
+        }
     }
 }
 

@@ -53,6 +53,7 @@ extension SubscriptionsManager {
             self.products = try await Product.products(for: productIDs)
         } catch {
             CrashlyticsManager.log("Failed to fetch products!!! Error: \(error.localizedDescription)")
+            AnalyticsManager.logNonExpectedEvent(message: "Failed to fetch products!!! Error: \(error.localizedDescription)")
         }
     }
 

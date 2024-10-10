@@ -14,6 +14,10 @@ final class AnalyticsManager {
         logger.info("Event: \(event.title)")
     }
 
+    static func logNonExpectedEvent(message: String) {
+        Analytics.logEvent(message, parameters: nil)
+    }
+
     enum AnalyticsEvent {
         case openedPaywall(tab: Int)
         case seenOnboarding(pageNumber: Int)
