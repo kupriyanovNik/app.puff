@@ -9,7 +9,7 @@ import FirebaseCrashlytics
 import OSLog
 
 final class CrashlyticsManager {
-    static func log(_ message: String, logType: OSLogType? = nil) {
+    static func log(_ message: String, logType: OSLogType? = .error) {
         Crashlytics.crashlytics().log(message)
 
         if let logType {

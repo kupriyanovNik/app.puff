@@ -52,7 +52,7 @@ extension SubscriptionsManager {
         do {
             self.products = try await Product.products(for: productIDs)
         } catch {
-            print("Failed to fetch products!")
+            CrashlyticsManager.log("Failed to fetch products!!! Error: \(error.localizedDescription)")
         }
     }
 

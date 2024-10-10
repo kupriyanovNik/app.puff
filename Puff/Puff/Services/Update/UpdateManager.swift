@@ -32,7 +32,7 @@ final class UpdateManager {
                 )
             }
         } catch {
-            print(error.localizedDescription)
+            CrashlyticsManager.log(error.localizedDescription)
 
             return nil
         }

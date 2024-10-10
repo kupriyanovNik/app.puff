@@ -32,7 +32,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             UNUserNotificationCenter.current()
                 .requestAuthorization(options: [.alert, .badge, .sound]) { _, error in
                     if let error {
-                        logger.error("DEBUG: \(error.localizedDescription)")
+                        CrashlyticsManager.log(error.localizedDescription)
                     }
 
                     DispatchQueue.main.async { callback() }
@@ -90,7 +90,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error {
-                print("DEBUG: unable to send notification: \(error)")
+                CrashlyticsManager.log(error.localizedDescription)
             }
         }
 

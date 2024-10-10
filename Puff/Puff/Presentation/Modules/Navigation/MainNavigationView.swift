@@ -119,7 +119,7 @@ struct MainNavigationView: View {
 
                     handleNewVersion(response)
                 } catch {
-                    print(error.localizedDescription)
+                    CrashlyticsManager.log(error.localizedDescription)
                 }
             }
         }
