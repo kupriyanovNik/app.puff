@@ -18,6 +18,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
         CrashlyticsManager.sendUnsentReports()
 
+        logger.info(
+            """
+            Successfully opened the app.
+            App version \(Bundle.main.appVersion).
+            App build \(Bundle.main.appBuild).
+            """
+        )
+
         return true
     }
 }

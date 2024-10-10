@@ -111,6 +111,14 @@ struct PuffApp: App {
                     }
                 }
             }
+            .onReceive(
+                NotificationCenter.default.publisher(
+                    for: UIApplication.didReceiveMemoryWarningNotification,
+                    object: nil
+                )
+            ) { notification in
+                CrashlyticsManager.log("OOM: \(notification)")
+            }
         }
     }
 
