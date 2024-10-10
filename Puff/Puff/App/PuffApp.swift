@@ -42,7 +42,7 @@ struct PuffApp: App {
                 ableToDismissWithSwipe: false
             ) {
                 ActionMenuReadyToBreakView(
-                    tappedReadyToBreak: false,
+                    tappedReadyToBreak: smokesManager.realPlanDayIndex - smokesManager.planCounts.count == -1,
                     todayLimit: smokesManager.todayLimit
                 ) {
                     smokesManager.endPlan()

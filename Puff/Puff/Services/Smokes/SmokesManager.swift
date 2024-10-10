@@ -126,7 +126,7 @@ final class SmokesManager: ObservableObject {
 
         if diff > -1 {
             if let limit = planLimits.last {
-                for i in 0..<diff {
+                for i in 0..<diff + 1 {
                     planLimits.append(limit)
                     planCounts.append(0)
                 }
