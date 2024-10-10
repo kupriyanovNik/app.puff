@@ -66,12 +66,11 @@ final class SmokesManager: ObservableObject {
         return 0
     }
 
-    var todayLimit: Int { planLimits[currentDayIndex] }
+    var todayLimit: Int { planLimits[min(currentDayIndex, daysInPlan - 1)] }
 
     var isLastDayOfPlan: Bool { currentDayIndex + 1 >= daysInPlan }
 
     var isTodayLimitExceeded: Bool { todaySmokes > todayLimit }
-
 
     // MARK: - Internal Functions
 
@@ -98,7 +97,7 @@ final class SmokesManager: ObservableObject {
 
         if isPlanStarted {
             if planCounts.count > currentDayIndex {
-                planCounts[currentDayIndex] += 1
+                planCounts[realPlanDayIndex] += 1
             }
         }
 
@@ -110,7 +109,16 @@ final class SmokesManager: ObservableObject {
     }
 
     func addDay() {
-        
+        // надобавлять до 28 дня с лимитом как в 21
+
+        let diff: Int = realPlanDayIndex - daysInPlan + 1
+
+        if let limit = planLimits.last {
+            for i in 0..<diff {
+                planLimits.append(limit)
+                planCounts.append(0)
+            }
+        }
     }
 
     func endPlan() {
@@ -120,6 +128,8 @@ final class SmokesManager: ObservableObject {
     func resetPlan() {
         isPlanStarted = false
         isPlanEnded = false
+        currentDayIndex = 0
+        planStartDate = nil
     }
 
     @objc func checkIsNewDay() {

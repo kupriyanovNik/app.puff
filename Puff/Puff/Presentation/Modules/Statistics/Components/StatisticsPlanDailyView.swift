@@ -26,7 +26,7 @@ struct StatisticsPlanDailyView: View {
             ScrollViewReader { proxy in
                 ScrollView(.horizontal) {
                     HStack(spacing: 6) {
-                        ForEach(smokesManager.planCounts.indices) { index in
+                        ForEach(0..<smokesManager.realPlanDayIndex + 1) { index in
                             dayCell(index: index, proxy: proxy)
                         }
                     }
@@ -65,11 +65,13 @@ struct StatisticsPlanDailyView: View {
 
     @ViewBuilder
     private func bottomView() -> some View {
-        let dayIndex = smokesManager.currentDayIndex
+        let dayIndex = smokesManager.realPlanDayIndex
         let ratio = getRatio(for: selectedIndex)
 
-        let limit = smokesManager.planLimits[selectedIndex]
-        let count = smokesManager.planCounts[selectedIndex]
+        let index = min(smokesManager.planCounts.count - 1, selectedIndex)
+
+        let limit = smokesManager.planLimits[index]
+        let count = smokesManager.planCounts[index]
 
         let percentage = 1.0 - (Double(limit) / Double(smokesManager.planLimits[0]))
         let showPercentage = percentage > 0 && ratio < 1
@@ -134,7 +136,9 @@ struct StatisticsPlanDailyView: View {
     }
 
     private func getRatio(for index: Int) -> Double {
-        Double(smokesManager.planCounts[index]) / Double(smokesManager.planLimits[index])
+        let iindex = min(index, smokesManager.planLimits.count - 1)
+
+        return Double(smokesManager.planCounts[iindex]) / Double(smokesManager.planLimits[iindex])
     }
 
     private func selectCell(at index: Int, proxy: ScrollViewProxy) {
@@ -146,7 +150,7 @@ struct StatisticsPlanDailyView: View {
     }
 
     private func selectToday(proxy: ScrollViewProxy) {
-        selectedIndex = smokesManager.currentDayIndex
+        selectedIndex = smokesManager.realPlanDayIndex
 
         proxy.scrollTo(selectedIndex, anchor: .center)
     }
