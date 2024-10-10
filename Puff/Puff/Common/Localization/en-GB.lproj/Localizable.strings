@@ -1,0 +1,294 @@
+/*
+  Localizable.strings
+  Puff
+
+  Created by Никита Куприянов on 12.10.2024.
+
+*/
+
+// MARK: - Internal
+
+"Start" = "Start";
+"Next" = "Next";
+"Skip" = "Skip";
+"Continue" = "Continue";
+"Allow" = "Allow";
+"Cancel" = "Cancel";
+
+// MARK: - Images
+
+"OnboardingImages.ValueProposition1Image" = "valueProposition1Image";
+"OnboardingImages.ValueProposition2Image" = "valueProposition2Image";
+"OnboardingImages.ValueProposition3Image" = "valueProposition3Image";
+
+// MARK: - Onboarding
+
+"OnboardingWelcomeScreen.Congratulations" = "Congratulations!";
+"OnboardingWelcomeScreen.RightPath" = "You're on the right path - soon vaping will be a thing of the past!";
+
+"OnboardingValuePropositionScreen.title1" = "Puffless will help you quit vaping effortlessly and for good";
+"OnboardingValuePropositionScreen.title2" = "Track your puffs and don’t exceed the daily limit";
+"OnboardingValuePropositionScreen.title3" = "Each day, the limit will gradually decrease until you quit!";
+"OnboardingValuePropositionScreen.text1" = "Quitting cold turkey almost always leads to a relapse. We use a gradual quitting approach so that the body has time to adapt and does not experience stress.";
+"OnboardingValuePropositionScreen.text2" = "Unlike quitting cold turkey, you won't feel deprived or severely restricted - sticking to your limit won't be difficult, and seeing daily progress is priceless!";
+"OnboardingValuePropositionScreen.text3" = "The process can go either smoothly or a little more intensely - it depends on your desired quit period and the strength of your habit.";
+
+"OnboardingSurvey.Description" = "Now - just 8 quick questions so we can match you with the best quit plan!";
+
+"OnboardingSurvey.Question1" = "How long have you been vaping?";
+"OnboardingSurvey.Question2" = "Are you currently vaping more than when you first started?";
+"OnboardingSurvey.Question3" = "How often do you vape?";
+"OnboardingSurvey.Question4" = "Does your morning often start with a desire to vape?";
+"OnboardingSurvey.Question5" = "Have you tried to quit vaping before?";
+"OnboardingSurvey.Question6" = "What was the main reason for the relapse?";
+
+"OnboardingSurvey.Question1.Answer1" = "Less than 1 month";
+"OnboardingSurvey.Question1.Answer2" = "1-6 months";
+"OnboardingSurvey.Question1.Answer3" = "6-12 months";
+"OnboardingSurvey.Question1.Answer4" = "1-2 years";
+"OnboardingSurvey.Question1.Answer5" = "More than 2 years";
+
+"OnboardingSurvey.Question2.Answer1" = "Yes";
+"OnboardingSurvey.Question2.Answer2" = "No";
+
+"OnboardingSurvey.Question3.Answer1" = "Rarely";
+"OnboardingSurvey.Question3.Answer2" = "Quite often";
+"OnboardingSurvey.Question3.Answer3" = "Constantly";
+"OnboardingSurvey.Question3.Answer4" = "I can’t put it down";
+
+"OnboardingSurvey.Question4.Answer1" = "No, never";
+"OnboardingSurvey.Question4.Answer2" = "Yes, sometimes";
+"OnboardingSurvey.Question4.Answer3" = "Yes, constantly";
+
+"OnboardingSurvey.Question5.Answer1" = "No";
+"OnboardingSurvey.Question5.Answer2" = "Yes, 1-2 times";
+"OnboardingSurvey.Question5.Answer3" = "Yes, many times";
+
+"OnboardingSurvey.SkippedScreen.Title1WithReason1" = "Quitting bad habit cold turkey almost always leads to intense cravings and subsequent relapse";
+"OnboardingSurvey.SkippedScreen.Title1WithReason2" = "Quitting bad habit cold turkey almost always leads to intense stress and subsequent relapse";
+"OnboardingSurvey.SkippedScreen.Title1WithReason3" = "Quitting cold turkey, if not met with support from those around you, almost always leads to a relapse";
+"OnboardingSurvey.SkippedScreen.Title1WithourReason" = "Quitting bad habit cold turkey almost always leads to a relapse";
+"OnboardingSurvey.SkippedScreen.Title2" = "Puffless uses a gradual quitting approach";
+"OnboardingSurvey.SkippedScreen.Title3" = "The habit of vaping will be a thing of the past. Forever";
+"OnboardingSurvey.SkippedScreen.Description1" = "The body struggles to cope with sudden changes. This can lead to intense cravings that push you to resume the habit.";
+"OnboardingSurvey.SkippedScreen.Description2" = "We will build your personal quit plan based on the strength of your habit and the desired quit period.";
+"OnboardingSurvey.SkippedScreen.Description3" = "A gradual quitting process will allow your body to easily adapt to the changes - you won’t just quit for good, but you’ll also get rid of the urge to vape!";
+
+"OnboardingSurvey.Question6.Answer1" = "Cravings";
+"OnboardingSurvey.Question6.Answer2" = "Stress";
+"OnboardingSurvey.Question6.Answer3" = "Influence of others";
+"OnboardingSurvey.Question6.Answer4" = "I don't know";
+
+"OnboardingSurveyNegativeEffect.Title" = "What negative effects does vaping have on your life?";
+"OnboardingSurveyNegativeEffect.Answer1" = "Health,\nwell-being";
+"OnboardingSurveyNegativeEffect.Answer2" = "Emotional\nstate";
+"OnboardingSurveyNegativeEffect.Answer3" = "Relationships with loved ones";
+"OnboardingSurveyNegativeEffect.Answer4" = "Finances";
+
+"OnboardingSurveySideEffects.Title" = "What side effects from vaping do you notice?";
+"OnboardingSurveySideEffects.Answer1" = "Cough";
+"OnboardingSurveySideEffects.Answer2" = "Throat irritation";
+"OnboardingSurveySideEffects.Answer3" = "Shortness of breath";
+"OnboardingSurveySideEffects.Answer4" = "Headaches/dizziness";
+"OnboardingSurveySideEffects.Answer5" = "Increased fatigue";
+"OnboardingSurveySideEffects.Answer6" = "Nausea";
+
+"OnboardingSurveySideEffects.GetTheQuitPlan" = "Get the quit plan";
+
+"OnboardingPlanCreating.Title" = "Identifying the best quit plan for you...";
+
+"OnboardingPlanInfo.OptimalPlanTitle" = "Optimal plan:\n21 days";
+
+"OnboardingPlanInfo.Title1" = "Today";
+"OnboardingPlanInfo.Title2" = "Days 2-20";
+"OnboardingPlanInfo.Title3" = "Day 21";
+
+"OnboardingPlanInfo.Description1" = "We'll pick a starting number of puffs and start the plan";
+"OnboardingPlanInfo.Description2" = "The puff limit for the day will be gradually reducing";
+"OnboardingPlanInfo.Description3" = "You will take your last puff and quit vaping for good";
+
+"OnboardingContractScreen.Title" = "I’m determined to quit vaping, and I’m sure that I will succeed!";
+"OnboardingContractScreen.HoldToConfirm" = "Hold to confirm";
+"OnboardingContractScreen.KeepHolding" = "Keep holding!";
+"OnboardingContractScreen.Welcome" = "Welcome to\nPuffless!";
+
+// MARK: - Paywall
+
+"Paywal.Cancelled" = "You've cancelled your purchase";
+
+"Paywall.Title" = "Start your quit plan today";
+
+"Paywall.Restore" = "Restore purchases";
+"Paywall.FreeTrial" = "Free Trial";
+"Paywall.FreeTrialDesc" = "3-day free trial, then";
+"Paywall.FreeTrialDescSmall" = "3-day free trial";
+"Paywall.Puffs" = "Puffs";
+"Paywall.Limit" = "Limit";
+
+"Paywall.Benefit1" = "Access to the quit plan";
+"Paywall.Benefit2" = "Adaptive pace and limits";
+"Paywall.Benefit3" = "Detailed statistics";
+"Paywall.Month" = "/month";
+
+"Paywall.TermsOfUse" = "Terms of Use";
+"Paywall.PrivacyPolicy" = "Privacy Policy";
+
+"Paywall.StartTrial" = "Start free trial";
+
+"Paywall.Welcome" = "Welcome";
+"Paywall.Purchased" = "Subscription activated";
+
+// MARK: - NotificationRequest
+
+"NotificationRequest.Title" = "Let's help you remember to track your puffs";
+"NotificationRequest.Description" = "Allow us to send you notifications so we can help you develop a new habit";
+"NotificationRequest.MaybeLater" = "Maybe later";
+
+// MARK: - Account
+
+"Account.Title" = "Settings";
+"Account.ContactUs" = "Contact us";
+"Account.Subscription" = "Subscription";
+"Account.OurChannel" = "Our Telegram channel";
+"Account.OurChannel.Link" = "https://t.me/puffless_app";
+"Account.Notifications" = "Notifications";
+"Account.ResetQuittingPlan" = "Reset quit plan";
+"AccountPlanQuitting.Title" = "Are you sure you want to reset your quit plan?";
+"AccountPlanQuitting.Description" = "This will not affect your puff statistics - all data about how much you have previously vaped will be saved.\n\nYou can restart any quit plan at any time.";
+"AccountPlanQuitting.Reset" = "Yes, reset quit plan";
+
+"AccountSubscription.Title" = "Subscription";
+"AccountSubscription.SubscriptionType" = "Subscription Type";
+"AccountSubscription.SubscriptionTypeMonthly" = "Monthly";
+"AccountSubscription.SubscriptionTypeMonthlyWithTrial" = "Monthly with trial";
+"AccountSubscription.StartDate" = "Start Date";
+"AccountSubscription.BillingDate" = "Billing Date";
+"AccountSubscription.CancelSubscription" = "Cancel Subscription";
+
+// MARK: - Action Menus
+
+"AccountSubscription.Leaving.Base.Title" = "Why are you leaving?";
+"AccountSubscription.Leaving.Base.Reason1" = "I've already successfully quit";
+"AccountSubscription.Leaving.Base.Reason2" = "The app didn't help me quit";
+"AccountSubscription.Leaving.Base.Reason3" = "The app lacks the features I need";
+"AccountSubscription.Leaving.Base.Reason4" = "The app is too complicated";
+"AccountSubscription.Leaving.Base.Reason5" = "It’s too expensive";
+"AccountSubscription.Leaving.Base.Reason6" = "Other";
+
+"AccountSubscription.Leaving.Improvements.Feedback" = "Please tell us what we can improve";
+"AccountSubscription.Leaving.Improvements.FeedbackPlaceholder" = "Feedback";
+
+"AccountSubscription.Leaving.Cancel.StayPremium" = "Keep Premium";
+"AccountSubscription.Leaving.Cancel.Thanks" = "Thank you!";
+"AccountSubscription.Leaving.Cancel.ThanksFor" = "We’re glad you've been with us. You can now unsubscribe";
+
+"ActionMenuPlanDeveloping.Addiction.HowMany" = "How many puffs do you take per day?";
+"ActionMenuPlanDeveloping.Addiction.Description" = "You can specify an approximate number - if in the first few days it turns out that the limit is too low, we will adjust it";
+
+"ActionMenuPlanDeveloping.Addiction.LessThenToday" = "That’s less than you’ve already taken today";
+"ActionMenuPlanDeveloping.Addiction.InfoText1" = "Moderate addiction";
+"ActionMenuPlanDeveloping.Addiction.InfoText2" = "Serious addiction";
+"ActionMenuPlanDeveloping.Addiction.InfoText3" = "Extreme addiction";
+
+"ActionMenuPlanDeveloping.Plan.QuitPlan" = "Quit Plan";
+"ActionMenuPlanDeveloping.Plan.Plan1Title" = "The\nfastest";
+"ActionMenuPlanDeveloping.Plan.Plan2Title" = "The happy\nmedium";
+"ActionMenuPlanDeveloping.Plan.Plan3Title" = "The\nsmoothest";
+
+"ActionMenuPlanDeveloping.Plan.Plan1Description" = "Significant reduction in puff limits. For those who want and are ready to quit in the shortest time possible";
+"ActionMenuPlanDeveloping.Plan.Plan2Description" = "Optimal pace for reducing puff limits. For those seeking a balance between quitting speed and comfort";
+"ActionMenuPlanDeveloping.Plan.Plan3Description" = "Barely noticeable reduction in puff limits. For those who are not in a hurry and want to quit without feeling restricted";
+
+"ActionMenuPlanDeveloping.Info.Title" = "Selected Plan: ";
+"ActionMenuPlanDeveloping.Info.Description2Title" = "Days 2-{count}";
+"ActionMenuPlanDeveloping.Info.Description3Title" = "Day {count}";
+
+"ActionMenuAddingMoreSmokes.Title" = "It seems we got a starting puff limit a bit wrong";
+"ActionMenuAddingMoreSmokes.Description" = "Would you like to add some more puffs to today's limit so that you can start quitting from this number?\n\nWe ask this question only today, at the beginning of your journey!";
+"ActionMenuAddingMoreSmokes.NoItWasLast" = "No! That was the last one!";
+
+"ActionMenuReadyToBreakView.Base.Title1" = "Are you ready to quit?";
+"ActionMenuReadyToBreakView.Base.Title2" = "It was your last puff";
+"ActionMenuReadyToBreakView.Base.Description" = "You've come a long way. This is the decisive moment. Are you ready to quit vaping?";
+"ActionMenuReadyToBreakView.Base.YesImBreaking" = "Yes! I’m quitting!";
+"ActionMenuReadyToBreakView.Base.Need1Day" = "I need 1 more day";
+"ActionMenuReadyToBreakView.Base.NotReady" = "I'm not ready yet";
+
+"ActionMenuReadyToBreakView.NeedDay.Title" = "The plan has been extended by 1 day";
+"ActionMenuReadyToBreakView.NeedDay.TodayLimit" = "Today’s limit is {count} puffs";
+
+"ActionMenuReadyToBreakView.Broke.Title" = "You made it!\nCongratulations!";
+"ActionMenuReadyToBreakView.Broke.Description" = "You have successfully completed the plan and quit vaping. We are proud of you!";
+"ActionMenuReadyToBreakView.Broke.Yay" = "Yay!";
+
+"ActionMenuUpdateApp.Title" = "Update Puffless";
+"ActionMenuUpdateApp.Description" = "Check out what we’ve changed";
+"ActionMenuUpdateApp.GoToAppStore" = "Go to AppStore";
+
+"ActionMenuYesterdaySuccessed.Title" = "You met yesterday’s limit.\nKeep it up!";
+"ActionMenuYesterdaySuccessed.Description" = "Today’s limit is {count} puffs";
+"ActionMenuYesterdaySuccessed.LastDay" = "Today is the last day of the plan!\n";
+"ActionMenuYesterdaySuccessed.1DayLeast" = "Only 1 day left until the end of the plan!\n";
+"ActionMenuYesterdaySuccessed.3DaysLeast" = "Only 3 days left until the end of the plan!\n";
+
+"ActionMenuYesterdayExceeded.NonCritical.First" = "Don’t worry, it happens. Keep moving forward!\n\n";
+"ActionMenuYesterdayExceeded.NonCritical.Third" = "Today’s limit is {count} puffs.";
+
+"ActionMenuYesterdayExceeded.Critical.Title" = "Yesterday, you were {count} puffs over the limit";
+"ActionMenuYesterdayExceeded.Critical.First" = "Don’t worry, it happens.\n\n";
+"ActionMenuYesterdayExceeded.Critical.Third" = "Today’s limit is {count} puffs. If you're sure you can handle it, let's keep going!\n\nIf you need a little more time, we can extend the plan by 1 day. The limit will be the same as yesterday.";
+
+"ActionMenuYesterdayExceeded.CanDoIt" = "I can do it!";
+"ActionMenuYesterdayExceeded.ExtendPlan" = "Extend the plan by 1 day";
+
+"ActionMenuYesterdayExceeded.PlanExtended" = "The plan has been extended by 1 day";
+
+// MARK: - Tab Bar
+
+"TabBar.Home" = "Home";
+"TabBar.Progress" = "Progress";
+
+// MARK: - Home
+
+"Home.StartPlan" = "Start the quit plan";
+"Home.LimitForToday" = "Limit for today";
+"Home.Day" = "Day";
+"Home.ReadyToQuit" = "I’m ready to quit";
+"Home.RestartPlan" = "Restart the plan";
+"Home.DontSmokeFor" = "I haven’t vaped for";
+"Home.TrackFirstPuff" = "Track your first puff";
+"Home.ReachedLimitFor" = "You’ve reached the limit for today";
+"Home.LimitWillBeUpdated" = "Limit will be updated at 12:00 AM";
+"Home.Puffs" = "Puffs";
+"Home.RealyLongTime" = "Long time ago";
+
+// MARK: - Statistics
+
+"Statistics.QuitPlan" = "Quit plan";
+"Statistics.DetailedStatistics" = "Detailed statistics";
+"Statistics.StartYourQuitPlan" = "Start your personal quit plan";
+
+"StatisticsDaily.TodaySmokes" = "Puffs today";
+"StatisticsDaily.FromStartOfPlan" = "Since day 1";
+"StatisticsDaily.SmokesForDay" = "Puffs, day {number}";
+"StatisticsDaily.LimitForFuture" = "Limit, day {number}";
+
+"StatisticsWeekly.ThisWeek" = "Puffs, this week";
+"StatisticsWeekly.ThisMonth" = "Puffs, this month";
+"Statistics.Puffs" = "Puffs";
+
+"StatisticsFrequency.Title" = "Puff Frequency";
+"StatisticsFrequency.Description" = "Most active period";
+"StatisticsFrequency.AverageBreak" = "Average break";
+
+// MARK: - Notifications
+
+"Notifications.FirstDaysNotificationSubheader" = "Start your quit plan";
+"Notifications.FistDayNotificationHeader1" = "🔥 Today is the day";
+"Notifications.FistDayNotificationHeader2" = "⚡️ It's time for action!";
+"FistDayNotificationHeader3" = "🕺 Take the first step";
+
+"Notifications.DailyNotifications" = "Let's start a new day!";
+"Notifications.DailyNotificationsFreeBody" = "Track your puffs";
+"Notifications.DailyNotificationsPremiumBody" = "Puff limit for today is {count}";
+

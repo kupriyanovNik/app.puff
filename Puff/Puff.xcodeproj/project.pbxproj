@@ -222,6 +222,7 @@
 		B7C886582CC39FFA004B6E9D /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		B7C8865C2CC39FFA004B6E9D /* HomeViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComponents.swift; sourceTree = "<group>"; };
 		B7C8865D2CC39FFA004B6E9D /* HomeViewPlanViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPlanViews.swift; sourceTree = "<group>"; };
+		B7F0A2E02CB847520023D4C7 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B7F3775E2C9B674C0050C93B /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		B7F377612C9B677E0050C93B /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		B7F377652C9B682A0050C93B /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
@@ -897,6 +898,7 @@
 				en,
 				Base,
 				ru,
+				"en-GB",
 			);
 			mainGroup = B73B2E252C9B637A001EB658;
 			packageReferences = (
@@ -1074,6 +1076,7 @@
 			children = (
 				B716A4442CBAABCC005842A5 /* en */,
 				B716A4462CBAABD0005842A5 /* ru */,
+				B7F0A2E02CB847520023D4C7 /* en-GB */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
