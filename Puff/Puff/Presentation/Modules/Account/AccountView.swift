@@ -175,6 +175,7 @@ struct AccountView: View {
                     shouldShowSubscriptionInfo = true
                 } else {
                     navigationVM.shouldShowPaywall = true
+                    AnalyticsManager.logEvent(event: .openedPaywall(tab: 3))
                 }
             }
 
@@ -232,6 +233,7 @@ struct AccountView: View {
                 AccentButton(text: "AccountPlanQuitting.Reset".l, background: Color(hex: 0xFF7D7D)) {
                     smokesManager.resetPlan()
                     shouldShowResetWarning = false
+                    AnalyticsManager.logEvent(event: .resetedPlan)
 
                     delay(0.4) {
                         navigationVM.shouldShowAccountView = false

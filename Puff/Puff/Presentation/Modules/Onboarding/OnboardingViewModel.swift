@@ -20,6 +20,7 @@ final class OnboardingViewModel: ObservableObject {
 
     func nextScreen() {
         currentIndex += 1
+        AnalyticsManager.logEvent(event: .seenOnboarding(pageNumber: currentIndex))
         onboardingPath.append(currentIndex)
     }
 

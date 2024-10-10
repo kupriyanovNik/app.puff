@@ -129,6 +129,8 @@ final class SmokesManager: ObservableObject {
 
         isPlanStarted = true
         isPlanEnded = false
+
+        AnalyticsManager.logEvent(event: .startedPlan(initialSmokes: smokesPerDay, daysInPlan: period.rawValue))
     }
 
     func puff() {
@@ -165,6 +167,8 @@ final class SmokesManager: ObservableObject {
 
                     planLimits = [firstDayLimit] + newPlan
                 }
+
+                AnalyticsManager.logEvent(event: .addedMoreSmokes(count: count))
             }
         }
     }
@@ -182,6 +186,12 @@ final class SmokesManager: ObservableObject {
         planLimits = newPlan
         planCounts.append(0)
         daysInPlan = planLimits.count
+
+        if isLastDayOfPlan {
+            AnalyticsManager.logEvent(event: .extendedPlanInLastDay)
+        } else {
+            AnalyticsManager.logEvent(event: .extendedPlan)
+        }
     }
 
     func addDay() {

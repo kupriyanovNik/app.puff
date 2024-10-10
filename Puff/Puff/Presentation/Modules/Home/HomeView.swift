@@ -53,6 +53,7 @@ struct HomeView: View {
             if !subscriptionsManager.isPremium {
                 HomeViewIsNotPremiumPlanView {
                     navigationVM.shouldShowPaywall.toggle()
+                    AnalyticsManager.logEvent(event: .openedPaywall(tab: 1))
                 }
             } else if !smokesManager.isPlanStarted {
                 HomeViewIsPremiumPlanNotCreatedView {

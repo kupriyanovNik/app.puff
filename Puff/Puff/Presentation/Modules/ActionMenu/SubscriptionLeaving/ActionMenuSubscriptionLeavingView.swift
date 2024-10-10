@@ -25,6 +25,15 @@ struct ActionMenuSubscriptionLeavingView: View {
         return false
     }
 
+    private func sendAnalytics() {
+        AnalyticsManager.logEvent(
+            event: .canceledSubscription(
+                reasons: Array(reasonsIndices.map { reasons[$0] }),
+                feedback: improvementsString
+            )
+        )
+    }
+
     var body: some View {
         VStack(spacing: 32) {
             Group {
@@ -154,6 +163,7 @@ struct ActionMenuSubscriptionLeavingView: View {
                 screenState = .cancel
             } else if screenState == .cancel {
                 onCancelSubscription(reasonsIndices, improvementsString)
+                sendAnalytics()
                 onDismiss()
             }
         }

@@ -10,12 +10,13 @@ import FirebaseAnalytics
 final class AnalyticsManager {
     static func logEvent(event: AnalyticsEvent) {
         Analytics.logEvent(event.title, parameters: event.parameters)
+
+        print("Event:", event.title, event.parameters)
     }
 
     enum AnalyticsEvent {
         case openedPaywall(tab: Int)
         case seenOnboarding(pageNumber: Int)
-        case answeredOnboardingQuestion(questionNumber: Int, answers: [String])
         case acceptedNotifications
         case resetedPlan
         case canceledSubscription(reasons: [String], feedback: String)
@@ -27,17 +28,16 @@ final class AnalyticsManager {
 
         var title: String {
             switch self {
-            case .openedPaywall: "OpenedPaywall"
-            case .seenOnboarding: "SeenOnboarding"
-            case .answeredOnboardingQuestion: "answeredOnboardingQuestion"
-            case .acceptedNotifications: "AcceptedNotifications"
-            case .resetedPlan: "ResetedPlan"
-            case .canceledSubscription: "CanceledSubscription"
-            case .startedPlan: "StartedPlan"
-            case .addedMoreSmokes: "AddedMoreSmokes"
-            case .extendedPlan: "ExtendedPlan"
-            case .extendedPlanInLastDay: "ExtendedPlanInLastDay"
-            case .openedAppStoreFromUpdateActionMenu: "OpenedAppStoreFromUpdateActionMenu"
+            case .openedPaywall: "UserOpenedPaywall"
+            case .seenOnboarding: "UserSeenOnboarding"
+            case .acceptedNotifications: "UserAcceptedNotifications"
+            case .resetedPlan: "UserResetedPlan"
+            case .canceledSubscription: "UserCanceledSubscription"
+            case .startedPlan: "UserStartedPlan"
+            case .addedMoreSmokes: "UserAddedMoreSmokes"
+            case .extendedPlan: "UserExtendedPlan"
+            case .extendedPlanInLastDay: "UserExtendedPlanInLastDay"
+            case .openedAppStoreFromUpdateActionMenu: "UserOpenedAppStoreFromUpdateActionMenu"
             }
         }
 
@@ -48,9 +48,6 @@ final class AnalyticsManager {
 
             case .seenOnboarding(let pageNumber):
                 ["PageNumber": pageNumber]
-
-            case .answeredOnboardingQuestion(let questionNumber, let answers):
-                ["QuestionNumber": questionNumber, "Answers": answers.joined(separator: ";")]
 
             case .canceledSubscription(let reasons, let feedback):
                 ["Reasons": reasons.joined(separator: ";"), "Feedback": feedback]
