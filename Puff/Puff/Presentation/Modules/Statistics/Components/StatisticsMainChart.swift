@@ -48,7 +48,7 @@ struct StatisticsMainChart: View {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged { value in
                 if !isScrollDisabled {
-                    if abs(value.translation.width) > 20 {
+                    if abs(value.translation.width) > 35 {
                         isScrollDisabled = true
 
                         handleDragGesture(
