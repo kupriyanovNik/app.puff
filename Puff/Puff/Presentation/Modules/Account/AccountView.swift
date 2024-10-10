@@ -65,7 +65,7 @@ struct AccountView: View {
                 }
             }
             .onAppear {
-                print("SADFSDFSADF", hasSkippedNotificationRequest)
+                print("SADFSDFSADF", hasSkippedNotificationRequest, isNotificationsEnabled)
             }
             .offset(y: min(15, offset))
             .animation(.easeOut(duration: 0.25), value: offset)
@@ -205,6 +205,8 @@ struct AccountView: View {
         .roundedCornerWithBorder(lineWidth: 1, borderColor: Color(hex: 0xF0F0F0), radius: 16, corners: .allCorners)
         .padding(.horizontal, 12)
         .onChange(of: isNotificationsEnabled) { newValue in
+            print("SADFSDFSADF", hasSkippedNotificationRequest, isNotificationsEnabled)
+
             if newValue {
                 requestNotifications()
             } else {
@@ -254,8 +256,13 @@ struct AccountView: View {
     }
 
     private func checkNotifications() {
-        if hasSkippedNotificationRequest {
-            isNotificationsEnabled = false
+        if !isNotificationsEnabled {
+            if hasSkippedNotificationRequest {
+                isNotificationsEnabled = false
+            } else {
+                NotificationManager.shared.checkNotificationStatus()
+                isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
+            }
         } else {
             NotificationManager.shared.checkNotificationStatus()
             isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
