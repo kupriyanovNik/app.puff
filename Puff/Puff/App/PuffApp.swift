@@ -43,6 +43,7 @@ struct PuffApp: App {
             ) {
                 ActionMenuReadyToBreakView(
                     tappedReadyToBreak: smokesManager.realPlanDayIndex - smokesManager.planCounts.count == -1,
+                    isLastSmoke: smokesManager.todaySmokes == smokesManager.todayLimit,
                     todayLimit: smokesManager.todayLimit
                 ) {
                     smokesManager.endPlan()

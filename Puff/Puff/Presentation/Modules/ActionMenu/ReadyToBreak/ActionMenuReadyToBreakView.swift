@@ -12,6 +12,7 @@ struct ActionMenuReadyToBreakView: View {
     @State private var screenState: ScreenState = .base
 
     var tappedReadyToBreak: Bool
+    var isLastSmoke: Bool
     var todayLimit: Int
 
     var onBreak: () -> Void = {}
@@ -73,8 +74,8 @@ struct ActionMenuReadyToBreakView: View {
                     .frame(68)
 
                 MarkdownText(
-                    text: "Это была последняя затяжка",
-                    markdowns: ["последняя затяжка"]
+                    text: isLastSmoke ? "Это была последняя затяжка" : "Вы готовы бросить?",
+                    markdowns: ["последняя затяжка", "бросить?"]
                 )
                 .font(.bold22)
                 .multilineTextAlignment(.center)
@@ -140,7 +141,7 @@ struct ActionMenuReadyToBreakView: View {
 
     private func nextButtonAction(needOneMoreDay: Bool) {
         if screenState == .base {
-            if needOneMoreDay {
+            if needOneMoreDay || isLastSmoke {
                 if tappedReadyToBreak {
                     onDismiss()
                 } else {
@@ -162,7 +163,7 @@ struct ActionMenuReadyToBreakView: View {
 }
 
 #Preview {
-    ActionMenuReadyToBreakView(tappedReadyToBreak: false, todayLimit: 32)
+    ActionMenuReadyToBreakView(tappedReadyToBreak: false, isLastSmoke: true, todayLimit: 32)
 }
 
 private extension ActionMenuReadyToBreakView {
