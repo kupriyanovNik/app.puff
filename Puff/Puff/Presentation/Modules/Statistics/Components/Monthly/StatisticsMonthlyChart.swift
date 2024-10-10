@@ -60,12 +60,11 @@ struct StatisticsMonthlyChart: View {
 
                     Spacer()
 
-                    if subscriptionsManager.isPremium && smokesManager.dateOfFirstSmoke != nil {
-                        HStack(spacing: 15) {
-                            changeMonthButton(future: false, isDisabled: !ableToChangeMonthToBackward)
-                            changeMonthButton(future: true, isDisabled: !ableToChangeMonthToForward)
-                        }
+                    HStack(spacing: 15) {
+                        changeMonthButton(future: false, isDisabled: !ableToChangeMonthToBackward)
+                        changeMonthButton(future: true, isDisabled: !ableToChangeMonthToForward)
                     }
+                    .opacity(subscriptionsManager.isPremium && smokesManager.dateOfFirstSmoke != nil ? 1 : 0)
                 }
 
                 HStack {

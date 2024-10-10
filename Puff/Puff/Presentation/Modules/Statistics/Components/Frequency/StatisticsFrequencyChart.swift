@@ -44,7 +44,7 @@ struct StatisticsFrequencyChart: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            VStack(spacing: 10) {
+            VStack(spacing: 20) {
                 HStack(spacing: 3) {
                     Image(.statisticsFrequency)
                         .resizable()
