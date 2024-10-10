@@ -64,6 +64,9 @@ struct AccountView: View {
                     checkNotifications()
                 }
             }
+            .onAppear {
+                print("SADFSDFSADF", hasSkippedNotificationRequest)
+            }
             .offset(y: min(15, offset))
             .animation(.easeOut(duration: 0.25), value: offset)
             .overlay {
@@ -251,21 +254,31 @@ struct AccountView: View {
     }
 
     private func checkNotifications() {
-        NotificationManager.shared.checkNotificationStatus()
-
-        isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
+        if hasSkippedNotificationRequest {
+            isNotificationsEnabled = false
+        } else {
+            NotificationManager.shared.checkNotificationStatus()
+            isNotificationsEnabled = NotificationManager.shared.isNotificationEnabled
+        }
     }
 
     private func requestNotifications() {
-        if NotificationManager.shared.isNotificationEnabled {
-            NotificationManager.shared.scheduleNotifications(
-                limits: Array(smokesManager.planLimits[smokesManager.currentDayIndex...])
-            )
-            return
-        }
-
         if hasSkippedNotificationRequest {
-            NotificationManager.shared.requestAuthorization()
+            NotificationManager.shared.requestAuthorization {
+                if smokesManager.isPlanStarted {
+                    if NotificationManager.shared.isNotificationEnabled {
+                        NotificationManager.shared.scheduleNotifications(
+                            limits: Array(smokesManager.planLimits[smokesManager.currentDayIndex...])
+                        )
+                        return
+                    }
+                } else {
+                    if NotificationManager.shared.isNotificationEnabled {
+                        NotificationManager.shared.scheduleNotifications(limits: [])
+                        return
+                    }
+                }
+            }
         } else {
             UIApplication.openNotificationSettingsURLString.openURL()
         }
