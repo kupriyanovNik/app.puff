@@ -204,9 +204,9 @@ struct StatisticsFrequencyChart: View {
     private func xMarks() -> some View {
         let keys: [String] = [
             (calendar.date(bySettingHour: 0, minute: 0, second: 0, of: .now) ?? .now).formatted(date: .omitted, time: .shortened),
-            (calendar.date(bySettingHour: 7, minute: 0, second: 0, of: .now) ?? .now).formatted(date: .omitted, time: .shortened),
-            (calendar.date(bySettingHour: 13, minute: 0, second: 0, of: .now) ?? .now).formatted(date: .omitted, time: .shortened),
-            (calendar.date(bySettingHour: 19, minute: 0, second: 0, of: .now) ?? .now).formatted(date: .omitted, time: .shortened)
+            (calendar.date(bySettingHour: 6, minute: 0, second: 0, of: .now) ?? .now).formatted(date: .omitted, time: .shortened),
+            (calendar.date(bySettingHour: 12, minute: 0, second: 0, of: .now) ?? .now).formatted(date: .omitted, time: .shortened),
+            (calendar.date(bySettingHour: 18, minute: 0, second: 0, of: .now) ?? .now).formatted(date: .omitted, time: .shortened)
         ]
 
         HStack {
