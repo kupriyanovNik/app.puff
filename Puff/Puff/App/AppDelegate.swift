@@ -16,6 +16,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     ) -> Bool {
         FirebaseApp.configure()
 
+        CrashlyticsManager.sendUnsentReports()
+
         return true
     }
 }

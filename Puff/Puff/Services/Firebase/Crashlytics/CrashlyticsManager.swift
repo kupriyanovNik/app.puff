@@ -6,10 +6,15 @@
 //
 
 import FirebaseCrashlytics
+import OSLog
 
 final class CrashlyticsManager {
-    static func log(_ message: String) {
+    static func log(_ message: String, logType: OSLogType? = nil) {
         Crashlytics.crashlytics().log(message)
+
+        if let logType {
+            logger.log(level: logType, "\(message)")
+        }
     }
 
     static func sendUnsentReports() {
