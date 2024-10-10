@@ -11,7 +11,7 @@ final class AnalyticsManager {
     static func logEvent(event: AnalyticsEvent) {
         Analytics.logEvent(event.title, parameters: event.parameters)
 
-        print("Event:", event.title, event.parameters)
+        logger.info("Event: \(event.title).")
     }
 
     enum AnalyticsEvent {
