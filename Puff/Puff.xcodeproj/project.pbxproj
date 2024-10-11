@@ -10,6 +10,7 @@
 		A398214B2CB1452600B325F5 /* ReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C885CB2CC39FFA004B6E9D /* ReviewManager.swift */; };
 		B7024D112C9EE5AF006809AC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B7024D102C9EE5AF006809AC /* Lottie */; };
 		B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7024D122C9EE5C1006809AC /* LottieView.swift */; };
+		B703C7B82CB9498000373E2A /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B703C7B72CB9498000373E2A /* CoreHaptics.framework */; };
 		B716A4452CBAABCC005842A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716A4432CBAABCC005842A5 /* Localizable.strings */; };
 		B71DD2112CB70AD6009578A8 /* ActionMenuReadyToBreakNeedDayAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20C2CB70AD6009578A8 /* ActionMenuReadyToBreakNeedDayAnimation.json */; };
 		B71DD2122CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD2102CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json */; };
@@ -125,6 +126,7 @@
 
 /* Begin PBXFileReference section */
 		B7024D122C9EE5C1006809AC /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		B703C7B72CB9498000373E2A /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
 		B716A4442CBAABCC005842A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B716A4462CBAABD0005842A5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B71DD20A2CB70AD6009578A8 /* ActionMenuAddingMoreSmokesAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuAddingMoreSmokesAnimation.json; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			files = (
 				B7757F102CB7143C001D3472 /* FirebaseCrashlytics in Frameworks */,
 				B7757F0E2CB7143C001D3472 /* FirebaseAnalytics in Frameworks */,
+				B703C7B82CB9498000373E2A /* CoreHaptics.framework in Frameworks */,
 				B7024D112C9EE5AF006809AC /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +258,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B703C7B62CB9498000373E2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B703C7B72CB9498000373E2A /* CoreHaptics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B716A4422CBAABBD005842A5 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				B73B2E302C9B637A001EB658 /* Puff */,
+				B703C7B62CB9498000373E2A /* Frameworks */,
 				B73B2E2F2C9B637A001EB658 /* Products */,
 			);
 			sourceTree = "<group>";

@@ -329,7 +329,7 @@ struct AppPaywallView: View {
             .foregroundStyle(Palette.textTertiary)
             .underline(color: Palette.textTertiary)
             .padding(.bottom, 10)
-            .padding(edge, isSmallDevice ? 8 : 14)
+            .padding(edge, 8)
             .padding(.top, 4)
             .onTapGesture(perform: urlString.openURL)
     }

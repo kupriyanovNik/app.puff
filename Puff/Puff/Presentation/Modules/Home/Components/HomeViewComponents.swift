@@ -24,6 +24,39 @@ extension HomeView {
         }
 
         var body: some View {
+            Group {
+                if #available(iOS 18, *) {
+                    baseView()
+                        .onLongPressGesture(minimumDuration: 0, maximumDistance: 20) {
+                            buttonAction()
+                            isButtonPressed = false
+                        } onPressingChanged: { isPressed in
+                            if isPressed {
+                                isButtonPressed = true
+                            } else {
+                                delay(0.1) {
+                                    isButtonPressed = false
+                                }
+                            }
+                        }
+                } else {
+                    baseView()
+                        .onTapGesture {
+                            isButtonPressed = true
+
+                            buttonAction()
+
+                            delay(0.15) {
+                                isButtonPressed = false
+                            }
+                        }
+                }
+            }
+            .animation(.smooth, value: smokesManager.isTodayLimitExceeded)
+        }
+
+        @ViewBuilder
+        private func baseView() -> some View {
             RoundedRectangle(cornerRadius: isSmallDevice ? 18 : 28)
                 .fill(fillColor)
                 .overlay {
@@ -59,21 +92,12 @@ extension HomeView {
                             .fill(.white)
                     }
                 }
-                .onTapGesture(perform: buttonAction)
-//                .makeRippleEffect(at: .init(x: 0, y: 0), trigger: smokesManager.todaySmokes)
-                .animation(.smooth, value: smokesManager.isTodayLimitExceeded)
         }
 
         private func buttonAction() {
-            isButtonPressed = true
-
             smokesManager.puff()
 
             HapticManager.feedback(style: .light, intensity: 0.75)
-
-            delay(0.15) {
-                isButtonPressed = false
-            }
         }
     }
 

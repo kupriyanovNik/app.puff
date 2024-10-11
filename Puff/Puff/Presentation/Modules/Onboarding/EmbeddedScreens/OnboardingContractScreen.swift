@@ -33,13 +33,14 @@ struct OnboardingContractScreen: View {
                 touchidButton()
                     .onLongPressGesture(minimumDuration: 3.75, maximumDistance: 50) {
                         isPressingEnded = true
-                        haptics()
+                        haptics(increasing: false)
                     } onPressingChanged: { isPressed in
                         withAnimation {
                             isPressing = isPressed
                         }
 
                         if isPressed {
+                            haptics(increasing: true)
                             withAnimation(.linear(duration: 5)) {
                                 scaleEffect = 10
                             }
@@ -123,22 +124,24 @@ struct OnboardingContractScreen: View {
         }
     }
 
-    func haptics() {
+    func haptics(increasing: Bool) {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         var events = [CHHapticEvent]()
 
-        for i in stride(from: 0, to: 1, by: 0.1) {
-            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(i))
-            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(i))
-            let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: i)
-            events.append(event)
-        }
-
-        for i in stride(from: 0, to: 1, by: 0.1) {
-            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(1 - i))
-            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(1 - i))
-            let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 1 + i)
-            events.append(event)
+        if increasing {
+            for i in stride(from: 0, to: 1, by: 0.1) {
+                let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(i))
+                let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(i))
+                let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: i)
+                events.append(event)
+            }
+        } else {
+            for i in stride(from: 0, to: 1, by: 0.1) {
+                let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(1 - i))
+                let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(1 - i))
+                let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: i)
+                events.append(event)
+            }
         }
 
         do {
@@ -146,7 +149,7 @@ struct OnboardingContractScreen: View {
             let player = try engine?.makePlayer(with: pattern)
             try player?.start(atTime: 0)
         } catch {
-            print("Failed to play pattern: \(error.localizedDescription).")
+            CrashlyticsManager.log("Failed to play haptic pattern: \(error.localizedDescription).")
         }
     }
 }
