@@ -15,7 +15,11 @@ final class SmokesManager: ObservableObject {
     @Published var realPlanDayIndex: Int = 0
 
     @AppStorage("isPlanStarted") private(set) var isPlanStarted: Bool = false
-    @AppStorage("isPlanEnded") private(set) var isPlanEnded: Bool = false
+    @AppStorage("isPlanEnded") private(set) var isPlanEnded: Bool = false {
+        didSet {
+            NotificationManager.shared.removeAllNotifications()
+        }
+    }
 
     @AppStorage("currentDayIndex") private(set) var currentDayIndex: Int = 0 {
         didSet {
@@ -99,9 +103,6 @@ final class SmokesManager: ObservableObject {
     // MARK: - Internal Functions
 
     func startPlan(period: ActionMenuPlanDevelopingPeriod, smokesPerDay: Int) {
-        isPlanStarted = true
-        isPlanEnded = false
-
         if smokesPerDay < todaySmokes {
             if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
                 smokesCount[index] = 0
@@ -118,6 +119,9 @@ final class SmokesManager: ObservableObject {
         if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
             planCounts[0] = smokesCount[index]
         }
+
+        isPlanStarted = true
+        isPlanEnded = false
     }
 
     func puff() {

@@ -56,6 +56,9 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
 
     func removeAllNotifications() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+
+        deleteNotificationsByUDKey("scheduledNotificationsIDs")
+        deleteNotificationsByUDKey("firstDaysNotificationsIDs")
     }
 
     func checkNotificationStatus() {
@@ -89,15 +92,22 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             if let error {
                 print("DEBUG: unable to send notification: \(error)")
             } else {
-                print("added notification", title, body, dateComponents)
+                print("sendedNotifications AAAAAA", request)
             }
         }
 
         return id
     }
+
+    private func deleteNotificationsByUDKey(_ key: String) {
+        if let ids = defaults.value(forKey: key) as? [String] {
+            removeNotifications(with: ids)
+            defaults.set(nil, forKey: key)
+        }
+    }
 }
 
-// MARK: - First Day Notification
+// MARK: - First Days Notification
 extension NotificationManager {
     func sendFirstDaysNotifications() {
         if let _ = defaults.value(forKey: "firstDaysNotificationsIDs") {
@@ -128,12 +138,51 @@ extension NotificationManager {
         }
 
         defaults.set(ids, forKey: "firstDaysNotificationsIDs")
-    }
 
-    func deleteFirstDayNotification() {
-        if let ids = defaults.value(forKey: "firstDaysNotificationsIDs") as? [String] {
-            removeNotifications(with: ids)
-            defaults.set(nil, forKey: "firstDaysNotificationsIDs")
+        scheduleNotifications()
+    }
+}
+
+// MARK: - Daily Notifications
+extension NotificationManager {
+    func scheduleNotifications(
+        limits: [Int] = []
+    ) {
+        var ids: [String] = []
+
+        if limits.isEmpty {
+            let dates: [Date] = (0...15).map {
+                calendar.date(byAdding: .day, value: $0, to: .now) ?? .now
+            }
+
+            for index in (0...15) {
+                let title: String = "Начнем новый день!"
+                var body = "Следите за своими затяжками"
+
+                var dateComp = calendar.dateComponents([.year, .month, .day], from: dates[index])
+                dateComp.hour = 10
+                dateComp.minute = 0
+
+                ids.append(sendNotification(title: title, body: body, dateComponents: dateComp))
+            }
+        } else {
+            let dates: [Date] = limits.indices.map {
+                calendar.date(byAdding: .day, value: $0, to: .now) ?? .now
+            }
+
+            for index in limits.indices {
+                let title: String = "Начнем новый день!"
+                var body = "Лимит затяжек на сегодня — {count}".formatByDivider(divider: "{count}", count: limits[index])
+
+                var dateComp = calendar.dateComponents([.year, .month, .day], from: dates[index])
+                dateComp.hour = 10
+                dateComp.minute = 0
+
+                ids.append(sendNotification(title: title, body: body, dateComponents: dateComp))
+            }
         }
+
+
+        defaults.set(ids, forKey: "scheduledNotificationsIDs")
     }
 }

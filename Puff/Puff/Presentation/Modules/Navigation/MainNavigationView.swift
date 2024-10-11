@@ -88,7 +88,8 @@ struct MainNavigationView: View {
         }
         .onChange(of: smokesManager.isPlanStarted) { newValue in
             if newValue {
-                NotificationManager.shared.deleteFirstDayNotification()
+                NotificationManager.shared.removeAllNotifications()
+                NotificationManager.shared.scheduleNotifications(limits: smokesManager.planLimits)
             }
         }
         .onAppear {

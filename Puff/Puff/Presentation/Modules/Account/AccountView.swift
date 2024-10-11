@@ -256,6 +256,9 @@ struct AccountView: View {
 
     private func requestNotifications() {
         if NotificationManager.shared.isNotificationEnabled {
+            NotificationManager.shared.scheduleNotifications(
+                limits: Array(smokesManager.planLimits[smokesManager.currentDayIndex...])
+            )
             return
         }
 
