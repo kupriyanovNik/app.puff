@@ -25,7 +25,7 @@ extension HomeView {
 
         var body: some View {
             Group {
-                if #available(iOS 18, *) {
+                if #available(iOS 18.0, *) {
                     baseView()
                         .onLongPressGesture(minimumDuration: 0, maximumDistance: 20) {
                             buttonAction()
@@ -34,7 +34,7 @@ extension HomeView {
                             if isPressed {
                                 isButtonPressed = true
                             } else {
-                                delay(0.1) {
+                                delay(0.15) {
                                     isButtonPressed = false
                                 }
                             }
