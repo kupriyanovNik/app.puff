@@ -216,58 +216,32 @@ private extension OnboardingSurveyScreen {
         .init(
             title: "OnboardingSurvey.Question1".l,
             markdowns: ["Как долго", "How long"],
-            answers: [
-                "Менее 1 месяца",
-                "1-6 месяцев",
-                "6-12 месяцев",
-                "1-2 года",
-                "Более 2 лет"
-            ]
+            answers: Array((1...5).map { "OnboardingSurvey.Question1.Answer\($0)".l })
         ),
         .init(
             title: "OnboardingSurvey.Question2".l,
             markdowns: ["больше,", "more"],
-            answers: [
-                "Да", "Нет"
-            ]
+            answers: Array((1...2).map { "OnboardingSurvey.Question2.Answer\($0)".l })
         ),
         .init(
             title: "OnboardingSurvey.Question3".l,
             markdowns: ["Как часто", "How often"],
-            answers: [
-                "Редко",
-                "Довольно часто",
-                "Постоянно",
-                "Не выпускаю из рук"
-            ]
+            answers: Array((1...4).map { "OnboardingSurvey.Question3.Answer\($0)".l })
         ),
         .init(
             title: "OnboardingSurvey.Question4".l,
             markdowns: ["ваше утро", "your morning"],
-            answers: [
-                "Нет, никогда",
-                "Да, иногда",
-                "Да, постоянно"
-            ]
+            answers: Array((1...3).map { "OnboardingSurvey.Question4.Answer\($0)".l })
         ),
         .init(
             title: "OnboardingSurvey.Question5".l,
             markdowns: ["уже пробовали", "Have you tried"],
-            answers: [
-                "Нет",
-                "Да, 1-2 раза",
-                "Да, много раз"
-            ]
+            answers: Array((1...3).map { "OnboardingSurvey.Question5.Answer\($0)".l })
         ),
         .init(
             title: "OnboardingSurvey.Question6".l,
             markdowns: ["основной", "main"],
-            answers: [
-                "Ломка",
-                "Стресс",
-                "Влияние окружающих",
-                "Не знаю"
-            ]
+            answers: Array((1...4).map { "OnboardingSurvey.Question6.Answer\($0)".l })
         )
     ]
 }

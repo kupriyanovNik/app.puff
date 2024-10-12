@@ -38,3 +38,30 @@
 "OnboardingSurvey.Question4" = "Часто ли ваше утро начинается с желания попарить?";
 "OnboardingSurvey.Question5" = "Вы уже пробовали бросить парить?";
 "OnboardingSurvey.Question6" = "Что было основной причиной срыва?";
+
+"OnboardingSurvey.Question1.Answer1" = "Менее 1 месяца";
+"OnboardingSurvey.Question1.Answer2" = "1-6 месяцев";
+"OnboardingSurvey.Question1.Answer3" = "6-12 месяцев";
+"OnboardingSurvey.Question1.Answer4" = "1-2 года";
+"OnboardingSurvey.Question1.Answer5" = "Более 2 лет";
+
+"OnboardingSurvey.Question2.Answer1" = "Да";
+"OnboardingSurvey.Question2.Answer2" = "Нет";
+
+"OnboardingSurvey.Question3.Answer1" = "Редко";
+"OnboardingSurvey.Question3.Answer2" = "Довольно часто";
+"OnboardingSurvey.Question3.Answer3" = "Постоянно";
+"OnboardingSurvey.Question3.Answer4" = "Не выпускаю из рук";
+
+"OnboardingSurvey.Question4.Answer1" = "Нет, никогда";
+"OnboardingSurvey.Question4.Answer2" = "Да, иногда";
+"OnboardingSurvey.Question4.Answer3" = "Да, постоянно";
+
+"OnboardingSurvey.Question5.Answer1" = "Нет";
+"OnboardingSurvey.Question5.Answer2" = "Да, 1-2 раза";
+"OnboardingSurvey.Question5.Answer3" = "Да, много раз";
+
+"OnboardingSurvey.Question6.Answer1" = "Ломка";
+"OnboardingSurvey.Question6.Answer2" = "Стресс";
+"OnboardingSurvey.Question6.Answer3" = "Влияние окружающих";
+"OnboardingSurvey.Question6.Answer4" = "Не знаю";

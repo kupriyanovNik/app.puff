@@ -32,9 +32,36 @@
 
 "OnboardingSurvey.Description" = "Now - just 8 quick questions so we can match you with the best quit plan!";
 
-"OnboardingSurvey.Question1" = "Как долго вы уже парите?";
-"OnboardingSurvey.Question2" = "Парите ли вы сейчас больше, чем когда начинали?";
-"OnboardingSurvey.Question3" = "Как часто вы парите?";
-"OnboardingSurvey.Question4" = "Часто ли ваше утро начинается с желания попарить?";
-"OnboardingSurvey.Question5" = "Вы уже пробовали бросить парить?";
-"OnboardingSurvey.Question6" = "Что было основной причиной срыва?";
+"OnboardingSurvey.Question1" = "How long have you been vaping?";
+"OnboardingSurvey.Question2" = "Are you currently vaping more than when you first started?";
+"OnboardingSurvey.Question3" = "How often do you vape?";
+"OnboardingSurvey.Question4" = "Does your morning often start with a desire to vape?";
+"OnboardingSurvey.Question5" = "Have you tried to quit vaping before?";
+"OnboardingSurvey.Question6" = "What was the main reason for the relapse?";
+
+"OnboardingSurvey.Question1.Answer1" = "Less than 1 month";
+"OnboardingSurvey.Question1.Answer2" = "1-6 months";
+"OnboardingSurvey.Question1.Answer3" = "6-12 months";
+"OnboardingSurvey.Question1.Answer4" = "1-2 years";
+"OnboardingSurvey.Question1.Answer5" = "More than 2 years";
+
+"OnboardingSurvey.Question2.Answer1" = "Yes";
+"OnboardingSurvey.Question2.Answer2" = "No";
+
+"OnboardingSurvey.Question3.Answer1" = "Rarely";
+"OnboardingSurvey.Question3.Answer2" = "Quite often";
+"OnboardingSurvey.Question3.Answer3" = "Constantly";
+"OnboardingSurvey.Question3.Answer4" = "I can’t put it down";
+
+"OnboardingSurvey.Question4.Answer1" = "No, never";
+"OnboardingSurvey.Question4.Answer2" = "Yes, sometimes";
+"OnboardingSurvey.Question4.Answer3" = "Yes, constantly";
+
+"OnboardingSurvey.Question5.Answer1" = "No";
+"OnboardingSurvey.Question5.Answer2" = "Yes, 1-2 times";
+"OnboardingSurvey.Question5.Answer3" = "Yes, many times";
+
+"OnboardingSurvey.Question6.Answer1" = "Cravings";
+"OnboardingSurvey.Question6.Answer2" = "Stress";
+"OnboardingSurvey.Question6.Answer3" = "Influence of others";
+"OnboardingSurvey.Question6.Answer4" = "I don't know";
