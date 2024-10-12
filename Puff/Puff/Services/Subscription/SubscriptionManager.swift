@@ -65,7 +65,10 @@ extension SubscriptionsManager {
                 await transaction.finish()
                 await self.updatePurchasedProducts()
                 await fetchActiveTransactions()
-                callback(nil)
+
+                if isPremium {
+                    callback(nil)
+                }
 
             case let .success(.unverified(_, error)): break
             case .pending, .userCancelled: break

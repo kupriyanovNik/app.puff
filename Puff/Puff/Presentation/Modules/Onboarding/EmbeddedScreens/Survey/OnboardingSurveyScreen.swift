@@ -83,7 +83,7 @@ struct OnboardingSurveyScreen: View {
 
                 Spacer()
 
-                TextButton(text: "Пропустить") {
+                TextButton(text: "Skip".l) {
                     isForwardDirection = true
 
                     delay(0.04) {
@@ -123,7 +123,7 @@ struct OnboardingSurveyScreen: View {
         VStack(alignment: .center, spacing: 36) {
             MarkdownText(
                 text: question.title,
-                markdown: question.markdown
+                markdowns: question.markdowns
             )
             .font(.bold28)
             .multilineTextAlignment(.center)
@@ -208,14 +208,14 @@ private extension OnboardingSurveyScreen {
     struct Question: Identifiable {
         let id = UUID()
         let title: String
-        let markdown: String
+        let markdowns: [String]
         let answers: [String]
     }
 
     static let questions: [Question] = [
         .init(
-            title: "Как долго вы уже парите?",
-            markdown: "Как долго",
+            title: "OnboardingSurvey.Question1".l,
+            markdowns: ["Как долго", "How long"],
             answers: [
                 "Менее 1 месяца",
                 "1-6 месяцев",
@@ -225,15 +225,15 @@ private extension OnboardingSurveyScreen {
             ]
         ),
         .init(
-            title: "Парите ли вы сейчас больше, чем когда начинали?",
-            markdown: "больше,",
+            title: "OnboardingSurvey.Question2".l,
+            markdowns: ["больше,", "more"],
             answers: [
                 "Да", "Нет"
             ]
         ),
         .init(
-            title: "Как часто вы парите?",
-            markdown: "Как часто",
+            title: "OnboardingSurvey.Question3".l,
+            markdowns: ["Как часто", "How often"],
             answers: [
                 "Редко",
                 "Довольно часто",
@@ -242,8 +242,8 @@ private extension OnboardingSurveyScreen {
             ]
         ),
         .init(
-            title: "Часто ли ваше утро начинается с желания попарить?",
-            markdown: "ваше утро",
+            title: "OnboardingSurvey.Question4".l,
+            markdowns: ["ваше утро", "your morning"],
             answers: [
                 "Нет, никогда",
                 "Да, иногда",
@@ -251,8 +251,8 @@ private extension OnboardingSurveyScreen {
             ]
         ),
         .init(
-            title: "Вы уже пробовали бросить парить?",
-            markdown: "уже пробовали",
+            title: "OnboardingSurvey.Question5".l,
+            markdowns: ["уже пробовали", "Have you tried"],
             answers: [
                 "Нет",
                 "Да, 1-2 раза",
@@ -260,8 +260,8 @@ private extension OnboardingSurveyScreen {
             ]
         ),
         .init(
-            title: "Что было основной причиной срыва?",
-            markdown: "основной",
+            title: "OnboardingSurvey.Question6".l,
+            markdowns: ["основной", "main"],
             answers: [
                 "Ломка",
                 "Стресс",

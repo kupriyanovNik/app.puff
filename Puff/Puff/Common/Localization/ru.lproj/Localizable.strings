@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  Puff
+
+  Created by Никита Куприянов on 12.10.2024.
+  
+*/
+
+// MARK: - Internal
+
+"Start" = "Начать";
+"Next" = "Далее";
+"Skip" = "Пропустить";
+
+// MARK: - Images
+
+"OnboardingImages.ValueProposition1Image" = "valueProposition1RUImage";
+"OnboardingImages.ValueProposition2Image" = "valueProposition2RUImage";
+"OnboardingImages.ValueProposition3Image" = "valueProposition3RUImage";
+
+// MARK: - Onboarding
+
+"OnboardingWelcomeScreen.Congratulations" = "Поздравляем!";
+"OnboardingWelcomeScreen.RightPath" = "Вы на верном пути - скоро привычка парить останется в прошлом!";
+
+"OnboardingValuePropositionScreen.title1" = "Puffless поможет бросить без усилий и навсегда";
+"OnboardingValuePropositionScreen.title2" = "Отмечайте затяжки и не превышайте дневной лимит";
+"OnboardingValuePropositionScreen.title3" = "Каждый день лимит будет уменьшаться, пока вы не бросите!";
+"OnboardingValuePropositionScreen.text1" = "Резкий отказ почти всегда приводит к срыву. Мы используем метод постепенного бросания, чтобы организм успевал адаптироваться и не испытывал стресса.";
+"OnboardingValuePropositionScreen.text2" = "В отличие от резкого отказа, вы не будете ощущать лишений и сильных ограничений - соблюдать лимит будет нетрудно, а видеть ежедневный прогресс - бесценно!";
+"OnboardingValuePropositionScreen.text3" = "Процесс может идти как плавно, так и немного интенсивней - это зависит от желаемого срока отказа и силы вашей привычки.";
+
+"OnboardingSurvey.Description" = "Теперь - всего 8 быстрых вопросов, чтобы мы смогли подобрать вам оптимальный план бросания!";
+
+"OnboardingSurvey.Question1" = "Как долго вы уже парите?";
+"OnboardingSurvey.Question2" = "Парите ли вы сейчас больше, чем когда начинали?";
+"OnboardingSurvey.Question3" = "Как часто вы парите?";
+"OnboardingSurvey.Question4" = "Часто ли ваше утро начинается с желания попарить?";
+"OnboardingSurvey.Question5" = "Вы уже пробовали бросить парить?";
+"OnboardingSurvey.Question6" = "Что было основной причиной срыва?";

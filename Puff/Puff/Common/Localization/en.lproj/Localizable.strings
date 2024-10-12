@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  Puff
+
+  Created by Никита Куприянов on 12.10.2024.
+  
+*/
+
+// MARK: - Internal
+
+"Start" = "Start";
+"Next" = "Next";
+"Skip" = "Пропустить";
+
+// MARK: - Images
+
+"OnboardingImages.ValueProposition1Image" = "valueProposition1Image";
+"OnboardingImages.ValueProposition2Image" = "valueProposition2Image";
+"OnboardingImages.ValueProposition3Image" = "valueProposition3Image";
+
+// MARK: - Onboarding
+
+"OnboardingWelcomeScreen.Congratulations" = "Congratulations!";
+"OnboardingWelcomeScreen.RightPath" = "You're on the right path - soon vaping will be a thing of the past!";
+
+"OnboardingValuePropositionScreen.title1" = "Puffless will help you quit vaping effortlessly and for good";
+"OnboardingValuePropositionScreen.title2" = "Track your puffs and don’t exceed the daily limit";
+"OnboardingValuePropositionScreen.title3" = "Each day, the limit will gradually decrease until you quit!";
+"OnboardingValuePropositionScreen.text1" = "Quitting cold turkey almost always leads to a relapse. We use a gradual quitting approach so that the body has time to adapt and does not experience stress.";
+"OnboardingValuePropositionScreen.text2" = "Unlike quitting cold turkey, you won't feel deprived or severely restricted - sticking to your limit won't be difficult, and seeing daily progress is priceless!";
+"OnboardingValuePropositionScreen.text3" = "The process can go either smoothly or a little more intensely - it depends on your desired quit period and the strength of your habit.";
+
+"OnboardingSurvey.Description" = "Now - just 8 quick questions so we can match you with the best quit plan!";
+
+"OnboardingSurvey.Question1" = "Как долго вы уже парите?";
+"OnboardingSurvey.Question2" = "Парите ли вы сейчас больше, чем когда начинали?";
+"OnboardingSurvey.Question3" = "Как часто вы парите?";
+"OnboardingSurvey.Question4" = "Часто ли ваше утро начинается с желания попарить?";
+"OnboardingSurvey.Question5" = "Вы уже пробовали бросить парить?";
+"OnboardingSurvey.Question6" = "Что было основной причиной срыва?";

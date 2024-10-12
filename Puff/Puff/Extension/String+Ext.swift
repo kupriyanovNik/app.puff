@@ -47,3 +47,9 @@ extension String {
         return [start, "\(count)", end].joined(separator: "")
     }
 }
+
+extension String {
+    var l: String {
+        NSLocalizedString(self, comment: "")
+    }
+}

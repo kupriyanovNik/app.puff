@@ -13,22 +13,10 @@ struct OnboardingValuePropositionScreen: View {
 
     @ObservedObject var onboardingVM: OnboardingViewModel
 
-    private let titles: [String] = [
-        "Puffless поможет бросить без усилий и навсегда",
-        "Отмечайте затяжки и не превышайте дневной лимит",
-        "Каждый день лимит будет уменьшаться, пока вы не бросите!"
-    ]
-
-    private let titleMarks: [String] = [
-        "навсегда",
-        "Отмечайте затяжки",
-        "будет уменьшаться,"
-    ]
-
-    private let descriptions: [String] = [
-        "Резкий отказ почти всегда приводит к срыву. Мы используем метод постепенного бросания, чтобы организм успевал адаптироваться и не испытывал стресса.",
-        "В отличие от резкого отказа, вы не будете ощущать лишений и сильных ограничений - соблюдать лимит будет нетрудно, а видеть ежедневный прогресс - бесценно!",
-        "Процесс может идти как плавно, так и немного интенсивней - это зависит от желаемого срока отказа и силы вашей привычки."
+    private let titleMarks: [[String]] = [
+        ["навсегда", "for good"],
+        ["Отмечайте затяжки", "Track your puffs"],
+        ["будет уменьшаться,", "will gradually decrease"]
     ]
 
     var body: some View {
@@ -37,7 +25,7 @@ struct OnboardingValuePropositionScreen: View {
 
             Spacer()
 
-            AccentButton(text: "Далее", action: nextButtonAction)
+            AccentButton(text: "Next".l, action: nextButtonAction)
                 .padding(.horizontal, 12)
         }
         .padding(.top, isSmallDevice ? 8 : 16)
@@ -58,7 +46,7 @@ struct OnboardingValuePropositionScreen: View {
 
     @ViewBuilder
     private func tabForIndex(_ index: Int) -> some View {
-        let imageName: String = "valueProposition\(index + 1)Image"
+        let imageName: String = "OnboardingImages.ValueProposition\(index + 1)Image".l
 
         VStack(spacing: 26) {
             Image(imageName)
@@ -67,13 +55,16 @@ struct OnboardingValuePropositionScreen: View {
                 .padding(.horizontal, 12)
 
             VStack(spacing: 12) {
-                MarkdownText(text: titles[index], markdown: titleMarks[index])
-                    .font(isSmallDevice ? .bold22 : .bold28)
-                    .foregroundStyle(Palette.textPrimary)
-                    .hLeading()
+                MarkdownText(
+                    text: "OnboardingValuePropositionScreen.title\(index + 1)".l,
+                    markdowns: titleMarks[index]
+                )
+                .font(isSmallDevice ? .bold22 : .bold28)
+                .foregroundStyle(Palette.textPrimary)
+                .hLeading()
 
                 VStack(spacing: isSmallDevice ? 18 : 24) {
-                    Text(descriptions[index])
+                    Text("OnboardingValuePropositionScreen.text\(index + 1)".l)
                         .font(.medium16)
                         .foregroundStyle(Palette.textPrimary.opacity(0.56))
                         .hLeading()

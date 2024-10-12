@@ -21,8 +21,8 @@ struct OnboardingSurveyDescriptionScreen: View {
                 .frame(64)
 
             MarkdownText(
-                text: "Теперь - всего 8 быстрых вопросов, чтобы мы смогли подобрать вам оптимальный план бросания!",
-                markdown: "8 быстрых вопросов,"
+                text: "OnboardingSurvey.Description".l,
+                markdowns: ["8 быстрых вопросов,", "8 quick questions"]
             )
             .font(.bold22)
             .multilineTextAlignment(.center)
@@ -30,7 +30,7 @@ struct OnboardingSurveyDescriptionScreen: View {
 
             Spacer()
 
-            AccentButton(text: "Далее", action: onboardingVM.nextScreen)
+            AccentButton(text: "Next".l, action: onboardingVM.nextScreen)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 16)

@@ -32,7 +32,7 @@ struct OnboardingWelcomeScreen: View {
 
                 VStack(spacing: 12) {
                     if shouldShow {
-                        Text("Поздравляем!")
+                        Text("OnboardingWelcomeScreen.Congratulations")
                             .font(.bold28)
                             .foregroundStyle(Palette.textPrimary)
                             .transition(
@@ -42,8 +42,8 @@ struct OnboardingWelcomeScreen: View {
 
                     if shouldShow {
                         MarkdownText(
-                            text: "Вы на верном пути - скоро привычка парить останется в прошлом!",
-                            markdown: "Вы на верном пути -"
+                            text: "OnboardingWelcomeScreen.RightPath".l,
+                            markdowns: ["Вы на верном пути -", "You're on the right path -"]
                         )
                         .font(.semibold22)
                         .multilineTextAlignment(.center)
@@ -58,7 +58,7 @@ struct OnboardingWelcomeScreen: View {
             Spacer()
 
             if shouldShow {
-                AccentButton(text: "Начать", action: onboardingVM.nextScreen)
+                AccentButton(text: "Start".l, action: onboardingVM.nextScreen)
                     .transition(
                         .opacity.animation(.smooth.delay(0.55))
                     )

@@ -68,7 +68,14 @@ struct AppPaywallView: View {
             Alert(title: Text(errorText))
         }
         .task {
-            await subscriptionsManager.loadProducts()
+            if subscriptionsManager.products.isEmpty {
+                await subscriptionsManager.loadProducts()
+            }
+        }
+        .onChange(of: subscriptionsManager.isPremium) { newValue in
+            if newValue {
+                shouldShowCongratulationView.toggle()
+            }
         }
     }
 
@@ -318,8 +325,6 @@ struct AppPaywallView: View {
                 if let error {
                     errorText = error
                     shouldShowError = true
-                } else {
-                    shouldShowCongratulationView.toggle()
                 }
             }
         }
