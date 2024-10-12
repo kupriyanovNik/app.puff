@@ -12,8 +12,6 @@ extension HomeView {
 
         @ObservedObject var smokesManager: SmokesManager
 
-        @State private var isButtonPressed: Bool = false
-
         private var fillColor: Color {
             if smokesManager.todaySmokes < smokesManager.todayLimit ||
                 !smokesManager.isPlanStarted {
@@ -24,35 +22,9 @@ extension HomeView {
         }
 
         var body: some View {
-            Group {
-                if #available(iOS 18.0, *) {
-                    baseView()
-                        .onLongPressGesture(minimumDuration: 0, maximumDistance: 20) {
-                            buttonAction()
-                            isButtonPressed = false
-                        } onPressingChanged: { isPressed in
-                            if isPressed {
-                                isButtonPressed = true
-                            } else {
-                                delay(0.15) {
-                                    isButtonPressed = false
-                                }
-                            }
-                        }
-                } else {
-                    baseView()
-                        .onTapGesture {
-                            isButtonPressed = true
-
-                            buttonAction()
-
-                            delay(0.15) {
-                                isButtonPressed = false
-                            }
-                        }
-                }
-            }
-            .animation(.smooth, value: smokesManager.isTodayLimitExceeded)
+            Button(action: buttonAction, label: baseView)
+                .buttonStyle(HomeSmokeButtonStyle(smokesManager: smokesManager))
+                .animation(.smooth, value: smokesManager.isTodayLimitExceeded)
         }
 
         @ViewBuilder
@@ -66,31 +38,6 @@ extension HomeView {
                         startRadius: 0,
                         endRadius: 200
                     )
-                }
-                .opacity(isButtonPressed ? 0.7 : 1)
-                .scaleEffect(isButtonPressed ? 0.99 : 1)
-                .animation(.easeInOut(duration: 0.15), value: isButtonPressed)
-                .overlay {
-                    Group {
-                        if smokesManager.isTodayLimitExceeded && smokesManager.isPlanStarted {
-                            Image(.homeSmokeExceededButton)
-                                .resizable()
-                        } else if smokesManager.todaySmokes == smokesManager.todayLimit && smokesManager.isPlanStarted {
-                            Image(.homeSmokeOnEdgeButton)
-                                .resizable()
-                        } else {
-                            Image(.homeSmokeNonExceededButton)
-                                .resizable()
-                        }
-                    }
-                    .scaledToFit()
-                    .frame(32)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 35)
-                    .background {
-                        Capsule()
-                            .fill(.white)
-                    }
                 }
         }
 

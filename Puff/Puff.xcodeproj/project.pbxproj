@@ -122,6 +122,7 @@
 		B7F574E12C9CA1940059BAB9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F574E02C9CA1940059BAB9 /* Launch Screen.storyboard */; };
 		B7F574F12C9CAAAF0059BAB9 /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */; };
 		B7F574FA2C9CB8D50059BAB9 /* MarkdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574F92C9CB8D50059BAB9 /* MarkdownText.swift */; };
+		B7FE4F942CBA9E8500EB378A /* HomeSmokeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE4F922CBA9E8500EB378A /* HomeSmokeButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +242,7 @@
 		B7F574EC2C9CA3130059BAB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
 		B7F574F92C9CB8D50059BAB9 /* MarkdownText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownText.swift; sourceTree = "<group>"; };
+		B7FE4F922CBA9E8500EB378A /* HomeSmokeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSmokeButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -823,6 +825,7 @@
 		B7F377632C9B68180050C93B /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				B7FE4F932CBA9E8500EB378A /* ButtonStyles */,
 				B7F3776A2C9B68AC0050C93B /* DelayedButton.swift */,
 				B7F377642C9B681C0050C93B /* MainButtons */,
 				B7F377602C9B674E0050C93B /* TabBar */,
@@ -864,6 +867,14 @@
 				B76AEF6C2CA9DE57000003F8 /* Bundle+Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		B7FE4F932CBA9E8500EB378A /* ButtonStyles */ = {
+			isa = PBXGroup;
+			children = (
+				B7FE4F922CBA9E8500EB378A /* HomeSmokeButtonStyle.swift */,
+			);
+			path = ButtonStyles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1056,6 +1067,7 @@
 				B7C8863F2CC39FFA004B6E9D /* OnboardingSurveyNegativeEffectScreen.swift in Sources */,
 				B7C886402CC39FFA004B6E9D /* OnboardingSurveySideEffectScreen.swift in Sources */,
 				B7C886412CC39FFA004B6E9D /* OnboardingSurveyDescriptionScreen.swift in Sources */,
+				B7FE4F942CBA9E8500EB378A /* HomeSmokeButtonStyle.swift in Sources */,
 				B7C886422CC39FFA004B6E9D /* OnboardingSurveyScreen.swift in Sources */,
 				B7C886432CC39FFA004B6E9D /* OnboardingSurveySkippedScreen.swift in Sources */,
 				B7C886442CC39FFA004B6E9D /* OnboardingContractScreen.swift in Sources */,
