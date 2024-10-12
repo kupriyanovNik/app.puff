@@ -46,7 +46,9 @@ struct ActionMenuYesterdayPlanExceededView: View {
 
         var secondPart: String = ""
 
-        if daysToEnd == 1 {
+        if daysToEnd == 0 {
+            secondPart = "Сегодня - последний день плана!\n"
+        } else if daysToEnd == 1 {
             secondPart = "До конца плана остался всего 1 день!\n"
         } else {
             secondPart = "До конца плана осталось всего 3 дня!\n"
@@ -57,7 +59,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
             count: todayLimit
         )
 
-        return [1, 3].contains(daysToEnd) ? (firstPart + secondPart + thirdPart) : (firstPart + thirdPart)
+        return [0, 1, 3].contains(daysToEnd) ? (firstPart + secondPart + thirdPart) : (firstPart + thirdPart)
     }
 
     var body: some View {

@@ -16,10 +16,12 @@ struct ActionMenuYesterdaySuccessedView: View {
     private var text: String {
         var firstPart: String = ""
 
-        if daysToEnd == 1 {
-            firstPart = "До конца плана остался всего 1 день!"
+        if daysToEnd == 0 {
+            firstPart = "Сегодня - последний день плана!\n"
+        } else if daysToEnd == 1 {
+            firstPart = "До конца плана остался всего 1 день!\n"
         } else {
-            firstPart = "До конца плана осталось всего 3 дня!"
+            firstPart = "До конца плана осталось всего 3 дня!\n"
         }
 
         let secondPart = "Сегодняшний лимит - {count} затяжек.".formatByDivider(
@@ -27,7 +29,7 @@ struct ActionMenuYesterdaySuccessedView: View {
             count: todayLimit
         )
 
-        return [1, 3].contains(daysToEnd) ? (firstPart + secondPart) : secondPart
+        return [0, 1, 3].contains(daysToEnd) ? (firstPart + secondPart) : secondPart
     }
 
     var body: some View {
