@@ -43,7 +43,7 @@ struct StatisticsWeeklyChart: View {
     var body: some View {
         VStack(spacing: 16) {
             VStack(spacing: 10) {
-                HStack(spacing: 3) {
+                HStack(alignment: .top, spacing: 3) {
                     Image(.statisticsCloud)
                         .resizable()
                         .scaledToFit()
