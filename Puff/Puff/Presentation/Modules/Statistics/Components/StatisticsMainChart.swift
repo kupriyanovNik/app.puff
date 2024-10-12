@@ -47,9 +47,16 @@ struct StatisticsMainChart: View {
     private var gesture: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
             .onChanged { value in
-                if abs(value.translation.width) > 20 {
-                    isScrollDisabled = true
+                if !isScrollDisabled {
+                    if abs(value.translation.width) > 20 {
+                        isScrollDisabled = true
 
+                        handleDragGesture(
+                            startLocation: value.startLocation,
+                            translation: value.translation
+                        )
+                    }
+                } else {
                     handleDragGesture(
                         startLocation: value.startLocation,
                         translation: value.translation
@@ -64,11 +71,11 @@ struct StatisticsMainChart: View {
     }
 
     private func handleDragGesture(startLocation: CGPoint, translation: CGSize) {
-        let widthPointX = startLocation.x + translation.width - 20
+        let widthPointX = startLocation.x + translation.width
         let part: Double = widthPointX / chartWidth
-        let maxCount = max(realValues.count, estimatedValues.count)
+        let count = max(realValues.count, estimatedValues.count)
 
-        selectedIndex = max(0, min(Int(Double(part) * Double(maxCount)), maxCount - 1))
+        selectedIndex = max(0, min(Int(Double(part) * Double(count)), count - 1))
     }
 
     var body: some View {

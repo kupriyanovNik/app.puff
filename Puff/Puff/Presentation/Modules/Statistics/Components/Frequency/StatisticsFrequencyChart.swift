@@ -29,12 +29,12 @@ struct StatisticsFrequencyChart: View {
         if smokesManager.smokesCount.isEmpty { return "–" }
 
         if isFirstDay, let index = statisticsFrequencyViewModel.smokesHours.firstIndex(of: biggestValue) {
-            return "\(index + 1):00"
+            return "\(index):00"
         }
 
         if (statisticsFrequencyViewModel.smokesHours.filter { $0 != 0 }.count < 5),
             let index = statisticsFrequencyViewModel.smokesHours.firstIndex(of: biggestValue) {
-            return "\(index + 1):00"
+            return "\(index):00"
         }
 
         return getActiveRange()
@@ -244,7 +244,7 @@ struct StatisticsFrequencyChart: View {
     private func getActiveRange() -> String {
         let startIndex = getActiveRangeStartIndex()
 
-        return "\(startIndex + 1):00 - \(startIndex + 5):00"
+        return "\(startIndex):00 - \(startIndex + 4):00"
     }
 }
 
