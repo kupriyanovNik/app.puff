@@ -82,9 +82,11 @@ struct MainNavigationView: View {
                 reviewManager.hasSeenReviewRequestAt100Smokes = true
             }
 
-            if smokesManager.isPlanStarted {
-                if newValue == smokesManager.todayLimit && (smokesManager.isLastDayOfPlan) {
-                    navigationVM.shouldShowReadyToBreakActionMenu = true
+            if subscriptionsManager.isPremium {
+                if smokesManager.isPlanStarted {
+                    if newValue == smokesManager.todayLimit && (smokesManager.isLastDayOfPlan) {
+                        navigationVM.shouldShowReadyToBreakActionMenu = true
+                    }
                 }
             }
         }
@@ -95,9 +97,11 @@ struct MainNavigationView: View {
             }
         }
         .onAppear {
-            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
-                if smokesManager.isDayAfterPlanEnded || ((smokesManager.todaySmokes == smokesManager.todayLimit) && smokesManager.isLastDayOfPlan) {
-                    navigationVM.shouldShowReadyToBreakActionMenu = true
+            if subscriptionsManager.isPremium {
+                if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
+                    if smokesManager.isDayAfterPlanEnded || ((smokesManager.todaySmokes == smokesManager.todayLimit) && smokesManager.isLastDayOfPlan) {
+                        navigationVM.shouldShowReadyToBreakActionMenu = true
+                    }
                 }
             }
 
@@ -107,9 +111,11 @@ struct MainNavigationView: View {
             handleYesterdayResult()
         }
         .onChange(of: smokesManager.todaySmokes) { newValue in
-            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
-                if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
-                    navigationVM.shouldShowAddingMoreSmokesActionMenu = true
+            if subscriptionsManager.isPremium {
+                if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
+                    if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
+                        navigationVM.shouldShowAddingMoreSmokesActionMenu = true
+                    }
                 }
             }
         }
@@ -152,14 +158,16 @@ struct MainNavigationView: View {
     }
 
     private func handleYesterdayResult() {
-        if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
-            navigationVM.checkAbilityToShowYesterdayResult()
+        if subscriptionsManager.isPremium {
+            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
+                navigationVM.checkAbilityToShowYesterdayResult()
 
-            if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
-                if smokesManager.isYesterdayLimitExceeded {
-                    navigationVM.shouldShowPlanExtendingActionMenu = true
-                } else if smokesManager.currentDayIndex > 0 {
-                    navigationVM.shouldShowYesterdayResult = true
+                if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
+                    if smokesManager.isYesterdayLimitExceeded {
+                        navigationVM.shouldShowPlanExtendingActionMenu = true
+                    } else if smokesManager.currentDayIndex > 0 {
+                        navigationVM.shouldShowYesterdayResult = true
+                    }
                 }
             }
         }
