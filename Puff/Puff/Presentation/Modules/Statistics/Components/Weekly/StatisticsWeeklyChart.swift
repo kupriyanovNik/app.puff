@@ -13,6 +13,8 @@ struct StatisticsWeeklyChart: View {
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
+    @Binding var isScrollDisabled: Bool
+
     @State private var ableToChangeWeekToBackward: Bool = false
     @State private var ableToChangeWeekToForward: Bool = false
 
@@ -28,7 +30,6 @@ struct StatisticsWeeklyChart: View {
     private var weekSmokesText: String {
         if let selectedIndex = statisticsWVM.selectedIndex {
             let realValue: Int? = statisticsWVM.currentWeekRealValues[selectedIndex]
-            let estimatedValue: Int? = statisticsWVM.currentWeekEstimatedValues[selectedIndex]
 
             if let realValue {
                 return String(realValue)
@@ -144,6 +145,7 @@ struct StatisticsWeeklyChart: View {
                     realValues: $statisticsWVM.currentWeekRealValues,
                     estimatedValues: $statisticsWVM.currentWeekEstimatedValues,
                     selectedIndex: $statisticsWVM.selectedIndex,
+                    isScrollDisabled: $isScrollDisabled,
                     spacingBetweenChartCells: 6
                 )
             }
@@ -229,6 +231,7 @@ struct StatisticsWeeklyChart: View {
     StatisticsWeeklyChart(
         statisticsWVM: .init(),
         smokesManager: .init(),
-        subscriptionsManager: .init()
+        subscriptionsManager: .init(),
+        isScrollDisabled: .constant(false)
     )
 }

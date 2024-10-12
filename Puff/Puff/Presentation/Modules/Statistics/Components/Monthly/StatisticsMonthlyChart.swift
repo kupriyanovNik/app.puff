@@ -13,6 +13,8 @@ struct StatisticsMonthlyChart: View {
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
+    @Binding var isScrollDisabled: Bool
+
     @State private var ableToChangeMonthToBackward: Bool = false
     @State private var ableToChangeMonthToForward: Bool = false
 
@@ -28,7 +30,6 @@ struct StatisticsMonthlyChart: View {
     private var monthSmokesText: String {
         if let selectedIndex = statisticsMVM.selectedIndex {
             let realValue: Int? = statisticsMVM.currentMonthRealValues[selectedIndex]
-            let estimatedValue: Int? = statisticsMVM.currentMonthEstimatedValues[selectedIndex]
 
             if let realValue {
                 return String(realValue)
@@ -136,6 +137,7 @@ struct StatisticsMonthlyChart: View {
                     realValues: $statisticsMVM.currentMonthRealValues,
                     estimatedValues: $statisticsMVM.currentMonthEstimatedValues,
                     selectedIndex: $statisticsMVM.selectedIndex,
+                    isScrollDisabled: $isScrollDisabled,
                     spacingBetweenChartCells: 3
                 )
             }
@@ -221,6 +223,7 @@ struct StatisticsMonthlyChart: View {
     StatisticsMonthlyChart(
         statisticsMVM: .init(),
         smokesManager: .init(),
-        subscriptionsManager: .init()
+        subscriptionsManager: .init(),
+        isScrollDisabled: .constant(false)
     )
 }

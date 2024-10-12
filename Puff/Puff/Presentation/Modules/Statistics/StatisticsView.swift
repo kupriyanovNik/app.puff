@@ -17,6 +17,8 @@ struct StatisticsView: View {
     @StateObject var statisticsMVM = StatisticsMonthlyViewModel()
     @StateObject var statisticsFVM = StatisticsFrequencyViewModel()
 
+    @State private var isScrollDisabled: Bool = false
+
     var body: some View {
         CircledTopCornersView(content: viewContent)
     }
@@ -37,13 +39,15 @@ struct StatisticsView: View {
                     StatisticsWeeklyChart(
                         statisticsWVM: statisticsWVM,
                         smokesManager: smokesManager,
-                        subscriptionsManager: subscriptionsManager
+                        subscriptionsManager: subscriptionsManager,
+                        isScrollDisabled: $isScrollDisabled
                     )
 
                     StatisticsMonthlyChart(
                         statisticsMVM: statisticsMVM,
                         smokesManager: smokesManager,
-                        subscriptionsManager: subscriptionsManager
+                        subscriptionsManager: subscriptionsManager,
+                        isScrollDisabled: $isScrollDisabled
                     )
 
                     StatisticsFrequencyChart(
@@ -53,6 +57,7 @@ struct StatisticsView: View {
                 }
             }
             .scrollIndicators(.hidden)
+            .scrollDisabled(isScrollDisabled)
         }
         .padding(.horizontal, 12)
     }

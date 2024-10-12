@@ -14,6 +14,7 @@ struct StatisticsMainChart: View {
     @Binding var estimatedValues: [Int?]
 
     @Binding var selectedIndex: Int?
+    @Binding var isScrollDisabled: Bool
 
     var spacingBetweenChartCells: CGFloat = 6
     var chartCellHeight: CGFloat = 100
@@ -41,22 +42,29 @@ struct StatisticsMainChart: View {
         return max(maxEst, maxReal)
     }
 
-    private var gesture: some Gesture {
-        DragGesture(minimumDistance: 0, coordinateSpace: .local)
-            .onChanged { value in
-                handleDragGesture(
-                    startLocation: value.startLocation,
-                    translation: value.translation
-                )
+    @State private var isDragValueEnought: Bool = false
 
+    private var gesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .global)
+            .onChanged { value in
+                if abs(value.translation.width) > 20 {
+                    isScrollDisabled = true
+
+                    handleDragGesture(
+                        startLocation: value.startLocation,
+                        translation: value.translation
+                    )
+                }
             }
             .onEnded { value in
+                isScrollDisabled = false
+                isDragValueEnought = false
                 selectedIndex = nil
             }
     }
 
     private func handleDragGesture(startLocation: CGPoint, translation: CGSize) {
-        let widthPointX = startLocation.x + translation.width
+        let widthPointX = startLocation.x + translation.width - 20
         let part: Double = widthPointX / chartWidth
         let maxCount = max(realValues.count, estimatedValues.count)
 
@@ -89,7 +97,7 @@ struct StatisticsMainChart: View {
                         }
                         .padding(.trailing, 3)
                     }
-                    .gesture(self.gesture)
+                    .simultaneousGesture(self.gesture)
 
                 xMarks()
             }
@@ -140,28 +148,35 @@ struct StatisticsMainChart: View {
                                         .height(heightOfEstimated)
                                         .vBottom()
                                 } else if let realValue, let estimatedValue {
-                                    let heightOfEstimated = (max(0, Double(estimatedValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
-                                    let heightOfReal = (max(0, Double(realValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
+                                    let heightOfEstimated = min(
+                                        size.height,
+                                        (max(0, Double(estimatedValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
+                                    )
+                                    let heightOfReal = min(
+                                        size.height,
+                                        (max(0, Double(realValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
+                                    )
 
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
-                                        .overlay(alignment: .bottom) {
-                                            if heightOfReal <= heightOfEstimated {
+                                    if heightOfReal <= heightOfEstimated {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
+                                            .overlay(alignment: .bottom) {
                                                 RoundedRectangle(cornerRadius: 8)
                                                     .fill(Color(hex: isSelected ? 0x75B8FD : 0xB5D9FF))
                                                     .height(heightOfReal)
-                                            } else {
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .fill(Color(hex: isSelected ? 0xFF7D7D : 0xFDB9BA))
-                                                    .height(heightOfReal)
                                             }
-                                        }
-                                        .height(heightOfEstimated)
-                                        .vBottom()
+                                            .height(heightOfEstimated)
+                                            .vBottom()
+                                    } else {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(Color(hex: isSelected ? 0xFF7D7D : 0xFDB9BA))
+                                            .height(heightOfReal)
+                                            .vBottom()
+                                    }
                                 }
                             }
                         }
-                        .animation(.easeInOut(duration: 0.25), value: isSelected)
+                        .animation(.easeInOut(duration: 0.07), value: isSelected)
                         .contentShape(RoundedRectangle(cornerRadius: 8))
                 }
             }
