@@ -17,7 +17,7 @@ struct HomeSmokeButtonStyle: ButtonStyle {
         configuration.label
             .opacity(isButtonPressed ? 0.7 : 1)
             .scaleEffect(isButtonPressed ? 0.99 : 1)
-            .animation(.easeInOut(duration: 0.15), value: isButtonPressed)
+            .animation(.smooth(duration: 0.15), value: isButtonPressed)
             .overlay {
                 Group {
                     if smokesManager.isTodayLimitExceeded && smokesManager.isPlanStarted {
@@ -44,7 +44,7 @@ struct HomeSmokeButtonStyle: ButtonStyle {
                 if newValue {
                     isButtonPressed = true
                 } else {
-                    delay(0.2) {
+                    delay(0.15) {
                         isButtonPressed = false
                     }
                 }
