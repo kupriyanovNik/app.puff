@@ -11,10 +11,10 @@
 		B7024D112C9EE5AF006809AC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B7024D102C9EE5AF006809AC /* Lottie */; };
 		B7024D132C9EE5C1006809AC /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7024D122C9EE5C1006809AC /* LottieView.swift */; };
 		B703C7B82CB9498000373E2A /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B703C7B72CB9498000373E2A /* CoreHaptics.framework */; };
+		B703C7BA2CB979B100373E2A /* ActionMenuYesterdayPlanExceededCriticalAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B703C7B92CB979B100373E2A /* ActionMenuYesterdayPlanExceededCriticalAnimation.json */; };
+		B703C7BC2CB979C900373E2A /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B703C7BB2CB979C900373E2A /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json */; };
 		B716A4452CBAABCC005842A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716A4432CBAABCC005842A5 /* Localizable.strings */; };
 		B71DD2112CB70AD6009578A8 /* ActionMenuReadyToBreakNeedDayAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20C2CB70AD6009578A8 /* ActionMenuReadyToBreakNeedDayAnimation.json */; };
-		B71DD2122CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD2102CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json */; };
-		B71DD2132CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededCriticalAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20F2CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededCriticalAnimation.json */; };
 		B71DD2142CB70AD6009578A8 /* ActionMenuReadyToBreakBaseAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20B2CB70AD6009578A8 /* ActionMenuReadyToBreakBaseAnimation.json */; };
 		B71DD2152CB70AD6009578A8 /* ActionMenuReadyToBreakReadyAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20D2CB70AD6009578A8 /* ActionMenuReadyToBreakReadyAnimation.json */; };
 		B71DD2162CB70AD6009578A8 /* ActionMenuUpdateAppAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20E2CB70AD6009578A8 /* ActionMenuUpdateAppAnimation.json */; };
@@ -127,6 +127,8 @@
 /* Begin PBXFileReference section */
 		B7024D122C9EE5C1006809AC /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		B703C7B72CB9498000373E2A /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
+		B703C7B92CB979B100373E2A /* ActionMenuYesterdayPlanExceededCriticalAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuYesterdayPlanExceededCriticalAnimation.json; sourceTree = "<group>"; };
+		B703C7BB2CB979C900373E2A /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuYesterdayPlanExceededNonCriticalAnimation.json; sourceTree = "<group>"; };
 		B716A4442CBAABCC005842A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B716A4462CBAABD0005842A5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B71DD20A2CB70AD6009578A8 /* ActionMenuAddingMoreSmokesAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuAddingMoreSmokesAnimation.json; sourceTree = "<group>"; };
@@ -134,8 +136,6 @@
 		B71DD20C2CB70AD6009578A8 /* ActionMenuReadyToBreakNeedDayAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuReadyToBreakNeedDayAnimation.json; sourceTree = "<group>"; };
 		B71DD20D2CB70AD6009578A8 /* ActionMenuReadyToBreakReadyAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuReadyToBreakReadyAnimation.json; sourceTree = "<group>"; };
 		B71DD20E2CB70AD6009578A8 /* ActionMenuUpdateAppAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuUpdateAppAnimation.json; sourceTree = "<group>"; };
-		B71DD20F2CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededCriticalAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuYesterdayPlanExceededCriticalAnimation.json; sourceTree = "<group>"; };
-		B71DD2102CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuYesterdayPlanExceededNonCriticalAnimation.json; sourceTree = "<group>"; };
 		B72A882B2CB11EC900304615 /* Privacy Manifest.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Privacy Manifest.xcprivacy"; sourceTree = "<group>"; };
 		B72CABA02C9DDA4000CD1040 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		B72CABA82C9E0CF900CD1040 /* PickerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCard.swift; sourceTree = "<group>"; };
@@ -298,10 +298,10 @@
 				B71DD20A2CB70AD6009578A8 /* ActionMenuAddingMoreSmokesAnimation.json */,
 				B71DD20B2CB70AD6009578A8 /* ActionMenuReadyToBreakBaseAnimation.json */,
 				B71DD20C2CB70AD6009578A8 /* ActionMenuReadyToBreakNeedDayAnimation.json */,
+				B703C7BB2CB979C900373E2A /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json */,
+				B703C7B92CB979B100373E2A /* ActionMenuYesterdayPlanExceededCriticalAnimation.json */,
 				B71DD20D2CB70AD6009578A8 /* ActionMenuReadyToBreakReadyAnimation.json */,
 				B71DD20E2CB70AD6009578A8 /* ActionMenuUpdateAppAnimation.json */,
-				B71DD20F2CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededCriticalAnimation.json */,
-				B71DD2102CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json */,
 			);
 			path = ActionMenus;
 			sourceTree = "<group>";
@@ -932,12 +932,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7F574E12C9CA1940059BAB9 /* Launch Screen.storyboard in Resources */,
+				B703C7BC2CB979C900373E2A /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json in Resources */,
 				B72FC5552CAF526B00F95B92 /* MainConfiguration.storekit in Resources */,
 				B7C885EA2CC39FFA004B6E9D /* NotificationRequestAnimation.json in Resources */,
 				B716A4452CBAABCC005842A5 /* Localizable.strings in Resources */,
 				B7C885EB2CC39FFA004B6E9D /* OnboardingChartAnimation.json in Resources */,
 				B7C885EC2CC39FFA004B6E9D /* OnboardingChartSmallAnimation.json in Resources */,
 				B7C885ED2CC39FFA004B6E9D /* PaywallPuffPremiumStarAnimation.json in Resources */,
+				B703C7BA2CB979B100373E2A /* ActionMenuYesterdayPlanExceededCriticalAnimation.json in Resources */,
 				B72A882C2CB11EC900304615 /* Privacy Manifest.xcprivacy in Resources */,
 				B73B2E392C9B637B001EB658 /* Preview Assets.xcassets in Resources */,
 				B7C885E12CC39FFA004B6E9D /* SF-Pro-Rounded-Bold.otf in Resources */,
@@ -946,8 +948,6 @@
 				B7C885E42CC39FFA004B6E9D /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				B73B2E362C9B637B001EB658 /* Assets.xcassets in Resources */,
 				B71DD2112CB70AD6009578A8 /* ActionMenuReadyToBreakNeedDayAnimation.json in Resources */,
-				B71DD2122CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededNonCriticalAnimation.json in Resources */,
-				B71DD2132CB70AD6009578A8 /* ActionMenuYesterdayPlanExceededCriticalAnimation.json in Resources */,
 				B71DD2142CB70AD6009578A8 /* ActionMenuReadyToBreakBaseAnimation.json in Resources */,
 				B71DD2152CB70AD6009578A8 /* ActionMenuReadyToBreakReadyAnimation.json in Resources */,
 				B7757F202CB714BB001D3472 /* GoogleService-Info.plist in Resources */,
