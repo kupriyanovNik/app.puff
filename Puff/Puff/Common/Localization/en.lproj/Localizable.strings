@@ -286,7 +286,7 @@
 "Notifications.FirstDaysNotificationSubheader" = "Start your quit plan";
 "Notifications.FistDayNotificationHeader1" = "🔥 Today is the day";
 "Notifications.FistDayNotificationHeader2" = "⚡️ It's time for action!";
-"FistDayNotificationHeader3" = "🕺 Take the first step";
+"Notifications.FistDayNotificationHeader3" = "🕺 Take the first step";
 
 "Notifications.DailyNotifications" = "Let's start a new day!";
 "Notifications.DailyNotificationsFreeBody" = "Track your puffs";
