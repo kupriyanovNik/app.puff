@@ -112,7 +112,7 @@ extension AccountView {
                         .frame(26)
                 }
 
-                Text("Account.Title".l)
+                Text("Account.Subscription".l)
                     .font(.semibold22)
                     .foregroundStyle(Palette.textPrimary)
 

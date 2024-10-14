@@ -40,7 +40,7 @@ struct OnboardingContractScreen: View {
                         }
 
                         if isPressed {
-                            haptics(increasing: true)
+                            HapticManager.feedback(style: .medium)
                             withAnimation(.linear(duration: 5)) {
                                 scaleEffect = 10
                             }
