@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotificationRequestView: View {
 
-    @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = true
+    @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = false
 
     var action: () -> Void
 
