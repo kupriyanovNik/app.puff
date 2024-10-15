@@ -18,6 +18,7 @@ struct ActionMenuReadyToBreakView: View {
     var onBreak: () -> Void = {}
     var onNeedOneMoreDay: () -> Void = {}
     var onDismiss: () -> Void = {}
+    var onTappedWowButton: () -> Void = {}
 
     private var accentButtonText: String {
         screenState == .ready ? "Ура!" : screenState == .needDay ? "Ok" : "Да! Бросаем!"
@@ -156,6 +157,9 @@ struct ActionMenuReadyToBreakView: View {
                 }
                 onBreak()
             }
+        } else if screenState == .ready {
+            onDismiss()
+            onTappedWowButton()
         } else {
             onDismiss()
         }

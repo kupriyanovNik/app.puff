@@ -12,8 +12,9 @@ struct MainNavigationView: View {
     @ObservedObject var navigationVM: NavigationViewModel
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var onboardingVM: OnboardingViewModel
+    @ObservedObject var reviewManager: ReviewManager
 
-    @State var a = false
+    var requestReview: () -> Void
 
     var body: some View {
         ZStack {
@@ -71,6 +72,61 @@ struct MainNavigationView: View {
             }
             .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountView)
         }
+        .onChange(of: smokesManager.todaySmokes) { newValue in
+            if newValue == 100 && !reviewManager.hasSeenReviewRequestAt100Smokes {
+                requestReview()
+                reviewManager.hasSeenReviewRequestAt100Smokes = true
+            }
+
+            if smokesManager.isPlanStarted {
+                if newValue == smokesManager.todayLimit && (smokesManager.isLastDayOfPlan) {
+                    navigationVM.shouldShowReadyToBreakActionMenu = true
+                }
+            }
+        }
+        .onAppear {
+            if smokesManager.isPlanStarted {
+                if smokesManager.isDayAfterPlanEnded || (smokesManager.todaySmokes == smokesManager.todayLimit) {
+                    navigationVM.shouldShowReadyToBreakActionMenu = true
+                }
+            }
+
+            if smokesManager.isPlanStarted {
+                if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
+                    if smokesManager.isYesterdayLimitExceeded {
+                        navigationVM.shouldShowPlanExtendingActionMenu = true
+                    } else {
+                        navigationVM.shouldShowYesterdayResult = true
+                    }
+                }
+            }
+        }
+        .onChange(of: smokesManager.todaySmokes) { newValue in
+            if smokesManager.isPlanStarted {
+                if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
+                    navigationVM.shouldShowAddingMoreSmokesActionMenu = true
+                }
+            }
+        }
+        .task {
+            do {
+                let response = try await UpdateManager().getLatestAvailableVersion()
+
+                if let response {
+                    if let actualVersion = response.version.components(separatedBy: ".").first {
+                        if let appVersion = Bundle.main.appVersion.components(separatedBy: ".").first {
+                            if (Int(actualVersion) ?? 0) > (Int(appVersion) ?? 0) {
+                                if navigationVM.ableToShowUpdateActionMenu {
+                                    navigationVM.shouldShowUpdateActionMenu = true
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 
     @ViewBuilder
@@ -93,6 +149,7 @@ struct MainNavigationView: View {
     MainNavigationView(
         navigationVM: .init(),
         smokesManager: .init(),
-        onboardingVM: .init()
-    )
+        onboardingVM: .init(),
+        reviewManager: .init()
+    ) { }
 }

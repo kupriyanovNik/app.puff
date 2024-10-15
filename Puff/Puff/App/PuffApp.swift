@@ -16,8 +16,7 @@ struct PuffApp: App {
     @StateObject var navigationVM = NavigationViewModel()
     @StateObject var onboardingVM = OnboardingViewModel()
     @StateObject var smokesManager = SmokesManager()
-
-    @Environment(\.requestReview) var requestReview
+    @StateObject var reviewManager = ReviewManager()
 
     var body: some Scene {
         WindowGroup {
@@ -25,7 +24,9 @@ struct PuffApp: App {
                 MainNavigationView(
                     navigationVM: navigationVM,
                     smokesManager: smokesManager,
-                    onboardingVM: onboardingVM
+                    onboardingVM: onboardingVM,
+                    reviewManager: reviewManager,
+                    requestReview: requestReview
                 )
             }
             .ignoresSafeArea(.keyboard)
@@ -48,13 +49,13 @@ struct PuffApp: App {
                 ) {
                     navigationVM.selectedTab = .home
                     smokesManager.endPlan()
-
-                    delay(0.4) { requestReview() }
                 } onNeedOneMoreDay: {
                     smokesManager.addDay()
                 } onDismiss: {
                     navigationVM.shouldShowReadyToBreakActionMenu = false
                     navigationVM.tappedReadyToBreak = false
+                } onTappedWowButton: {
+                    delay(0.5) { requestReview() }
                 }
             } onDismiss: {
                 navigationVM.shouldShowReadyToBreakActionMenu = false
@@ -74,24 +75,30 @@ struct PuffApp: App {
                 ) {
                     smokesManager.extendPlanForOneDay()
                 } onDismiss: {
-                    navigationVM.seenYesterdayResult()
+                    seenYesterdayResult()
                 }
             } onDismiss: {
-                navigationVM.seenYesterdayResult()
+                seenYesterdayResult()
             }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowYesterdayResult) {
                 ActionMenuYesterdaySuccessedView(
                     daysToEnd: smokesManager.daysInPlan - smokesManager.currentDayIndex - 1,
                     todayLimit: smokesManager.todayLimit
                 ) {
-                    navigationVM.seenYesterdayResult()
+                    seenYesterdayResult()
 
-                    delay(0.4) { requestReview() }
+                    if !reviewManager.hasSeenReviewRequestAfterFirstSuccessDay {
+                        delay(0.4) { requestReview() }
+                        reviewManager.hasSeenReviewRequestAfterFirstSuccessDay = true
+                    }
                 }
             } onDismiss: {
-                navigationVM.seenYesterdayResult()
+                seenYesterdayResult()
 
-                delay(0.4) { requestReview() }
+                if !reviewManager.hasSeenReviewRequestAfterFirstSuccessDay {
+                    delay(0.4) { requestReview() }
+                    reviewManager.hasSeenReviewRequestAfterFirstSuccessDay = true
+                }
             }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowUpdateActionMenu) {
                 ActionMenuUpdateAppView {
@@ -100,55 +107,26 @@ struct PuffApp: App {
             } onDismiss: {
                 navigationVM.seenUpdateActionMenu()
             }
-            .onChange(of: smokesManager.todaySmokes) { newValue in
-                if smokesManager.isPlanStarted {
-                    if newValue == smokesManager.todayLimit && (smokesManager.isLastDayOfPlan) {
-                        navigationVM.shouldShowReadyToBreakActionMenu = true
-                    }
-                }
-            }
-            .onAppear {
-                if smokesManager.isPlanStarted {
-                    if smokesManager.isDayAfterPlanEnded || (smokesManager.todaySmokes == smokesManager.todayLimit) {
-                        navigationVM.shouldShowReadyToBreakActionMenu = true
-                    }
-                }
+        }
+    }
 
-                if smokesManager.isPlanStarted {
-                    if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
-                        if smokesManager.isYesterdayLimitExceeded {
-                            navigationVM.shouldShowPlanExtendingActionMenu = true
-                        } else {
-                            navigationVM.shouldShowYesterdayResult = true
-                        }
-                    }
-                }
-            }
-            .onChange(of: smokesManager.todaySmokes) { newValue in
-                if smokesManager.isPlanStarted {
-                    if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
-                        navigationVM.shouldShowAddingMoreSmokesActionMenu = true
-                    }
-                }
-            }
-            .task {
-                do {
-                    let response = try await UpdateManager().getLatestAvailableVersion()
+    private func requestReview() {
+        if let scene = UIApplication.shared
+            .connectedScenes
+            .first(
+                where: { $0.activationState == .foregroundActive }
+            ) as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
+    }
 
-                    if let response {
-                        if let actualVersion = response.version.components(separatedBy: ".").first {
-                            if let appVersion = Bundle.main.appVersion.components(separatedBy: ".").first {
-                                if (Int(actualVersion) ?? 0) > (Int(appVersion) ?? 0) {
-                                    if navigationVM.ableToShowUpdateActionMenu {
-                                        navigationVM.shouldShowUpdateActionMenu = true
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
+    private func seenYesterdayResult() {
+        navigationVM.seenYesterdayResult()
+
+        if smokesManager.currentDayIndex == 4 {
+            if !reviewManager.hasSeenReviewRequestOn5Day {
+                requestReview()
+                reviewManager.hasSeenReviewRequestOn5Day = true
             }
         }
     }
