@@ -91,7 +91,7 @@ struct PuffWidgets: Widget {
             PuffWidgetsEntryView(entry: entry)
                 .containerBackground(backgroundColor, for: .widget)
         }
-        .configurationDisplayName("Widgets.HomeScreenDescription".l)
+        .configurationDisplayName("Widgets.HomeScreenTitle".l)
         .description("Widgets.HomeScreenDescription".l)
         .supportedFamilies([.systemSmall])
     }

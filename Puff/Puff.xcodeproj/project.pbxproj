@@ -126,6 +126,7 @@
 		B7EFBB952CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB942CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift */; };
 		B7EFBB972CC0370D006CAE4F /* CustomDismissableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */; };
 		B7EFBB992CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */; };
+		B7EFBB9A2CC052DF006CAE4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716A4432CBAABCC005842A5 /* Localizable.strings */; };
 		B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F3775E2C9B674C0050C93B /* TabBar.swift */; };
 		B7F377622C9B677E0050C93B /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377612C9B677E0050C93B /* TabBarModel.swift */; };
 		B7F377662C9B682A0050C93B /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377652C9B682A0050C93B /* AccentButton.swift */; };
@@ -1101,6 +1102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B78DF5A52CBFE0CF0078F9D0 /* SF-Pro-Rounded-Medium.otf in Resources */,
+				B7EFBB9A2CC052DF006CAE4F /* Localizable.strings in Resources */,
 				B78DF5A62CBFE0CF0078F9D0 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				B78DF5A72CBFE0CF0078F9D0 /* SF-Pro-Rounded-Regular.otf in Resources */,
 				B7EFBB922CC03634006CAE4F /* Assets.xcassets in Resources */,

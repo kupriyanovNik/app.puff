@@ -20,7 +20,7 @@
     "_applicationInternalID" : "6717609578",
     "_developerTeamID" : "J9834KZMZC",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 749687407.14690399,
+    "_lastSynchronizedDate" : 750801724.86299801,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -93,14 +93,14 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Access to all premium features",
-              "displayName" : "Premium Access (1 Month)",
-              "locale" : "en_US"
-            },
-            {
-              "description" : "Доступ ко всем премиум-функциям",
+              "description" : "Доступ ко всем премиум-функциям ",
               "displayName" : "Премиум-доступ (1 месяц)",
               "locale" : "ru"
+            },
+            {
+              "description" : "Access to all premium features ",
+              "displayName" : "Premium Access (1 Month)",
+              "locale" : "en_US"
             }
           ],
           "productID" : "com.quitvaping.month1",
@@ -124,19 +124,19 @@
           "groupNumber" : 1,
           "internalID" : "6717609860",
           "introductoryOffer" : {
-            "internalID" : "52431651",
+            "internalID" : "B4B69622",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P3D"
           },
           "localizations" : [
             {
-              "description" : "Access to all premium features",
+              "description" : "Access to all premium features ",
               "displayName" : "Premium Access (1 Month)",
               "locale" : "en_US"
             },
             {
-              "description" : "Доступ ко всем премиум-функциям",
+              "description" : "Доступ ко всем премиум-функциям ",
               "displayName" : "Премиум-доступ (1 месяц)",
               "locale" : "ru"
             }
