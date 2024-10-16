@@ -292,3 +292,7 @@
 "Notifications.DailyNotificationsFreeBody" = "Track your puffs";
 "Notifications.DailyNotificationsPremiumBody" = "Puff limit for today is {count}";
 
+// MARK: - Widgets
+
+"Widgets.HomeScreenTitle" = "Добавить затяжку";
+"Widgets.HomeScreenDescription" = "Отмечайте затяжки в один клик прямо с экрана “Домой”";

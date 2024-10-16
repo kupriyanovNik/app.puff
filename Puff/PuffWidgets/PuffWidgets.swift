@@ -19,18 +19,12 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-//        var entries: [SimpleEntry] = []
-
         let count = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [100000]
 
-//        let currentDate = Date()
-//        for hourOffset in 0 ..< 5 {
-//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-//            let entry =
-//            entries.append(entry)
-//        }
-
-        let timeline = Timeline(entries: [SimpleEntry(date: .now, count: count.last ?? -1)], policy: .atEnd)
+        let timeline = Timeline(
+            entries: [SimpleEntry(date: .now, count: count.last ?? -1)],
+            policy: .atEnd
+        )
         completion(timeline)
     }
 }
@@ -44,32 +38,32 @@ struct PuffWidgetsEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-//            Text("Time:")
-//            Text(entry.date, style: .time)
+        VStack(spacing: 12) {
+            Text("\(entry.count)\(500)")
+                .font(.semibold26)
 
-            Text("Count:")
-            Text("\(entry.count)")
-                .font(.title)
+
         }
     }
 }
 
 struct PuffWidgets: Widget {
-    let kind: String = "PuffWidgets.Base"
+
+    let kind: String = "PuffWidgets.HomeScreenWidget"
+
+    @Environment(\.colorScheme) var colorScheme
+
+    private var backgroundColor: Color {
+        colorScheme == .light ? .white : .init(hex: 0x2C2C2E)
+    }
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                PuffWidgetsEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                PuffWidgetsEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+            PuffWidgetsEntryView(entry: entry)
+                .containerBackground(backgroundColor, for: .widget)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Widgets.HomeScreenDescription".l)
+        .description("Widgets.HomeScreenDescription".l)
+        .supportedFamilies([.systemSmall])
     }
 }

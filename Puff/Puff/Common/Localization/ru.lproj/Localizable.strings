@@ -291,3 +291,8 @@
 "Notifications.DailyNotifications" = "Начнем новый день!";
 "Notifications.DailyNotificationsFreeBody" = "Следите за своими затяжками";
 "Notifications.DailyNotificationsPremiumBody" = "Лимит затяжек на сегодня — {count}";
+
+// MARK: - Widgets
+
+"Widgets.HomeScreenTitle" = "Добавить затяжку";
+"Widgets.HomeScreenDescription" = "Отмечайте затяжки в один клик прямо с экрана “Домой”";
