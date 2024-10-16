@@ -148,6 +148,7 @@
 
 "Account.Title" = "Settings";
 "Account.ContactUs" = "Contact us";
+"Account.Widgets" = "Widgets";
 "Account.Subscription" = "Subscription";
 "Account.OurChannel" = "Our Telegram channel";
 "Account.OurChannel.Link" = "https://t.me/puffless_app";

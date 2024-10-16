@@ -148,6 +148,7 @@
 
 "Account.Title" = "Настройки";
 "Account.ContactUs" = "Связаться с нами";
+"Account.Widgets" = "Виджеты";
 "Account.Subscription" = "Подписка";
 "Account.OurChannel" = "Наш Telegram-канал";
 "Account.OurChannel.Link" = "https://t.me/puffless_app_ru";

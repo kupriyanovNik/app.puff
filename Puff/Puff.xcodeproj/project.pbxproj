@@ -49,7 +49,6 @@
 		B7861AA22CBDA82B00081617 /* PuffWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7861A932CBDA82A00081617 /* PuffWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B7861AAD2CBDA83000081617 /* PuffWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861AAA2CBDA83000081617 /* PuffWidgets.swift */; };
 		B7861AAE2CBDA83000081617 /* PuffWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */; };
-		B7861AAF2CBDA83000081617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7861AA82CBDA83000081617 /* Assets.xcassets */; };
 		B7861ABC2CBDA98300081617 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861ABA2CBDA98300081617 /* UserDefaultsManager.swift */; };
 		B7861ABD2CBDA98300081617 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861ABA2CBDA98300081617 /* UserDefaultsManager.swift */; };
 		B78A6A1D2CA71A940074067B /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A6A1C2CA71A940074067B /* Optional+Ext.swift */; };
@@ -123,6 +122,9 @@
 		B7C8865B2CC39FFA004B6E9D /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C886582CC39FFA004B6E9D /* NavigationViewModel.swift */; };
 		B7C8865F2CC39FFA004B6E9D /* HomeViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8865C2CC39FFA004B6E9D /* HomeViewComponents.swift */; };
 		B7C886602CC39FFA004B6E9D /* HomeViewPlanViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8865D2CC39FFA004B6E9D /* HomeViewPlanViews.swift */; };
+		B7EFBB922CC03634006CAE4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */; };
+		B7EFBB952CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB942CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift */; };
+		B7EFBB972CC0370D006CAE4F /* CustomDismissableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */; };
 		B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F3775E2C9B674C0050C93B /* TabBar.swift */; };
 		B7F377622C9B677E0050C93B /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377612C9B677E0050C93B /* TabBarModel.swift */; };
 		B7F377662C9B682A0050C93B /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377652C9B682A0050C93B /* AccentButton.swift */; };
@@ -204,8 +206,6 @@
 		B7861A932CBDA82A00081617 /* PuffWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PuffWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7861A942CBDA82A00081617 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B7861A962CBDA82A00081617 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		B7861AA82CBDA83000081617 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B7861AA92CBDA83000081617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7861AAA2CBDA83000081617 /* PuffWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgets.swift; sourceTree = "<group>"; };
 		B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetsBundle.swift; sourceTree = "<group>"; };
 		B7861AB12CBDA91200081617 /* Puff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Puff.entitlements; sourceTree = "<group>"; };
@@ -276,6 +276,10 @@
 		B7C886582CC39FFA004B6E9D /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		B7C8865C2CC39FFA004B6E9D /* HomeViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComponents.swift; sourceTree = "<group>"; };
 		B7C8865D2CC39FFA004B6E9D /* HomeViewPlanViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPlanViews.swift; sourceTree = "<group>"; };
+		B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B7EFBB902CC03634006CAE4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7EFBB942CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewWidgetsInfoView.swift; sourceTree = "<group>"; };
+		B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissableView.swift; sourceTree = "<group>"; };
 		B7F0A2E02CB847520023D4C7 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B7F3775E2C9B674C0050C93B /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		B7F377612C9B677E0050C93B /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
@@ -549,9 +553,8 @@
 			isa = PBXGroup;
 			children = (
 				B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */,
-				B7861AA82CBDA83000081617 /* Assets.xcassets */,
-				B7861AA92CBDA83000081617 /* Info.plist */,
 				B7861AAA2CBDA83000081617 /* PuffWidgets.swift */,
+				B7EFBB912CC03634006CAE4F /* Common */,
 			);
 			path = PuffWidgets;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 			isa = PBXGroup;
 			children = (
 				B7C885FD2CC39FFA004B6E9D /* AccountViewComponents.swift */,
+				B7EFBB942CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -889,6 +893,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		B7EFBB912CC03634006CAE4F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */,
+				B7EFBB902CC03634006CAE4F /* Info.plist */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		B7F3775D2C9B67410050C93B /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -922,6 +935,7 @@
 				B7C885FA2CC39FFA004B6E9D /* CircledTopCorners */,
 				B7325F602CA866CC007D8456 /* AppHeaderView.swift */,
 				B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */,
+				B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -1086,8 +1100,8 @@
 				B78DF5A52CBFE0CF0078F9D0 /* SF-Pro-Rounded-Medium.otf in Resources */,
 				B78DF5A62CBFE0CF0078F9D0 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				B78DF5A72CBFE0CF0078F9D0 /* SF-Pro-Rounded-Regular.otf in Resources */,
+				B7EFBB922CC03634006CAE4F /* Assets.xcassets in Resources */,
 				B78DF5A82CBFE0CF0078F9D0 /* SF-Pro-Rounded-Semibold.otf in Resources */,
-				B7861AAF2CBDA83000081617 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,6 +1201,7 @@
 				B73B2E322C9B637A001EB658 /* PuffApp.swift in Sources */,
 				B7F574F12C9CAAAF0059BAB9 /* Text+Ext.swift in Sources */,
 				B7325F692CA89188007D8456 /* Dictionary+Ext.swift in Sources */,
+				B7EFBB952CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift in Sources */,
 				B7C8863C2CC39FFA004B6E9D /* OnboardingPlanCreatingScreen.swift in Sources */,
 				B7C8863D2CC39FFA004B6E9D /* OnboardingPlanScreen.swift in Sources */,
 				B7C8863E2CC39FFA004B6E9D /* OnboardingEffectsBaseScreen.swift in Sources */,
@@ -1204,6 +1219,7 @@
 				B7C8865B2CC39FFA004B6E9D /* NavigationViewModel.swift in Sources */,
 				B7C886482CC39FFA004B6E9D /* OnboardingViewModel.swift in Sources */,
 				B7C885F42CC39FFA004B6E9D /* RippleEffect.metal in Sources */,
+				B7EFBB972CC0370D006CAE4F /* CustomDismissableView.swift in Sources */,
 				B7B55EAF2CC143BE0057EA61 /* StatisticsMonthlyViewModel.swift in Sources */,
 				B7C885F52CC39FFA004B6E9D /* RippleEffectModifier.swift in Sources */,
 				B7C885F62CC39FFA004B6E9D /* KeyboardAwareModifier.swift in Sources */,
@@ -1464,7 +1480,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 79AQJWGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PuffWidgets/Info.plist;
+				INFOPLIST_FILE = PuffWidgets/Common/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PuffWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -1493,7 +1509,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 79AQJWGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PuffWidgets/Info.plist;
+				INFOPLIST_FILE = PuffWidgets/Common/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PuffWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;

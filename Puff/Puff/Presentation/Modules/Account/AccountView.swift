@@ -18,29 +18,10 @@ struct AccountView: View {
 
     @State private var shouldShowResetWarning: Bool = false
     @State private var shouldShowSubscriptionInfo: Bool = false
-
-    @State private var offset: Double = .zero
+    @State private var shouldShowWidgetsInfo: Bool = false
 
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.locale) var locale
-
-    private var gesture: some Gesture {
-        DragGesture()
-            .onChanged { value in
-                self.offset = max(0, value.translation.height / 30)
-            }
-            .onEnded { value in
-                if value.translation.height > 15 {
-                    navigationVM.shouldShowAccountView = false
-
-                    delay(0.3) {
-                        offset = .zero
-                    }
-                } else {
-                    offset = .zero
-                }
-            }
-    }
 
     private var communityUrlString: String {
         if locale == .init(languageCode: "ru") {
@@ -51,39 +32,39 @@ struct AccountView: View {
     }
 
     var body: some View {
-        CircledTopCornersView(background: .clear, content: viewContent)
-            .onChange(of: scenePhase) { newValue in
-                if newValue == .active {
-                    checkNotifications()
-                }
+        CustomDismissableView {
+            navigationVM.shouldShowAccountView = false
+        } content: {
+            viewContent()
+        }
+        .onChange(of: scenePhase) { newValue in
+            if newValue == .active {
+                checkNotifications()
             }
-            .onAppear {
-                NotificationManager.shared.checkNotificationStatus()
+        }
+        .onAppear {
+            NotificationManager.shared.checkNotificationStatus()
 
-                delay(0.6) {
-                    checkNotifications()
-                }
+            delay(0.6) {
+                checkNotifications()
             }
-            .onAppear {
-                print("SADFSDFSADF", hasSkippedNotificationRequest, isNotificationsEnabled)
-            }
-            .offset(y: min(15, offset))
-            .animation(.easeOut(duration: 0.25), value: offset)
-            .overlay {
-                Group {
-                    if shouldShowSubscriptionInfo {
-                        AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
-                            shouldShowSubscriptionInfo = false
-                        }
-                        .preferredColorScheme(.light)
-                        .transition(
-                            .opacity.combined(with: .offset(y: 50))
-                                .animation(.easeInOut(duration: 0.3))
-                        )
+        }
+        .overlay {
+            Group {
+                if shouldShowSubscriptionInfo {
+                    AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
+                        shouldShowSubscriptionInfo = false
                     }
+                    .preferredColorScheme(.light)
+                    .transition(
+                        .opacity.combined(with: .offset(y: 50))
+                        .animation(.easeInOut(duration: 0.3))
+                    )
                 }
-                .animation(.easeInOut(duration: 0.3), value: shouldShowSubscriptionInfo)
             }
+            .animation(.easeInOut(duration: 0.3), value: shouldShowSubscriptionInfo)
+        }
+        .makeCustomSheet(isPresented: $shouldShowResetWarning, content: resetWarning)
     }
 
     @ViewBuilder
@@ -95,9 +76,6 @@ struct AccountView: View {
 
             Spacer()
         }
-        .contentShape(.rect)
-        .simultaneousGesture(gesture)
-        .makeCustomSheet(isPresented: $shouldShowResetWarning, content: resetWarning)
     }
 
     @ViewBuilder
@@ -163,7 +141,10 @@ struct AccountView: View {
     @ViewBuilder
     private func cells() -> some View {
         VStack(spacing: 0) {
-//            cell("Виджеты", imageName: "accountWidgetsImage")
+            cell(
+                "Account.Widgets".l,
+                imageName: "accountWidgetsImage"
+            ) { shouldShowWidgetsInfo = true }
 
             cell(
                 "Account.ContactUs".l,
@@ -205,8 +186,6 @@ struct AccountView: View {
         .roundedCornerWithBorder(lineWidth: 1, borderColor: Color(hex: 0xF0F0F0), radius: 16, corners: .allCorners)
         .padding(.horizontal, 12)
         .onChange(of: isNotificationsEnabled) { newValue in
-            print("SADFSDFSADF", hasSkippedNotificationRequest, isNotificationsEnabled)
-
             if newValue {
                 requestNotifications()
             } else {

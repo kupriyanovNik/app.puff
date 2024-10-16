@@ -13,7 +13,6 @@ extension AccountView {
 
         @ObservedObject var subscriptionsManager: SubscriptionsManager
 
-        @State private var offset: Double = .zero
         @State private var shouldShowSubscriptionEndingView: Bool = false
 
         var backAction: () -> Void
@@ -33,28 +32,8 @@ extension AccountView {
             return "AccountSubscription.SubscriptionTypeMonthly".l
         }
 
-        private var gesture: some Gesture {
-            DragGesture()
-                .onChanged { value in
-                    self.offset = max(0, value.translation.height / 30)
-                }
-                .onEnded { value in
-                    if value.translation.height > 15 {
-                        backAction()
-
-                        delay(0.3) {
-                            offset = .zero
-                        }
-                    } else {
-                        offset = .zero
-                    }
-                }
-        }
-
         var body: some View {
-            CircledTopCornersView(background: .clear, content: viewContent)
-                .offset(y: min(15, offset))
-                .animation(.easeOut(duration: 0.25), value: offset)
+            CustomDismissableView(dismissAction: backAction, content: viewContent)
                 .makeCustomSheet(isPresented: $shouldShowSubscriptionEndingView) {
                     ActionMenuSubscriptionLeavingView { reasonsIndices, improvementsText in
                         requestCancel()
@@ -95,9 +74,7 @@ extension AccountView {
                 }
                 .padding(.bottom, isSmallDevice ? 16 : 0)
             }
-            .contentShape(.rect)
             .padding(.horizontal, 28)
-            .simultaneousGesture(gesture)
         }
 
         @ViewBuilder
