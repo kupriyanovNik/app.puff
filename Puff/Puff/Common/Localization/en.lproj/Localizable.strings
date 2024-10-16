@@ -166,6 +166,9 @@
 "AccountSubscription.BillingDate" = "Billing Date";
 "AccountSubscription.CancelSubscription" = "Cancel Subscription";
 
+"AccountWidgets.Base.Home" = "Home Screen";
+"AccountWidgets.Base.ControlCenter" = "Control Center";
+
 // MARK: - Action Menus
 
 "AccountSubscription.Leaving.Base.Title" = "Why are you leaving?";

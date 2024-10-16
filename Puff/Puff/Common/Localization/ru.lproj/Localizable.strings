@@ -166,6 +166,9 @@
 "AccountSubscription.BillingDate" = "Списание средств";
 "AccountSubscription.CancelSubscription" = "Отменить подписку";
 
+"AccountWidgets.Base.Home" = "Экран\n«Домой»";
+"AccountWidgets.Base.ControlCenter" = "Центр\nуправления";
+
 // MARK: - Action Menus
 
 "AccountSubscription.Leaving.Base.Title" = "Почему вы уходите?";

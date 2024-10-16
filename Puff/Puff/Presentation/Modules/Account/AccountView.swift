@@ -64,6 +64,21 @@ struct AccountView: View {
             }
             .animation(.easeInOut(duration: 0.3), value: shouldShowSubscriptionInfo)
         }
+        .overlay {
+            Group {
+                if shouldShowWidgetsInfo {
+                    AccountViewWidgetsInfoView {
+                        shouldShowWidgetsInfo = false
+                    }
+                    .preferredColorScheme(.light)
+                    .transition(
+                        .opacity.combined(with: .offset(y: 50))
+                        .animation(.easeInOut(duration: 0.3))
+                    )
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: shouldShowWidgetsInfo)
+        }
         .makeCustomSheet(isPresented: $shouldShowResetWarning, content: resetWarning)
     }
 
