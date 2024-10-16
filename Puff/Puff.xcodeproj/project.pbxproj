@@ -125,6 +125,7 @@
 		B7EFBB922CC03634006CAE4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */; };
 		B7EFBB952CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB942CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift */; };
 		B7EFBB972CC0370D006CAE4F /* CustomDismissableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */; };
+		B7EFBB992CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */; };
 		B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F3775E2C9B674C0050C93B /* TabBar.swift */; };
 		B7F377622C9B677E0050C93B /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377612C9B677E0050C93B /* TabBarModel.swift */; };
 		B7F377662C9B682A0050C93B /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377652C9B682A0050C93B /* AccentButton.swift */; };
@@ -280,6 +281,7 @@
 		B7EFBB902CC03634006CAE4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7EFBB942CC036D3006CAE4F /* AccountViewWidgetsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewWidgetsInfoView.swift; sourceTree = "<group>"; };
 		B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissableView.swift; sourceTree = "<group>"; };
+		B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetButtonStyle.swift; sourceTree = "<group>"; };
 		B7F0A2E02CB847520023D4C7 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B7F3775E2C9B674C0050C93B /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		B7F377612C9B677E0050C93B /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 			children = (
 				B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */,
 				B7861AAA2CBDA83000081617 /* PuffWidgets.swift */,
+				B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */,
 				B7EFBB912CC03634006CAE4F /* Common */,
 			);
 			path = PuffWidgets;
@@ -1242,6 +1245,7 @@
 				B78DF5A42CBFE0C40078F9D0 /* Fonts.swift in Sources */,
 				B7861AAD2CBDA83000081617 /* PuffWidgets.swift in Sources */,
 				B7861AAE2CBDA83000081617 /* PuffWidgetsBundle.swift in Sources */,
+				B7EFBB992CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift in Sources */,
 				B7861ABD2CBDA98300081617 /* UserDefaultsManager.swift in Sources */,
 				B78DF5AD2CBFE2390078F9D0 /* Color+Ext.swift in Sources */,
 			);

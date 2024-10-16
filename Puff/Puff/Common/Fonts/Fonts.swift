@@ -12,6 +12,7 @@ extension Font {
     static let bold90 = getBold(size: 90)
     static let bold65 = getBold(size: 65)
     static let bold52 = getBold(size: 52)
+    static let bold26 = getBold(size: 26)
     static let bold32 = getBold(size: 32)
     static let bold28 = getBold(size: 28)
     static let bold22 = getBold(size: 22)

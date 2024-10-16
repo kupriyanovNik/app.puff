@@ -77,10 +77,6 @@ struct AccountViewWidgetsInfoView: View {
         action: @escaping () -> Void
     ) -> some View {
         VStack(alignment: .leading, spacing: 18) {
-            if let number {
-                Text()
-            }
-
             Image(imageName)
                 .resizable()
                 .scaledToFit()

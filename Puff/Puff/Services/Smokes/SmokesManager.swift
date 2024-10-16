@@ -50,6 +50,8 @@ final class SmokesManager: ObservableObject {
     init() {
         checkIsNewDay()
 
+        restore()
+
         timer = .scheduledTimer(
             timeInterval: 3,
             target: self,
@@ -247,6 +249,14 @@ final class SmokesManager: ObservableObject {
 
             currentDayIndex = min(planLimits.count - 1, diffDays)
             realPlanDayIndex = diffDays
+        }
+    }
+
+    func restore() {
+        if let counts = defaults.array(forKey: "newSmokesCount") as? [Int] {
+            let newDaysCount = counts.count - smokesCount.count
+
+            self.smokesCount = counts
         }
     }
 

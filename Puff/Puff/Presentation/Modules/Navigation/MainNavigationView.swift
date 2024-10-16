@@ -15,6 +15,8 @@ struct MainNavigationView: View {
     @ObservedObject var reviewManager: ReviewManager
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
+    @Environment(\.scenePhase) var scenePhase
+
     var requestReview: () -> Void
 
     @State private var timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
@@ -110,6 +112,11 @@ struct MainNavigationView: View {
                         navigationVM.shouldShowAddingMoreSmokesActionMenu = true
                     }
                 }
+            }
+        }
+        .onChange(of: scenePhase) { newValue in
+            if newValue == .active {
+                smokesManager.restore()
             }
         }
         .task {
