@@ -46,6 +46,7 @@ struct PuffApp: App {
                     isLastSmoke: smokesManager.todaySmokes == smokesManager.todayLimit,
                     todayLimit: smokesManager.todayLimit
                 ) {
+                    navigationVM.selectedTab = .home
                     smokesManager.endPlan()
 
                     delay(0.4) { requestReview() }
@@ -71,7 +72,7 @@ struct PuffApp: App {
                 }
             }
             .onChange(of: smokesManager.todaySmokes) { newValue in
-                if smokesManager.isTodayLimitExceeded {
+                if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
                     navigationVM.shouldShowAddingMoreSmokesActionMenu = true
                 }
             }

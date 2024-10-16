@@ -119,12 +119,14 @@ final class SmokesManager: ObservableObject {
     func addMoreSmokes(_ count: Int) {
         if let period = ActionMenuPlanDevelopingPeriod(rawValue: planLimits.count) {
             if let firstDayLimit = planLimits.first {
-                let newPlan = getLimits(for: period, smokesPerDay: firstDayLimit + count)
 
                 if currentDayIndex == 0 {
-                    planLimits = newPlan
+                    planLimits = getLimits(for: period, smokesPerDay: todaySmokes + count)
                 } else if currentDayIndex == 1 {
-                    planLimits = [firstDayLimit] + newPlan[1..<newPlan.count]
+                    var newPlan = getLimits(for: period, smokesPerDay: todaySmokes + count)
+                    let _ = newPlan.popLast()
+
+                    planLimits = [firstDayLimit] + newPlan
                 }
             }
         }

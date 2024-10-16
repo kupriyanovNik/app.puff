@@ -211,7 +211,7 @@ extension StatisticsPlanDailyView {
         let currIndex = smokesManager.currentDayIndex
         let daysInPlan = smokesManager.daysInPlan
 
-        let text = (((index + 1) == daysInPlan) && realIndex != currIndex) ? "\(realIndex)" : "\(index + 1)"
+        let text = (((index + 1) == daysInPlan) && realIndex != currIndex) ? "\(realIndex + 1)" : "\(index + 1)"
 
         Circle()
             .stroke(Color(hex: 0xEFEFEF), style: .init(lineWidth: 5))
