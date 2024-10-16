@@ -234,6 +234,9 @@ final class SmokesManager: ObservableObject {
         currentDayIndex = 0
         realPlanDayIndex = 0
         planStartDate = nil
+
+        planLimits = Array(repeating: 10000, count: 21)
+        planCounts = Array(repeating: 0, count: 21)
     }
 
     @objc func checkIsNewDay() {
