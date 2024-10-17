@@ -27,8 +27,19 @@ struct StatisticsWeeklyChart: View {
         return formatter
     }()
 
-    private var weekSmokesSumma: Int {
-        statisticsWVM.currentWeekRealValues.compactMap { $0 }.reduce(0, +)
+    private var weekSmokesText: String {
+        if let selectedIndex {
+            let realValue: Int? = statisticsWVM.currentWeekRealValues[selectedIndex]
+            let estimatedValue: Int? = statisticsWVM.currentWeekEstimatedValues[selectedIndex]
+
+            if let realValue {
+                return String(realValue)
+            }
+
+            return "0"
+        }
+
+        return String(statisticsWVM.currentWeekRealValues.compactMap { $0 }.reduce(0, +))
     }
 
     var body: some View {
@@ -58,7 +69,7 @@ struct StatisticsWeeklyChart: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text("\(weekSmokesSumma)")
+                Text(weekSmokesText)
                     .font(.bold22)
                     .foregroundStyle(Palette.darkBlue)
                     .contentTransition(.identity)

@@ -86,55 +86,59 @@ struct StatisticsMainChart: View {
 
                     let isSelected = selectedIndex == index
 
-                    Group {
-                        if realValue == nil, estimatedValue == nil {
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
-                                .height(6)
-                                .vBottom()
-                        } else if let realValue, estimatedValue == nil {
-                            let heightOfReal = (max(0, Double(realValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
+                    Color.clear
+                        .overlay {
+                            Group {
+                                if realValue == nil, estimatedValue == nil {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
+                                        .height(6)
+                                        .vBottom()
+                                } else if let realValue, estimatedValue == nil {
+                                    let heightOfReal = (max(0, Double(realValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
 
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color(hex: isSelected ? 0x75B8FD : 0xB5D9FF))
-                                .height(heightOfReal)
-                                .vBottom()
-                        } else if realValue == nil, let estimatedValue {
-                            let heightOfEstimated = (max(0, Double(estimatedValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color(hex: isSelected ? 0x75B8FD : 0xB5D9FF))
+                                        .height(heightOfReal)
+                                        .vBottom()
+                                } else if realValue == nil, let estimatedValue {
+                                    let heightOfEstimated = (max(0, Double(estimatedValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
 
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
-                                .height(heightOfEstimated)
-                                .vBottom()
-                        } else if let realValue, let estimatedValue {
-                            let heightOfEstimated = (max(0, Double(estimatedValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
-                            let heightOfReal = (max(0, Double(realValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
+                                        .height(heightOfEstimated)
+                                        .vBottom()
+                                } else if let realValue, let estimatedValue {
+                                    let heightOfEstimated = (max(0, Double(estimatedValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
+                                    let heightOfReal = (max(0, Double(realValue - 6)) / Double(max(1, biggestValue))) * size.height + 6
 
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
-                                .overlay(alignment: .bottom) {
-                                    if heightOfReal <= heightOfEstimated {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .fill(Color(hex: isSelected ? 0x75B8FD : 0xB5D9FF))
-                                            .height(heightOfReal)
-                                    } else {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .fill(Color(hex: isSelected ? 0xFF7D7D : 0xFDB9BA))
-                                            .height(heightOfReal)
-                                    }
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color(hex: isSelected ? 0xDDDDDD : 0xEFEFEF))
+                                        .overlay(alignment: .bottom) {
+                                            if heightOfReal <= heightOfEstimated {
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(Color(hex: isSelected ? 0x75B8FD : 0xB5D9FF))
+                                                    .height(heightOfReal)
+                                            } else {
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(Color(hex: isSelected ? 0xFF7D7D : 0xFDB9BA))
+                                                    .height(heightOfReal)
+                                            }
+                                        }
+                                        .height(heightOfEstimated)
+                                        .vBottom()
                                 }
-                                .height(heightOfEstimated)
-                                .vBottom()
+                            }
                         }
-                    }
-                    .animation(.easeInOut(duration: 0.25), value: isSelected)
-                    .onTapGesture {
-                        if selectedIndex == index {
-                            selectedIndex = nil
-                        } else {
-                            selectedIndex = index
+                        .animation(.easeInOut(duration: 0.25), value: isSelected)
+                        .contentShape(RoundedRectangle(cornerRadius: 8))
+                        .onTapGesture {
+                            if selectedIndex == index {
+                                selectedIndex = nil
+                            } else {
+                                selectedIndex = index
+                            }
                         }
-                    }
                 }
             }
         }
