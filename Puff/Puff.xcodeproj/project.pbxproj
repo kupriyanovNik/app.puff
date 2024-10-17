@@ -352,6 +352,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		B7B55EAB2CC126100057EA61 /* Weekly */ = {
+			isa = PBXGroup;
+			children = (
+				B7C8864F2CC39FFA004B6E9D /* StatisticsViewModel.swift */,
+				B7C8864C2CC39FFA004B6E9D /* StatisticsWeeklyChart.swift */,
+			);
+			path = Weekly;
+			sourceTree = "<group>";
+		};
 		B7C885CC2CC39FFA004B6E9D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,7 +634,7 @@
 				B7C886492CC39FFA004B6E9D /* StatisticsMainChart.swift */,
 				B7C8864A2CC39FFA004B6E9D /* StatisticsPlanDailyView.swift */,
 				B7C8864B2CC39FFA004B6E9D /* StatisticsViewPlanViews.swift */,
-				B7C8864C2CC39FFA004B6E9D /* StatisticsWeeklyChart.swift */,
+				B7B55EAB2CC126100057EA61 /* Weekly */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -635,7 +644,6 @@
 			children = (
 				B7C8864D2CC39FFA004B6E9D /* Components */,
 				B7C8864E2CC39FFA004B6E9D /* StatisticsView.swift */,
-				B7C8864F2CC39FFA004B6E9D /* StatisticsViewModel.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";

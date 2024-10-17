@@ -1,5 +1,5 @@
 //
-//  StatisticsViewModel.swift
+//  StatisticsWeeklyViewModel.swift
 //  Puff
 //
 //  Created by Никита Куприянов on 05.10.2024.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-final class StatisticsViewModel: ObservableObject {
+final class StatisticsWeeklyViewModel: ObservableObject {
     @AppStorage("smokesCount") private(set) var smokesCount: [Int] = []
     @AppStorage("smokesDates") private(set) var smokesDates: [Date] = []
 

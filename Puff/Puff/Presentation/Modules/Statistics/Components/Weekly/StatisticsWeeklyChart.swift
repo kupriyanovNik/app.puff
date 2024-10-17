@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatisticsWeeklyChart: View {
 
-    @ObservedObject var statisticsVM: StatisticsViewModel
+    @ObservedObject var statisticsWVM: StatisticsWeeklyViewModel
     @ObservedObject var smokesManager: SmokesManager
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
@@ -28,7 +28,7 @@ struct StatisticsWeeklyChart: View {
     }()
 
     private var weekSmokesSumma: Int {
-        statisticsVM.currentWeekRealValues.compactMap { $0 }.reduce(0, +)
+        statisticsWVM.currentWeekRealValues.compactMap { $0 }.reduce(0, +)
     }
 
     var body: some View {
@@ -77,7 +77,7 @@ struct StatisticsWeeklyChart: View {
             Color.white
                 .cornerRadius(22)
         }
-        .onChange(of: statisticsVM.weekForDate) { _ in
+        .onChange(of: statisticsWVM.weekForDate) { _ in
             selectedIndex = nil
             checkAbilityToChangeWeek()
             setText()
@@ -86,11 +86,11 @@ struct StatisticsWeeklyChart: View {
             checkAbilityToChangeWeek()
         }
         .onChange(of: smokesManager.isPlanStarted) { _ in
-            statisticsVM.updateWeekValues()
+            statisticsWVM.updateWeekValues()
             checkAbilityToChangeWeek()
         }
         .onChange(of: smokesManager.todaySmokes) { _ in
-            statisticsVM.updateWeekValues()
+            statisticsWVM.updateWeekValues()
         }
     }
 
@@ -107,8 +107,8 @@ struct StatisticsWeeklyChart: View {
 
                 StatisticsMainChart(
                     keys: symbols,
-                    realValues: $statisticsVM.currentWeekRealValues,
-                    estimatedValues: $statisticsVM.currentWeekEstimatedValues,
+                    realValues: $statisticsWVM.currentWeekRealValues,
+                    estimatedValues: $statisticsWVM.currentWeekEstimatedValues,
                     selectedIndex: $selectedIndex,
                     spacingBetweenChartCells: 6
                 )
@@ -133,10 +133,10 @@ struct StatisticsWeeklyChart: View {
             .onTapGesture {
                 if !isDisabled {
                     withAnimation {
-                        statisticsVM.weekForDate = Calendar.current.date(
+                        statisticsWVM.weekForDate = Calendar.current.date(
                             byAdding: .day,
                             value: future ? 7 : -7,
-                            to: statisticsVM.weekForDate
+                            to: statisticsWVM.weekForDate
                         ) ?? .now
                     }
                 }
@@ -152,7 +152,7 @@ struct StatisticsWeeklyChart: View {
         if let dateOfFirstSmoke = smokesManager.dateOfFirstSmoke {
             let date = Date(timeIntervalSince1970: TimeInterval(dateOfFirstSmoke))
 
-            ableToChangeWeekToBackward = date.startOfWeek < statisticsVM.weekForDate.startOfWeek
+            ableToChangeWeekToBackward = date.startOfWeek < statisticsWVM.weekForDate.startOfWeek
             return
         }
 
@@ -166,7 +166,7 @@ struct StatisticsWeeklyChart: View {
                 value: smokesManager.daysInPlan - 1,
                 to: Date(timeIntervalSince1970: TimeInterval(planStartDate))
             ) {
-                ableToChangeWeekToForward = planEndingDate.startOfWeek > statisticsVM.weekForDate.startOfWeek
+                ableToChangeWeekToForward = planEndingDate.startOfWeek > statisticsWVM.weekForDate.startOfWeek
                 return
             }
         } else {
@@ -178,7 +178,7 @@ struct StatisticsWeeklyChart: View {
     }
 
     private func setText()     {
-        let date = statisticsVM.weekForDate
+        let date = statisticsWVM.weekForDate
         let startOfWeek = date.startOfWeek
         let endOfWeek = date.endOfWeek
 
@@ -193,7 +193,7 @@ struct StatisticsWeeklyChart: View {
 
 #Preview {
     StatisticsWeeklyChart(
-        statisticsVM: .init(),
+        statisticsWVM: .init(),
         smokesManager: .init(),
         subscriptionsManager: .init()
     )

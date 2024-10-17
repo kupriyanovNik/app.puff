@@ -92,7 +92,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             if let error {
                 print("DEBUG: unable to send notification: \(error)")
             } else {
-                print("sendedNotifications AAAAAA", request)
+                print("sendedNotifications", request)
             }
         }
 

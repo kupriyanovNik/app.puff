@@ -151,9 +151,6 @@ struct StatisticsMainChart: View {
                     .hCenter()
             }
         }
-        .onAppear {
-            print(biggestValue)
-        }
     }
 
     @ViewBuilder
