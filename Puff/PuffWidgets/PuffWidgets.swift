@@ -11,21 +11,34 @@ import AppIntents
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), count: 10)
+        SimpleEntry(date: Date(), count: 10, isEnded: false)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), count: 10)
+        let entry = SimpleEntry(date: Date(), count: 10, isEnded: false)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [100000]
+        let limits = defaults.array(forKey: "newPlanLimits") as? [Int]
+
+        let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
+        let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
+        let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
 
         let timeline = Timeline(
-            entries: [SimpleEntry(date: .now, count: counts.last ?? -1)],
+            entries: [
+                SimpleEntry(
+                    date: .now,
+                    count: counts.last ?? -1,
+                    limit: (!isPlanStarted || limits == nil) ? nil : limits![currentDayIndex],
+                    isEnded: isPlanEnded
+                )
+            ],
             policy: .atEnd
         )
+
         completion(timeline)
     }
 }
@@ -33,6 +46,8 @@ struct Provider: TimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let count: Int
+    var limit: Int?
+    let isEnded: Bool
 }
 
 struct PuffWidgetsEntryView : View {
@@ -44,9 +59,17 @@ struct PuffWidgetsEntryView : View {
         Color(hex: 0xB5D9FF, alpha: colorScheme == .light ? 1 : 0.92)
     }
 
+    private var text: String {
+        if let limit = entry.limit {
+            return "\(entry.count)/\(limit)"
+        }
+
+        return "\(entry.count)"
+    }
+
     var body: some View {
         VStack(spacing: 12) {
-            Text("\(entry.count)")
+            Text(text)
                 .id(entry.count)
                 .font(.bold26)
                 .transition(
@@ -80,16 +103,10 @@ struct PuffWidgets: Widget {
 
     let kind: String = "PuffWidgets.HomeScreenWidget"
 
-    @Environment(\.colorScheme) var colorScheme
-
-    private var backgroundColor: Color {
-        colorScheme == .light ? .white : .init(hex: 0x2C2C2E)
-    }
-
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             PuffWidgetsEntryView(entry: entry)
-                .containerBackground(backgroundColor, for: .widget)
+                .containerBackground(.widgetBackground, for: .widget)
         }
         .configurationDisplayName("Widgets.HomeScreenTitle".l)
         .description("Widgets.HomeScreenDescription".l)
@@ -103,12 +120,20 @@ struct PuffIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [100000]
+        let dates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]
+
+        let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
+        let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
+
+        let planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [1000]
+        let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
 
         if counts.count > 0 {
             counts[counts.count - 1] += 1
         }
 
         defaults.set(counts, forKey: "newSmokesCount")
+        defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
         defaults.synchronize()
 
         return .result()

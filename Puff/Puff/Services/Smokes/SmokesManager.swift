@@ -26,6 +26,11 @@ final class SmokesManager: ObservableObject {
 
     @AppStorage("currentDayIndex") private(set) var currentDayIndex: Int = 0 {
         didSet {
+            defaults.set(currentDayIndex, forKey: "newCurrentDayIndex")
+            defaults.synchronize()
+
+            WidgetCenter.shared.reloadAllTimelines()
+
             if currentDayIndex != oldValue {
                 // чтобы обновление для реактивно пришло в просто тапалку для юзеров без премиума
                 addNewDate(auto: false)
@@ -133,6 +138,19 @@ final class SmokesManager: ObservableObject {
         isPlanStarted = true
         isPlanEnded = false
 
+        defaults.set(true, forKey: "newIsPlanStarted")
+        defaults.set(false, forKey: "newIsPlanEnded")
+
+        defaults.set(currentDayIndex, forKey: "newCurrentDayIndex")
+
+        defaults.set(planCounts, forKey: "newPlanCounts")
+        defaults.set(planLimits, forKey: "newPlanLimits")
+
+        defaults.set(dateOfLastSmoke, forKey: "newDateOfLastSmoke")
+        
+        defaults.synchronize()
+        WidgetCenter.shared.reloadAllTimelines()
+
         AnalyticsManager.logEvent(event: .startedPlan(initialSmokes: smokesPerDay, daysInPlan: period.rawValue))
     }
 
@@ -158,8 +176,12 @@ final class SmokesManager: ObservableObject {
         }
 
         defaults.set(smokesCount, forKey: "newSmokesCount")
-        defaults.synchronize()
+        defaults.set(planCounts, forKey: "newPlanCounts")
 
+        defaults.set(smokesCount, forKey: "newSmokesCount")
+        defaults.set(smokesDates, forKey: "newSmokesDates")
+
+        defaults.synchronize()
         WidgetCenter.shared.reloadAllTimelines()
     }
 
@@ -175,10 +197,14 @@ final class SmokesManager: ObservableObject {
 
                     planLimits = [firstDayLimit] + newPlan
                 }
-
                 AnalyticsManager.logEvent(event: .addedMoreSmokes(count: count))
             }
         }
+
+        defaults.set(planLimits, forKey: "newPlanLimits")
+
+        defaults.synchronize()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func extendPlanForOneDay() {
@@ -200,6 +226,12 @@ final class SmokesManager: ObservableObject {
         } else {
             AnalyticsManager.logEvent(event: .extendedPlan)
         }
+
+        defaults.set(planCounts, forKey: "newPlanCounts")
+        defaults.set(planLimits, forKey: "newPlanLimits")
+
+        defaults.synchronize()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func addDay() {
@@ -222,10 +254,20 @@ final class SmokesManager: ObservableObject {
                 daysInPlan += 1
             }
         }
+
+        defaults.set(planCounts, forKey: "newPlanCounts")
+        defaults.set(planLimits, forKey: "newPlanLimits")
+
+        defaults.synchronize()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func endPlan() {
         isPlanEnded = true
+        defaults.set(true, forKey: "newIsPlanEnded")
+
+        defaults.synchronize()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func resetPlan() {
@@ -237,6 +279,14 @@ final class SmokesManager: ObservableObject {
 
         planLimits = Array(repeating: 10000, count: 21)
         planCounts = Array(repeating: 0, count: 21)
+
+        defaults.set(planCounts, forKey: "newPlanCounts")
+        defaults.set(planLimits, forKey: "newPlanLimits")
+        defaults.set(false, forKey: "newIsPlanStarted")
+        defaults.set(false, forKey: "newIsPlanEnded")
+
+        defaults.synchronize()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     @objc func checkIsNewDay() {
@@ -260,6 +310,16 @@ final class SmokesManager: ObservableObject {
             let newDaysCount = counts.count - smokesCount.count
 
             self.smokesCount = counts
+        }
+
+        
+        if let newPlanCounts = defaults.array(forKey: "newPlanCounts") as? [Int] {
+            self.planCounts = newPlanCounts
+        }
+
+        let dateOfLastSmokeInMillis = defaults.integer(forKey: "newDateOfLastSmoke")
+        if dateOfLastSmokeInMillis != 0 {
+            self.dateOfLastSmoke = dateOfLastSmokeInMillis
         }
     }
 
