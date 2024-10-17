@@ -19,7 +19,7 @@ struct TabBar: View {
         }
         .overlay {
             Capsule()
-                .fill(Palette.textTertiary)
+                .fill(Color(hex: 0x030303, alpha: 0.08))
                 .frame(width: 1, height: 22)
         }
         .background(Color(hex: 0xF5F5F5))

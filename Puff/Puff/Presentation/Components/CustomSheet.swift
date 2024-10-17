@@ -37,7 +37,7 @@ struct CustomSheet<Content: View>: View {
                             offset = .zero
                         }
                     } else {
-                        withAnimation {
+                        withAnimation(.easeOut(duration: 0.25)) {
                             offset = .zero
                         }
                     }
@@ -86,7 +86,7 @@ struct CustomSheet<Content: View>: View {
                                     )
                                     .ignoresSafeArea()
                             }
-                            .transition(.move(edge: .bottom).animation(.easeOut(duration: 0.4)))
+                            .transition(.move(edge: .bottom).animation(.easeInOut(duration: 0.25)))
                     }
                 }
                 .animation(.easeOut(duration: 0.25), value: isPresented)

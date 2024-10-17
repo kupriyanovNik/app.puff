@@ -49,11 +49,10 @@ struct StatisticsWeeklyChart: View {
 
                 Spacer()
 
-                if subscriptionsManager.isPremium {
+                if subscriptionsManager.isPremium && smokesManager.dateOfFirstSmoke != nil {
                     HStack(spacing: 15) {
                         changeMonthButton(future: false, isDisabled: !ableToChangeWeekToBackward)
                         changeMonthButton(future: true, isDisabled: !ableToChangeWeekToForward)
-
                     }
                 }
             }

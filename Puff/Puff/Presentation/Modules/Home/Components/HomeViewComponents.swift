@@ -111,7 +111,7 @@ extension HomeView {
         }
 
         var gradientColors: [Color] {
-            if (percentage > 0 && percentage < 0.3) || !smokesManager.isPlanStarted {
+            if (percentage >= 0 && percentage < 0.3) || !smokesManager.isPlanStarted {
                 return [fillColor, fillColor, fillColor, endFillColor]
             } else if percentage >= 0.3 && percentage < 0.67 {
                 return [fillColor, fillColor.opacity(0.93), endFillColor]
