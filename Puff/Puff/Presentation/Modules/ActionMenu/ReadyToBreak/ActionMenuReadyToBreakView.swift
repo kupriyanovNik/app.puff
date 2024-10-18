@@ -93,9 +93,11 @@ struct ActionMenuReadyToBreakView: View {
     @ViewBuilder
     private func needDayView() -> some View {
         VStack(spacing: 18) {
-            LottieView(name: "ActionMenuReadyToBreakNeedDayAnimation", delay: 0.3)
-                .frame(68)
-                .padding(.bottom, -14)
+            if screenState == .needDay {
+                LottieView(name: "ActionMenuReadyToBreakNeedDayAnimation", delay: 0.3)
+                    .frame(68)
+                    .padding(.bottom, -14)
+            }
 
             MarkdownText(
                 text: "ActionMenuReadyToBreakView.NeedDay.Title".l,

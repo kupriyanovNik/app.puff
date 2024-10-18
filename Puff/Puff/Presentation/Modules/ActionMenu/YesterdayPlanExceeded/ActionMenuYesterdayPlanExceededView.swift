@@ -160,11 +160,11 @@ struct ActionMenuYesterdayPlanExceededView: View {
     @ViewBuilder
     private func planExtendedView() -> some View {
         VStack(spacing: 18) {
-            Image(.actionMenuPlanExtended)
-                .resizable()
-                .scaledToFit()
-                .frame(68)
-                .padding(.bottom, -14)
+            if shouldShowPlanExtendedWarning {
+                LottieView(name: "ActionMenuReadyToBreakNeedDayAnimation", delay: 0.3)
+                    .frame(68)
+                    .padding(.bottom, -14)
+            }
 
             MarkdownText(
                 text: "ActionMenuYesterdayExceeded.PlanExtended".l,

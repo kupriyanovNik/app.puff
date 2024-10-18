@@ -217,7 +217,7 @@
 "ActionMenuReadyToBreakView.NeedDay.Title" = "План продлен на 1 день";
 "ActionMenuReadyToBreakView.NeedDay.TodayLimit" = "Сегодняшний лимит — {count} затяжки";
 
-"ActionMenuReadyToBreakView.Broke.Title" = "Вы сделали это!\nПоздравляем!!";
+"ActionMenuReadyToBreakView.Broke.Title" = "Вы сделали это!\nПоздравляем!";
 "ActionMenuReadyToBreakView.Broke.Description" = "Вы успешно справились с планом и бросили парить. Гордимся вами!";
 "ActionMenuReadyToBreakView.Broke.Yay" = "Ура!";
 

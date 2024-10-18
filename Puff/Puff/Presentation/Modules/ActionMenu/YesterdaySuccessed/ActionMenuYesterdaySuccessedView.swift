@@ -35,9 +35,7 @@ struct ActionMenuYesterdaySuccessedView: View {
     var body: some View {
         VStack(spacing: 32) {
             VStack(spacing: 18) {
-                Image(.actionMenuBroke)
-                    .resizable()
-                    .scaledToFit()
+                LottieView(name: "ActionMenuReadyToBreakReadyAnimation", loopMode: .loop, delay: 0.3)
                     .frame(68)
                     .padding(.bottom, -14)
 
