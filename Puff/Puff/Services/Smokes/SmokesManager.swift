@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 final class SmokesManager: ObservableObject {
 
@@ -153,6 +154,11 @@ final class SmokesManager: ObservableObject {
         } else {
             addNewDate()
         }
+
+        defaults.set(smokesCount, forKey: "newSmokesCount")
+        defaults.synchronize()
+
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func addMoreSmokes(_ count: Int) {
