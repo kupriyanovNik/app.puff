@@ -127,10 +127,11 @@ struct PuffControlCenterWidget: ControlWidget {
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: kind) {
             ControlWidgetButton(action: PuffIntent()) {
-                Label("Добавить затяжку", image: "custom.cloud.fill.badge.plus")
-                    .symbolEffect(.bounce, options: .nonRepeating)
+                Label("Widgets.ControlCenterTitle".l, systemImage: "smoke.fill")
+                    .symbolEffect(.bounce.byLayer)
             }
+            .tint(.gray)
         }
-        .displayName("Добавить затяжку")
+        .displayName("Widgets.ControlCenterTitle")
     }
 }
