@@ -20,7 +20,7 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        let counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [100000]
+        let counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
         let limits = defaults.array(forKey: "newPlanLimits") as? [Int]
 
         let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
@@ -69,15 +69,21 @@ struct PuffWidgetsEntryView : View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text(text)
-                .id(entry.count)
-                .font(.bold26)
-                .transition(
-                    .asymmetric(
-                        insertion: .scale(scale: 1.035),
-                        removal: .identity
-                    )
+            Text(text) { str in
+                if let limit = entry.limit {
+                    if let range = str.range(of: "/\(limit)") {
+                        str[range].foregroundColor = Color(hex: 0x030303, alpha: 0.22)
+                    }
+                }
+            }
+            .id(entry.count)
+            .font(.bold26)
+            .transition(
+                .asymmetric(
+                    insertion: .scale(scale: 1.035),
+                    removal: .identity
                 )
+            )
 
             button()
         }
@@ -119,7 +125,7 @@ struct PuffIntent: AppIntent {
     static var description = IntentDescription("Puff")
 
     func perform() async throws -> some IntentResult {
-        var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [100000]
+        var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
         let dates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]
 
         let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
@@ -135,6 +141,8 @@ struct PuffIntent: AppIntent {
         defaults.set(counts, forKey: "newSmokesCount")
         defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
         defaults.synchronize()
+
+        WidgetCenter.shared.reloadAllTimelines()
 
         return .result()
     }
