@@ -41,7 +41,7 @@ struct PuffIntent: AppIntent {
         defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
         defaults.synchronize()
 
-        WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
+        WidgetCenter.shared.reloadAllTimelines()
 
         return .result()
     }
