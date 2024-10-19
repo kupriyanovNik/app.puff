@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class NavigationViewModel: ObservableObject {
     @Published var selectedTab: TabBarModel = .home
@@ -17,4 +18,25 @@ final class NavigationViewModel: ObservableObject {
     @Published var shouldShowPlanDevelopingActionMenu: Bool = false
     @Published var shouldShowReadyToBreakActionMenu: Bool = false
     @Published var shouldShowAddingMoreSmokesActionMenu: Bool = false
+    @Published var shouldShowPlanExtendingActionMenu: Bool = false
+
+    @AppStorage("dateOfSeenYesterdayResult") private(set) var dateOfSeenYesterdayResult: Date?
+    @Published private(set) var ableToShowYesterdayResult: Bool = false
+
+    init() {
+        checkAbilityToShowYesterdayResult()
+    }
+
+    private func checkAbilityToShowYesterdayResult() {
+        if let dateOfSeenYesterdayResult {
+            ableToShowYesterdayResult = !Calendar.current.isDateInToday(dateOfSeenYesterdayResult)
+        } else {
+            ableToShowYesterdayResult = true
+        }
+    }
+
+    func seenYesterdayResult() {
+        dateOfSeenYesterdayResult = .now
+        checkAbilityToShowYesterdayResult()
+    }
 }

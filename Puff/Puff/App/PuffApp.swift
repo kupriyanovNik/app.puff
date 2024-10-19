@@ -39,7 +39,7 @@ struct PuffApp: App {
             }
             .makeCustomSheet(
                 isPresented: $navigationVM.shouldShowReadyToBreakActionMenu,
-                ableToDismissWithSwipe: false
+                ableToDismissWithSwipe: smokesManager.realPlanDayIndex - smokesManager.planCounts.count == -1
             ) {
                 ActionMenuReadyToBreakView(
                     tappedReadyToBreak: smokesManager.realPlanDayIndex - smokesManager.planCounts.count == -1,
@@ -61,6 +61,19 @@ struct PuffApp: App {
                     navigationVM.shouldShowAddingMoreSmokesActionMenu = false
                 }
             }
+            .makeCustomSheet(isPresented: $navigationVM.shouldShowPlanExtendingActionMenu) {
+                ActionMenuYesterdayPlanExceededView(
+                    todayLimit: smokesManager.todayLimit,
+                    yesterdayLimit: smokesManager.yesterdayLimit,
+                    yesterdedExceed: smokesManager.yesterdayCount - smokesManager.yesterdayLimit
+                ) {
+                    smokesManager.extendPlanForOneDay()
+                } onDismiss: {
+                    navigationVM.shouldShowPlanExtendingActionMenu = false
+                    navigationVM.seenYesterdayResult()
+                }
+
+            }
             .onChange(of: smokesManager.todaySmokes) { newValue in
                 if newValue == smokesManager.todayLimit && smokesManager.isDayAfterPlanEnded {
                     navigationVM.shouldShowReadyToBreakActionMenu = true
@@ -69,6 +82,14 @@ struct PuffApp: App {
             .onAppear {
                 if smokesManager.isDayAfterPlanEnded {
                     navigationVM.shouldShowReadyToBreakActionMenu = true
+                }
+
+                if navigationVM.ableToShowYesterdayResult {
+                    if smokesManager.isYesterdayLimitExceeded {
+                        navigationVM.shouldShowPlanExtendingActionMenu = true
+                    } else {
+
+                    }
                 }
             }
             .onChange(of: smokesManager.todaySmokes) { newValue in

@@ -74,6 +74,26 @@ final class SmokesManager: ObservableObject {
 
     var isTodayLimitExceeded: Bool { todaySmokes > todayLimit }
 
+    var yesterdayCount: Int {
+        let yesterdayIndex = currentDayIndex - 1
+        guard yesterdayIndex >= 0 else {
+            return 0
+        }
+
+        return planCounts[yesterdayIndex]
+    }
+
+    var yesterdayLimit: Int {
+        let yesterdayIndex = currentDayIndex - 1
+        guard yesterdayIndex >= 0 else {
+            return 0
+        }
+
+        return planLimits[yesterdayIndex]
+    }
+
+    var isYesterdayLimitExceeded: Bool { yesterdayCount > yesterdayLimit }
+
     var isDayAfterPlanEnded: Bool { realPlanDayIndex > planLimits.count }
 
     // MARK: - Internal Functions
@@ -130,6 +150,10 @@ final class SmokesManager: ObservableObject {
                 }
             }
         }
+    }
+
+    func extendPlanForOneDay() {
+        
     }
 
     func addDay() {
