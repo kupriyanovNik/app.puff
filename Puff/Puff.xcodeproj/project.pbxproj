@@ -128,6 +128,8 @@
 		B7EFBB992CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */; };
 		B7EFBB9A2CC052DF006CAE4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716A4432CBAABCC005842A5 /* Localizable.strings */; };
 		B7F1E4432CC3E22B00BE422D /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */; };
+		B7F1E4452CC3E6EA00BE422D /* PuffShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */; };
+		B7F1E4472CC4063E00BE422D /* PuffIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4462CC4063E00BE422D /* PuffIntent.swift */; };
 		B7F3775F2C9B674C0050C93B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F3775E2C9B674C0050C93B /* TabBar.swift */; };
 		B7F377622C9B677E0050C93B /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377612C9B677E0050C93B /* TabBarModel.swift */; };
 		B7F377662C9B682A0050C93B /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F377652C9B682A0050C93B /* AccentButton.swift */; };
@@ -285,6 +287,8 @@
 		B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissableView.swift; sourceTree = "<group>"; };
 		B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetButtonStyle.swift; sourceTree = "<group>"; };
 		B7F0A2E02CB847520023D4C7 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffShortcut.swift; sourceTree = "<group>"; };
+		B7F1E4462CC4063E00BE422D /* PuffIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffIntent.swift; sourceTree = "<group>"; };
 		B7F3775E2C9B674C0050C93B /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		B7F377612C9B677E0050C93B /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		B7F377652C9B682A0050C93B /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
@@ -558,6 +562,8 @@
 			children = (
 				B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */,
 				B7861AAA2CBDA83000081617 /* PuffWidgets.swift */,
+				B7F1E4462CC4063E00BE422D /* PuffIntent.swift */,
+				B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */,
 				B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */,
 				B7EFBB912CC03634006CAE4F /* Common */,
 			);
@@ -1248,9 +1254,11 @@
 				B78DF5A42CBFE0C40078F9D0 /* Fonts.swift in Sources */,
 				B7F1E4432CC3E22B00BE422D /* Text+Ext.swift in Sources */,
 				B7861AAD2CBDA83000081617 /* PuffWidgets.swift in Sources */,
+				B7F1E4452CC3E6EA00BE422D /* PuffShortcut.swift in Sources */,
 				B7861AAE2CBDA83000081617 /* PuffWidgetsBundle.swift in Sources */,
 				B7EFBB992CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift in Sources */,
 				B7861ABD2CBDA98300081617 /* UserDefaultsManager.swift in Sources */,
+				B7F1E4472CC4063E00BE422D /* PuffIntent.swift in Sources */,
 				B78DF5AD2CBFE2390078F9D0 /* Color+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

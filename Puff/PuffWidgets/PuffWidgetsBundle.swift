@@ -11,6 +11,10 @@ import SwiftUI
 @main
 struct PuffWidgetsBundle: WidgetBundle {
     var body: some Widget {
-        PuffWidgets()
+        PuffHomeScreenWidget()
+
+        if #available(iOS 18.0, *) {
+            PuffControlCenterWidget()
+        }
     }
 }

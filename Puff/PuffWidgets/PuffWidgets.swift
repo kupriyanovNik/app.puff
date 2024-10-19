@@ -7,7 +7,6 @@
 
 import WidgetKit
 import SwiftUI
-import AppIntents
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -105,7 +104,7 @@ struct PuffWidgetsEntryView : View {
     }
 }
 
-struct PuffWidgets: Widget {
+struct PuffHomeScreenWidget: Widget {
 
     let kind: String = "PuffWidgets.HomeScreenWidget"
 
@@ -120,30 +119,18 @@ struct PuffWidgets: Widget {
     }
 }
 
-struct PuffIntent: AppIntent {
-    static var title: LocalizedStringResource = "Puff"
-    static var description = IntentDescription("Puff")
+@available(iOS 18.0, *)
+struct PuffControlCenterWidget: ControlWidget {
 
-    func perform() async throws -> some IntentResult {
-        var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
-        let dates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]
+    let kind: String = "PuffWidgets.ControlCenterWidget"
 
-        let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
-        let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
-
-        let planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [1000]
-        let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
-
-        if counts.count > 0 {
-            counts[counts.count - 1] += 1
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: kind) {
+            ControlWidgetButton(action: PuffIntent()) {
+                Label("Добавить затяжку", image: "custom.cloud.fill.badge.plus")
+                    .symbolEffect(.bounce, options: .nonRepeating)
+            }
         }
-
-        defaults.set(counts, forKey: "newSmokesCount")
-        defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
-        defaults.synchronize()
-
-        WidgetCenter.shared.reloadAllTimelines()
-
-        return .result()
+        .displayName("Добавить затяжку")
     }
 }
