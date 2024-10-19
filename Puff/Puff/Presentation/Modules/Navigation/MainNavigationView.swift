@@ -105,15 +105,10 @@ struct MainNavigationView: View {
 
             handleYesterdayResult()
         }
-        .onChange(of: smokesManager.todaySmokes) { newValue in
-            if subscriptionsManager.isPremium {
-                if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
-                    if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
-                        navigationVM.shouldShowAddingMoreSmokesActionMenu = true
-                    }
-                }
-            }
+        .onChange(of: smokesManager.todaySmokes) { _ in
+            openAddingMoreSmokesSheetIfNeeded()
         }
+        .onAppear(perform: openAddingMoreSmokesSheetIfNeeded)
         .onChange(of: scenePhase) { newValue in
             if newValue == .active {
                 smokesManager.restore()
@@ -207,6 +202,16 @@ struct MainNavigationView: View {
             }
         } else {
             print("DEBUG: unable to get UpdateManager.LatestAppStoreVersion response")
+        }
+    }
+
+    private func openAddingMoreSmokesSheetIfNeeded() {
+        if subscriptionsManager.isPremium {
+            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
+                if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
+                    navigationVM.shouldShowAddingMoreSmokesActionMenu = true
+                }
+            }
         }
     }
 }

@@ -11,10 +11,8 @@ struct PuffShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: PuffIntent(),
-            phrases: [
-                "Puff"
-            ],
-            shortTitle: "Puff",
+            phrases: ["Adds one puff in \(.applicationName).", "Прибавляет одну затяжку в \(.applicationName)."],
+            shortTitle: "Widgets.ControlCenterTitle",
             systemImageName: "plus"
         )
     }

@@ -10,8 +10,11 @@ import WidgetKit
 import AppIntents
 
 struct PuffIntent: AppIntent {
+
     static var title: LocalizedStringResource = "Puff"
     static var description = IntentDescription("Adding a Puff")
+
+    static var openAppWhenRun: Bool = false
 
     func perform() async throws -> some IntentResult {
         var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
@@ -38,7 +41,7 @@ struct PuffIntent: AppIntent {
         defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
         defaults.synchronize()
 
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
 
         return .result()
     }
