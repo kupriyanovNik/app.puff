@@ -46,6 +46,21 @@ struct AccountViewWidgetsInfoView: View {
             }
             .animation(.easeInOut(duration: 0.3), value: shouldShowHomeInfo)
         }
+        .overlay {
+            Group {
+                if shouldShowControlCenterInfo {
+                    AccountViewWidgetsControlCenterInfoView {
+                        shouldShowControlCenterInfo = false
+                    }
+                    .preferredColorScheme(.light)
+                    .transition(
+                        .opacity.combined(with: .offset(y: 50))
+                        .animation(.easeInOut(duration: 0.3))
+                    )
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: shouldShowControlCenterInfo)
+        }
     }
 
     @ViewBuilder

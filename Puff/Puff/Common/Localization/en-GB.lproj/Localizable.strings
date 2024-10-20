@@ -174,6 +174,11 @@
 "AccountWidgets.HomeInfo.Text1" = "Hold the Home Screen,\nthen press the add button";
 "AccountWidgets.HomeInfo.Text2" = "Find and add\nPuffless widget";
 
+"AccountWidgets.ControlCenterInfoTitle" = "Control Center";
+"AccountWidgets.ControlCenterInfo.Text1" = "Click the plus icon in\nthe Control Center";
+"AccountWidgets.ControlCenterInfo.Text2" = "Click «Add Control»";
+"AccountWidgets.ControlCenterInfo.Text3" = "Find and add\nPuffless widget";
+
 // MARK: - Action Menus
 
 "AccountSubscription.Leaving.Base.Title" = "Why are you leaving?";
