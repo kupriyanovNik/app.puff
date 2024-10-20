@@ -16,6 +16,7 @@ struct PuffIntent: AppIntent {
 
     static var openAppWhenRun: Bool = false
 
+    @MainActor
     func perform() async throws -> some IntentResult {
         var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
         let dates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]
