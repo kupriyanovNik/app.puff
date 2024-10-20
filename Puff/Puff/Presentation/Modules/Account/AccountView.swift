@@ -264,24 +264,28 @@ struct AccountView: View {
     }
 
     private func requestNotifications() {
-        if hasSkippedNotificationRequest {
-            NotificationManager.shared.requestAuthorization {
-                if smokesManager.isPlanStarted {
-                    if NotificationManager.shared.isNotificationEnabled {
-                        NotificationManager.shared.scheduleNotifications(
-                            limits: Array(smokesManager.planLimits[smokesManager.currentDayIndex...])
-                        )
-                        return
-                    }
-                } else {
-                    if NotificationManager.shared.isNotificationEnabled {
-                        NotificationManager.shared.scheduleNotifications(limits: [])
-                        return
+        NotificationManager.shared.checkNotificationStatus()
+
+        if !NotificationManager.shared.isNotificationEnabled {
+            if hasSkippedNotificationRequest {
+                NotificationManager.shared.requestAuthorization {
+                    if smokesManager.isPlanStarted {
+                        if NotificationManager.shared.isNotificationEnabled {
+                            NotificationManager.shared.scheduleNotifications(
+                                limits: Array(smokesManager.planLimits[smokesManager.currentDayIndex...])
+                            )
+                            return
+                        }
+                    } else {
+                        if NotificationManager.shared.isNotificationEnabled {
+                            NotificationManager.shared.scheduleNotifications(limits: [])
+                            return
+                        }
                     }
                 }
+            } else {
+                UIApplication.openNotificationSettingsURLString.openURL()
             }
-        } else {
-            UIApplication.openNotificationSettingsURLString.openURL()
         }
     }
 }
