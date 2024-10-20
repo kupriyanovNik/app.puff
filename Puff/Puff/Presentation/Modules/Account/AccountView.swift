@@ -18,7 +18,6 @@ struct AccountView: View {
 
     @State private var shouldShowResetWarning: Bool = false
     @State private var shouldShowSubscriptionInfo: Bool = false
-    @State private var shouldShowWidgetsInfo: Bool = false
 
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.locale) var locale
@@ -66,9 +65,9 @@ struct AccountView: View {
         }
         .overlay {
             Group {
-                if shouldShowWidgetsInfo {
+                if navigationVM.shouldShowAccountWidgetsInfo {
                     AccountViewWidgetsInfoView {
-                        shouldShowWidgetsInfo = false
+                        navigationVM.shouldShowAccountWidgetsInfo = false
                     }
                     .preferredColorScheme(.light)
                     .transition(
@@ -77,7 +76,7 @@ struct AccountView: View {
                     )
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: shouldShowWidgetsInfo)
+            .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountWidgetsInfo)
         }
         .makeCustomSheet(isPresented: $shouldShowResetWarning, content: resetWarning)
     }
@@ -160,7 +159,7 @@ struct AccountView: View {
                 cell(
                     "Account.Widgets".l,
                     imageName: "accountWidgetsImage"
-                ) { shouldShowWidgetsInfo = true }
+                ) { navigationVM.shouldShowAccountWidgetsInfo = true }
             }
 
             cell(

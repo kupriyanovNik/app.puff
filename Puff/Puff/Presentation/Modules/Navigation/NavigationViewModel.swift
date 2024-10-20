@@ -11,6 +11,10 @@ import SwiftUI
 final class NavigationViewModel: ObservableObject {
     @Published var selectedTab: TabBarModel = .home
 
+    @Published var shouldShowAccountWidgetsInfo: Bool = false
+    @Published var shouldShowWidgetsTip: Bool = false
+    @AppStorage("hasSeenWidgetsTip") var hasSeenWidgetsTip: Bool = false
+
     @Published var shouldShowAccountView: Bool = false
 
     @Published var shouldShowPlanDevelopingActionMenu: Bool = false

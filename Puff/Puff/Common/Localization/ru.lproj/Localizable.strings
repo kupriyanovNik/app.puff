@@ -14,6 +14,7 @@
 "Continue" = "Продолжить";
 "Allow" = "Разрешить";
 "Cancel" = "Отмена";
+"Add" = "Добавить";
 
 // MARK: - Images
 
@@ -256,6 +257,8 @@
 "ActionMenuYesterdayExceeded.ExtendPlan" = "Продлить план на 1 день";
 
 "ActionMenuYesterdayExceeded.PlanExtended" = "План продлен на 1 день";
+
+"ActionMenuWidgetsTip.Title" = "Добавьте виджет, чтобы отмечать затяжки не заходя в приложение";
 
 // MARK: - Tab Bar
 

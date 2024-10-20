@@ -79,9 +79,18 @@ struct MainNavigationView: View {
             .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowPaywall)
         }
         .onChange(of: smokesManager.todaySmokes) { newValue in
-            if newValue == 100 && !reviewManager.hasSeenReviewRequestAt100Smokes {
-                requestReview()
-                reviewManager.hasSeenReviewRequestAt100Smokes = true
+            if !reviewManager.hasSeenReviewRequestAt100Smokes {
+                if newValue == 100 {
+                    requestReview()
+                    reviewManager.hasSeenReviewRequestAt100Smokes = true
+                }
+            }
+
+            if !navigationVM.hasSeenWidgetsTip {
+                if newValue == 50 {
+                    navigationVM.shouldShowWidgetsTip = true
+                    navigationVM.hasSeenWidgetsTip = true
+                }
             }
 
             if subscriptionsManager.isPremium {

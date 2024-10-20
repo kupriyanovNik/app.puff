@@ -66,6 +66,7 @@
 		B79527CB2CA5F97200ADB323 /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */; };
 		B7B55EAF2CC143BE0057EA61 /* StatisticsMonthlyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B55EAE2CC143BE0057EA61 /* StatisticsMonthlyViewModel.swift */; };
 		B7B55EB12CC144020057EA61 /* StatisticsMonthlyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B55EB02CC144020057EA61 /* StatisticsMonthlyChart.swift */; };
+		B7BE274C2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE274A2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift */; };
 		B7C885CF2CC39FFA004B6E9D /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C885CD2CC39FFA004B6E9D /* UpdateManager.swift */; };
 		B7C885D22CC39FFA004B6E9D /* SmokesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C885D02CC39FFA004B6E9D /* SmokesManager.swift */; };
 		B7C885D52CC39FFA004B6E9D /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C885D32CC39FFA004B6E9D /* SubscriptionManager.swift */; };
@@ -225,6 +226,7 @@
 		B79527CA2CA5F97200ADB323 /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		B7B55EAE2CC143BE0057EA61 /* StatisticsMonthlyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMonthlyViewModel.swift; sourceTree = "<group>"; };
 		B7B55EB02CC144020057EA61 /* StatisticsMonthlyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMonthlyChart.swift; sourceTree = "<group>"; };
+		B7BE274A2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuWidgetsTipView.swift; sourceTree = "<group>"; };
 		B7C885CB2CC39FFA004B6E9D /* ReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewManager.swift; sourceTree = "<group>"; };
 		B7C885CD2CC39FFA004B6E9D /* UpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		B7C885D02CC39FFA004B6E9D /* SmokesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokesManager.swift; sourceTree = "<group>"; };
@@ -607,6 +609,14 @@
 			path = Monthly;
 			sourceTree = "<group>";
 		};
+		B7BE274B2CC57DE600E8DAAD /* WidgetsTip */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE274A2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift */,
+			);
+			path = WidgetsTip;
+			sourceTree = "<group>";
+		};
 		B7C885CC2CC39FFA004B6E9D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,6 +804,7 @@
 		B7C886162CC39FFA004B6E9D /* ActionMenu */ = {
 			isa = PBXGroup;
 			children = (
+				B7BE274B2CC57DE600E8DAAD /* WidgetsTip */,
 				B7C886042CC39FFA004B6E9D /* AddingMoreSmokes */,
 				B7C8860B2CC39FFA004B6E9D /* PlanDeveloping */,
 				B7C8860D2CC39FFA004B6E9D /* ReadyToBreak */,
@@ -1171,6 +1182,7 @@
 				B7633EA92CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift in Sources */,
 				B76AEF5C2CA97ECB000003F8 /* TagLayout.swift in Sources */,
 				B73B2E4A2C9B644C001EB658 /* HomeView.swift in Sources */,
+				B7BE274C2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift in Sources */,
 				B7F377762C9B6C480050C93B /* SecondaryButton.swift in Sources */,
 				B7C885FB2CC39FFA004B6E9D /* CircledTopCornersView.swift in Sources */,
 				B7C885FC2CC39FFA004B6E9D /* StatusBarWrapperView.swift in Sources */,

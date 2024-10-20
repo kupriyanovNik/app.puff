@@ -100,6 +100,15 @@ struct PuffApp: App {
             } onDismiss: {
                 navigationVM.seenUpdateActionMenu()
             }
+            .makeCustomSheet(isPresented: $navigationVM.shouldShowWidgetsTip) {
+                ActionMenuWidgetsTipView {
+                    navigationVM.shouldShowAccountView = true
+                    navigationVM.shouldShowAccountWidgetsInfo = true
+                    navigationVM.shouldShowWidgetsTip = false
+                } onDismiss: {
+                    navigationVM.shouldShowWidgetsTip = false
+                }
+            }
             .task {
                 await subscriptionsManager.updatePurchasedProducts()
             }
