@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomDismissableView<Content: View>: View {
 
+    var ableToDismissBySlidingDown: Bool = true
+
     let dismissAction: () -> Void
     let content: () -> Content
 
@@ -17,17 +19,21 @@ struct CustomDismissableView<Content: View>: View {
     private var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
-                self.offset = max(0, value.translation.height / 30)
+                if ableToDismissBySlidingDown {
+                    self.offset = max(0, value.translation.height / 30)
+                }
             }
             .onEnded { value in
-                if value.translation.height > 15 {
-                    dismissAction()
+                if ableToDismissBySlidingDown {
+                    if value.translation.height > 15 {
+                        dismissAction()
 
-                    delay(0.3) {
+                        delay(0.3) {
+                            offset = .zero
+                        }
+                    } else {
                         offset = .zero
                     }
-                } else {
-                    offset = .zero
                 }
             }
     }

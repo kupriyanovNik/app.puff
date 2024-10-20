@@ -15,7 +15,11 @@ struct AccountViewWidgetsInfoView: View {
     @State private var shouldShowControlCenterInfo: Bool = false
 
     var body: some View {
-        CustomDismissableView(dismissAction: backAction, content: viewContent)
+        CustomDismissableView(
+            ableToDismissBySlidingDown: (shouldShowHomeInfo == false) && (shouldShowControlCenterInfo == false),
+            dismissAction: backAction,
+            content: viewContent
+        )
     }
 
     @ViewBuilder
