@@ -170,6 +170,10 @@
 "AccountWidgets.Base.ControlCenter" = "Центр\nуправления";
 "AccountWidgets.Base.AvailableFromTarget" = "Доступно с iOS {number}";
 
+"AccountWidgets.HomeInfoTitle" = "Экран «Домой»";
+"AccountWidgets.HomeInfo.Text1" = "Удерживайте экран\n«Домой» и нажмите на\nкнопку добавления";
+"AccountWidgets.HomeInfo.Text2" = "Найдите и добавьте\nвиджет Puffless";
+
 // MARK: - Action Menus
 
 "AccountSubscription.Leaving.Base.Title" = "Почему вы уходите?";

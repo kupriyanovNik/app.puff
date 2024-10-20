@@ -170,6 +170,10 @@
 "AccountWidgets.Base.ControlCenter" = "Control Center";
 "AccountWidgets.Base.AvailableFromTarget" = "Available on iOS {number}";
 
+"AccountWidgets.HomeInfoTitle" = "Home Screen";
+"AccountWidgets.HomeInfo.Text1" = "Hold the Home Screen,\nthen press the add button";
+"AccountWidgets.HomeInfo.Text2" = "Find and add\nPuffless widget";
+
 // MARK: - Action Menus
 
 "AccountSubscription.Leaving.Base.Title" = "Why are you leaving?";

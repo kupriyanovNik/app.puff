@@ -27,6 +27,21 @@ struct AccountViewWidgetsInfoView: View {
 
             Spacer()
         }
+        .overlay {
+            Group {
+                if shouldShowHomeInfo {
+                    AccountViewWidgetsHomeScreenInfoView {
+                        shouldShowHomeInfo = false
+                    }
+                    .preferredColorScheme(.light)
+                    .transition(
+                        .opacity.combined(with: .offset(y: 50))
+                        .animation(.easeInOut(duration: 0.3))
+                    )
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: shouldShowHomeInfo)
+        }
     }
 
     @ViewBuilder
@@ -55,17 +70,13 @@ struct AccountViewWidgetsInfoView: View {
             cell(
                 "AccountWidgets.Base.Home".l,
                 imageName: "AccountWidgetsBaseInfoHomeImage"
-            ) {
-
-            }
+            ) { shouldShowHomeInfo = true }
 
             cell(
                 "AccountWidgets.Base.ControlCenter".l,
                 target: 18,
                 imageName: "AccountWidgetsBaseInfoControlCenterImage"
-            ) {
-
-            }
+            ) { shouldShowControlCenterInfo = true }
         }
         .padding(.horizontal, 12)
     }
@@ -77,41 +88,39 @@ struct AccountViewWidgetsInfoView: View {
         imageName: String,
         action: @escaping () -> Void
     ) -> some View {
-        VStack(alignment: .leading, spacing: 18) {
-            Image(imageName)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(16)
-                .overlay(alignment: .bottomLeading) {
-                    Text(text)
-                        .font(.semibold18)
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(Palette.textPrimary)
-                        .padding([.leading, .bottom], 16)
-                }
-                .overlay(alignment: .topLeading) {
-                    if let target {
-                        Group {
-                            Text(
-                                "AccountWidgets.Base.AvailableFromTarget".l.formatByDivider(
-                                    divider: "{number}",
-                                    count: target
-                                )
+        Image(imageName)
+            .resizable()
+            .scaledToFit()
+            .cornerRadius(16)
+            .overlay(alignment: .bottomLeading) {
+                Text(text)
+                    .font(.semibold18)
+                    .multilineTextAlignment(.leading)
+                    .foregroundStyle(Palette.textPrimary)
+                    .padding([.leading, .bottom], 16)
+            }
+            .overlay(alignment: .topLeading) {
+                if let target {
+                    Group {
+                        Text(
+                            "AccountWidgets.Base.AvailableFromTarget".l.formatByDivider(
+                                divider: "{number}",
+                                count: target
                             )
-                            .font(.semibold12)
-                            .foregroundStyle(Palette.textPrimary)
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 10)
-                            .background {
-                                Capsule()
-                                    .fill(.white)
-                            }
+                        )
+                        .font(.semibold12)
+                        .foregroundStyle(Palette.textPrimary)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 10)
+                        .background {
+                            Capsule()
+                                .fill(.white)
                         }
-                        .padding([.leading, .top], 16)
                     }
+                    .padding([.leading, .top], 16)
                 }
-        }
-        .onTapGesture(perform: action)
+            }
+            .onTapGesture(perform: action)
     }
 }
 
