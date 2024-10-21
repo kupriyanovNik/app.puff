@@ -21,6 +21,8 @@ struct PuffIntent: AppIntent {
         let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
         let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
 
+        defaults.set(true, forKey: "hasAddedPuffsUsingIntent")
+
         if (!isPlanEnded && isPlanStarted) || !isPlanStarted {
             var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
             var dates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]

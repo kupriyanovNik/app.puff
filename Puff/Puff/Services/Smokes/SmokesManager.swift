@@ -307,22 +307,26 @@ final class SmokesManager: ObservableObject {
     }
 
     func restore() {
-        if let counts = defaults.array(forKey: "newSmokesCount") as? [Int] {
-            self.smokesCount = counts
-        }
+        if defaults.bool(forKey: "hasAddedPuffsUsingIntent") {
+            if let counts = defaults.array(forKey: "newSmokesCount") as? [Int] {
+                self.smokesCount = counts
+            }
 
-        if let dates = defaults.array(forKey: "newSmokesDates") as? [Date] {
-            smokesDates = dates
-        }
+            if let dates = defaults.array(forKey: "newSmokesDates") as? [Date] {
+                smokesDates = dates
+            }
 
-        
-        if let newPlanCounts = defaults.array(forKey: "newPlanCounts") as? [Int] {
-            self.planCounts = newPlanCounts
-        }
 
-        let dateOfLastSmokeInMillis = defaults.integer(forKey: "newDateOfLastSmoke")
-        if dateOfLastSmokeInMillis != 0 {
-            self.dateOfLastSmoke = dateOfLastSmokeInMillis
+            if let newPlanCounts = defaults.array(forKey: "newPlanCounts") as? [Int] {
+                self.planCounts = newPlanCounts
+            }
+
+            let dateOfLastSmokeInMillis = defaults.integer(forKey: "newDateOfLastSmoke")
+            if dateOfLastSmokeInMillis != 0 {
+                self.dateOfLastSmoke = dateOfLastSmokeInMillis
+            }
+
+            defaults.set(false, forKey: "hasAddedPuffsUsingIntent")
         }
     }
 
