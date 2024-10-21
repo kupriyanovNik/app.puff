@@ -10,15 +10,7 @@ import UIKit
 
 extension String {
     func removeExtraSpaces() -> String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-}
-
-extension String {
-    subscript(bounds: CountableRange<Int>) -> String {
-        let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(startIndex, offsetBy: bounds.upperBound)
-        return String(self[start..<end])
+        trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 
@@ -34,16 +26,6 @@ extension String {
 
 extension String {
     func formatByDivider(divider: String, count: Int) -> String {
-        guard
-            let range = self.range(of: divider)
-        else { return self }
-
-        let startPosition = self.distance(from: self.startIndex, to: range.lowerBound)
-        let endPosition = self.distance(from: self.startIndex, to: range.upperBound)
-
-        let start = self[0..<startPosition]
-        let end = self[endPosition..<self.count]
-
-        return [start, "\(count)", end].joined(separator: "")
+        replacingOccurrences(of: divider, with: String(count))
     }
 }
