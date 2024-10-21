@@ -71,7 +71,7 @@ struct PuffWidgetsEntryView : View {
             Text(text) { str in
                 if let limit = entry.limit {
                     if let range = str.range(of: "/\(limit)") {
-                        str[range].foregroundColor = Color(hex: 0x030303, alpha: 0.22)
+                        str[range].foregroundColor = .limit
                     }
                 }
             }
