@@ -23,9 +23,10 @@ struct ActionMenuWidgetsTipView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, -14)
 
-            Image(.actionMenuWidgetsTip)
+            Image("ActionMenuImages.WidgetsTipImage".l)
                 .resizable()
                 .scaledToFit()
+                .cornerRadius(16)
 
             AccentButton(text: "Add".l, action: callback)
                 .padding(.bottom, -26)
