@@ -58,7 +58,7 @@ final class SmokesManager: ObservableObject {
         restore()
 
         timer = .scheduledTimer(
-            timeInterval: 3,
+            timeInterval: 2,
             target: self,
             selector: #selector(checkIsNewDay),
             userInfo: nil,
@@ -291,6 +291,8 @@ final class SmokesManager: ObservableObject {
     }
 
     @objc func checkIsNewDay() {
+        restore()
+
         if let planStartDate {
             let startOfToday = calendar.startOfDay(for: .now)
             let startOfStartOfPlan = calendar.startOfDay(

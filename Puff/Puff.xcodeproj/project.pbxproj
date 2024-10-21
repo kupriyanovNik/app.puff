@@ -39,6 +39,7 @@
 		B7633EA92CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA82CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift */; };
 		B76AEF5C2CA97ECB000003F8 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */; };
 		B76AEF6D2CA9DE57000003F8 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76AEF6C2CA9DE57000003F8 /* Bundle+Ext.swift */; };
+		B76C8B8D2CC6CC2800BE19BA /* PuffIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4462CC4063E00BE422D /* PuffIntent.swift */; };
 		B7757F0E2CB7143C001D3472 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B7757F0D2CB7143C001D3472 /* FirebaseAnalytics */; };
 		B7757F102CB7143C001D3472 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B7757F0F2CB7143C001D3472 /* FirebaseCrashlytics */; };
 		B7757F1D2CB71461001D3472 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7757F182CB71461001D3472 /* AnalyticsManager.swift */; };
@@ -1185,6 +1186,7 @@
 				B7BE274C2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift in Sources */,
 				B7F377762C9B6C480050C93B /* SecondaryButton.swift in Sources */,
 				B7C885FB2CC39FFA004B6E9D /* CircledTopCornersView.swift in Sources */,
+				B76C8B8D2CC6CC2800BE19BA /* PuffIntent.swift in Sources */,
 				B7C885FC2CC39FFA004B6E9D /* StatusBarWrapperView.swift in Sources */,
 				B79527CB2CA5F97200ADB323 /* UIApplication+Ext.swift in Sources */,
 				B7C886282CC39FFA004B6E9D /* AppPaywallView.swift in Sources */,
@@ -1439,6 +1441,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = Puff/Puff.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1462,6 +1465,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.quitvapingteam.quitvapingn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1478,6 +1482,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = Puff/Puff.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1501,6 +1506,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.quitvapingteam.quitvapingn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
