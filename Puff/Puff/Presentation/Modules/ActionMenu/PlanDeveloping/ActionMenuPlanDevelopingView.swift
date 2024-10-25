@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActionMenuPlanDevelopingView: View {
 
-    @State private var sliderPercentage: Double = 44
+    @State private var sliderPercentage: Double = 47
     @State private var selectedPeriod: ActionMenuPlanDevelopingPeriod = .mid
 
     @State private var screenState: ScreenState = .addiction
@@ -19,13 +19,13 @@ struct ActionMenuPlanDevelopingView: View {
     var onStartedPlan: (ActionMenuPlanDevelopingPeriod, Int) -> Void = { _, _ in }
     var onDismiss: () -> Void = {}
 
-    private let minSmokesCount: Int = 100
+    private let minSmokesCount: Int = 50
     private let maxSmokesCount: Int = 1000
 
     @State private var shouldShowError: Bool = false
 
     private var smokesCount: Int {
-        let count = 10 * Int(round(Double(maxSmokesCount - minSmokesCount) * (sliderPercentage / 100) / 10.0)) + 100
+        let count = 10 * Int(round(Double(maxSmokesCount - minSmokesCount) * (sliderPercentage / 100) / 10.0)) + 50
 
         return count
     }
