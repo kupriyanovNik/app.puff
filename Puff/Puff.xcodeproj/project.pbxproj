@@ -34,6 +34,7 @@
 		B73B2E4F2C9B6498001EB658 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E4E2C9B6498001EB658 /* HapticManager.swift */; };
 		B73B2E522C9B64A6001EB658 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E502C9B64A6001EB658 /* Logger.swift */; };
 		B73B2E552C9B64CD001EB658 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E542C9B64CD001EB658 /* AppManager.swift */; };
+		B74D975E2CCAF097004C5E23 /* PuffShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */; };
 		B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
 		B7633EA72CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA52CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift */; };
 		B7633EA92CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA82CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift */; };
@@ -1268,6 +1269,7 @@
 				B7C8865F2CC39FFA004B6E9D /* HomeViewComponents.swift in Sources */,
 				B7C886602CC39FFA004B6E9D /* HomeViewPlanViews.swift in Sources */,
 				B77E2DFC2CB19B27001B4F8C /* StatisticsFrequencyChart.swift in Sources */,
+				B74D975E2CCAF097004C5E23 /* PuffShortcut.swift in Sources */,
 				B7C886242CC39FFA004B6E9D /* NotificationRequestView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

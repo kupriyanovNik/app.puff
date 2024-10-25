@@ -50,7 +50,9 @@ struct PuffIntent: AppIntent {
                 }
 
                 if isPlanStarted {
-                    planCounts[currentDayIndexInArray] += 1
+                    if currentDayIndexInArray <= currentDayIndexInArray {
+                        planCounts[currentDayIndexInArray] += 1
+                    }
 
                     if planLimits[currentDayIndexInArray] < planCounts[currentDayIndexInArray] {
                         // TODO: - open app
@@ -71,7 +73,6 @@ struct PuffIntent: AppIntent {
         }
 
         WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
-        WidgetCenter.shared.reloadAllTimelines()
 
         return .result()
     }
