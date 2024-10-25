@@ -155,6 +155,8 @@ extension HomeView {
 
         @State private var text: String = ""
 
+        @State private var showCreatorInfo: Bool = false
+
         var body: some View {
             Text(text)
                 .font(.semibold16)
@@ -170,6 +172,13 @@ extension HomeView {
                 .onReceive(timer) { _ in setTime() }
                 .onChange(of: smokesManager.todaySmokes) { _ in setTime() }
                 .onAppear { setTime() }
+                .onTapGesture(count: 13) {
+                    showCreatorInfo = true
+                }
+                .alert("Created by Nikita Kupriyanov", isPresented: $showCreatorInfo) {
+                    Button("Open GitHub", role: .cancel) { "https://github.com/kupriyanovNik".openURL() }
+                    Button("Ok", role: .destructive) { }
+                }
         }
 
         private func setTime() {
