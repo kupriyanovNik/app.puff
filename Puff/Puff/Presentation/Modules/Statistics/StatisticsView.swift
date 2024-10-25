@@ -14,6 +14,7 @@ struct StatisticsView: View {
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
     @StateObject var statisticsWVM = StatisticsWeeklyViewModel()
+    @StateObject var statisticsMVM = StatisticsMonthlyViewModel()
 
     var body: some View {
         CircledTopCornersView(content: viewContent)
@@ -34,6 +35,12 @@ struct StatisticsView: View {
 
                     StatisticsWeeklyChart(
                         statisticsWVM: statisticsWVM,
+                        smokesManager: smokesManager,
+                        subscriptionsManager: subscriptionsManager
+                    )
+
+                    StatisticsMonthlyChart(
+                        statisticsMVM: statisticsMVM,
                         smokesManager: smokesManager,
                         subscriptionsManager: subscriptionsManager
                     )

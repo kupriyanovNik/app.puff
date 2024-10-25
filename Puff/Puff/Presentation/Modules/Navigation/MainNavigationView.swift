@@ -17,6 +17,8 @@ struct MainNavigationView: View {
 
     var requestReview: () -> Void
 
+    @State private var timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+
     var body: some View {
         ZStack {
             Color.clear
@@ -99,15 +101,10 @@ struct MainNavigationView: View {
                 }
             }
 
-            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
-                if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
-                    if smokesManager.isYesterdayLimitExceeded {
-                        navigationVM.shouldShowPlanExtendingActionMenu = true
-                    } else if smokesManager.currentDayIndex > 0 {
-                        navigationVM.shouldShowYesterdayResult = true
-                    }
-                }
-            }
+            handleYesterdayResult()
+        }
+        .onReceive(timer) { _ in
+            handleYesterdayResult()
         }
         .onChange(of: smokesManager.todaySmokes) { newValue in
             if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
@@ -151,6 +148,20 @@ struct MainNavigationView: View {
             smokesManager: smokesManager,
             subscriptionsManager: subscriptionsManager
         )
+        }
+    }
+
+    private func handleYesterdayResult() {
+        if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
+            navigationVM.checkAbilityToShowYesterdayResult()
+
+            if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
+                if smokesManager.isYesterdayLimitExceeded {
+                    navigationVM.shouldShowPlanExtendingActionMenu = true
+                } else if smokesManager.currentDayIndex > 0 {
+                    navigationVM.shouldShowYesterdayResult = true
+                }
+            }
         }
     }
 }

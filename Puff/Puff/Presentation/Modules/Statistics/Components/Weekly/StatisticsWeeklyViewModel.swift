@@ -51,7 +51,6 @@ final class StatisticsWeeklyViewModel: ObservableObject {
         }
     }
 
-    // correct
     private func updateWeek() {
         var weekDates: [Date] = []
 
@@ -64,7 +63,6 @@ final class StatisticsWeeklyViewModel: ObservableObject {
         currentWeek = weekDates
     }
 
-    // corrent
     private func getLimitForDate(_ selectingDate: Date) -> Int? {
         guard isPlanStarted, let planStartDate else { return nil }
 

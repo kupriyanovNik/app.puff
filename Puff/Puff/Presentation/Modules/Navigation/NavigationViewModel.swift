@@ -50,7 +50,7 @@ final class NavigationViewModel: ObservableObject {
         shouldShowUpdateActionMenu = false
     }
 
-    private func checkAbilityToShowYesterdayResult() {
+    func checkAbilityToShowYesterdayResult() {
         if let dateOfSeenYesterdayResult {
             ableToShowYesterdayResult = !Calendar.current.isDateInToday(dateOfSeenYesterdayResult)
         } else {

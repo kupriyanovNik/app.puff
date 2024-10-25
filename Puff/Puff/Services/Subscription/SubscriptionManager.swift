@@ -126,11 +126,14 @@ extension SubscriptionsManager {
 }
 
 extension SubscriptionsManager: SKPaymentTransactionObserver {
-    nonisolated func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    nonisolated func paymentQueue(
+        _ queue: SKPaymentQueue,
+        updatedTransactions transactions: [SKPaymentTransaction]
+    ) { }
 
-    }
-
-    nonisolated func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
-        return true
-    }
+    nonisolated func paymentQueue(
+        _ queue: SKPaymentQueue,
+        shouldAddStorePayment payment: SKPayment,
+        for product: SKProduct
+    ) -> Bool { return true }
 }

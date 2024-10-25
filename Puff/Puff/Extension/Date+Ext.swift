@@ -30,6 +30,10 @@ extension Date: RawRepresentable {
 }
 
 extension Date {
+    var startOfDate: Date {
+        Calendar.current.startOfDay(for: self)
+    }
+
     var yesterday: Date {
         Calendar.current.date(byAdding: .day, value: -1, to: self) ?? .now
     }
@@ -51,5 +55,24 @@ extension Date {
         let calendar = Calendar.current
 
         return calendar.date(byAdding: .day, value: 6, to: self.startOfWeek) ?? .now
+    }
+
+    var endOfMonth: Date {
+        var calendar = Calendar.current
+        calendar.firstWeekday = 2
+
+        var components = DateComponents()
+        components.month = 1
+        components.second = -1
+        return calendar.date(byAdding: components, to: startOfMonth) ?? .now
+    }
+
+    var startOfMonth: Date {
+        var calendar = Calendar.current
+        calendar.firstWeekday = 2
+
+        let components = calendar.dateComponents([.year, .month], from: self)
+
+        return  calendar.date(from: components) ?? .now
     }
 }
