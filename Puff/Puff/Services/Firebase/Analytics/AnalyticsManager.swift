@@ -21,6 +21,7 @@ final class AnalyticsManager {
     enum AnalyticsEvent {
         case openedPaywall(tab: Int)
         case seenOnboarding(pageNumber: Int)
+        case skippedSurveyAndPlanCreating
         case acceptedNotifications
         case resetedPlan
         case canceledSubscription(reasons: [String], feedback: String)
@@ -34,6 +35,7 @@ final class AnalyticsManager {
             switch self {
             case .openedPaywall: "UserOpenedPaywall"
             case .seenOnboarding: "UserSeenOnboarding"
+            case .skippedSurveyAndPlanCreating: "UserSkippedSurveyAndPlancreating"
             case .acceptedNotifications: "UserAcceptedNotifications"
             case .resetedPlan: "UserResetedPlan"
             case .canceledSubscription: "UserCanceledSubscription"
@@ -62,7 +64,8 @@ final class AnalyticsManager {
             case .addedMoreSmokes(let count):
                 ["Count": count]
 
-            case .acceptedNotifications, .resetedPlan, .extendedPlan, .extendedPlanInLastDay, .openedAppStoreFromUpdateActionMenu: nil
+            case .acceptedNotifications, .resetedPlan, .extendedPlan, .extendedPlanInLastDay: nil
+            case .openedAppStoreFromUpdateActionMenu, .skippedSurveyAndPlanCreating: nil
             }
         }
     }

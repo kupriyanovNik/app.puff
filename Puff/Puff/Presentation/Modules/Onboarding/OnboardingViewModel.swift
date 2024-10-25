@@ -33,4 +33,10 @@ final class OnboardingViewModel: ObservableObject {
             surveyAnswersIndices.append(0)
         }
     }
+
+    func skipSurveyAndPlanCreating() {
+        currentIndex = 6
+        AnalyticsManager.logEvent(event: .skippedSurveyAndPlanCreating)
+        onboardingPath.append(currentIndex)
+    }
 }

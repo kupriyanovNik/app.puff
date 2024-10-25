@@ -31,6 +31,9 @@ struct OnboardingSurveyDescriptionScreen: View {
             Spacer()
 
             AccentButton(text: "Next".l, action: onboardingVM.nextScreen)
+                .padding(.bottom, -2)
+
+            SecondaryButton(text: "Skip".l, action: onboardingVM.skipSurveyAndPlanCreating)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 16)

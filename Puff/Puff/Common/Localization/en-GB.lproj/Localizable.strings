@@ -154,6 +154,7 @@
 "Account.Subscription" = "Subscription";
 "Account.OurChannel" = "Our Telegram channel";
 "Account.OurChannel.Link" = "https://t.me/puffless_app";
+"Account.ChangeLanguage" = "Change language";
 "Account.Notifications" = "Notifications";
 "Account.ResetQuittingPlan" = "Reset quit plan";
 "AccountPlanQuitting.Title" = "Are you sure you want to reset your quit plan?";

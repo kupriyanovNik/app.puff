@@ -154,6 +154,7 @@
 "Account.Subscription" = "Подписка";
 "Account.OurChannel" = "Наш Telegram-канал";
 "Account.OurChannel.Link" = "https://t.me/puffless_app_ru";
+"Account.ChangeLanguage" = "Сменить язык";
 "Account.Notifications" = "Уведомления";
 "Account.ResetQuittingPlan" = "Сбросить план бросания";
 "AccountPlanQuitting.Title" = "Вы уверены, что хотите сбросить план бросания?";

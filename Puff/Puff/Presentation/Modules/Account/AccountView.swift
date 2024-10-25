@@ -185,6 +185,11 @@ struct AccountView: View {
             ) { "Account.OurChannel.Link".l.openURL() }
 
             cell(
+                "Account.ChangeLanguage".l,
+                imageName: "accountChangeLanguageImage"
+            ) { UIApplication.openSettingsURLString.openURL() }
+
+            cell(
                 "Account.Notifications".l,
                 imageName: "accountNotificationsImage",
                 content: Toggle("", isOn: $isNotificationsEnabled).labelsHidden()
