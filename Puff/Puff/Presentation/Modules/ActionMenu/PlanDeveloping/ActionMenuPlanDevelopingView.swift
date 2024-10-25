@@ -25,7 +25,7 @@ struct ActionMenuPlanDevelopingView: View {
     @State private var shouldShowError: Bool = false
 
     private var smokesCount: Int {
-        let count = 10 * Int(round(Double(maxSmokesCount - minSmokesCount) * (sliderPercentage / 100) / 10.0)) + 50
+        let count = 10 * Int(round(Double(maxSmokesCount - minSmokesCount) * (sliderPercentage / 100) / 10.0)) + minSmokesCount
 
         return count
     }
