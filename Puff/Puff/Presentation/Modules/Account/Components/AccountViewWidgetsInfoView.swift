@@ -61,6 +61,7 @@ struct AccountViewWidgetsInfoView: View {
 
             cell(
                 "AccountWidgets.Base.ControlCenter".l,
+                target: 18,
                 imageName: "AccountWidgetsBaseInfoControlCenterImage"
             ) {
 
@@ -72,7 +73,7 @@ struct AccountViewWidgetsInfoView: View {
     @ViewBuilder
     private func cell(
         _ text: String,
-        number: Int? = nil,
+        target: Int? = nil,
         imageName: String,
         action: @escaping () -> Void
     ) -> some View {
@@ -81,12 +82,33 @@ struct AccountViewWidgetsInfoView: View {
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(16)
-                .overlay(alignment: .leading) {
+                .overlay(alignment: .bottomLeading) {
                     Text(text)
-                        .font(.semibold16)
+                        .font(.semibold18)
                         .multilineTextAlignment(.leading)
                         .foregroundStyle(Palette.textPrimary)
-                        .padding(.leading, 16)
+                        .padding([.leading, .bottom], 16)
+                }
+                .overlay(alignment: .topLeading) {
+                    if let target {
+                        Group {
+                            Text(
+                                "AccountWidgets.Base.AvailableFromTarget".l.formatByDivider(
+                                    divider: "{number}",
+                                    count: target
+                                )
+                            )
+                            .font(.semibold12)
+                            .foregroundStyle(Palette.textPrimary)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 10)
+                            .background {
+                                Capsule()
+                                    .fill(.white)
+                            }
+                        }
+                        .padding([.leading, .top], 16)
+                    }
                 }
         }
         .onTapGesture(perform: action)

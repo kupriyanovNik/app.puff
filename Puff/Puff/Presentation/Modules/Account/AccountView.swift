@@ -156,10 +156,12 @@ struct AccountView: View {
     @ViewBuilder
     private func cells() -> some View {
         VStack(spacing: 0) {
-            cell(
-                "Account.Widgets".l,
-                imageName: "accountWidgetsImage"
-            ) { shouldShowWidgetsInfo = true }
+            if #available(iOS 17.0, *) {
+                cell(
+                    "Account.Widgets".l,
+                    imageName: "accountWidgetsImage"
+                ) { shouldShowWidgetsInfo = true }
+            }
 
             cell(
                 "Account.ContactUs".l,

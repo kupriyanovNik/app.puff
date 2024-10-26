@@ -168,6 +168,7 @@
 
 "AccountWidgets.Base.Home" = "Home Screen";
 "AccountWidgets.Base.ControlCenter" = "Control Center";
+"AccountWidgets.Base.AvailableFromTarget" = "Available on iOS {number}";
 
 // MARK: - Action Menus
 

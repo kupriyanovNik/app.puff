@@ -168,6 +168,7 @@
 
 "AccountWidgets.Base.Home" = "Экран\n«Домой»";
 "AccountWidgets.Base.ControlCenter" = "Центр\nуправления";
+"AccountWidgets.Base.AvailableFromTarget" = "Доступно с iOS {number}";
 
 // MARK: - Action Menus
 

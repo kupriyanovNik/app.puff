@@ -24,6 +24,7 @@ extension Font {
     static let semibold16 = getSemibold(size: 16)
     static let semibold15 = getSemibold(size: 15)
     static let semibold14 = getSemibold(size: 14)
+    static let semibold12 = getSemibold(size: 12)
 
     static let medium24 = getMedium(size: 24)
     static let medium22 = getMedium(size: 22)
