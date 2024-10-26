@@ -9,8 +9,26 @@ import SwiftUI
 
 struct ActionMenuYesterdaySuccessedView: View {
 
+    var daysToEnd: Int
     var todayLimit: Int
     var onDismiss: () -> Void
+
+    private var text: String {
+        var firstPart: String = ""
+
+        if daysToEnd == 1 {
+            firstPart = "До конца плана остался всего 1 день!"
+        } else {
+            firstPart = "До конца плана осталось всего 3 дня!"
+        }
+
+        let secondPart = "Сегодняшний лимит - {count} затяжек.".formatByDivider(
+            divider: "{count}",
+            count: todayLimit
+        )
+
+        return [1, 3].contains(daysToEnd) ? (firstPart + secondPart) : secondPart
+    }
 
     var body: some View {
         VStack(spacing: 32) {
@@ -29,14 +47,10 @@ struct ActionMenuYesterdaySuccessedView: View {
                 .font(.bold22)
                 .multilineTextAlignment(.center)
 
-                Text(
-                    "Сегодняшний лимит - {count} затяжек.".formatByDivider(
-                        divider: "{count}",
-                        count: todayLimit
-                    )
-                )
-                .font(.semibold16)
-                .foregroundStyle(Palette.textSecondary)
+                Text(text)
+                    .font(.semibold16)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(Palette.textSecondary)
             }
             .padding(.horizontal, 12)
 
@@ -49,5 +63,5 @@ struct ActionMenuYesterdaySuccessedView: View {
 }
 
 #Preview {
-    ActionMenuYesterdaySuccessedView(todayLimit: 333) { }
+    ActionMenuYesterdaySuccessedView(daysToEnd: 5, todayLimit: 333) { }
 }

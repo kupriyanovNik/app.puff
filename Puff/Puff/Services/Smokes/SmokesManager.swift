@@ -153,7 +153,22 @@ final class SmokesManager: ObservableObject {
     }
 
     func extendPlanForOneDay() {
-        
+        print("A", planLimits)
+        print("B", planLimits[0..<currentDayIndex])
+        print("C", planLimits[currentDayIndex...])
+
+        var newPlan: [Int] = []
+        let planUntilToday = planLimits[0..<currentDayIndex]
+
+        newPlan.append(contentsOf: planUntilToday)
+        if let last = planUntilToday.last {
+            newPlan.append(last)
+        }
+        newPlan.append(contentsOf: planLimits[currentDayIndex...])
+
+        planLimits = newPlan
+        planCounts.append(0)
+        daysInPlan = planLimits.count
     }
 
     func addDay() {

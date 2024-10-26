@@ -103,8 +103,8 @@ extension View {
         ableToDismissWithSwipe: Bool = true,
         cornerRadius: Double = 20,
         topPadding: Double = 16,
-        onDismiss: @escaping () -> Void = {},
-        content: @escaping () -> some View
+        content: @escaping () -> some View,
+        onDismiss: @escaping () -> Void = {}
     ) -> some View {
         overlay {
             CustomSheet(

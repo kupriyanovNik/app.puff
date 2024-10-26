@@ -81,7 +81,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
             .multilineTextAlignment(.center)
 
             Text(
-                "Не переживайте, такое бывает.\n\nСегодняшний лимит - {exc} затяжки.Если уверены, что справитесь - продолжаем!\n\nА если вам нужно чуть больше времени - можем продлить план на 1 день. Лимит будет такой же, как вчера.".formatByDivider(
+                "Не переживайте, такое бывает.\n\nСегодняшний лимит - {exc} затяжки. Если уверены, что справитесь - продолжаем!\n\nА если вам нужно чуть больше времени - можем продлить план на 1 день. Лимит будет такой же, как вчера.".formatByDivider(
                     divider: "{exc}",
                     count: todayLimit
                 )
@@ -157,9 +157,9 @@ struct ActionMenuYesterdayPlanExceededView: View {
         if !shouldShowPlanExtendedWarning {
             withAnimation(.easeInOut(duration: 0.25)) {
                 shouldShowPlanExtendedWarning = true
+                onExtendPlan()
             }
         } else {
-            onExtendPlan()
             onDismiss()
         }
     }

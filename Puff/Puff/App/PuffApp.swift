@@ -56,6 +56,9 @@ struct PuffApp: App {
                     navigationVM.shouldShowReadyToBreakActionMenu = false
                     navigationVM.tappedReadyToBreak = false
                 }
+            } onDismiss: {
+                navigationVM.shouldShowReadyToBreakActionMenu = false
+                navigationVM.tappedReadyToBreak = false
             }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowAddingMoreSmokesActionMenu) {
                 ActionMenuAddingMoreSmokesView(onAddedMoreSmokes: smokesManager.addMoreSmokes) {
@@ -72,35 +75,52 @@ struct PuffApp: App {
                 } onDismiss: {
                     navigationVM.seenYesterdayResult()
                 }
+            } onDismiss: {
+                navigationVM.seenYesterdayResult()
             }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowYesterdayResult) {
-                ActionMenuYesterdaySuccessedView(todayLimit: smokesManager.todayLimit) {
+                ActionMenuYesterdaySuccessedView(
+                    daysToEnd: smokesManager.daysInPlan - smokesManager.currentDayIndex - 1,
+                    todayLimit: smokesManager.todayLimit
+                ) {
                     navigationVM.seenYesterdayResult()
 
                     delay(0.4) { requestReview() }
                 }
+            } onDismiss: {
+                navigationVM.seenYesterdayResult()
+
+                delay(0.4) { requestReview() }
             }
             .onChange(of: smokesManager.todaySmokes) { newValue in
-                if newValue == smokesManager.todayLimit && (smokesManager.isLastDayOfPlan) {
-                    navigationVM.shouldShowReadyToBreakActionMenu = true
+                if smokesManager.isPlanStarted {
+                    if newValue == smokesManager.todayLimit && (smokesManager.isLastDayOfPlan) {
+                        navigationVM.shouldShowReadyToBreakActionMenu = true
+                    }
                 }
             }
             .onAppear {
-                if smokesManager.isDayAfterPlanEnded || (smokesManager.todaySmokes == smokesManager.todayLimit) {
-                    navigationVM.shouldShowReadyToBreakActionMenu = true
+                if smokesManager.isPlanStarted {
+                    if smokesManager.isDayAfterPlanEnded || (smokesManager.todaySmokes == smokesManager.todayLimit) {
+                        navigationVM.shouldShowReadyToBreakActionMenu = true
+                    }
                 }
 
-                if navigationVM.ableToShowYesterdayResult {
-                    if smokesManager.isYesterdayLimitExceeded {
-                        navigationVM.shouldShowPlanExtendingActionMenu = true
-                    } else {
-                        navigationVM.shouldShowYesterdayResult = true
+                if smokesManager.isPlanStarted {
+                    if navigationVM.ableToShowYesterdayResult {
+                        if smokesManager.isYesterdayLimitExceeded {
+                            navigationVM.shouldShowPlanExtendingActionMenu = true
+                        } else {
+                            navigationVM.shouldShowYesterdayResult = true
+                        }
                     }
                 }
             }
             .onChange(of: smokesManager.todaySmokes) { newValue in
-                if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
-                    navigationVM.shouldShowAddingMoreSmokesActionMenu = true
+                if smokesManager.isPlanStarted {
+                    if smokesManager.isTodayLimitExceeded && [0, 1].contains(smokesManager.currentDayIndex) {
+                        navigationVM.shouldShowAddingMoreSmokesActionMenu = true
+                    }
                 }
             }
         }
