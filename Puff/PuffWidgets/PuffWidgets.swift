@@ -237,20 +237,3 @@ private extension PuffWidgetsEntryView {
         }
     }
 }
-
-@available(iOS 18.0, *)
-struct PuffControlCenterWidget: ControlWidget {
-
-    let kind: String = "PuffWidgets.ControlCenterWidget"
-
-    var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: kind) {
-            ControlWidgetButton(action: PuffIntent()) {
-                Label("Widgets.ControlCenterTitle".l, systemImage: "smoke.fill")
-                    .symbolEffect(.bounce.byLayer)
-            }
-            .tint(.gray)
-        }
-        .displayName("Widgets.ControlCenterTitle")
-    }
-}
