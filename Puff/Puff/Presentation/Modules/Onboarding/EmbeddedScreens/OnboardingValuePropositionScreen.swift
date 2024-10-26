@@ -16,6 +16,7 @@ struct OnboardingValuePropositionScreen: View {
     private let titleMarks: [[String]] = [
         ["навсегда", "for good"],
         ["Отмечайте затяжки", "Track your puffs"],
+        ["виджеты,", "widgets", "shortcuts"],
         ["будет уменьшаться,", "will gradually decrease"]
     ]
 
@@ -36,7 +37,7 @@ struct OnboardingValuePropositionScreen: View {
     @ViewBuilder
     private func tabView() -> some View {
         TabView(selection: $selectedTabIndex) {
-            ForEach(0..<3) { index in
+            ForEach(0..<4) { index in
                 tabForIndex(index)
                     .tag(index)
             }
@@ -52,6 +53,7 @@ struct OnboardingValuePropositionScreen: View {
             Image(imageName)
                 .resizable()
                 .scaledToFit()
+                .cornerRadius(16)
                 .padding(.horizontal, 12)
 
             VStack(spacing: 12) {
@@ -82,7 +84,7 @@ struct OnboardingValuePropositionScreen: View {
     @ViewBuilder
     private func tabViewIndicator(dotIndex: Int) -> some View {
         HStack(spacing: 5) {
-            ForEach(0..<3) { index in
+            ForEach(0..<4) { index in
                 Circle()
                     .fill(Palette.textPrimary.opacity(index == dotIndex ? 1 : 0.3))
                     .frame(6)
@@ -91,7 +93,7 @@ struct OnboardingValuePropositionScreen: View {
     }
 
     private func nextButtonAction() {
-        if selectedTabIndex < 2 {
+        if selectedTabIndex < 3 {
             animated(.easeIn) {
                 selectedTabIndex += 1
             }

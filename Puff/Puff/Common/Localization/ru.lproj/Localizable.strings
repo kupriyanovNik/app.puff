@@ -21,7 +21,8 @@
 
 "OnboardingImages.ValueProposition1Image" = "valueProposition1RUImage";
 "OnboardingImages.ValueProposition2Image" = "valueProposition2RUImage";
-"OnboardingImages.ValueProposition3Image" = "valueProposition3RUImage";
+"OnboardingImages.ValueProposition3Image" = "valueProposition4RUImage";
+"OnboardingImages.ValueProposition4Image" = "valueProposition3RUImage";
 "ActionMenuImages.WidgetsTipImage" = "actionMenuWidgetsTipRUImage";
 "AccountWidgetsActionButtonInfo2Image" = "AccountWidgetsActionButtonInfo2RUImage";
 "AccountWidgetsDoubleBackTapInfo1Image" = "AccountWidgetsDoubleBackTapInfo1RUImage";
@@ -36,10 +37,12 @@
 
 "OnboardingValuePropositionScreen.title1" = "Puffless поможет бросить без усилий и навсегда";
 "OnboardingValuePropositionScreen.title2" = "Отмечайте затяжки и не превышайте дневной лимит";
-"OnboardingValuePropositionScreen.title3" = "Каждый день лимит будет уменьшаться, пока вы не бросите!";
+"OnboardingValuePropositionScreen.title3" = "Используйте виджеты, чтобы делать это быстрее";
+"OnboardingValuePropositionScreen.title4" = "Каждый день лимит будет уменьшаться, пока вы не бросите!";
 "OnboardingValuePropositionScreen.text1" = "Резкий отказ почти всегда приводит к срыву. Мы используем метод постепенного бросания, чтобы организм успевал адаптироваться и не испытывал стресса.";
 "OnboardingValuePropositionScreen.text2" = "В отличие от резкого отказа, вы не будете ощущать лишений и сильных ограничений - соблюдать лимит будет нетрудно, а видеть ежедневный прогресс - бесценно!";
-"OnboardingValuePropositionScreen.text3" = "Процесс может идти как плавно, так и немного интенсивней - это зависит от желаемого срока отказа и силы вашей привычки.";
+"OnboardingValuePropositionScreen.text3" = "Вы можете отмечать затяжки, не заходя в приложение. Вам доступны виджеты, двойной тап по задней панели, кнопка на экране блокировки и Action Button.";
+"OnboardingValuePropositionScreen.text4" = "Процесс может идти как плавно, так и немного интенсивней - это зависит от желаемого срока отказа и силы вашей привычки.";
 
 "OnboardingSurvey.Description" = "Теперь - всего 8 быстрых вопросов, чтобы мы смогли подобрать вам оптимальный план бросания!";
 

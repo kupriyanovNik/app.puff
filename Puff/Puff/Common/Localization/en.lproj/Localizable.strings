@@ -21,7 +21,8 @@
 
 "OnboardingImages.ValueProposition1Image" = "valueProposition1Image";
 "OnboardingImages.ValueProposition2Image" = "valueProposition2Image";
-"OnboardingImages.ValueProposition3Image" = "valueProposition3Image";
+"OnboardingImages.ValueProposition3Image" = "valueProposition4Image";
+"OnboardingImages.ValueProposition4Image" = "valueProposition3Image";
 "ActionMenuImages.WidgetsTipImage" = "actionMenuWidgetsTipENImage";
 "AccountWidgetsActionButtonInfo2Image" = "AccountWidgetsActionButtonInfo2ENImage";
 "AccountWidgetsDoubleBackTapInfo1Image" = "AccountWidgetsDoubleBackTapInfo1ENImage";
@@ -36,10 +37,12 @@
 
 "OnboardingValuePropositionScreen.title1" = "Puffless will help you quit vaping effortlessly and for good";
 "OnboardingValuePropositionScreen.title2" = "Track your puffs and don’t exceed the daily limit";
-"OnboardingValuePropositionScreen.title3" = "Each day, the limit will gradually decrease until you quit!";
+"OnboardingValuePropositionScreen.title3" = "Use widgets and shortcuts to do it faster";
+"OnboardingValuePropositionScreen.title4" = "Each day, the limit will gradually decrease until you quit!";
 "OnboardingValuePropositionScreen.text1" = "Quitting cold turkey almost always leads to a relapse. We use a gradual quitting approach so that the body has time to adapt and does not experience stress.";
 "OnboardingValuePropositionScreen.text2" = "Unlike quitting cold turkey, you won't feel deprived or severely restricted - sticking to your limit won't be difficult, and seeing daily progress is priceless!";
-"OnboardingValuePropositionScreen.text3" = "The process can go either smoothly or a little more intensely - it depends on your desired quit period and the strength of your habit.";
+"OnboardingValuePropositionScreen.text3" = "You can track puffs without entering the app. Widgets, double tap on the back panel, lock screen button and Action Button are available.";
+"OnboardingValuePropositionScreen.text4" = "The process can go either smoothly or a little more intensely - it depends on your desired quit period and the strength of your habit.";
 
 "OnboardingSurvey.Description" = "Now - just 8 quick questions so we can match you with the best quit plan!";
 
