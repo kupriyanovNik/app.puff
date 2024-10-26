@@ -7,153 +7,92 @@
 
 import SwiftUI
 
-extension AccountViewWidgetsInfoView {
-    struct AccountViewWidgetsHomeScreenInfoView: View {
+struct AccountWidgetsInfoModel: Identifiable {
+    let id = UUID()
 
-        var backAction: () -> Void
+    let number: Int
+    let title: String
+    let imageName: String
 
-        private let images: [String] = Array((1...2).map { "AccountWidgetsHomeInfo\($0)Image" })
-        private let texts: [String] = Array((1...2).map { "AccountWidgets.HomeInfo.Text\($0)".l })
+    var actionTitle: String? = nil
+    var action: () -> Void = {}
+}
 
-        var body: some View {
-            CustomDismissableView(dismissAction: backAction, content: viewContent)
-        }
+struct AccountWidgetsInfoView: View {
+    let title: String
+    let models: [AccountWidgetsInfoModel]
 
-        @ViewBuilder
-        private func viewContent() -> some View {
-            VStack(spacing: 28) {
-                headerView()
+    var backAction: () -> Void
 
-                cells()
+    var body: some View {
+        CustomDismissableView(dismissAction: backAction, content: viewContent)
+    }
 
-                Spacer()
-            }
-        }
+    @ViewBuilder
+    private func viewContent() -> some View {
+        VStack(spacing: 28) {
+            headerView()
 
-        @ViewBuilder
-        private func headerView() -> some View {
-            HStack(spacing: 8) {
-                Button(action: backAction) {
-                    Image(.accountBack)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(26)
-                }
+            cells()
 
-                Text("AccountWidgets.HomeInfoTitle".l)
-                    .font(.semibold22)
-                    .foregroundStyle(Palette.textPrimary)
-
-                Spacer()
-            }
-            .padding(.top, 22)
-            .padding(.leading, 16)
-        }
-
-        @ViewBuilder
-        private func cells() -> some View {
-            VStack(spacing: 10) {
-                cell(index: 0)
-                cell(index: 1)
-            }
-            .padding(.horizontal, 12)
-        }
-
-
-        @ViewBuilder
-        private func cell(index: Int) -> some View {
-            Image(images[index])
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(16)
-                .overlay(alignment: .topLeading) {
-                    Text("\(index + 1)")
-                        .font(.semibold22)
-                        .foregroundStyle(Palette.textPrimary)
-                        .padding([.leading, .top], 16)
-                }
-                .overlay(alignment: .bottomLeading) {
-                    Text(texts[index])
-                        .font(.medium15)
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(Palette.textSecondary)
-                        .padding([.leading, .bottom], 16)
-                }
+            Spacer()
         }
     }
 
-    struct AccountViewWidgetsControlCenterInfoView: View {
-
-        var backAction: () -> Void
-
-        private let images: [String] = Array((1...3).map { "AccountWidgetsControlCenterInfo\($0)Image" })
-        private let texts: [String] = Array((1...3).map { "AccountWidgets.ControlCenterInfo.Text\($0)".l })
-
-        var body: some View {
-            CustomDismissableView(dismissAction: backAction, content: viewContent)
-        }
-
-        @ViewBuilder
-        private func viewContent() -> some View {
-            VStack(spacing: 28) {
-                headerView()
-
-                cells()
-
-                Spacer()
+    @ViewBuilder
+    private func headerView() -> some View {
+        HStack(spacing: 8) {
+            Button(action: backAction) {
+                Image(.accountBack)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(26)
             }
+
+            Text(title.l)
+                .font(.semibold22)
+                .foregroundStyle(Palette.textPrimary)
+                .lineLimit(1)
+
+            Spacer()
         }
+        .padding(.top, 22)
+        .padding(.horizontal, 16)
+    }
 
-        @ViewBuilder
-        private func headerView() -> some View {
-            HStack(spacing: 8) {
-                Button(action: backAction) {
-                    Image(.accountBack)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(26)
-                }
+    @ViewBuilder
+    private func cells() -> some View {
+        VStack(spacing: 10) {
+            ForEach(models, content: cell)
+        }
+        .padding(.horizontal, 12)
+    }
 
-                Text("AccountWidgets.ControlCenterInfoTitle".l)
+
+    @ViewBuilder
+    private func cell(_ model: AccountWidgetsInfoModel) -> some View {
+        Image(model.imageName)
+            .resizable()
+            .scaledToFit()
+            .cornerRadius(16)
+            .overlay(alignment: .topLeading) {
+                Text("\(model.number)")
                     .font(.semibold22)
                     .foregroundStyle(Palette.textPrimary)
-
-                Spacer()
+                    .padding([.leading, .top], 16)
             }
-            .padding(.top, 22)
-            .padding(.leading, 16)
-        }
-
-        @ViewBuilder
-        private func cells() -> some View {
-            VStack(spacing: 10) {
-                cell(index: 0)
-                cell(index: 1)
-                cell(index: 2)
-            }
-            .padding(.horizontal, 12)
-        }
-
-
-        @ViewBuilder
-        private func cell(index: Int) -> some View {
-            Image(images[index])
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(16)
-                .overlay(alignment: .topLeading) {
-                    Text("\(index + 1)")
-                        .font(.semibold22)
-                        .foregroundStyle(Palette.textPrimary)
-                        .padding([.leading, .top], 16)
-                }
-                .overlay(alignment: .bottomLeading) {
-                    Text(texts[index])
+            .overlay(alignment: .bottomLeading) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(model.title.l)
                         .font(.medium15)
                         .multilineTextAlignment(.leading)
                         .foregroundStyle(Palette.textSecondary)
                         .padding([.leading, .bottom], 16)
+
+                    if let actionTitle = model.actionTitle {
+                        AccentButton(text: actionTitle.l, action: model.action)
+                    }
                 }
-        }
+            }
     }
 }

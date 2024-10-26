@@ -150,7 +150,7 @@
 
 "Account.Title" = "Настройки";
 "Account.ContactUs" = "Связаться с нами";
-"Account.Widgets" = "Виджеты";
+"Account.Widgets" = "Виджеты и команды";
 "Account.Subscription" = "Подписка";
 "Account.OurChannel" = "Наш Telegram-канал";
 "Account.OurChannel.Link" = "https://t.me/puffless_app_ru";
@@ -171,7 +171,12 @@
 
 "AccountWidgets.Base.Home" = "Экран\n«Домой»";
 "AccountWidgets.Base.ControlCenter" = "Центр\nуправления";
-"AccountWidgets.Base.AvailableFromTarget" = "Доступно с iOS {number}";
+"AccountWidgets.Base.ActionButton" = "Кнопка Действия";
+"AccountWidgets.Base.DoubleBackTap" = "Двойной тап по\nзадней панели ";
+"AccountWidgets.Base.LockScreen" = "Экран\nблокировки";
+
+"AccountWidgets.Base.AvailableOnIOS18" = "Доступно с iOS 18";
+"AccountWidgets.Base.Available15ProAndNewer" = "Доступно с iPhone 15 Pro";
 
 "AccountWidgets.HomeInfoTitle" = "Экран «Домой»";
 "AccountWidgets.HomeInfo.Text1" = "Удерживайте экран\n«Домой» и нажмите на\nкнопку добавления";

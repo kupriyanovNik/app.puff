@@ -150,7 +150,7 @@
 
 "Account.Title" = "Settings";
 "Account.ContactUs" = "Contact us";
-"Account.Widgets" = "Widgets";
+"Account.Widgets" = "Widgets and shortcuts";
 "Account.Subscription" = "Subscription";
 "Account.OurChannel" = "Our Telegram channel";
 "Account.OurChannel.Link" = "https://t.me/puffless_app";
@@ -171,7 +171,12 @@
 
 "AccountWidgets.Base.Home" = "Home Screen";
 "AccountWidgets.Base.ControlCenter" = "Control Center";
-"AccountWidgets.Base.AvailableFromTarget" = "Available on iOS {number}";
+"AccountWidgets.Base.ActionButton" = "Action Button";
+"AccountWidgets.Base.DoubleBackTap" = "Double Back Tap";
+"AccountWidgets.Base.LockScreen" = "Lock Screen";
+
+"AccountWidgets.Base.AvailableOnIOS18" = "Available on iOS 18";
+"AccountWidgets.Base.Available15ProAndNewer" = "iPhone 15 Pro and later";
 
 "AccountWidgets.HomeInfoTitle" = "Home Screen";
 "AccountWidgets.HomeInfo.Text1" = "Hold the Home Screen,\nthen press the add button";

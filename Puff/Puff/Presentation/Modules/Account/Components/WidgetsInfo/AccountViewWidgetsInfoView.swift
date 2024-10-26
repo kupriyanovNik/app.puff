@@ -11,20 +11,15 @@ struct AccountViewWidgetsInfoView: View {
 
     var backAction: () -> Void
 
-    @State private var shouldShowHomeInfo: Bool = false
+    @State private var shouldShowHomeScreenInfo: Bool = false
     @State private var shouldShowControlCenterInfo: Bool = false
     @State private var shouldShowActionButtonInfo: Bool = false
     @State private var shouldShowDoubleBackTapInfo: Bool = false
     @State private var shouldShowLockScreenInfo: Bool = false
 
-    private var ableToDismissBySlidingDown: Bool {
-        !shouldShowHomeInfo && !shouldShowControlCenterInfo &&
-        !shouldShowActionButtonInfo && !shouldShowDoubleBackTapInfo && !shouldShowLockScreenInfo
-    }
-
     var body: some View {
         CustomDismissableView(
-            ableToDismissBySlidingDown: ableToDismissBySlidingDown,
+            ableToDismissBySlidingDown: false,
             dismissAction: backAction,
             content: viewContent
         )
@@ -36,19 +31,12 @@ struct AccountViewWidgetsInfoView: View {
             headerView()
 
             cells()
-
-            Spacer()
         }
-        .makeCustomConditionalView(shouldShowHomeInfo) {
-            AccountViewWidgetsHomeScreenInfoView {
-                shouldShowHomeInfo = false
-            }
-        }
-        .makeCustomConditionalView(shouldShowControlCenterInfo) {
-            AccountViewWidgetsControlCenterInfoView {
-                shouldShowControlCenterInfo = false
-            }
-        }
+        .makeCustomConditionalView(shouldShowHomeScreenInfo, content: homeScreenInfoView)
+        .makeCustomConditionalView(shouldShowControlCenterInfo, content: controlCenterInfoView)
+        .makeCustomConditionalView(shouldShowActionButtonInfo, content: actionButtonInfoView)
+        .makeCustomConditionalView(shouldShowDoubleBackTapInfo, content: doubleBackTapInfoView)
+        .makeCustomConditionalView(shouldShowLockScreenInfo, content: lockScreenInfoView)
     }
 
     @ViewBuilder
@@ -73,25 +61,55 @@ struct AccountViewWidgetsInfoView: View {
 
     @ViewBuilder
     private func cells() -> some View {
-        VStack(spacing: 10) {
-            cell(
-                "AccountWidgets.Base.Home".l,
-                imageName: "AccountWidgetsBaseInfoHomeImage"
-            ) { shouldShowHomeInfo = true }
+        ScrollView {
+            VStack(spacing: 10) {
+                cell(
+                    "AccountWidgets.Base.Home".l,
+                    imageName: "AccountWidgetsBaseInfoHomeScreenImage"
+                ) {
+                    shouldShowHomeScreenInfo = true
+                }
 
-            cell(
-                "AccountWidgets.Base.ControlCenter".l,
-                target: 18,
-                imageName: "AccountWidgetsBaseInfoControlCenterImage"
-            ) { shouldShowControlCenterInfo = true }
+                cell(
+                    "AccountWidgets.Base.ControlCenter".l,
+                    availableText: "AccountWidgets.Base.AvailableOnIOS18".l,
+                    imageName: "AccountWidgetsBaseInfoControlCenterImage"
+                ) {
+                    shouldShowControlCenterInfo = true
+                }
+
+                cell(
+                    "AccountWidgets.Base.ActionButton".l,
+                    availableText: "AccountWidgets.Base.Available15ProAndNewer".l,
+                    imageName: "AccountWidgetsBaseInfoActionButtonImage"
+                ) {
+                    shouldShowActionButtonInfo = true
+                }
+
+                cell(
+                    "AccountWidgets.Base.DoubleBackTap".l,
+                    imageName: "AccountWidgetsBaseInfoDoubleBackTapImage"
+                ) {
+                    shouldShowDoubleBackTapInfo = true
+                }
+
+                cell(
+                    "AccountWidgets.Base.LockScreen".l,
+                    availableText: "AccountWidgets.Base.AvailableOnIOS18".l,
+                    imageName: "AccountWidgetsBaseInfoLockScreenImage"
+                ) {
+                    shouldShowLockScreenInfo = true
+                }
+            }
+            .padding(.horizontal, 12)
         }
-        .padding(.horizontal, 12)
+        .scrollIndicators(.hidden)
     }
 
     @ViewBuilder
     private func cell(
         _ text: String,
-        target: Int? = nil,
+        availableText: String? = nil,
         imageName: String,
         action: @escaping () -> Void
     ) -> some View {
@@ -107,22 +125,17 @@ struct AccountViewWidgetsInfoView: View {
                     .padding([.leading, .bottom], 16)
             }
             .overlay(alignment: .topLeading) {
-                if let target {
+                if let availableText {
                     Group {
-                        Text(
-                            "AccountWidgets.Base.AvailableFromTarget".l.formatByDivider(
-                                divider: "{number}",
-                                count: target
-                            )
-                        )
-                        .font(.semibold12)
-                        .foregroundStyle(Palette.textPrimary)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 10)
-                        .background {
-                            Capsule()
-                                .fill(.white)
-                        }
+                        Text(availableText)
+                            .font(.semibold12)
+                            .foregroundStyle(Palette.textPrimary)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 10)
+                            .background {
+                                Capsule()
+                                    .fill(.white)
+                            }
                     }
                     .padding([.leading, .top], 16)
                 }
@@ -133,4 +146,53 @@ struct AccountViewWidgetsInfoView: View {
 
 #Preview {
     AccountViewWidgetsInfoView { }
+}
+
+
+private extension AccountViewWidgetsInfoView {
+    @ViewBuilder func homeScreenInfoView() -> some View {
+        AccountWidgetsInfoView(
+            title: "AccountWidgets.HomeInfoTitle",
+            models: Array(
+                (1...2).map { index in
+                    AccountWidgetsInfoModel(
+                        number: index,
+                        title: "AccountWidgets.HomeInfo.Text\(index)",
+                        imageName: "AccountWidgetsHomeInfo\(index)Image"
+                    )
+                }
+            )
+        ) {
+            shouldShowHomeScreenInfo = false
+        }
+    }
+
+    @ViewBuilder func controlCenterInfoView() -> some View {
+        AccountWidgetsInfoView(
+            title: "AccountWidgets.ControlCenterInfoTitle",
+            models: Array(
+                (1...3).map { index in
+                    AccountWidgetsInfoModel(
+                        number: index,
+                        title: "AccountWidgets.ControlCenterInfo.Text\(index)",
+                        imageName: "AccountWidgetsControlCenterInfo\(index)Image"
+                    )
+                }
+            )
+        ) {
+            shouldShowControlCenterInfo = false
+        }
+    }
+
+    @ViewBuilder func actionButtonInfoView() -> some View {
+
+    }
+
+    @ViewBuilder func doubleBackTapInfoView() -> some View {
+
+    }
+
+    @ViewBuilder func lockScreenInfoView() -> some View {
+
+    }
 }
