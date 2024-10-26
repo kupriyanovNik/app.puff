@@ -25,7 +25,9 @@ struct StatisticsView: View {
                 VStack(spacing: 10) {
                     planView()
 
-                    StatisticsPlanDailyView(smokesManager: smokesManager)
+                    if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
+                        StatisticsPlanDailyView(smokesManager: smokesManager)
+                    }
                 }
             }
             .scrollIndicators(.hidden)

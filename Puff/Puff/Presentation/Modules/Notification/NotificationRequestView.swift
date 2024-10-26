@@ -17,7 +17,9 @@ struct NotificationRequestView: View {
         VStack(spacing: 32) {
             Spacer()
 
-            mockNotificationView()
+            LottieView(name: "NotificationRequestAnimation", loopMode: .loop, delay: 0.2)
+                .scaledToFit()
+                .padding(.horizontal, 60)
 
             VStack(spacing: 16) {
                 Text("Поможем не забывать отмечать затяжки")
@@ -30,6 +32,7 @@ struct NotificationRequestView: View {
                     .padding(.horizontal, 10)
             }
             .multilineTextAlignment(.center)
+            .offset(y: -50)
 
             Spacer()
 

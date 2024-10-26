@@ -10,7 +10,7 @@ import SwiftUI
 final class OnboardingViewModel: ObservableObject {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
 
-    private var currentIndex: Int = 0
+    private var currentIndex: Int = 6
 
     @Published var onboardingPath = NavigationPath()
     @Published var isSurveySkipped: Bool = false

@@ -18,22 +18,160 @@ struct StatisticsPlanDailyView: View {
     }
 
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView(.horizontal) {
-                HStack(spacing: 6) {
-                    
+        VStack(spacing: 17) {
+            headerView()
+                .padding(.top, 14)
+                .padding(.leading, 18)
+
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal) {
+                    HStack(spacing: 6) {
+                        ForEach(smokesManager.planCounts.indices) { index in
+                            dayCell(index: index, proxy: proxy)
+                        }
+                    }
+                    .padding(.vertical, 3)
+                    .padding(.horizontal, 18)
                 }
+                .scrollIndicators(.hidden)
+                .onAppear { selectToday(proxy: proxy) }
             }
-            .scrollIndicators(.hidden)
-            .onAppear {
-                selectToday(proxy: proxy)
-            }
+
+            bottomView()
+                .padding(.horizontal, 18)
+                .padding(.bottom, 20)
+        }
+        .background {
+            Color.white
+                .cornerRadius(22)
         }
     }
 
     @ViewBuilder
+    private func headerView() -> some View {
+        HStack(spacing: 3) {
+            Image(.subscriptionBenefits1)
+                .resizable()
+                .scaledToFit()
+                .frame(18)
+
+            Text("План бросания")
+                .font(.semibold14)
+                .foregroundStyle(Palette.textAccent)
+
+            Spacer()
+        }
+    }
+
+    @ViewBuilder
+    private func bottomView() -> some View {
+        let dayIndex = smokesManager.currentDayIndex
+        let ratio = getRatio(for: selectedIndex)
+
+        let limit = smokesManager.planLimits[selectedIndex]
+        let count = smokesManager.planCounts[selectedIndex]
+
+        let percentage = 1.0 - (Double(limit) / Double(smokesManager.planLimits[0]))
+        let showPercentage = percentage > 0 && ratio < 1
+
+        let leadingText: String = {
+            if selectedIndex == dayIndex {
+                return "Затяжек сегодня"
+            } else if selectedIndex > dayIndex {
+                return "Лимит за {number} день".formatByDivider(divider: "{number}", count: selectedIndex + 1)
+            }
+
+            return "Затяжек за {number} день".formatByDivider(divider: "{number}", count: selectedIndex + 1)
+        }()
+
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(alignment: .bottom, spacing: 2) {
+                    Group {
+                        if selectedIndex > dayIndex {
+                            Text("\(limit)").foregroundColor(Palette.darkBlue)
+                        } else {
+                            (
+                                Text("\(count)").foregroundColor(Palette.darkBlue)
+                                +
+                                Text("/\(limit)").foregroundColor(Palette.textQuaternary)
+                            )
+                        }
+                    }
+                    .font(.bold22)
+                }
+
+                Text(leadingText)
+                    .font(.medium12)
+                    .foregroundStyle(Palette.textQuaternary)
+            }
+
+            Spacer()
+
+            Group {
+                if showPercentage {
+                    VStack(alignment: .trailing, spacing: 4) {
+                        HStack(alignment: .bottom, spacing: 2) {
+                            Image(.statisticsPlanPercentage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(18)
+
+                            Text("\(Int(percentage * 100))%")
+                                .font(.bold22)
+                                .foregroundStyle(Palette.darkBlue)
+                        }
+
+                        Text("С начала плана")
+                            .font(.medium12)
+                            .foregroundStyle(Palette.textQuaternary)
+                    }
+                    .transition(.opacity.animation(.easeInOut(duration: 0.25)))
+                }
+            }
+            .animation(.easeInOut(duration: 0.25), value: showPercentage)
+        }
+    }
+
+    private func getRatio(for index: Int) -> Double {
+        Double(smokesManager.planCounts[index]) / Double(smokesManager.planLimits[index])
+    }
+
+    private func selectCell(at index: Int, proxy: ScrollViewProxy) {
+        selectedIndex = index
+
+        withAnimation {
+            proxy.scrollTo(index, anchor: .center)
+        }
+    }
+
+    private func selectToday(proxy: ScrollViewProxy) {
+        selectedIndex = smokesManager.currentDayIndex
+
+        proxy.scrollTo(selectedIndex, anchor: .center)
+    }
+}
+
+#Preview {
+    StatisticsPlanDailyView(smokesManager: .init())
+}
+
+extension StatisticsPlanDailyView {
+    @ViewBuilder
+    private func dayCell(index: Int, proxy: ScrollViewProxy) -> some View {
+        Group {
+            if index < smokesManager.currentDayIndex {
+                pastCell(index: index, proxy: proxy)
+            } else {
+                futureAndTodayCell(index: index, proxy: proxy)
+            }
+        }
+        .animation(.easeInOut(duration: 0.25), value: selectedIndex)
+    }
+
+    @ViewBuilder
     private func pastCell(index: Int, proxy: ScrollViewProxy) -> some View {
-        let successed = smokesManager.planCounts[index] <= smokesManager.planLimits[index]
+        let successed = getRatio(for: index) <= 1
         let isSelected = index == selectedIndex
 
         let imageName = successed ? "statisticsDaySuccessedImage" : "statisticsDayFailedImage"
@@ -61,17 +199,28 @@ struct StatisticsPlanDailyView: View {
     private func futureAndTodayCell(index: Int, proxy: ScrollViewProxy) -> some View {
         let ratio = getRatio(for: index)
         let isSelected = index == selectedIndex
-        let text = (index + 1) == smokesManager.daysInPlan ? "\(smokesManager.realPlanDayIndex)" : "\(index + 1)"
+        let successed = ratio <= 1
+
+        let successedColor = isSelected ? Color(hex: 0x75B8FD) : Color(hex: 0xB5D9FF)
+        let failedColor = isSelected ? Color(hex: 0xFF7D7D) : Color(hex: 0xFDB9BA)
+        let color = successed ? successedColor : failedColor
+
+        let realIndex = smokesManager.realPlanDayIndex
+        let currIndex = smokesManager.currentDayIndex
+        let daysInPlan = smokesManager.daysInPlan
+
+        let text = (((index + 1) == daysInPlan) && realIndex != currIndex) ? "\(realIndex)" : "\(index + 1)"
 
         Circle()
             .stroke(Color(hex: 0xEFEFEF), style: .init(lineWidth: 5))
-            .frame(40)
+            .frame(36)
             .overlay {
                 if index <= todayIndex {
                     Circle()
-                        .trim(from: 0, to: ratio)
-                        .stroke(Color(hex: 0xB5D9FF), style: .init(lineWidth: 5, lineCap: .round))
-                        .frame(40)
+                        .trim(from: 0, to: min(1, ratio))
+                        .stroke(color, style: .init(lineWidth: 5, lineCap: .round))
+                        .frame(35)
+                        .rotationEffect(.degrees(-90))
                 }
             }
             .overlay {
@@ -81,30 +230,9 @@ struct StatisticsPlanDailyView: View {
             }
             .contentShape(.circle)
             .id(index)
+            .padding(.horizontal, 2)
             .onTapGesture {
                 selectCell(at: index, proxy: proxy)
             }
     }
-
-    private func getRatio(for index: Int) -> Double {
-        Double(smokesManager.smokesCount[index]) / Double(smokesManager.planLimits[index])
-    }
-
-    private func selectCell(at index: Int, proxy: ScrollViewProxy) {
-        selectedIndex = index
-
-        withAnimation {
-            proxy.scrollTo(index)
-        }
-    }
-
-    private func selectToday(proxy: ScrollViewProxy) {
-        selectedIndex = smokesManager.currentDayIndex
-
-        proxy.scrollTo(selectedIndex, anchor: .leading)
-    }
-}
-
-#Preview {
-    StatisticsPlanDailyView(smokesManager: .init())
 }
