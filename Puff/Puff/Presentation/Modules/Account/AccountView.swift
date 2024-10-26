@@ -48,35 +48,15 @@ struct AccountView: View {
                 checkNotifications()
             }
         }
-        .overlay {
-            Group {
-                if shouldShowSubscriptionInfo {
-                    AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
-                        shouldShowSubscriptionInfo = false
-                    }
-                    .preferredColorScheme(.light)
-                    .transition(
-                        .opacity.combined(with: .offset(y: 50))
-                        .animation(.mainAnimation)
-                    )
-                }
+        .makeCustomConditionalView(shouldShowSubscriptionInfo) {
+            AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
+                shouldShowSubscriptionInfo = false
             }
-            .animation(.mainAnimation, value: shouldShowSubscriptionInfo)
         }
-        .overlay {
-            Group {
-                if navigationVM.shouldShowAccountWidgetsInfo {
-                    AccountViewWidgetsInfoView {
-                        navigationVM.shouldShowAccountWidgetsInfo = false
-                    }
-                    .preferredColorScheme(.light)
-                    .transition(
-                        .opacity.combined(with: .offset(y: 50))
-                        .animation(.mainAnimation)
-                    )
-                }
+        .makeCustomConditionalView(navigationVM.shouldShowAccountWidgetsInfo) {
+            AccountViewWidgetsInfoView {
+                navigationVM.shouldShowAccountWidgetsInfo = false
             }
-            .animation(.mainAnimation, value: navigationVM.shouldShowAccountWidgetsInfo)
         }
         .makeCustomSheet(isPresented: $shouldShowResetWarning, content: resetWarning)
     }

@@ -17,9 +17,14 @@ struct AccountViewWidgetsInfoView: View {
     @State private var shouldShowDoubleBackTapInfo: Bool = false
     @State private var shouldShowLockScreenInfo: Bool = false
 
+    private var ableToDismissBySlidingDown: Bool {
+        !shouldShowHomeInfo && !shouldShowControlCenterInfo &&
+        !shouldShowActionButtonInfo && !shouldShowDoubleBackTapInfo && !shouldShowLockScreenInfo
+    }
+
     var body: some View {
         CustomDismissableView(
-            ableToDismissBySlidingDown: (shouldShowHomeInfo == false) && (shouldShowControlCenterInfo == false),
+            ableToDismissBySlidingDown: ableToDismissBySlidingDown,
             dismissAction: backAction,
             content: viewContent
         )
@@ -34,35 +39,15 @@ struct AccountViewWidgetsInfoView: View {
 
             Spacer()
         }
-        .overlay {
-            Group {
-                if shouldShowHomeInfo {
-                    AccountViewWidgetsHomeScreenInfoView {
-                        shouldShowHomeInfo = false
-                    }
-                    .preferredColorScheme(.light)
-                    .transition(
-                        .opacity.combined(with: .offset(y: 50))
-                        .animation(.mainAnimation)
-                    )
-                }
+        .makeCustomConditionalView(shouldShowHomeInfo) {
+            AccountViewWidgetsHomeScreenInfoView {
+                shouldShowHomeInfo = false
             }
-            .animation(.mainAnimation, value: shouldShowHomeInfo)
         }
-        .overlay {
-            Group {
-                if shouldShowControlCenterInfo {
-                    AccountViewWidgetsControlCenterInfoView {
-                        shouldShowControlCenterInfo = false
-                    }
-                    .preferredColorScheme(.light)
-                    .transition(
-                        .opacity.combined(with: .offset(y: 50))
-                        .animation(.mainAnimation)
-                    )
-                }
+        .makeCustomConditionalView(shouldShowControlCenterInfo) {
+            AccountViewWidgetsControlCenterInfoView {
+                shouldShowControlCenterInfo = false
             }
-            .animation(.mainAnimation, value: shouldShowControlCenterInfo)
         }
     }
 

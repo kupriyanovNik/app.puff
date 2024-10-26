@@ -32,52 +32,29 @@ struct MainNavigationView: View {
                     TabBar(selectedTab: $navigationVM.selectedTab)
                 }
         }
-        .overlay {
-            Group {
-                if !onboardingVM.hasSeenOnboarding {
-                    OnboardingView(onboardingVM: onboardingVM, subscriptionsManager: subscriptionsManager)
-                        .preferredColorScheme(.light)
-                        .transition(
-                            .asymmetric(
-                                insertion: .identity.animation(.none),
-                                removal: .move(edge: .top).animation(.mainAnimation)
-                            )
-                        )
-                }
-            }
-            .animation(.mainAnimation, value: onboardingVM.hasSeenOnboarding)
+        .makeCustomConditionalView(
+            !onboardingVM.hasSeenOnboarding,
+            transition: .asymmetric(
+                insertion: .identity.animation(.none),
+                removal: .move(edge: .top).animation(.mainAnimation)
+            )
+        ) {
+            OnboardingView(
+                onboardingVM: onboardingVM,
+                subscriptionsManager: subscriptionsManager
+            )
         }
-        .overlay {
-            Group {
-                if navigationVM.shouldShowAccountView {
-                    AccountView(
-                        navigationVM: navigationVM,
-                        smokesManager: smokesManager,
-                        subscriptionsManager: subscriptionsManager
-                    )
-                    .preferredColorScheme(.light)
-                    .transition(
-                        .opacity.combined(with: .offset(y: 50))
-                            .animation(.mainAnimation)
-                    )
-                }
-            }
-            .animation(.mainAnimation, value: navigationVM.shouldShowAccountView)
+        .makeCustomConditionalView(navigationVM.shouldShowAccountView) {
+            AccountView(
+                navigationVM: navigationVM,
+                smokesManager: smokesManager,
+                subscriptionsManager: subscriptionsManager
+            )
         }
-        .overlay {
-            Group {
-                if navigationVM.shouldShowPaywall {
-                    AppPaywallView(subscriptionsManager: subscriptionsManager, showBenefitsDelay: 0.4) {
-                        navigationVM.shouldShowPaywall = false
-                    }
-                    .preferredColorScheme(.light)
-                    .transition(
-                        .opacity.combined(with: .offset(y: 50))
-                        .animation(.mainAnimation)
-                    )
-                }
+        .makeCustomConditionalView(navigationVM.shouldShowPaywall) {
+            AppPaywallView(subscriptionsManager: subscriptionsManager, showBenefitsDelay: 0.4) {
+                navigationVM.shouldShowPaywall = false
             }
-            .animation(.mainAnimation, value: navigationVM.shouldShowPaywall)
         }
         .onChange(of: smokesManager.todaySmokes) { newValue in
             if !reviewManager.hasSeenReviewRequestAt100Smokes {

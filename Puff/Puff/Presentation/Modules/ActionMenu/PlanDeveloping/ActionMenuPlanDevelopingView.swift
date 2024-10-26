@@ -122,7 +122,7 @@ struct ActionMenuPlanDevelopingView: View {
     private func infoView() -> some View {
         let addiction: String = {
             switch smokesCount {
-            case 99...249: "ActionMenuPlanDeveloping.Addiction.InfoText1".l
+            case 49...249: "ActionMenuPlanDeveloping.Addiction.InfoText1".l
             case 250...799: "ActionMenuPlanDeveloping.Addiction.InfoText2".l
             default: "ActionMenuPlanDeveloping.Addiction.InfoText3".l
             }

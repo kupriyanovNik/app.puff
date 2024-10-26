@@ -125,6 +125,23 @@ extension View {
             )
             .animation(.mainAnimation)
     }
+
+    func makeCustomConditionalView<Content: View>(
+        _ condition: Bool,
+        transition: AnyTransition = .opacity.combined(with: .offset(y: 50)).animation(.mainAnimation),
+        content: @escaping () -> Content
+    ) -> some View {
+        overlay {
+            Group {
+                if condition {
+                    content()
+                    .preferredColorScheme(.light)
+                    .transition(transition)
+                }
+            }
+            .animation(.mainAnimation, value: condition)
+        }
+    }
 }
 
 extension View {
