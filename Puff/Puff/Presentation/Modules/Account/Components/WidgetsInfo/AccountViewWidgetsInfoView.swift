@@ -102,6 +102,7 @@ struct AccountViewWidgetsInfoView: View {
                 }
             }
             .padding(.horizontal, 12)
+            .padding(.bottom, isSmallDevice ? 22 : 0)
         }
         .scrollIndicators(.hidden)
     }
@@ -202,7 +203,11 @@ private extension AccountViewWidgetsInfoView {
     }
 
     @ViewBuilder func doubleBackTapInfoView() -> some View {
-
+//        AccountWidgetsInfoView(
+//            title: "AccountWidgetsBaseInfoDoubleBackTapImage",
+//            models: <#T##[AccountWidgetsInfoModel]#>,
+//            backAction: <#T##() -> Void#>
+//        )
     }
 
     @ViewBuilder func lockScreenInfoView() -> some View {
