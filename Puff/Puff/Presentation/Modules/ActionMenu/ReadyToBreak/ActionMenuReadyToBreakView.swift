@@ -31,9 +31,9 @@ struct ActionMenuReadyToBreakView: View {
             }
             .transition(
                 .asymmetric(
-                    insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
+                    insertion: .opacity.animation(.mainAnimation.delay(0.3)),
                     removal: .opacity
-                ).animation(.easeInOut(duration: 0.3))
+                ).animation(.mainAnimation)
             )
 
             VStack(spacing: 10) {
@@ -54,7 +54,7 @@ struct ActionMenuReadyToBreakView: View {
                         .transition(.opacity.combined(with: .move(edge: .bottom)))
                     }
                 }
-                .animation(.easeInOut(duration: 0.3), value: screenState)
+                .animation(.mainAnimation, value: screenState)
             }
             .padding(.horizontal, 12)
         }
@@ -150,14 +150,14 @@ struct ActionMenuReadyToBreakView: View {
                 if tappedReadyToBreak && !isLastSmoke {
                     onDismiss()
                 } else {
-                    withAnimation(.easeInOut(duration: 0.3)) {
+                    withAnimation(.mainAnimation) {
                         screenState = .needDay
                     }
 
                     onNeedOneMoreDay()
                 }
             } else {
-                withAnimation(.easeInOut(duration: 0.3)) {
+                withAnimation(.mainAnimation) {
                     screenState = .ready
                 }
                 onBreak()

@@ -79,9 +79,9 @@ struct ActionMenuYesterdayPlanExceededView: View {
             }
             .transition(
                 .asymmetric(
-                    insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
+                    insertion: .opacity.animation(.mainAnimation.delay(0.3)),
                     removal: .opacity
-                ).animation(.easeInOut(duration: 0.3))
+                ).animation(.mainAnimation)
             )
 
             VStack(spacing: 10) {
@@ -98,7 +98,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
                         .transition(.opacity.combined(with: .move(edge: .bottom)))
                     }
                 }
-                .animation(.easeInOut(duration: 0.3), value: shouldShowPlanExtendedWarning)
+                .animation(.mainAnimation, value: shouldShowPlanExtendedWarning)
             }
         }
         .padding(.horizontal, 12)

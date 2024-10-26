@@ -146,7 +146,7 @@ struct ActionMenuPlanDevelopingView: View {
     }
 
     private func nextAction() {
-        withAnimation(.easeInOut(duration: 0.3)) {
+        withAnimation(.mainAnimation) {
             if screenState == .addiction {
                 screenState = .plan
             } else if screenState == .plan {

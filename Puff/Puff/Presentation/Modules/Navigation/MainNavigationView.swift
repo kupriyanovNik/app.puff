@@ -40,12 +40,12 @@ struct MainNavigationView: View {
                         .transition(
                             .asymmetric(
                                 insertion: .identity.animation(.none),
-                                removal: .move(edge: .top).animation(.easeInOut(duration: 0.3))
+                                removal: .move(edge: .top).animation(.mainAnimation)
                             )
                         )
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: onboardingVM.hasSeenOnboarding)
+            .animation(.mainAnimation, value: onboardingVM.hasSeenOnboarding)
         }
         .overlay {
             Group {
@@ -58,11 +58,11 @@ struct MainNavigationView: View {
                     .preferredColorScheme(.light)
                     .transition(
                         .opacity.combined(with: .offset(y: 50))
-                            .animation(.easeInOut(duration: 0.3))
+                            .animation(.mainAnimation)
                     )
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountView)
+            .animation(.mainAnimation, value: navigationVM.shouldShowAccountView)
         }
         .overlay {
             Group {
@@ -73,11 +73,11 @@ struct MainNavigationView: View {
                     .preferredColorScheme(.light)
                     .transition(
                         .opacity.combined(with: .offset(y: 50))
-                        .animation(.easeInOut(duration: 0.3))
+                        .animation(.mainAnimation)
                     )
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowPaywall)
+            .animation(.mainAnimation, value: navigationVM.shouldShowPaywall)
         }
         .onChange(of: smokesManager.todaySmokes) { newValue in
             if !reviewManager.hasSeenReviewRequestAt100Smokes {

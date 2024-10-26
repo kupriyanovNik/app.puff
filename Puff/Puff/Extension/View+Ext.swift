@@ -110,9 +110,9 @@ extension View {
                 .asymmetric(
                     insertion: .move(edge: .trailing),
                     removal: .move(edge: .leading)
-                ).animation(.easeInOut(duration: 0.3))
+                ).animation(.mainAnimation)
             )
-            .animation(.easeInOut(duration: 0.3))
+            .animation(.mainAnimation)
     }
 
     func makeSlideTransition(isForwardDirection: Bool) -> some View {
@@ -121,9 +121,9 @@ extension View {
                 .asymmetric(
                     insertion: .move(edge: isForwardDirection ? .trailing : .leading) ,
                     removal: .move(edge: isForwardDirection ? .leading : .trailing)
-                ).animation(.easeInOut(duration: 0.3))
+                ).animation(.mainAnimation)
             )
-            .animation(.easeInOut(duration: 0.3))
+            .animation(.mainAnimation)
     }
 }
 

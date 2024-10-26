@@ -36,6 +36,7 @@
 		B73B2E552C9B64CD001EB658 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E542C9B64CD001EB658 /* AppManager.swift */; };
 		B74D975E2CCAF097004C5E23 /* PuffShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */; };
 		B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
+		B754071B2CCD12B200DCB1D5 /* Animation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */; };
 		B7633EA72CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA52CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift */; };
 		B7633EA92CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA82CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift */; };
 		B76AEF5C2CA97ECB000003F8 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */; };
@@ -205,6 +206,7 @@
 		B73B2E502C9B64A6001EB658 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B73B2E542C9B64CD001EB658 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		B75277492C9F4C7B00F8B98D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Ext.swift"; sourceTree = "<group>"; };
 		B7633EA52CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewWidgetsInfoView.swift; sourceTree = "<group>"; };
 		B7633EA82CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewWidgetsInfoViewComponents.swift; sourceTree = "<group>"; };
 		B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
@@ -1001,6 +1003,7 @@
 				B78A6A1C2CA71A940074067B /* Optional+Ext.swift */,
 				B7325F682CA89188007D8456 /* Dictionary+Ext.swift */,
 				B76AEF6C2CA9DE57000003F8 /* Bundle+Ext.swift */,
+				B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				B7C886172CC39FFA004B6E9D /* ActionMenuAddingMoreSmokesView.swift in Sources */,
 				B7C886182CC39FFA004B6E9D /* ActionMenuPlanDevelopingInfoView.swift in Sources */,
 				B7C886192CC39FFA004B6E9D /* ActionMenuPlanDevelopingModel.swift in Sources */,
+				B754071B2CCD12B200DCB1D5 /* Animation+Ext.swift in Sources */,
 				B7C8861A2CC39FFA004B6E9D /* ActionMenuPlanDevelopingPeriodPicker.swift in Sources */,
 				B7C8861B2CC39FFA004B6E9D /* ActionMenuPlanDevelopingSlider.swift in Sources */,
 				B7C8861C2CC39FFA004B6E9D /* ActionMenuPlanDevelopingView.swift in Sources */,

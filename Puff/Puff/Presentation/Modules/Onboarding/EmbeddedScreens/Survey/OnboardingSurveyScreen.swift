@@ -115,7 +115,7 @@ struct OnboardingSurveyScreen: View {
                         .hLeading()
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: questionIndex)
+            .animation(.mainAnimation, value: questionIndex)
     }
 
     @ViewBuilder

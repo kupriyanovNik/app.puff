@@ -13,6 +13,9 @@ struct AccountViewWidgetsInfoView: View {
 
     @State private var shouldShowHomeInfo: Bool = false
     @State private var shouldShowControlCenterInfo: Bool = false
+    @State private var shouldShowActionButtonInfo: Bool = false
+    @State private var shouldShowDoubleBackTapInfo: Bool = false
+    @State private var shouldShowLockScreenInfo: Bool = false
 
     var body: some View {
         CustomDismissableView(
@@ -40,11 +43,11 @@ struct AccountViewWidgetsInfoView: View {
                     .preferredColorScheme(.light)
                     .transition(
                         .opacity.combined(with: .offset(y: 50))
-                        .animation(.easeInOut(duration: 0.3))
+                        .animation(.mainAnimation)
                     )
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: shouldShowHomeInfo)
+            .animation(.mainAnimation, value: shouldShowHomeInfo)
         }
         .overlay {
             Group {
@@ -55,11 +58,11 @@ struct AccountViewWidgetsInfoView: View {
                     .preferredColorScheme(.light)
                     .transition(
                         .opacity.combined(with: .offset(y: 50))
-                        .animation(.easeInOut(duration: 0.3))
+                        .animation(.mainAnimation)
                     )
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: shouldShowControlCenterInfo)
+            .animation(.mainAnimation, value: shouldShowControlCenterInfo)
         }
     }
 

@@ -45,9 +45,9 @@ struct ActionMenuSubscriptionLeavingView: View {
             }
             .transition(
                 .asymmetric(
-                    insertion: .opacity.animation(.easeInOut(duration: 0.3).delay(0.3)),
+                    insertion: .opacity.animation(.mainAnimation.delay(0.3)),
                     removal: .opacity
-                ).animation(.easeInOut(duration: 0.3))
+                ).animation(.mainAnimation)
             )
 
             VStack(spacing: 10) {
@@ -66,7 +66,7 @@ struct ActionMenuSubscriptionLeavingView: View {
                         .transition(.opacity.combined(with: .move(edge: .bottom)))
                     }
                 }
-                .animation(.easeInOut(duration: 0.3), value: screenState)
+                .animation(.mainAnimation, value: screenState)
             }
         }
         .padding(.top, 20)
@@ -156,7 +156,7 @@ struct ActionMenuSubscriptionLeavingView: View {
     }
 
     private func nextAction() {
-        withAnimation(.easeInOut(duration: 0.3)) {
+        withAnimation(.mainAnimation) {
             if screenState == .reasons {
                 screenState = .improvements
             } else if screenState == .improvements {

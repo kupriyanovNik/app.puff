@@ -57,11 +57,11 @@ struct AccountView: View {
                     .preferredColorScheme(.light)
                     .transition(
                         .opacity.combined(with: .offset(y: 50))
-                        .animation(.easeInOut(duration: 0.3))
+                        .animation(.mainAnimation)
                     )
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: shouldShowSubscriptionInfo)
+            .animation(.mainAnimation, value: shouldShowSubscriptionInfo)
         }
         .overlay {
             Group {
@@ -72,11 +72,11 @@ struct AccountView: View {
                     .preferredColorScheme(.light)
                     .transition(
                         .opacity.combined(with: .offset(y: 50))
-                        .animation(.easeInOut(duration: 0.3))
+                        .animation(.mainAnimation)
                     )
                 }
             }
-            .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountWidgetsInfo)
+            .animation(.mainAnimation, value: navigationVM.shouldShowAccountWidgetsInfo)
         }
         .makeCustomSheet(isPresented: $shouldShowResetWarning, content: resetWarning)
     }
