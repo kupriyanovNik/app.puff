@@ -224,6 +224,16 @@ private extension AccountViewWidgetsInfoView {
     }
 
     @ViewBuilder func lockScreenInfoView() -> some View {
-
+        AccountWidgetsInfoView(
+            title: "AccountWidgets.Base.LockScreen",
+            models: [
+                .init(number: 1, title: "AccountWidgets.LockScreen.Text1", imageName: "AccountWidgetsLockScreenInfo1Image"),
+                .init(number: 2, title: "AccountWidgets.LockScreen.Text2", imageName: "AccountWidgetsLockScreenInfo2Image"),
+                .init(number: 3, title: "AccountWidgets.LockScreen.Text3", imageName: "AccountWidgetsLockScreenInfo3Image"),
+                .init(number: 4, title: "AccountWidgets.LockScreen.Text4", imageName: "AccountWidgetsLockScreenInfo4Image")
+            ]
+        ) {
+            shouldShowLockScreenInfo = false
+        }
     }
 }

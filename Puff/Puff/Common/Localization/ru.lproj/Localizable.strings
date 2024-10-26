@@ -203,6 +203,11 @@
 "AccountWidgets.DoubleBackTapInfo.Text4" = "Выберите пункт\n«Касание», затем\n«Касание задней панели»";
 "AccountWidgets.DoubleBackTapInfo.Text5" = "В меню «Двойное касание»\nвыберите нашу\nбыструю команду";
 
+"AccountWidgets.LockScreen.Text1" = "Удерживайте экран\nблокировкии нажмите\nкнопку «Настроить»";
+"AccountWidgets.LockScreen.Text2" = "Выберите\n«Экран блокировки»";
+"AccountWidgets.LockScreen.Text3" = "Удалите одну из иконок\nи нажмите на плюсик";
+"AccountWidgets.LockScreen.Text4" = "Найдите Puffless и\nдобавьте виджет";
+
 // MARK: - Action Menus
 
 "AccountSubscription.Leaving.Base.Title" = "Почему вы уходите?";

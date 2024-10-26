@@ -203,6 +203,11 @@
 "AccountWidgets.DoubleBackTapInfo.Text4" = "Click «Touch»,\nthen «Back Tap»";
 "AccountWidgets.DoubleBackTapInfo.Text5" = "Select Puffless shortcut\nin the «Double Tap» menu";
 
+"AccountWidgets.LockScreen.Text1" = "Hold the Lock Screen\nand press «Customize»\nbutton";
+"AccountWidgets.LockScreen.Text2" = "Select «Lock Screen»";
+"AccountWidgets.LockScreen.Text3" = "Remove one of the icons\nand click the Plus button";
+"AccountWidgets.LockScreen.Text4" = "Find and add Puffless\nwidget";
+
 // MARK: - Action Menus
 
 "AccountSubscription.Leaving.Base.Title" = "Why are you leaving?";
