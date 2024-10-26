@@ -68,7 +68,7 @@ struct AccountWidgetsInfoView: View {
                     .frame(26)
             }
 
-            Text(title.l)
+            Text(title.l.replacingOccurrences(of: "\n", with: " "))
                 .font(.semibold22)
                 .foregroundStyle(Palette.textPrimary)
                 .lineLimit(1)
