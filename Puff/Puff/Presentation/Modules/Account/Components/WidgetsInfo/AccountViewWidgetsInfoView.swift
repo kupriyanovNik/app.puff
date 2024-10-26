@@ -152,7 +152,7 @@ struct AccountViewWidgetsInfoView: View {
 private extension AccountViewWidgetsInfoView {
     @ViewBuilder func homeScreenInfoView() -> some View {
         AccountWidgetsInfoView(
-            title: "AccountWidgets.HomeInfoTitle",
+            title: "AccountWidgets.Base.Home",
             models: Array(
                 (1...2).map { index in
                     AccountWidgetsInfoModel(
@@ -169,7 +169,7 @@ private extension AccountViewWidgetsInfoView {
 
     @ViewBuilder func controlCenterInfoView() -> some View {
         AccountWidgetsInfoView(
-            title: "AccountWidgets.ControlCenterInfoTitle",
+            title: "AccountWidgets.Base.ControlCenter",
             models: Array(
                 (1...3).map { index in
                     AccountWidgetsInfoModel(
@@ -185,7 +185,20 @@ private extension AccountViewWidgetsInfoView {
     }
 
     @ViewBuilder func actionButtonInfoView() -> some View {
-
+        AccountWidgetsInfoView(
+            title: "AccountWidgets.Base.ActionButton",
+            models: Array(
+                (1...4).map { index in
+                    AccountWidgetsInfoModel(
+                        number: index,
+                        title: "AccountWidgets.ActionButtonInfo.Text\(index)".l,
+                        imageName: "AccountWidgetsActionButtonInfo\(index)Image".l
+                    )
+                }
+            )
+        ) {
+            shouldShowActionButtonInfo = false
+        }
     }
 
     @ViewBuilder func doubleBackTapInfoView() -> some View {

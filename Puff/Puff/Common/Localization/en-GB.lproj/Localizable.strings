@@ -22,6 +22,7 @@
 "OnboardingImages.ValueProposition2Image" = "valueProposition2Image";
 "OnboardingImages.ValueProposition3Image" = "valueProposition3Image";
 "ActionMenuImages.WidgetsTipImage" = "actionMenuWidgetsTipENImage";
+"AccountWidgetsActionButtonInfo2Image" = "AccountWidgetsActionButtonInfo2ENImage";
 
 // MARK: - Onboarding
 
@@ -178,14 +179,17 @@
 "AccountWidgets.Base.AvailableOnIOS18" = "Available on iOS 18";
 "AccountWidgets.Base.Available15ProAndNewer" = "iPhone 15 Pro and later";
 
-"AccountWidgets.HomeInfoTitle" = "Home Screen";
 "AccountWidgets.HomeInfo.Text1" = "Hold the Home Screen,\nthen press the add button";
 "AccountWidgets.HomeInfo.Text2" = "Find and add\nPuffless widget";
 
-"AccountWidgets.ControlCenterInfoTitle" = "Control Center";
 "AccountWidgets.ControlCenterInfo.Text1" = "Click the plus icon in\nthe Control Center";
 "AccountWidgets.ControlCenterInfo.Text2" = "Click «Add Control»";
 "AccountWidgets.ControlCenterInfo.Text3" = "Find and add\nPuffless widget";
+
+"AccountWidgets.ActionButtonInfo.Text1" = "Open Settings";
+"AccountWidgets.ActionButtonInfo.Text2" = "Select\n«Action Button»\nfrom the menu";
+"AccountWidgets.ActionButtonInfo.Text3" = "Find «Shortcut» and click\n«Choose a Shortcut...»";
+"AccountWidgets.ActionButtonInfo.Text4" = "Find and add\nPuffless shortcut";
 
 // MARK: - Action Menus
 

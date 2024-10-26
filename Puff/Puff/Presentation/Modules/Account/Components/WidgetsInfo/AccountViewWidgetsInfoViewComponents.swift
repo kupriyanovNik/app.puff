@@ -20,16 +20,35 @@ struct AccountWidgetsInfoModel: Identifiable {
 
 struct AccountWidgetsInfoView: View {
     let title: String
+    var withScroll: Bool = false
     let models: [AccountWidgetsInfoModel]
 
     var backAction: () -> Void
 
     var body: some View {
-        CustomDismissableView(dismissAction: backAction, content: viewContent)
+        CustomDismissableView(
+            ableToDismissBySlidingDown: !withScroll,
+            dismissAction: backAction,
+            content: viewContent
+        )
     }
 
     @ViewBuilder
     private func viewContent() -> some View {
+        Group {
+            if withScroll {
+                ScrollView {
+                    baseView()
+                }
+                .scrollIndicators(.hidden)
+            } else {
+                baseView()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func baseView() -> some View {
         VStack(spacing: 28) {
             headerView()
 

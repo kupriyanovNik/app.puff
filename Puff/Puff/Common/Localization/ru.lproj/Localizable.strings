@@ -22,6 +22,7 @@
 "OnboardingImages.ValueProposition2Image" = "valueProposition2RUImage";
 "OnboardingImages.ValueProposition3Image" = "valueProposition3RUImage";
 "ActionMenuImages.WidgetsTipImage" = "actionMenuWidgetsTipRUImage";
+"AccountWidgetsActionButtonInfo2Image" = "AccountWidgetsActionButtonInfo2RUImage";
 
 // MARK: - Onboarding
 
@@ -178,14 +179,17 @@
 "AccountWidgets.Base.AvailableOnIOS18" = "Доступно с iOS 18";
 "AccountWidgets.Base.Available15ProAndNewer" = "Доступно с iPhone 15 Pro";
 
-"AccountWidgets.HomeInfoTitle" = "Экран «Домой»";
 "AccountWidgets.HomeInfo.Text1" = "Удерживайте экран\n«Домой» и нажмите на\nкнопку добавления";
 "AccountWidgets.HomeInfo.Text2" = "Найдите и добавьте\nвиджет Puffless";
 
-"AccountWidgets.ControlCenterInfoTitle" = "Центр управления";
 "AccountWidgets.ControlCenterInfo.Text1" = "Нажмите иконку\nплюса в центре\nуправления";
 "AccountWidgets.ControlCenterInfo.Text2" = "Нажмите “Добавить\nэлемент управления”";
 "AccountWidgets.ControlCenterInfo.Text3" = "Найдите и добавьте\nвиджет Puffless";
+
+"AccountWidgets.ActionButtonInfo.Text1" = "Зайдите в Настройки";
+"AccountWidgets.ActionButtonInfo.Text2" = "Выберите пункт\n«Кнопка действия»\nв меню";
+"AccountWidgets.ActionButtonInfo.Text3" = "Выберите из списка\n«Быстрая команда» и нажмите\nна кнопку выбора";
+"AccountWidgets.ActionButtonInfo.Text4" = "В открывшемся меню\nнайдите Puffless и\nвыберите команду";
 
 // MARK: - Action Menus
 
