@@ -18,29 +18,49 @@ struct PuffIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult {
-        var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
-        let dates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]
-
-        let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
         let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
+        let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
 
-        let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
-        var planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [1000]
-        let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
-        let currentDayIndexInArray = min(planCounts.count - 1, currentDayIndex)
+        if (!isPlanEnded && isPlanStarted) || !isPlanStarted {
+            var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
+            var dates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]
 
-        if counts.count > 0 {
-            counts[counts.count - 1] += 1
-            planCounts[currentDayIndexInArray] += 1
+            let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
+            var planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [1000]
+            let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
+            let currentDayIndexInArray = min(planCounts.count - 1, currentDayIndex)
 
-            if planLimits[currentDayIndexInArray] < planCounts[currentDayIndexInArray] {
+            if counts.count > 0 {
+                if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
+                    counts[counts.count - 1] += 1
+                } else {
+                    counts.append(1)
+                }
 
+                if isPlanStarted {
+                    planCounts[currentDayIndexInArray] += 1
+                }
+
+                if !dates.contains(where: { Calendar.current.isDateInToday($0) }) {
+                    dates.append(.now)
+                }
+
+                if isPlanStarted {
+                    if planLimits[currentDayIndexInArray] < planCounts[currentDayIndexInArray] {
+                        // TODO: - open app
+                    }
+                }
             }
-        }
 
-        defaults.set(counts, forKey: "newSmokesCount")
-        defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
-        defaults.synchronize()
+            defaults.set(counts, forKey: "newSmokesCount")
+            defaults.set(dates, forKey: "newSmokesDates")
+
+            defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
+
+            defaults.synchronize()
+        } else {
+            // TODO: - open app and tell that plan is ended
+        }
 
         WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
         WidgetCenter.shared.reloadAllTimelines()

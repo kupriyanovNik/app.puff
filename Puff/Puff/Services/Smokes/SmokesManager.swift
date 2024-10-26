@@ -182,6 +182,7 @@ final class SmokesManager: ObservableObject {
         defaults.set(smokesDates, forKey: "newSmokesDates")
 
         defaults.synchronize()
+
         WidgetCenter.shared.reloadAllTimelines()
     }
 
@@ -307,9 +308,11 @@ final class SmokesManager: ObservableObject {
 
     func restore() {
         if let counts = defaults.array(forKey: "newSmokesCount") as? [Int] {
-            let newDaysCount = counts.count - smokesCount.count
-
             self.smokesCount = counts
+        }
+
+        if let dates = defaults.array(forKey: "newSmokesDates") as? [Date] {
+            smokesDates = dates
         }
 
         
