@@ -103,7 +103,7 @@ struct PuffIntent: AppIntent {
 
         if let currentDayIndexInArray = getRealCurrentIndex(limits: limits) {
             if defaults.bool(forKey: "newIsPlanStarted") {
-                return counts[currentDayIndexInArray] < limits[currentDayIndexInArray]
+                return counts[currentDayIndexInArray] < limits[currentDayIndexInArray] || currentDayIndexInArray < 2
             }
         }
 
