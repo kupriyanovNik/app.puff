@@ -35,26 +35,19 @@ struct AccountWidgetsInfoView: View {
 
     @ViewBuilder
     private func viewContent() -> some View {
-        Group {
-            if withScroll {
-                ScrollView {
-                    baseView()
-                }
-                .scrollIndicators(.hidden)
-            } else {
-                baseView()
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func baseView() -> some View {
         VStack(spacing: 28) {
             headerView()
 
-            cells()
+            if withScroll {
+                ScrollView {
+                    cells()
+                }
+                .scrollIndicators(.hidden)
+            } else {
+                cells()
 
-            Spacer()
+                Spacer()
+            }
         }
     }
 
@@ -106,12 +99,17 @@ struct AccountWidgetsInfoView: View {
                         .font(.medium15)
                         .multilineTextAlignment(.leading)
                         .foregroundStyle(Palette.textSecondary)
-                        .padding([.leading, .bottom], 16)
 
                     if let actionTitle = model.actionTitle {
-                        AccentButton(text: actionTitle.l, action: model.action)
+                        AccentButton(
+                            text: actionTitle.l,
+                            padding: .init(top: 6, leading: 16, bottom: 6, trailing: 16),
+                            withInfiniteHorizontalFrame: false,
+                            action: model.action
+                        )
                     }
                 }
+                .padding([.leading, .bottom], 16)
             }
     }
 }

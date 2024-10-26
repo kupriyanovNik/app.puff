@@ -173,11 +173,11 @@ private extension AccountViewWidgetsInfoView {
             title: "AccountWidgets.Base.ControlCenter",
             models: Array(
                 (1...3).map { index in
-                    AccountWidgetsInfoModel(
-                        number: index,
-                        title: "AccountWidgets.ControlCenterInfo.Text\(index)",
-                        imageName: "AccountWidgetsControlCenterInfo\(index)Image"
-                    )
+                        .init(
+                            number: index,
+                            title: "AccountWidgets.ControlCenterInfo.Text\(index)",
+                            imageName: "AccountWidgetsControlCenterInfo\(index)Image"
+                        )
                 }
             )
         ) {
@@ -190,11 +190,11 @@ private extension AccountViewWidgetsInfoView {
             title: "AccountWidgets.Base.ActionButton",
             models: Array(
                 (1...4).map { index in
-                    AccountWidgetsInfoModel(
-                        number: index,
-                        title: "AccountWidgets.ActionButtonInfo.Text\(index)".l,
-                        imageName: "AccountWidgetsActionButtonInfo\(index)Image".l
-                    )
+                        .init(
+                            number: index,
+                            title: "AccountWidgets.ActionButtonInfo.Text\(index)".l,
+                            imageName: "AccountWidgetsActionButtonInfo\(index)Image".l
+                        )
                 }
             )
         ) {
@@ -203,11 +203,24 @@ private extension AccountViewWidgetsInfoView {
     }
 
     @ViewBuilder func doubleBackTapInfoView() -> some View {
-//        AccountWidgetsInfoView(
-//            title: "AccountWidgetsBaseInfoDoubleBackTapImage",
-//            models: <#T##[AccountWidgetsInfoModel]#>,
-//            backAction: <#T##() -> Void#>
-//        )
+        AccountWidgetsInfoView(
+            title: "AccountWidgets.Base.DoubleBackTap",
+            withScroll: true,
+            models: [
+                .init(
+                    number: 1,
+                    title: "AccountWidgets.DoubleBackTapInfo.Text1",
+                    imageName: "AccountWidgetsDoubleBackTapInfo1Image".l,
+                    actionTitle: "Install".l
+                ) { "AccountWidgets.DoubleBackTapInfo.Link".l.openURL() },
+                .init(number: 2, title: "AccountWidgets.DoubleBackTapInfo.Text2", imageName: "AccountWidgetsDoubleBackTapInfo2Image"),
+                .init(number: 3, title: "AccountWidgets.DoubleBackTapInfo.Text3", imageName: "AccountWidgetsDoubleBackTapInfo3Image".l),
+                .init(number: 4, title: "AccountWidgets.DoubleBackTapInfo.Text4", imageName: "AccountWidgetsDoubleBackTapInfo4Image".l),
+                .init(number: 5, title: "AccountWidgets.DoubleBackTapInfo.Text5", imageName: "AccountWidgetsDoubleBackTapInfo5Image".l)
+            ]
+        ) {
+            shouldShowDoubleBackTapInfo = false
+        }
     }
 
     @ViewBuilder func lockScreenInfoView() -> some View {

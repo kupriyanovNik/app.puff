@@ -19,6 +19,7 @@ struct AccentButton: View {
         trailing: 0
     )
     var isDisabled: Bool = false
+    var withInfiniteHorizontalFrame: Bool = true
 
     var action: () -> Void
 
@@ -28,15 +29,26 @@ struct AccentButton: View {
             isDisabled: isDisabled,
             action: action
         ) {
-            Text(text)
-                .font(font)
-                .foregroundStyle(.white)
-                .padding(padding)
-                .hCenter()
-                .background {
-                    background.cornerRadius(16)
+            Group {
+                if withInfiniteHorizontalFrame {
+                    baseView()
+                        .hCenter()
+                } else {
+                    baseView()
                 }
+            }
+            .background {
+                background.cornerRadius(16)
+            }
         }
+    }
+
+    @ViewBuilder
+    private func baseView() -> some View {
+        Text(text)
+            .font(font)
+            .foregroundStyle(.white)
+            .padding(padding)
     }
 }
 

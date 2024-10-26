@@ -15,6 +15,7 @@
 "Allow" = "Разрешить";
 "Cancel" = "Отмена";
 "Add" = "Добавить";
+"Install" = "Установить";
 
 // MARK: - Images
 
@@ -23,6 +24,10 @@
 "OnboardingImages.ValueProposition3Image" = "valueProposition3RUImage";
 "ActionMenuImages.WidgetsTipImage" = "actionMenuWidgetsTipRUImage";
 "AccountWidgetsActionButtonInfo2Image" = "AccountWidgetsActionButtonInfo2RUImage";
+"AccountWidgetsDoubleBackTapInfo1Image" = "AccountWidgetsDoubleBackTapInfo1RUImage";
+"AccountWidgetsDoubleBackTapInfo3Image" = "AccountWidgetsDoubleBackTapInfo3RUImage";
+"AccountWidgetsDoubleBackTapInfo4Image" = "AccountWidgetsDoubleBackTapInfo4RUImage";
+"AccountWidgetsDoubleBackTapInfo5Image" = "AccountWidgetsDoubleBackTapInfo5RUImage";
 
 // MARK: - Onboarding
 
@@ -172,7 +177,7 @@
 
 "AccountWidgets.Base.Home" = "Экран\n«Домой»";
 "AccountWidgets.Base.ControlCenter" = "Центр\nуправления";
-"AccountWidgets.Base.ActionButton" = "Кнопка Действия";
+"AccountWidgets.Base.ActionButton" = "Кнопка действия";
 "AccountWidgets.Base.DoubleBackTap" = "Двойной тап по\nзадней панели ";
 "AccountWidgets.Base.LockScreen" = "Экран\nблокировки";
 
@@ -190,6 +195,13 @@
 "AccountWidgets.ActionButtonInfo.Text2" = "Выберите пункт\n«Кнопка действия»\nв меню";
 "AccountWidgets.ActionButtonInfo.Text3" = "Выберите из списка\n«Быстрая команда» и нажмите\nна кнопку выбора";
 "AccountWidgets.ActionButtonInfo.Text4" = "В открывшемся меню\nнайдите Puffless и\nвыберите команду";
+
+"AccountWidgets.DoubleBackTapInfo.Link" = "https://www.icloud.com/shortcuts/8144c3ab44e242c98743f62596c07789";
+"AccountWidgets.DoubleBackTapInfo.Text1" = "Установите команду";
+"AccountWidgets.DoubleBackTapInfo.Text2" = "Зайдите в Настройки";
+"AccountWidgets.DoubleBackTapInfo.Text3" = "Выберите пункт\n«Универсальный доступ»";
+"AccountWidgets.DoubleBackTapInfo.Text4" = "Выберите пункт\n«Касание», затем\n«Касание задней панели»";
+"AccountWidgets.DoubleBackTapInfo.Text5" = "В меню «Двойное касание»\nвыберите нашу\nбыструю команду";
 
 // MARK: - Action Menus
 

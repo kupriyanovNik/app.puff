@@ -15,6 +15,7 @@
 "Allow" = "Allow";
 "Cancel" = "Cancel";
 "Add" = "Add";
+"Install" = "Install";
 
 // MARK: - Images
 
@@ -23,6 +24,10 @@
 "OnboardingImages.ValueProposition3Image" = "valueProposition3Image";
 "ActionMenuImages.WidgetsTipImage" = "actionMenuWidgetsTipENImage";
 "AccountWidgetsActionButtonInfo2Image" = "AccountWidgetsActionButtonInfo2ENImage";
+"AccountWidgetsDoubleBackTapInfo1Image" = "AccountWidgetsDoubleBackTapInfo1ENImage";
+"AccountWidgetsDoubleBackTapInfo3Image" = "AccountWidgetsDoubleBackTapInfo3ENImage";
+"AccountWidgetsDoubleBackTapInfo4Image" = "AccountWidgetsDoubleBackTapInfo4ENImage";
+"AccountWidgetsDoubleBackTapInfo5Image" = "AccountWidgetsDoubleBackTapInfo5ENImage";
 
 // MARK: - Onboarding
 
@@ -190,6 +195,13 @@
 "AccountWidgets.ActionButtonInfo.Text2" = "Select\n«Action Button»\nfrom the menu";
 "AccountWidgets.ActionButtonInfo.Text3" = "Find «Shortcut» and click\n«Choose a Shortcut...»";
 "AccountWidgets.ActionButtonInfo.Text4" = "Find and add\nPuffless shortcut";
+
+"AccountWidgets.DoubleBackTapInfo.Link" = "https://www.icloud.com/shortcuts/5997b406504e4754bcc926fba9315998";
+"AccountWidgets.DoubleBackTapInfo.Text1" = "Install the shortcut";
+"AccountWidgets.DoubleBackTapInfo.Text2" = "Go to Settings";
+"AccountWidgets.DoubleBackTapInfo.Text3" = "Click «Accessibility»";
+"AccountWidgets.DoubleBackTapInfo.Text4" = "Click «Touch»,\nthen «Back Tap»";
+"AccountWidgets.DoubleBackTapInfo.Text5" = "Select Puffless shortcut\nin the «Double Tap» menu";
 
 // MARK: - Action Menus
 
