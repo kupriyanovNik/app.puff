@@ -76,6 +76,10 @@ final class SmokesManager: ObservableObject {
     // MARK: - Internal Properties
 
     var todaySmokes: Int {
+        if isPlanStarted {
+            return planCounts[currentDayIndex]
+        }
+
         if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
             return smokesCount[max(0, index)]
         }
