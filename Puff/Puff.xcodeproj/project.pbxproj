@@ -19,6 +19,7 @@
 		B71DD2152CB70AD6009578A8 /* ActionMenuReadyToBreakReadyAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20D2CB70AD6009578A8 /* ActionMenuReadyToBreakReadyAnimation.json */; };
 		B71DD2162CB70AD6009578A8 /* ActionMenuUpdateAppAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20E2CB70AD6009578A8 /* ActionMenuUpdateAppAnimation.json */; };
 		B71DD2172CB70AD6009578A8 /* ActionMenuAddingMoreSmokesAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = B71DD20A2CB70AD6009578A8 /* ActionMenuAddingMoreSmokesAnimation.json */; };
+		B7207A902CCE804400C5395D /* PuffWidgetProviderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7207A8F2CCE804400C5395D /* PuffWidgetProviderModel.swift */; };
 		B72A882C2CB11EC900304615 /* Privacy Manifest.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B72A882B2CB11EC900304615 /* Privacy Manifest.xcprivacy */; };
 		B72BE9262CCDB026007296FA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7861A942CBDA82A00081617 /* WidgetKit.framework */; };
 		B72BE9272CCDB026007296FA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7861A962CBDA82A00081617 /* SwiftUI.framework */; };
@@ -210,6 +211,7 @@
 		B71DD20C2CB70AD6009578A8 /* ActionMenuReadyToBreakNeedDayAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuReadyToBreakNeedDayAnimation.json; sourceTree = "<group>"; };
 		B71DD20D2CB70AD6009578A8 /* ActionMenuReadyToBreakReadyAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuReadyToBreakReadyAnimation.json; sourceTree = "<group>"; };
 		B71DD20E2CB70AD6009578A8 /* ActionMenuUpdateAppAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ActionMenuUpdateAppAnimation.json; sourceTree = "<group>"; };
+		B7207A8F2CCE804400C5395D /* PuffWidgetProviderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetProviderModel.swift; sourceTree = "<group>"; };
 		B72A882B2CB11EC900304615 /* Privacy Manifest.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Privacy Manifest.xcprivacy"; sourceTree = "<group>"; };
 		B72BE9252CCDB026007296FA /* PuffControlCenterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PuffControlCenterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72BE9372CCDB02C007296FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -427,6 +429,15 @@
 			path = ActionMenus;
 			sourceTree = "<group>";
 		};
+		B7207A912CCE805900C5395D /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				B76235222CEFDA2E003ECA7A /* PuffWidgetProvider.swift */,
+				B7207A8F2CCE804400C5395D /* PuffWidgetProviderModel.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		B72BE93B2CCDB02C007296FA /* PuffControlCenterWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,7 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				B76235262CEFDABC003ECA7A /* View */,
-				B76235222CEFDA2E003ECA7A /* PuffWidgetProvider.swift */,
+				B7207A912CCE805900C5395D /* Provider */,
 			);
 			path = HomeScreenWidget;
 			sourceTree = "<group>";
@@ -1421,6 +1432,7 @@
 				B7861AAE2CBDA83000081617 /* PuffWidgetsBundle.swift in Sources */,
 				B7861ABD2CBDA98300081617 /* UserDefaultsManager.swift in Sources */,
 				B7F1E4472CC4063E00BE422D /* PuffIntent.swift in Sources */,
+				B7207A902CCE804400C5395D /* PuffWidgetProviderModel.swift in Sources */,
 				B78DF5AD2CBFE2390078F9D0 /* Color+Ext.swift in Sources */,
 				B762351E2CEFD8C8003ECA7A /* Date+Ext.swift in Sources */,
 				B76235232CEFDA2E003ECA7A /* PuffWidgetProvider.swift in Sources */,

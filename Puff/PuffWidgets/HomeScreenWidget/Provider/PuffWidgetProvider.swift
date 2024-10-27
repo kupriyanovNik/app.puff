@@ -9,15 +9,6 @@ import Foundation
 import WidgetKit
 
 struct PuffWidgetProvider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), count: 10, isEnded: false, dateOfLastSmoke: 0)
-    }
-
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), count: 10, isEnded: false, dateOfLastSmoke: 0)
-        completion(entry)
-    }
-
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
         let calendar = Calendar.current
@@ -96,10 +87,14 @@ struct PuffWidgetProvider: TimelineProvider {
     }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let count: Int
-    var limit: Int?
-    let isEnded: Bool
-    let dateOfLastSmoke: Int
+// MARK: - shit functions
+extension PuffWidgetProvider {
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date(), count: 10, isEnded: false, dateOfLastSmoke: 0)
+    }
+
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        let entry = SimpleEntry(date: Date(), count: 10, isEnded: false, dateOfLastSmoke: 0)
+        completion(entry)
+    }
 }

@@ -102,11 +102,9 @@ struct PuffIntent: AppIntent {
         let calendar = Calendar.current
 
         if let currentDayIndexInArray = getRealCurrentIndex(limits: limits) {
-            if defaults.bool(forKey: "newIsPlanStarted") {
-                return counts[currentDayIndexInArray] < limits[currentDayIndexInArray] || currentDayIndexInArray < 2
-            }
+            return counts[currentDayIndexInArray] < limits[currentDayIndexInArray] || currentDayIndexInArray < 2
         }
-
+        
         if planStartDate != 0 {
             let startOfToday = calendar.startOfDay(for: .now)
             let startOfStartOfPlan = calendar.startOfDay(
@@ -117,7 +115,7 @@ struct PuffIntent: AppIntent {
 
             let diffDays = Int(diff / 86400)
 
-            return diff < limits.count - 1
+            return diffDays < limits.count
         }
 
         return true
