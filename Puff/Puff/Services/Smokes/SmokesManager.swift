@@ -78,8 +78,8 @@ final class SmokesManager: ObservableObject {
     // MARK: - Internal Properties
 
     var todaySmokes: Int {
-        if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
-            return smokesCount[index]
+        if let last = smokesCount.last {
+            return last
         }
 
         return 0
@@ -182,8 +182,6 @@ final class SmokesManager: ObservableObject {
 
         defaults.set(smokesCount, forKey: "newSmokesCount")
         defaults.set(planCounts, forKey: "newPlanCounts")
-
-        defaults.set(smokesCount, forKey: "newSmokesCount")
         defaults.set(smokesDates, forKey: "newSmokesDates")
 
         defaults.synchronize()
