@@ -57,6 +57,8 @@ struct PuffIntent: AppIntent {
             defaults.set(counts, forKey: "newSmokesCount")
             defaults.set(dates, forKey: "newSmokesDates")
 
+            defaults.set(planCounts, forKey: "newPlanCounts")
+
             defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
 
             defaults.synchronize()
