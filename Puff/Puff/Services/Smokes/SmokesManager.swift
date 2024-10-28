@@ -189,15 +189,20 @@ final class SmokesManager: ObservableObject {
     func addMoreSmokes(_ count: Int) {
         if let period = ActionMenuPlanDevelopingPeriod(rawValue: planLimits.count) {
             if let firstDayLimit = planLimits.first {
-
                 if currentDayIndex == 0 {
                     planLimits = getLimits(for: period, smokesPerDay: todaySmokes + count)
+                    NotificationManager.shared.removeAllNotifications()
+                    NotificationManager.shared.scheduleNotifications(limits: planLimits)
                 } else if currentDayIndex == 1 {
                     var newPlan = getLimits(for: period, smokesPerDay: todaySmokes + count)
                     let _ = newPlan.popLast()
 
                     planLimits = [firstDayLimit] + newPlan
+
+                    NotificationManager.shared.removeAllNotifications()
+                    NotificationManager.shared.scheduleNotifications(limits: newPlan)
                 }
+
                 AnalyticsManager.logEvent(event: .addedMoreSmokes(count: count))
             }
         }
