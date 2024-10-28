@@ -234,7 +234,7 @@ struct AppPaywallView: View {
     @ViewBuilder
     private func bottomView() -> some View {
         VStack(spacing: 12) {
-            trialView()
+            priceView()
 
             VStack(spacing: 5) {
                 AccentButton(
@@ -275,7 +275,7 @@ struct AppPaywallView: View {
     }
 
     @ViewBuilder
-    private func trialView() -> some View {
+    private func priceView() -> some View {
         VStack(spacing: 4) {
             Text(trialString)
                 .font(.medium15)
@@ -303,22 +303,30 @@ struct AppPaywallView: View {
                 }
             }
         }
+        .animation(.mainAnimation, value: subscriptionsManager.wasPremium)
 
-        HStack {
-            Text("Paywall.FreeTrial".l)
-                .font(.medium16)
-                .foregroundStyle(Palette.textSecondary)
+        Group {
+            if !subscriptionsManager.wasPremium {
+                HStack {
+                    Text("Paywall.FreeTrial".l)
+                        .font(.medium16)
+                        .foregroundStyle(Palette.textSecondary)
 
-            Spacer()
+                    Spacer()
 
-            Toggle("", isOn: $subscriptionsManager.withTrial)
-                .labelsHidden()
+                    Toggle("", isOn: $subscriptionsManager.withTrial)
+                        .labelsHidden()
+                }
+                .padding(16)
+                .background {
+                    Color(hex: 0xF0F0F0)
+                        .cornerRadius(16)
+                }
+                .transition(.opacity.animation(.mainAnimation))
+                .animation(.mainAnimation)
+            }
         }
-        .padding(16)
-        .background {
-            Color(hex: 0xF0F0F0)
-                .cornerRadius(16)
-        }
+        .animation(.mainAnimation, value: subscriptionsManager.wasPremium)
     }
 
     @ViewBuilder
