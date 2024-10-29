@@ -21,6 +21,10 @@ struct PuffIntent: AppIntent {
         let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
         let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
 
+        if !defaults.bool(forKey: "hasOpenedAppAfterUpdate") {
+            return .result()
+        }
+
         // чтобы нельзя было отметить затяжку если план закончен
         if !((!isPlanEnded && isPlanStarted) || !isPlanStarted) { return .result() }
 

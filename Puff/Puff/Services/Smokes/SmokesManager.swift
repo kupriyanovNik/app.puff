@@ -390,6 +390,8 @@ final class SmokesManager: ObservableObject {
             defaults.set(smokesCount, forKey: "newSmokesCount")
             defaults.set(smokesDates, forKey: "newSmokesDates")
 
+            defaults.set(true, forKey: "hasOpenedAppAfterUpdate")
+
             hasUpdatedDataAfterUpdate = true
 
             WidgetCenter.shared.reloadAllTimelines()
