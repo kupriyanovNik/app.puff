@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct MainNavigationView: View {
 
@@ -187,6 +188,8 @@ struct MainNavigationView: View {
             NotificationManager.shared.scheduleNotifications(limits: smokesManager.planLimits)
         } else {
             NotificationManager.shared.removeAllNotifications()
+
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 
