@@ -69,7 +69,8 @@ struct PuffApp: App {
                 ActionMenuYesterdayPlanExceededView(
                     todayLimit: smokesManager.todayLimit,
                     yesterdayLimit: smokesManager.yesterdayLimit,
-                    yesterdedExceed: smokesManager.yesterdayCount - smokesManager.yesterdayLimit
+                    yesterdedExceed: smokesManager.yesterdayCount - smokesManager.yesterdayLimit,
+                    daysToEnd: smokesManager.daysInPlan - smokesManager.currentDayIndex - 1
                 ) {
                     smokesManager.extendPlanForOneDay()
                 } onDismiss: {

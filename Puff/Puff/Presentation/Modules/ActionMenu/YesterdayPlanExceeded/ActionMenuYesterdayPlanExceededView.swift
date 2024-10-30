@@ -12,6 +12,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
     var todayLimit: Int
     var yesterdayLimit: Int
     var yesterdedExceed: Int
+    var daysToEnd: Int
 
     var onExtendPlan: () -> Void
     var onDismiss: () -> Void
@@ -20,6 +21,43 @@ struct ActionMenuYesterdayPlanExceededView: View {
 
     private var isCriticallyExceeded: Bool {
         (yesterdayLimit >= 50 && yesterdedExceed > 10) || (yesterdayLimit < 50 && yesterdedExceed > 5)
+    }
+
+    private var criticalText: String {
+        let firstPart = "Не переживайте, такое бывает.\n\n"
+        var secondPart = ""
+
+        if daysToEnd == 1 {
+            secondPart = "До конца плана остался всего 1 день!\n"
+        } else {
+            secondPart = "До конца плана осталось всего 3 дня!\n"
+        }
+
+        let thirdPart = "Сегодняшний лимит - {exc} затяжки. Если уверены, что справитесь - продолжаем!\n\nА если вам нужно чуть больше времени - можем продлить план на 1 день. Лимит будет такой же, как вчера.".formatByDivider(
+            divider: "{exc}",
+            count: todayLimit
+        )
+
+        return [1, 3].contains(daysToEnd) ? (firstPart + secondPart + thirdPart) : (firstPart + thirdPart)
+    }
+
+    private var nonCriticalText: String {
+        let firstPart = "Не переживайте, такое бывает. Продолжаем двигаться вперед!\n\n"
+
+        var secondPart: String = ""
+
+        if daysToEnd == 1 {
+            secondPart = "До конца плана остался всего 1 день!\n"
+        } else {
+            secondPart = "До конца плана осталось всего 3 дня!\n"
+        }
+
+        let thirdPart = "Сегодняшний лимит - {exc} затяжек.".formatByDivider(
+            divider: "{exc}",
+            count: todayLimit
+        )
+
+        return [1, 3].contains(daysToEnd) ? (firstPart + secondPart + thirdPart) : (firstPart + thirdPart)
     }
 
     var body: some View {
@@ -80,12 +118,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
             .font(.bold22)
             .multilineTextAlignment(.center)
 
-            Text(
-                "Не переживайте, такое бывает.\n\nСегодняшний лимит - {exc} затяжки. Если уверены, что справитесь - продолжаем!\n\nА если вам нужно чуть больше времени - можем продлить план на 1 день. Лимит будет такой же, как вчера.".formatByDivider(
-                    divider: "{exc}",
-                    count: todayLimit
-                )
-            )
+            Text(criticalText)
                 .font(.semibold16)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Palette.textSecondary)
@@ -111,15 +144,10 @@ struct ActionMenuYesterdayPlanExceededView: View {
             .font(.bold22)
             .multilineTextAlignment(.center)
 
-            Text(
-                "Не переживайте, такое бывает. Продолжаем двигаться вперед!\n\nСегодняшний лимит - {exc} затяжек.".formatByDivider(
-                    divider: "{exc}",
-                    count: todayLimit
-                )
-            )
-            .font(.medium16)
-            .multilineTextAlignment(.center)
-            .foregroundStyle(Palette.textSecondary)
+            Text(nonCriticalText)
+                .font(.medium16)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(Palette.textSecondary)
         }
         .padding(.horizontal, 12)
     }
@@ -169,7 +197,8 @@ struct ActionMenuYesterdayPlanExceededView: View {
     ActionMenuYesterdayPlanExceededView(
         todayLimit: 1000,
         yesterdayLimit: 100,
-        yesterdedExceed: 12
+        yesterdedExceed: 12,
+        daysToEnd: 5
     ) {
 
     } onDismiss: {
