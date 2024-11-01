@@ -309,6 +309,7 @@
 "Home.LimitWillBeUpdated" = "Лимит обновится в 00:00";
 "Home.Puffs" = "Затяжек";
 "Home.RealyLongTime" = "Очень давно";
+"Home.CurrentDayIndexErrorText" = "я пердоле бобер курва";
 
 // MARK: - Statistics
 

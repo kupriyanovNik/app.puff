@@ -309,6 +309,7 @@
 "Home.LimitWillBeUpdated" = "Limit will be updated at 12:00 AM";
 "Home.Puffs" = "Puffs";
 "Home.RealyLongTime" = "Long time ago";
+"Home.CurrentDayIndexErrorText" = "я пердоле бобер курва";
 
 // MARK: - Statistics
 

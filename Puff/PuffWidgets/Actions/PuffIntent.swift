@@ -44,6 +44,10 @@ struct PuffIntent: AppIntent {
                     let realCurrentDayIndex = getRealCurrentIndex(limits: planLimits)
                     let dayIndexWithoutLimit = getRealCurrentIndexWithoutLimit(limits: planLimits)
 
+                    if (realCurrentDayIndex ?? 1) < 0 {
+                        return .result()
+                    }
+
                     if let realCurrentDayIndex, realCurrentDayIndex > currentDayIndexInArray {
                         currentDayIndexInArray = realCurrentDayIndex
                         defaults.set(currentDayIndexInArray, forKey: "newCurrentDayIndex")
