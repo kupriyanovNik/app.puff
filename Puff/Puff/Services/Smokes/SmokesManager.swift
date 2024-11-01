@@ -81,11 +81,11 @@ final class SmokesManager: ObservableObject {
 
     var todaySmokes: Int {
         if isPlanStarted {
-            return planCounts[currentDayIndex]
+            return planCounts.safeIndex(currentDayIndex)
         }
 
         if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
-            return smokesCount[max(0, index)]
+            return smokesCount.safeIndex(index)
         }
 
         return 0
@@ -176,7 +176,7 @@ final class SmokesManager: ObservableObject {
 
         if isPlanStarted {
             if planCounts.count > currentDayIndex {
-                planCounts[realPlanDayIndex] += 1
+                planCounts[max(0, min(planCounts.count - 1, realPlanDayIndex))] += 1
             }
         }
 

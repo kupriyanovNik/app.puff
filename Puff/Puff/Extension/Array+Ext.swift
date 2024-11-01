@@ -26,3 +26,9 @@ extension Array: RawRepresentable where Element: Codable {
         return result
     }
 }
+
+extension Array {
+    func safeIndex(_ index: Int) -> Element {
+        self[Swift.min(Swift.max(0, index), self.count - 1)]
+    }
+}

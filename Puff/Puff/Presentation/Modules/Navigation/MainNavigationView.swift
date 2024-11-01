@@ -16,6 +16,8 @@ struct MainNavigationView: View {
     @ObservedObject var reviewManager: ReviewManager
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
+    @State private var shouldShowCurrentDayIndexError: Bool = false
+
     @Environment(\.scenePhase) var scenePhase
 
     var requestReview: () -> Void
@@ -31,6 +33,9 @@ struct MainNavigationView: View {
                 .safeAreaInset(edge: .bottom) {
                     TabBar(selectedTab: $navigationVM.selectedTab)
                 }
+        }
+        .alert(isPresented: $shouldShowCurrentDayIndexError) {
+            Alert(title: Text("Home.CurrentDayIndexErrorText".l))
         }
         .makeCustomConditionalView(
             !onboardingVM.hasSeenOnboarding,
@@ -113,6 +118,11 @@ struct MainNavigationView: View {
                 if !defaults.bool(forKey: "newIsPlanStarted") {
                     defaults.set(true, forKey: "newIsPlanStarted")
                 }
+            }
+        }
+        .onAppear {
+            if smokesManager.currentDayIndex < 0 {
+                shouldShowCurrentDayIndexError = true
             }
         }
     }
