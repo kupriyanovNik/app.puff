@@ -149,11 +149,11 @@ final class SmokesManager: ObservableObject {
 
         defaults.synchronize()
 
-        WidgetCenter.shared.reloadAllTimelines()
-
         if #available(iOS 18.0, *) {
             WidgetCenter.shared.invalidateRelevance(ofKind: "PuffWidgets.HomeScreenWidget")
         }
+
+        WidgetCenter.shared.reloadAllTimelines()
 
         AnalyticsManager.logEvent(event: .startedPlan(initialSmokes: smokesPerDay, daysInPlan: period.rawValue))
     }
@@ -302,6 +302,7 @@ final class SmokesManager: ObservableObject {
         defaults.set(nil, forKey: "newPlanStartDate")
 
         defaults.synchronize()
+
         WidgetCenter.shared.reloadAllTimelines()
     }
 

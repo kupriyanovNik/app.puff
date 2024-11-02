@@ -149,6 +149,7 @@ struct PuffWidgetsEntryView : View {
                     Text(getTime())
                         .font(.bold28)
                         .foregroundStyle(.dontSmoke)
+                        .multilineTextAlignment(.center)
                 }
             }
     }
