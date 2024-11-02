@@ -99,8 +99,6 @@ struct MainNavigationView: View {
         .onChange(of: scenePhase) { newValue in
             if newValue == .active {
                 smokesManager.restore()
-            } else {
-                WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
             }
         }
         .task {

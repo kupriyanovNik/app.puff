@@ -34,6 +34,7 @@ final class SmokesManager: ObservableObject {
             if currentDayIndex != oldValue {
                 // чтобы обновление для реактивно пришло в просто тапалку для юзеров без премиума
                 addNewDate(auto: false)
+                WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
             }
         }
     }
@@ -142,15 +143,17 @@ final class SmokesManager: ObservableObject {
         defaults.set(true, forKey: "newIsPlanStarted")
         defaults.set(false, forKey: "newIsPlanEnded")
 
-        defaults.set(currentDayIndex, forKey: "newCurrentDayIndex")
-
         defaults.set(planCounts, forKey: "newPlanCounts")
         defaults.set(planLimits, forKey: "newPlanLimits")
+        defaults.set(currentDayIndex, forKey: "newCurrentDayIndex")
 
-        defaults.set(dateOfLastSmoke, forKey: "newDateOfLastSmoke")
-        
         defaults.synchronize()
+
         WidgetCenter.shared.reloadAllTimelines()
+
+        if #available(iOS 18.0, *) {
+            WidgetCenter.shared.invalidateRelevance(ofKind: "PuffWidgets.HomeScreenWidget")
+        }
 
         AnalyticsManager.logEvent(event: .startedPlan(initialSmokes: smokesPerDay, daysInPlan: period.rawValue))
     }
@@ -271,7 +274,10 @@ final class SmokesManager: ObservableObject {
     }
 
     func endPlan() {
-        isPlanEnded = true
+        withAnimation(.mainAnimation) {
+            isPlanEnded = true
+        }
+
         defaults.set(true, forKey: "newIsPlanEnded")
 
         defaults.synchronize()
