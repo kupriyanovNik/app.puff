@@ -48,9 +48,7 @@ struct PuffIntent: AppIntent {
                         defaults.set(currentDayIndexInArray, forKey: "newCurrentDayIndex")
                     }
 
-                    if currentDayIndex < 2 || planCounts[currentDayIndexInArray] < planLimits[currentDayIndexInArray] {
-                        planCounts[currentDayIndexInArray] += 1
-                    }
+                    planCounts[currentDayIndexInArray] += 1
                 }
 
                 defaults.set(counts, forKey: "newSmokesCount")
@@ -102,7 +100,9 @@ struct PuffIntent: AppIntent {
         let calendar = Calendar.current
 
         if let currentDayIndexInArray = getRealCurrentIndex(limits: limits) {
-            return counts[currentDayIndexInArray] < limits[currentDayIndexInArray] || currentDayIndexInArray < 2
+            // запрещаем затягиваться больше лимита только в последний день
+            return counts[currentDayIndexInArray] < limits[currentDayIndexInArray]
+                || (currentDayIndexInArray < counts.count - 1)
         }
         
         if planStartDate != 0 {
