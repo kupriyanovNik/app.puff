@@ -115,7 +115,7 @@ struct PuffIntent: AppIntent {
 
             let diffDays = Int(diff / 86400)
 
-            return diffDays < limits.count
+            return diffDays <= limits.count
         }
 
         return true
