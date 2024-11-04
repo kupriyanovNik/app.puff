@@ -124,7 +124,7 @@ struct AccountView: View {
             if withDivider {
                 Rectangle()
                     .fill(Color(hex: 0xF0F0F0))
-                    .height(1)
+                    .height(2)
                     .padding(.leading, 48)
             }
         }
@@ -184,7 +184,7 @@ struct AccountView: View {
                 ) { shouldShowResetWarning.toggle() }
             }
         }
-        .roundedCornerWithBorder(lineWidth: 1, borderColor: Color(hex: 0xF0F0F0), radius: 16, corners: .allCorners)
+        .roundedCornerWithBorder(lineWidth: 2, borderColor: Color(hex: 0xF0F0F0), radius: 16, corners: .allCorners)
         .padding(.horizontal, 12)
         .onChange(of: isNotificationsEnabled) { newValue in
             if newValue {
