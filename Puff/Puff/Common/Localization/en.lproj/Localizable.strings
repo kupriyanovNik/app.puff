@@ -161,6 +161,7 @@
 "Account.ContactUs" = "Contact us";
 "Account.Widgets" = "Widgets and shortcuts";
 "Account.Subscription" = "Subscription";
+"Account.SubscriptionIsActive" = "Subscription is active";
 "Account.OurChannel" = "Our Telegram channel";
 "Account.OurChannel.Link" = "https://t.me/puffless_app";
 "Account.ChangeLanguage" = "Change language";

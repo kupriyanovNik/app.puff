@@ -48,6 +48,16 @@ struct AccountView: View {
                 checkNotifications()
             }
         }
+        .overlay(alignment: .bottom) {
+            Group {
+                if subscriptionsManager.isPremium {
+                    TextButton(text: "Account.SubscriptionIsActive".l) {
+                        shouldShowSubscriptionInfo = true
+                    }
+                    .padding(.bottom, 7)
+                }
+            }
+        }
         .makeCustomConditionalView(shouldShowSubscriptionInfo) {
             AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
                 shouldShowSubscriptionInfo = false
@@ -154,18 +164,6 @@ struct AccountView: View {
                 "Account.ContactUs".l,
                 imageName: "accountTgImage"
             ) { "https://t.me/puffless_support".openURL() }
-
-            cell(
-                "Account.Subscription".l,
-                imageName: "accountSubscriptionImage"
-            ) {
-                if subscriptionsManager.isPremium {
-                    shouldShowSubscriptionInfo = true
-                } else {
-                    navigationVM.shouldShowPaywall = true
-                    AnalyticsManager.logEvent(event: .openedPaywall(tab: 3))
-                }
-            }
 
             cell(
                 "Account.OurChannel".l,
