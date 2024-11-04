@@ -165,10 +165,16 @@
 "Account.OurChannel.Link" = "https://t.me/puffless_app_ru";
 "Account.ChangeLanguage" = "Сменить язык";
 "Account.Notifications" = "Уведомления";
+
 "Account.ResetQuittingPlan" = "Сбросить план бросания";
 "AccountPlanQuitting.Title" = "Вы уверены, что хотите сбросить план бросания?";
 "AccountPlanQuitting.Description" = "Это не затронет статистику затяжек - все данные о том, сколько вы парили ранее, сохранятся.\n\nВ любое время вы сможете заново начать любой план бросания.";
 "AccountPlanQuitting.Reset" = "Да, сбросить план";
+
+"Account.ResetAllSmokes" = "Сбросить все затяжки";
+"AccountSmokesResetting.Title" = "Вы уверены, что хотите сбросить все затяжки?";
+"AccountSmokesResetting.Description" = "Это полностью обнулит статистику затяжек за всё время использования приложения.";
+"AccountSmokesResetting.Reset" = "Да, сбросить затяжки";
 
 "AccountSubscription.Title" = "Подписка";
 "AccountSubscription.SubscriptionType" = "Тип подписки";

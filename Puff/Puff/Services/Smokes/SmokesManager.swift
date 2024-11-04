@@ -288,28 +288,6 @@ final class SmokesManager: ObservableObject {
         WidgetCenter.shared.reloadAllTimelines()
     }
 
-    func resetPlan() {
-        isPlanStarted = false
-        isPlanEnded = false
-        currentDayIndex = 0
-        realPlanDayIndex = 0
-        planStartDate = nil
-
-        planLimits = Array(repeating: 10000, count: 21)
-        planCounts = Array(repeating: 0, count: 21)
-
-        defaults.set(planCounts, forKey: "newPlanCounts")
-        defaults.set(planLimits, forKey: "newPlanLimits")
-        defaults.set(false, forKey: "newIsPlanStarted")
-        defaults.set(false, forKey: "newIsPlanEnded")
-
-        defaults.set(nil, forKey: "newPlanStartDate")
-
-        defaults.synchronize()
-
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-
     @objc func checkIsNewDay() {
         restore()
 
@@ -397,5 +375,44 @@ final class SmokesManager: ObservableObject {
             WidgetCenter.shared.reloadAllTimelines()
             defaults.synchronize()
         }
+    }
+}
+
+extension SmokesManager {
+    func resetPlan() {
+        isPlanStarted = false
+        isPlanEnded = false
+        currentDayIndex = 0
+        realPlanDayIndex = 0
+        planStartDate = nil
+
+        planLimits = Array(repeating: 10000, count: 21)
+        planCounts = Array(repeating: 0, count: 21)
+
+        defaults.set(planCounts, forKey: "newPlanCounts")
+        defaults.set(planLimits, forKey: "newPlanLimits")
+        defaults.set(false, forKey: "newIsPlanStarted")
+        defaults.set(false, forKey: "newIsPlanEnded")
+
+        defaults.set(nil, forKey: "newPlanStartDate")
+
+        defaults.synchronize()
+
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    func resetAllSmokes() {
+        dateOfFirstSmoke = nil
+        dateOfLastSmoke = nil
+        smokesCount = []
+        smokesDates = []
+        smokesHours = Array(repeating: 0, count: 24)
+
+        defaults.set(smokesCount, forKey: "newSmokesCount")
+        defaults.set(smokesDates, forKey: "newSmokesDates")
+
+        defaults.synchronize()
+
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }

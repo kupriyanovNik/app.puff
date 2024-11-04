@@ -21,6 +21,7 @@ struct PuffIntent: AppIntent {
         let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
         let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
 
+        // ибо юзер дефолтсы по нулям
         if !defaults.bool(forKey: "hasOpenedAppAfterUpdate") {
             return .result()
         }
@@ -28,6 +29,7 @@ struct PuffIntent: AppIntent {
         // чтобы нельзя было отметить затяжку если план закончен
         if !((!isPlanEnded && isPlanStarted) || !isPlanStarted) { return .result() }
 
+        // чтобы в SmokesManager.restore() не делать лишние пересчеты
         defaults.set(true, forKey: "hasAddedPuffsUsingIntent")
 
         var planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [0]
@@ -39,28 +41,26 @@ struct PuffIntent: AppIntent {
 
             var currentDayIndexInArray = min(planCounts.count - 1, defaults.integer(forKey: "newCurrentDayIndex"))
 
-            if isPlanStarted {
-                if smokesCounts != nil, !(smokesCounts ?? []).isEmpty {
-                    let realCurrentDayIndex = getRealCurrentIndex(limits: planLimits)
-                    let dayIndexWithoutLimit = getRealCurrentIndexWithoutLimit(limits: planLimits)
+            if isPlanStarted && (smokesCounts != nil) {
+                let realCurrentDayIndex = getRealCurrentIndex(limits: planLimits)
+                let dayIndexWithoutLimit = getRealCurrentIndexWithoutLimit(limits: planLimits)
 
-                    if (realCurrentDayIndex ?? 1) < 0 {
-                        return .result()
-                    }
-
-                    if let realCurrentDayIndex, realCurrentDayIndex > currentDayIndexInArray {
-                        currentDayIndexInArray = realCurrentDayIndex
-                        defaults.set(currentDayIndexInArray, forKey: "newCurrentDayIndex")
-                    }
-
-                    if dayIndexWithoutLimit == realCurrentDayIndex {
-                        planCounts[currentDayIndexInArray] += 1
-
-                        justPuff(counts: &smokesCounts!, dates: &smokesDates)
-                    }
+                if (realCurrentDayIndex ?? 1) < 0 {
+                    return .result()
                 }
 
-            } else if smokesCounts != nil, !(smokesCounts ?? []).isEmpty {
+                if let realCurrentDayIndex, realCurrentDayIndex > currentDayIndexInArray {
+                    currentDayIndexInArray = realCurrentDayIndex
+                    defaults.set(currentDayIndexInArray, forKey: "newCurrentDayIndex")
+                }
+
+                if dayIndexWithoutLimit == realCurrentDayIndex {
+                    planCounts[currentDayIndexInArray] += 1
+
+                    justPuff(counts: &smokesCounts!, dates: &smokesDates)
+                }
+
+            } else if smokesCounts != nil {
                 justPuff(counts: &smokesCounts!, dates: &smokesDates)
             }
 

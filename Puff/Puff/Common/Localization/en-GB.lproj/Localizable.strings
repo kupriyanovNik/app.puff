@@ -165,10 +165,16 @@
 "Account.OurChannel.Link" = "https://t.me/puffless_app";
 "Account.ChangeLanguage" = "Change language";
 "Account.Notifications" = "Notifications";
+
 "Account.ResetQuittingPlan" = "Reset quit plan";
 "AccountPlanQuitting.Title" = "Are you sure you want to reset your quit plan?";
 "AccountPlanQuitting.Description" = "This will not affect your puff statistics - all data about how much you have previously vaped will be saved.\n\nYou can restart any quit plan at any time.";
 "AccountPlanQuitting.Reset" = "Yes, reset quit plan";
+
+"Account.ResetAllSmokes" = "Reset all puffs";
+"AccountSmokesResetting.Title" = "Are you sure you want to reset all puffs?";
+"AccountSmokesResetting.Description" = "This will completely reset your puff statistics for the entire time you've been using the app.";
+"AccountSmokesResetting.Reset" = "Yes, reset all puffs";
 
 "AccountSubscription.Title" = "Subscription";
 "AccountSubscription.SubscriptionType" = "Subscription Type";

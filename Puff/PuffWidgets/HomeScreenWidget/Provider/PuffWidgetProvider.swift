@@ -37,7 +37,7 @@ struct PuffWidgetProvider: TimelineProvider {
             let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
             let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
 
-            let todayCount = isPlanStarted ? planCounts[min(currentDayIndex, planCounts.count - 1)] : (counts.last ?? -1)
+            let todayCount = isPlanStarted ? planCounts[min(currentDayIndex, planCounts.count - 1)] : (counts.last ?? 0)
 
             let currentEntry = SimpleEntry(
                 date: .now,

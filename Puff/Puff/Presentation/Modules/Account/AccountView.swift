@@ -58,7 +58,15 @@ struct AccountView: View {
                 navigationVM.shouldShowAccountWidgetsInfo = false
             }
         }
-        .makeCustomSheet(isPresented: $shouldShowResetWarning, content: resetWarning)
+        .makeCustomSheet(isPresented: $shouldShowResetWarning) {
+            Group {
+                if smokesManager.isPlanStarted {
+                    resetWarningIfPlanStarted()
+                } else {
+                    resetWarningIfPlanNotStarted()
+                }
+            }
+        }
     }
 
     @ViewBuilder
@@ -175,9 +183,9 @@ struct AccountView: View {
                 content: Toggle("", isOn: $isNotificationsEnabled).labelsHidden()
             ) { isNotificationsEnabled.toggle() }
 
-            if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
+            if smokesManager.smokesCount.reduce(0, +) > 0 {
                 cell(
-                    "Account.ResetQuittingPlan".l,
+                    smokesManager.isPlanStarted ? "Account.ResetQuittingPlan".l : "Account.ResetAllSmokes".l,
                     imageName: "accountResetImage",
                     withDivider: false,
                     color: Color(hex: 0xFF7D7D)
@@ -193,46 +201,6 @@ struct AccountView: View {
                 NotificationManager.shared.removeAllNotifications()
             }
         }
-    }
-
-    @ViewBuilder
-    private func resetWarning() -> some View {
-        VStack(spacing: 32) {
-            VStack(spacing: 18) {
-                MarkdownText(
-                    text: "AccountPlanQuitting.Title".l,
-                    markdowns: ["сбросить план бросания?", "reset your quit plan?"],
-                    accentColor: Color(hex: 0xFF7D7D)
-                )
-                .font(.bold22)
-                .multilineTextAlignment(.center)
-
-                Text("AccountPlanQuitting.Description".l)
-                    .font(.medium16)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(Palette.textSecondary)
-            }
-            .padding(.horizontal, 24)
-
-            VStack(spacing: 10) {
-                AccentButton(text: "AccountPlanQuitting.Reset".l, background: Color(hex: 0xFF7D7D)) {
-                    smokesManager.resetPlan()
-                    shouldShowResetWarning = false
-                    AnalyticsManager.logEvent(event: .resetedPlan)
-
-                    delay(0.4) {
-                        navigationVM.shouldShowAccountView = false
-                    }
-                }
-
-                SecondaryButton(text: "Cancel".l) {
-                    shouldShowResetWarning = false
-                }
-            }
-            .padding(.horizontal, 12)
-        }
-        .padding(.bottom, 16)
-        .padding(.top, 20)
     }
 
     private func checkNotifications() {
@@ -276,10 +244,82 @@ struct AccountView: View {
     }
 }
 
-#Preview {
-    AccountView(
-        navigationVM: .init(),
-        smokesManager: .init(),
-        subscriptionsManager: .init()
-    )
+extension AccountView {
+    @ViewBuilder func resetWarningIfPlanStarted() -> some View {
+        VStack(spacing: 32) {
+            VStack(spacing: 18) {
+                MarkdownText(
+                    text: "AccountPlanQuitting.Title".l,
+                    markdowns: ["сбросить план бросания?", "reset your quit plan?"],
+                    accentColor: Color(hex: 0xFF7D7D)
+                )
+                .font(.bold22)
+                .multilineTextAlignment(.center)
+
+                Text("AccountPlanQuitting.Description".l)
+                    .font(.medium16)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(Palette.textSecondary)
+            }
+            .padding(.horizontal, 24)
+
+            VStack(spacing: 10) {
+                AccentButton(text: "AccountPlanQuitting.Reset".l, background: Color(hex: 0xFF7D7D)) {
+                    smokesManager.resetPlan()
+                    shouldShowResetWarning = false
+                    AnalyticsManager.logEvent(event: .resetedPlan)
+
+                    delay(0.4) {
+                        navigationVM.shouldShowAccountView = false
+                    }
+                }
+
+                SecondaryButton(text: "Cancel".l) {
+                    shouldShowResetWarning = false
+                }
+            }
+            .padding(.horizontal, 12)
+        }
+        .padding(.bottom, 16)
+        .padding(.top, 20)
+    }
+
+    @ViewBuilder func resetWarningIfPlanNotStarted() -> some View {
+        VStack(spacing: 32) {
+            VStack(spacing: 18) {
+                MarkdownText(
+                    text: "AccountSmokesResetting.Title".l,
+                    markdowns: ["сбросить все затяжки?", "reset all puffs?"],
+                    accentColor: Color(hex: 0xFF7D7D)
+                )
+                .font(.bold22)
+                .multilineTextAlignment(.center)
+
+                Text("AccountSmokesResetting.Description".l)
+                    .font(.medium16)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(Palette.textSecondary)
+            }
+            .padding(.horizontal, 24)
+
+            VStack(spacing: 10) {
+                AccentButton(text: "AccountSmokesResetting.Reset".l, background: Color(hex: 0xFF7D7D)) {
+                    smokesManager.resetAllSmokes()
+                    shouldShowResetWarning = false
+                    AnalyticsManager.logEvent(event: .resetedPlan)
+
+                    delay(0.4) {
+                        navigationVM.shouldShowAccountView = false
+                    }
+                }
+
+                SecondaryButton(text: "Cancel".l) {
+                    shouldShowResetWarning = false
+                }
+            }
+            .padding(.horizontal, 12)
+        }
+        .padding(.bottom, 16)
+        .padding(.top, 20)
+    }
 }
