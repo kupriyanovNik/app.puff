@@ -268,7 +268,7 @@
 "ActionMenuReadyToBreakView.Base.NotReady" = "Нет, еще не готов";
 
 "ActionMenuReadyToBreakView.NeedDay.Title" = "План продлен на 1 день";
-"ActionMenuReadyToBreakView.NeedDay.TodayLimit" = "Сегодняшний лимит — {count} затяжки";
+"ActionMenuReadyToBreakView.NeedDay.TodayLimit" = "Сегодняшний лимит затяжек — {count}.";
 
 "ActionMenuReadyToBreakView.Broke.Title" = "Вы сделали это!\nПоздравляем!";
 "ActionMenuReadyToBreakView.Broke.Description" = "Вы успешно справились с планом и бросили парить. Гордимся вами!";
@@ -279,17 +279,17 @@
 "ActionMenuUpdateApp.GoToAppStore" = "Перейти в AppStore";
 
 "ActionMenuYesterdaySuccessed.Title" = "Вы справились со вчерашним лимитом. Так держать!";
-"ActionMenuYesterdaySuccessed.Description" = "Сегодняшний лимит - {count} затяжки.";
+"ActionMenuYesterdaySuccessed.Description" = "Сегодняшний лимит затяжек – {count}.";
 "ActionMenuYesterdaySuccessed.LastDay" = "Сегодня - последний день плана!\n";
 "ActionMenuYesterdaySuccessed.1DayLeast" = "До конца плана остался всего 1 день!\n";
 "ActionMenuYesterdaySuccessed.3DaysLeast" = "До конца плана осталось всего 3 дня!\n";
 
 "ActionMenuYesterdayExceeded.NonCritical.First" = "Не переживайте, такое бывает. Продолжаем двигаться вперед!\n\n";
-"ActionMenuYesterdayExceeded.NonCritical.Third" = "Сегодняшний лимит - {count} затяжек.";
+"ActionMenuYesterdayExceeded.NonCritical.Third" = "Сегодняшний лимит затяжек - {count}.";
 
 "ActionMenuYesterdayExceeded.Critical.Title" = "Вчера вы превысили лимит на {count} затяжек";
 "ActionMenuYesterdayExceeded.Critical.First" = "Не переживайте, такое бывает.\n\n";
-"ActionMenuYesterdayExceeded.Critical.Third" = "Сегодняшний лимит - {count} затяжки. Если уверены, что справитесь - продолжаем!\n\nА если вам нужно чуть больше времени - можем продлить план на 1 день. Лимит будет такой же, как вчера.";
+"ActionMenuYesterdayExceeded.Critical.Third" = "Сегодняшний лимит затяжек - {count}. Если уверены, что справитесь - продолжаем!\n\nА если вам нужно чуть больше времени - можем продлить план на 1 день. Лимит будет такой же, как вчера.";
 
 "ActionMenuYesterdayExceeded.CanDoIt" = "Я справлюсь!";
 "ActionMenuYesterdayExceeded.ExtendPlan" = "Продлить план на 1 день";
