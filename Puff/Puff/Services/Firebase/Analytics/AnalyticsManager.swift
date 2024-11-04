@@ -31,6 +31,8 @@ final class AnalyticsManager {
         case extendedPlanInLastDay
         case openedAppStoreFromUpdateActionMenu
 
+        case first2DaysStatistics(day1Count: Int, day1Limit: Int?, day2Count: Int, day2Limit: Int?)
+
         var title: String {
             switch self {
             case .openedPaywall: "UserOpenedPaywall"
@@ -44,6 +46,7 @@ final class AnalyticsManager {
             case .extendedPlan: "UserExtendedPlan"
             case .extendedPlanInLastDay: "UserExtendedPlanInLastDay"
             case .openedAppStoreFromUpdateActionMenu: "UserOpenedAppStoreFromUpdateActionMenu"
+            case .first2DaysStatistics: "StatisticsForFirst2Days"
             }
         }
 
@@ -63,6 +66,14 @@ final class AnalyticsManager {
 
             case .addedMoreSmokes(let count):
                 ["Count": count]
+
+            case .first2DaysStatistics(let day1Count, let day1Limit, let day2Count, let day2Limit):
+                [
+                    "Day1Count": day1Count,
+                    "Day1Limit": day1Limit.safeUnwrapAsString(),
+                    "Day2Count": day2Count,
+                    "Day2Limit": day2Limit.safeUnwrapAsString()
+                ]
 
             case .acceptedNotifications, .resetedPlan, .extendedPlan, .extendedPlanInLastDay: nil
             case .openedAppStoreFromUpdateActionMenu, .skippedSurveyAndPlanCreating: nil

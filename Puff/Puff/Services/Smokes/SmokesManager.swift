@@ -53,6 +53,8 @@ final class SmokesManager: ObservableObject {
 
     @AppStorage("smokesHours") var smokesHours: [Int] = Array(repeating: 0, count: 24)
 
+    @AppStorage("hasLoggedStatisticsForFirst2Days") var hasLoggedStatisticsForFirst2Days: Bool = false
+
     // MARK: - Inits
 
     init() {
@@ -69,6 +71,8 @@ final class SmokesManager: ObservableObject {
         )
 
         RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
+
+        sendStatisticsForFirst2Days()
     }
 
     // MARK: - Private Properties
@@ -285,6 +289,7 @@ final class SmokesManager: ObservableObject {
         defaults.set(true, forKey: "newIsPlanEnded")
 
         defaults.synchronize()
+
         WidgetCenter.shared.reloadAllTimelines()
     }
 
@@ -334,6 +339,23 @@ final class SmokesManager: ObservableObject {
     }
 
     // MARK: - Private Functions
+
+    private func sendStatisticsForFirst2Days() {
+        guard !hasLoggedStatisticsForFirst2Days else { return }
+
+        guard (smokesCount.count > 2) || (isPlanStarted && currentDayIndex > 2) else { return }
+
+        AnalyticsManager.logEvent(
+            event: .first2DaysStatistics(
+                day1Count: isPlanStarted ? planCounts[0] : smokesCount[0],
+                day1Limit: isPlanStarted ? planLimits[0] : nil,
+                day2Count: isPlanStarted ? planCounts[1] : smokesCount[1],
+                day2Limit: isPlanStarted ? planLimits[1] : nil
+            )
+        )
+
+        hasLoggedStatisticsForFirst2Days = true
+    }
 
     private func getLimits(for period: ActionMenuPlanDevelopingPeriod, smokesPerDay: Int) -> [Int] {
         var limits: [Int] = []
