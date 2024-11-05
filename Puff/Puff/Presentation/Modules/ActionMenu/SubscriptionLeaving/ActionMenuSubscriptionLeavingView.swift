@@ -72,7 +72,7 @@ struct ActionMenuSubscriptionLeavingView: View {
         .padding(.top, 20)
         .padding(.horizontal, 12)
         .padding(.bottom, 16)
-        .keyboardAwarePadding()
+        .removeSwipeToDismissWhenAppeared()
     }
 
     @ViewBuilder

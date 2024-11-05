@@ -46,9 +46,9 @@ struct ActionMenuPlanDevelopingView: View {
             }
             .transition(
                 .asymmetric(
-                    insertion: .opacity.animation(.easeInOut(duration: 0.15).delay(0.15)),
+                    insertion: .opacity.animation(.easeInOut(duration: 0.1).delay(0.12)),
                     removal: .opacity
-                ).animation(.easeInOut(duration: 0.15))
+                ).animation(.easeInOut(duration: 0.1))
             )
 
             AccentButton(

@@ -25,7 +25,7 @@ struct AccountWidgetsInfoView: View {
     var backAction: () -> Void
 
     var body: some View {
-        CircledTopCornersView(content: viewContent)
+        CircledTopCornersView(background: .init(hex: 0xF5F5F5), content: viewContent)
     }
 
     @ViewBuilder
@@ -57,7 +57,7 @@ struct AccountWidgetsInfoView: View {
 
             Spacer()
         }
-        .padding(.top, 22)
+        .padding(.top, 10)
         .padding(.horizontal, 16)
     }
 

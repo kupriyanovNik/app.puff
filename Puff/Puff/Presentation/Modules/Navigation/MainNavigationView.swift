@@ -88,12 +88,7 @@ struct MainNavigationView: View {
                 onboardingVM: onboardingVM,
                 subscriptionsManager: subscriptionsManager
             )
-            .onAppear {
-                NavigationState.shared.swipeEnabled = false
-            }
-            .onDisappear() {
-                NavigationState.shared.swipeEnabled = true
-            }
+            .removeSwipeToDismissWhenAppeared()
         }
         .makeCustomConditionalView(navigationVM.shouldShowPaywall) {
             AppPaywallView(subscriptionsManager: subscriptionsManager, showBenefitsDelay: 0.4) {

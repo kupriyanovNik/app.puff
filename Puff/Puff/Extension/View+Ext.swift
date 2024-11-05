@@ -147,3 +147,15 @@ extension View {
 extension View {
     var isSmallDevice: Bool { UIScreen.main.bounds.height < 700 }
 }
+
+extension View {
+    func removeSwipeToDismissWhenAppeared() -> some View {
+        self
+            .onAppear {
+                NavigationState.shared.swipeEnabled = false
+            }
+            .onDisappear() {
+                NavigationState.shared.swipeEnabled = true
+            }
+    }
+}

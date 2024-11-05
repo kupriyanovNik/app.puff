@@ -33,7 +33,7 @@ extension AccountView {
         }
 
         var body: some View {
-            CircledTopCornersView(content: viewContent)
+            CircledTopCornersView(background: .init(hex: 0xF5F5F5), content: viewContent)
                 .makeCustomSheet(isPresented: $shouldShowSubscriptionEndingView) {
                     ActionMenuSubscriptionLeavingView { reasonsIndices, improvementsText in
                         requestCancel()
@@ -95,7 +95,7 @@ extension AccountView {
 
                 Spacer()
             }
-            .padding(.top, 22)
+            .padding(.top, 10)
             .padding(.leading, -12)
         }
 
