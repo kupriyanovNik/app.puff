@@ -147,6 +147,7 @@
 		B7EFBB922CC03634006CAE4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */; };
 		B7EFBB972CC0370D006CAE4F /* CustomDismissableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */; };
 		B7EFBB9A2CC052DF006CAE4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716A4432CBAABCC005842A5 /* Localizable.strings */; };
+		B7F10CA82CDAA02700970FC1 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F10CA72CDAA02700970FC1 /* UINavigationController+Ext.swift */; };
 		B7F1E4432CC3E22B00BE422D /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */; };
 		B7F1E4452CC3E6EA00BE422D /* PuffShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */; };
 		B7F1E4472CC4063E00BE422D /* PuffIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4462CC4063E00BE422D /* PuffIntent.swift */; };
@@ -327,6 +328,7 @@
 		B7EFBB902CC03634006CAE4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissableView.swift; sourceTree = "<group>"; };
 		B7F0A2E02CB847520023D4C7 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B7F10CA72CDAA02700970FC1 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffShortcut.swift; sourceTree = "<group>"; };
 		B7F1E4462CC4063E00BE422D /* PuffIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffIntent.swift; sourceTree = "<group>"; };
 		B7F3775E2C9B674C0050C93B /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -1102,6 +1104,7 @@
 				B76AEF6C2CA9DE57000003F8 /* Bundle+Ext.swift */,
 				B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */,
 				B78F5BF22CD9300200FABCA2 /* Int+Ext.swift */,
+				B7F10CA72CDAA02700970FC1 /* UINavigationController+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1341,6 +1344,7 @@
 				B7C886292CC39FFA004B6E9D /* PremiumCongratulationView.swift in Sources */,
 				B7C886172CC39FFA004B6E9D /* ActionMenuAddingMoreSmokesView.swift in Sources */,
 				B7C886182CC39FFA004B6E9D /* ActionMenuPlanDevelopingInfoView.swift in Sources */,
+				B7F10CA82CDAA02700970FC1 /* UINavigationController+Ext.swift in Sources */,
 				B7C886192CC39FFA004B6E9D /* ActionMenuPlanDevelopingModel.swift in Sources */,
 				B754071B2CCD12B200DCB1D5 /* Animation+Ext.swift in Sources */,
 				B7C8861A2CC39FFA004B6E9D /* ActionMenuPlanDevelopingPeriodPicker.swift in Sources */,

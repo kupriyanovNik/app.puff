@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// unused now
 struct CustomDismissableView<Content: View>: View {
 
     var ableToDismissBySlidingDown: Bool = true
