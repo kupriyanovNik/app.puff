@@ -44,6 +44,23 @@ struct MainNavigationView: View {
         }
         .overlay {
             Group {
+                if navigationVM.shouldShowAccountView {
+                    AccountView(
+                        navigationVM: navigationVM,
+                        smokesManager: smokesManager,
+                        subscriptionsManager: subscriptionsManager
+                    )
+                    .preferredColorScheme(.light)
+                    .transition(
+                        .opacity.combined(with: .offset(y: 50))
+                            .animation(.easeInOut(duration: 0.3))
+                    )
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountView)
+        }
+        .overlay {
+            Group {
                 if navigationVM.shouldShowPaywall {
                     AppPaywallView(subscriptionsManager: subscriptionsManager, showBenefitsDelay: 0.4) {
                         navigationVM.shouldShowPaywall.toggle()
@@ -56,22 +73,6 @@ struct MainNavigationView: View {
                 }
             }
             .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowPaywall)
-        }
-        .overlay {
-            Group {
-                if navigationVM.shouldShowAccountView {
-                    AccountView(
-                        navigationVM: navigationVM,
-                        smokesManager: smokesManager
-                    )
-                    .preferredColorScheme(.light)
-                    .transition(
-                        .opacity.combined(with: .offset(y: 50))
-                            .animation(.easeInOut(duration: 0.3))
-                    )
-                }
-            }
-            .animation(.easeInOut(duration: 0.3), value: navigationVM.shouldShowAccountView)
         }
         .onChange(of: smokesManager.todaySmokes) { newValue in
             if newValue == 100 && !reviewManager.hasSeenReviewRequestAt100Smokes {

@@ -13,7 +13,6 @@ struct AppPaywallView: View {
 
     @ObservedObject var subscriptionsManager: SubscriptionsManager
 
-    @State private var withTrial: Bool = false
     var showBenefitsDelay: Double = 0.25
 
     var closeScreenAction: () -> Void
@@ -69,7 +68,9 @@ struct AppPaywallView: View {
             Alert(title: Text(errorText))
         }
         .task {
-            await subscriptionsManager.loadProducts()
+            if subscriptionsManager.products.isEmpty {
+                await subscriptionsManager.loadProducts()
+            }
         }
     }
 
@@ -228,7 +229,7 @@ struct AppPaywallView: View {
 
             VStack(spacing: 5) {
                 AccentButton(
-                    text: withTrial ? "Начать пробный период" : "Продолжить",
+                    text: subscriptionsManager.withTrial ? "Начать пробный период" : "Продолжить",
                     action: makePurchase
                 )
 
@@ -251,8 +252,8 @@ struct AppPaywallView: View {
             Text(trialString)
                 .font(.medium15)
                 .foregroundStyle(Palette.textSecondary)
-                .opacity(!isSmallDevice && withTrial ? 1 : 0)
-                .animation(.bouncy, value: withTrial)
+                .opacity(!isSmallDevice && subscriptionsManager.withTrial ? 1 : 0)
+                .animation(.bouncy, value: subscriptionsManager.withTrial)
 
             HStack {
                 if !isSmallDevice {
@@ -265,7 +266,7 @@ struct AppPaywallView: View {
 
                 Spacer()
 
-                if isSmallDevice && withTrial {
+                if isSmallDevice && subscriptionsManager.withTrial {
                     Text(trialString)
                         .font(.medium15)
                         .foregroundStyle(Palette.textSecondary)
@@ -282,7 +283,7 @@ struct AppPaywallView: View {
 
             Spacer()
 
-            Toggle("", isOn: $withTrial)
+            Toggle("", isOn: $subscriptionsManager.withTrial)
                 .labelsHidden()
         }
         .padding(16)
@@ -308,7 +309,7 @@ struct AppPaywallView: View {
 
     private func makePurchase() {
         Task {
-            await subscriptionsManager.buyProduct(withTrial: withTrial) { error in
+            await subscriptionsManager.buyProduct() { error in
                 if let error {
                     errorText = error
                     shouldShowError = true

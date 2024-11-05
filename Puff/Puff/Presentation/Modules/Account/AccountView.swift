@@ -11,11 +11,13 @@ struct AccountView: View {
 
     @ObservedObject var navigationVM: NavigationViewModel
     @ObservedObject var smokesManager: SmokesManager
+    @ObservedObject var subscriptionsManager: SubscriptionsManager
 
     @State private var isNotificationsEnabled: Bool = NotificationManager.shared.isNotificationEnabled
     @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = false
 
     @State private var shouldShowResetWarning: Bool = false
+    @State private var shouldShowSubscriptionInfo: Bool = false
 
     @State private var offset: Double = .zero
 
@@ -53,6 +55,21 @@ struct AccountView: View {
             }
             .offset(y: min(15, offset))
             .animation(.easeOut(duration: 0.25), value: offset)
+            .overlay {
+                Group {
+                    if shouldShowSubscriptionInfo {
+                        AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
+                            shouldShowSubscriptionInfo = false
+                        }
+                        .preferredColorScheme(.light)
+                        .transition(
+                            .opacity.combined(with: .offset(y: 50))
+                                .animation(.easeInOut(duration: 0.3))
+                        )
+                    }
+                }
+                .animation(.easeInOut(duration: 0.3), value: shouldShowSubscriptionInfo)
+            }
     }
 
     @ViewBuilder
@@ -142,7 +159,13 @@ struct AccountView: View {
             cell(
                 "Подписка",
                 imageName: "accountSubscriptionImage"
-            )
+            ) {
+                if subscriptionsManager.isPremium {
+                    shouldShowSubscriptionInfo = true
+                } else {
+                    navigationVM.shouldShowPaywall = true
+                }
+            }
 
             cell(
                 "Сменить язык",
@@ -233,6 +256,7 @@ struct AccountView: View {
 #Preview {
     AccountView(
         navigationVM: .init(),
-        smokesManager: .init()
+        smokesManager: .init(),
+        subscriptionsManager: .init()
     )
 }

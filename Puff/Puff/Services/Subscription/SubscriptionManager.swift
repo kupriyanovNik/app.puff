@@ -13,9 +13,12 @@ class SubscriptionsManager: NSObject, ObservableObject {
     let productIDs: [String] = ["com.quitvaping.month", "com.quitvaping.month1"]
     var purchasedProductIDs: Set<String> = []
 
+    @Published private(set) var activeTransactions: Set<StoreKit.Transaction> = []
     @Published var products: [Product] = []
 
     @AppStorage("isPremium") var isPremium: Bool = false
+
+    @AppStorage("withTrial") var withTrial: Bool = false
 
     private var updates: Task<Void, Never>? = nil
 
@@ -23,6 +26,11 @@ class SubscriptionsManager: NSObject, ObservableObject {
         super.init()
         self.updates = observeTransactionUpdates()
         SKPaymentQueue.default().add(self)
+
+        Task {
+            await loadProducts()
+            await fetchActiveTransactions()
+        }
     }
 
     deinit {
@@ -48,7 +56,7 @@ extension SubscriptionsManager {
         }
     }
 
-    func buyProduct(withTrial: Bool, callback: @escaping (String?) -> Void) async {
+    func buyProduct(callback: @escaping (String?) -> Void) async {
         do {
             let result = try await products[withTrial ? 1 : 0].purchase()
 
@@ -57,6 +65,7 @@ extension SubscriptionsManager {
                 // Successful purhcase
                 await transaction.finish()
                 await self.updatePurchasedProducts()
+                await fetchActiveTransactions()
                 callback(nil)
             case let .success(.unverified(_, error)):
                 // Successful purchase but transaction/receipt can't be verified
@@ -100,9 +109,22 @@ extension SubscriptionsManager {
             try await AppStore.sync()
 
             callback(nil)
+            self.isPremium = !self.purchasedProductIDs.isEmpty
         } catch {
             callback(error.localizedDescription)
         }
+    }
+
+    func fetchActiveTransactions() async {
+        var activeTransactions: Set<StoreKit.Transaction> = []
+
+        for await entitlement in Transaction.currentEntitlements {
+            if let transaction = try? entitlement.payloadValue {
+                activeTransactions.insert(transaction)
+            }
+        }
+
+        self.activeTransactions = activeTransactions
     }
 }
 
