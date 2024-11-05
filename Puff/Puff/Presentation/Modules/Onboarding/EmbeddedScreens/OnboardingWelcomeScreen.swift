@@ -77,7 +77,7 @@ struct OnboardingWelcomeScreen: View {
                 }
             }
         }
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
     }
 }
 

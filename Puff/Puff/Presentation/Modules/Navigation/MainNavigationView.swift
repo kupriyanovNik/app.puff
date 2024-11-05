@@ -41,34 +41,34 @@ struct MainNavigationView: View {
                     navigationVM: navigationVM,
                     smokesManager: smokesManager,
                     subscriptionsManager: subscriptionsManager
-                ).prepareForStackPresentationInOnboarding()
+                ).prepareForStackPresentation()
                 case AppNavigationPathValue.accountSubscriptionInfo: AccountView.AccountViewSubscriptionInfoView(
                     subscriptionsManager: subscriptionsManager,
                     backAction: navigationVM.back
-                ).prepareForStackPresentationInOnboarding()
+                ).prepareForStackPresentation()
                 case AppNavigationPathValue.accountWidgetsInfo: AccountViewWidgetsInfoView(
                     navigationVM: navigationVM
-                ).prepareForStackPresentationInOnboarding()
+                ).prepareForStackPresentation()
 
                 case AppNavigationPathValue.accountWidgetsInfoHomeScreen: AccountViewWidgetsInfoView(
                     navigationVM: navigationVM
-                ).homeScreenInfoView().prepareForStackPresentationInOnboarding()
+                ).homeScreenInfoView().prepareForStackPresentation()
 
                 case AppNavigationPathValue.accountWidgetsInfoControlCenter: AccountViewWidgetsInfoView(
                     navigationVM: navigationVM
-                ).controlCenterInfoView().prepareForStackPresentationInOnboarding()
+                ).controlCenterInfoView().prepareForStackPresentation()
 
                 case AppNavigationPathValue.accountWidgetsInfoActionButton: AccountViewWidgetsInfoView(
                     navigationVM: navigationVM
-                ).actionButtonInfoView().prepareForStackPresentationInOnboarding()
+                ).actionButtonInfoView().prepareForStackPresentation()
 
                 case AppNavigationPathValue.accountWidgetsInfoDoubleTap: AccountViewWidgetsInfoView(
                     navigationVM: navigationVM
-                ).doubleBackTapInfoView().prepareForStackPresentationInOnboarding()
+                ).doubleBackTapInfoView().prepareForStackPresentation()
 
                 case AppNavigationPathValue.accountWidgetsInfoLockScreen: AccountViewWidgetsInfoView(
                     navigationVM: navigationVM
-                ).lockScreenInfoView().prepareForStackPresentationInOnboarding()
+                ).lockScreenInfoView().prepareForStackPresentation()
 
                 default: EmptyView()
                 }

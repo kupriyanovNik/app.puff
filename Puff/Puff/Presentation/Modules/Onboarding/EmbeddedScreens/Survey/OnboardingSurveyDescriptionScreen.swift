@@ -34,7 +34,7 @@ struct OnboardingSurveyDescriptionScreen: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 16)
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
     }
 }
 

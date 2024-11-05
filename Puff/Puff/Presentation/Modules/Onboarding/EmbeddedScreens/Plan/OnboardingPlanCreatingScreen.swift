@@ -43,7 +43,7 @@ struct OnboardingPlanCreatingScreen: View {
                     .transition(.opacity.animation(.easeOut(duration: 0.2).delay(0.3)))
             }
         }
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
         .onAppear {
             delay(0.5) {
                 withAnimation(.linear(duration: 2.5)) {

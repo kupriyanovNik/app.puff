@@ -31,7 +31,7 @@ struct OnboardingValuePropositionScreen: View {
         }
         .padding(.top, isSmallDevice ? 8 : 16)
         .padding(.bottom, 16)
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
     }
 
     @ViewBuilder

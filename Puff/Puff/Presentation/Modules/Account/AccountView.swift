@@ -30,7 +30,7 @@ struct AccountView: View {
     }
 
     var body: some View {
-        CircledTopCornersView(content: viewContent)
+        CircledTopCornersView(background: .init(hex: 0xF5F5F5), content: viewContent)
             .onChange(of: scenePhase) { newValue in
                 if newValue == .active {
                     checkNotifications()
@@ -89,7 +89,7 @@ struct AccountView: View {
 
             Spacer()
         }
-        .padding(.top, 22)
+        .padding(.top, 10)
         .padding(.leading, 16)
     }
 

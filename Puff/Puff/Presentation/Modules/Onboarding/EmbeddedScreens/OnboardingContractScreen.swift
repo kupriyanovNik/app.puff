@@ -81,7 +81,7 @@ struct OnboardingContractScreen: View {
                 )
             }
         }
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
         .onChange(of: isPressingEnded) { newValue in
             if newValue {
                 delay(2) {

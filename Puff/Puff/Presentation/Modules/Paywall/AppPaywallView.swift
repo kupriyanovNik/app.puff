@@ -66,7 +66,7 @@ struct AppPaywallView: View {
                     .transition(.opacity.animation(.easeOut(duration: 0.2).delay(0.3)))
             }
         }
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
         .animation(.easeOut(duration: 0.35), value: shouldShowCongratulationView)
         .alert(isPresented: $shouldShowError) {
             Alert(title: Text(errorText))

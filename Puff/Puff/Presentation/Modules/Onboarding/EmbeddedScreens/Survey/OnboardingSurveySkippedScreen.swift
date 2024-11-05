@@ -63,7 +63,7 @@ struct OnboardingSurveySkippedScreen: View {
                 .padding(.bottom, -16)
         }
         .background(.white)
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
     }
 
     @ViewBuilder

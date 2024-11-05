@@ -39,7 +39,7 @@ struct NotificationRequestView: View {
             bottomView()
         }
         .padding(.horizontal, 20)
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
     }
 
     @ViewBuilder

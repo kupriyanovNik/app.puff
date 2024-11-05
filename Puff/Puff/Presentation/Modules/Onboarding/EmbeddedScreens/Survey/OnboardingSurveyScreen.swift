@@ -94,7 +94,7 @@ struct OnboardingSurveyScreen: View {
             }
         }
         .padding([.top, .horizontal], 16)
-        .prepareForStackPresentationInOnboarding()
+        .prepareForStackPresentation()
     }
 
     @ViewBuilder
