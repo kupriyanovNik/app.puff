@@ -11,8 +11,8 @@ struct ActionMenuSubscriptionLeavingView: View {
 
     @State private var screenState: ScreenState = .reasons
 
-    @SceneStorage("reasonsIndices") private var reasonsIndices: [Int] = []
-    @SceneStorage("improvementsString") private var improvementsString: String = ""
+    @State private var reasonsIndices: [Int] = []
+    @State private var improvementsString: String = ""
 
     var onCancelSubscription: ([Int], String) -> Void = { _, _ in }
     var onDismiss: () -> Void = {}
