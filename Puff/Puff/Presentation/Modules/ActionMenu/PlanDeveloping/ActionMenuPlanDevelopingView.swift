@@ -53,7 +53,7 @@ struct ActionMenuPlanDevelopingView: View {
 
             AccentButton(
                 text: screenState == .info ? "Начать" : "Далее",
-                isDisabled: shouldShowError,
+                isDisabled: shouldShowError && todaySmokes < 1000,
                 action: nextAction
             )
             .padding(.horizontal, 12)
@@ -97,7 +97,7 @@ struct ActionMenuPlanDevelopingView: View {
                 .padding(.horizontal, 40)
                 .overlay {
                     Group {
-                        if shouldShowError {
+                        if shouldShowError && todaySmokes < 1000 {
                             Text("Это меньше, чем вы уже сделали сегодня")
                                 .font(.medium16)
                                 .multilineTextAlignment(.center)
