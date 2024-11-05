@@ -91,6 +91,11 @@ final class NavigationViewModel: ObservableObject {
 enum AppNavigationPathValue {
     static let account = "ACCOUNTVIEW"
     static let accountWidgetsInfo = "ACCOUNTWIDGETSINFOVIEW"
+    static let accountWidgetsInfoHomeScreen = "ACCOUNTWIDGETSINFOVIEWHomeScreen"
+    static let accountWidgetsInfoControlCenter = "ACCOUNTWIDGETSINFOVIEWControlCenter"
+    static let accountWidgetsInfoActionButton = "ACCOUNTWIDGETSINFOVIEWActionButton"
+    static let accountWidgetsInfoDoubleTap = "ACCOUNTWIDGETSINFOVIEWDoubleTap"
+    static let accountWidgetsInfoLockScreen = "ACCOUNTWIDGETSINFOVIEWLockScreen"
     static let accountSubscriptionInfo = "ACCOUNTSUBSCRIPTIONINFOVIEW"
 }
 
@@ -109,5 +114,25 @@ extension NavigationViewModel {
 
     func showWidgetsInfo() {
         appNavigationPath.append(AppNavigationPathValue.accountWidgetsInfo)
+    }
+
+    func showAccountWidgetsHomeInfo() {
+        appNavigationPath.append(AppNavigationPathValue.accountWidgetsInfoHomeScreen)
+    }
+
+    func showAccountWidgetsControlCenter() {
+        appNavigationPath.append(AppNavigationPathValue.accountWidgetsInfoControlCenter)
+    }
+
+    func showAccountWidgetsActionButton() {
+        appNavigationPath.append(AppNavigationPathValue.accountWidgetsInfoActionButton)
+    }
+
+    func showAccountWidgetsDoubleTap() {
+        appNavigationPath.append(AppNavigationPathValue.accountWidgetsInfoDoubleTap)
+    }
+
+    func showAccountWidgetsLockScreen() {
+        appNavigationPath.append(AppNavigationPathValue.accountWidgetsInfoLockScreen)
     }
 }

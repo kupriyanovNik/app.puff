@@ -47,8 +47,29 @@ struct MainNavigationView: View {
                     backAction: navigationVM.back
                 ).prepareForStackPresentationInOnboarding()
                 case AppNavigationPathValue.accountWidgetsInfo: AccountViewWidgetsInfoView(
-                    backAction: navigationVM.back
+                    navigationVM: navigationVM
                 ).prepareForStackPresentationInOnboarding()
+
+                case AppNavigationPathValue.accountWidgetsInfoHomeScreen: AccountViewWidgetsInfoView(
+                    navigationVM: navigationVM
+                ).homeScreenInfoView().prepareForStackPresentationInOnboarding()
+
+                case AppNavigationPathValue.accountWidgetsInfoControlCenter: AccountViewWidgetsInfoView(
+                    navigationVM: navigationVM
+                ).controlCenterInfoView().prepareForStackPresentationInOnboarding()
+
+                case AppNavigationPathValue.accountWidgetsInfoActionButton: AccountViewWidgetsInfoView(
+                    navigationVM: navigationVM
+                ).actionButtonInfoView().prepareForStackPresentationInOnboarding()
+
+                case AppNavigationPathValue.accountWidgetsInfoDoubleTap: AccountViewWidgetsInfoView(
+                    navigationVM: navigationVM
+                ).doubleBackTapInfoView().prepareForStackPresentationInOnboarding()
+
+                case AppNavigationPathValue.accountWidgetsInfoLockScreen: AccountViewWidgetsInfoView(
+                    navigationVM: navigationVM
+                ).lockScreenInfoView().prepareForStackPresentationInOnboarding()
+
                 default: EmptyView()
                 }
             }

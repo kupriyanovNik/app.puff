@@ -9,13 +9,7 @@ import SwiftUI
 
 struct AccountViewWidgetsInfoView: View {
 
-    var backAction: () -> Void
-
-    @State private var shouldShowHomeScreenInfo: Bool = false
-    @State private var shouldShowControlCenterInfo: Bool = false
-    @State private var shouldShowActionButtonInfo: Bool = false
-    @State private var shouldShowDoubleBackTapInfo: Bool = false
-    @State private var shouldShowLockScreenInfo: Bool = false
+    @ObservedObject var navigationVM: NavigationViewModel
 
     var body: some View {
         CircledTopCornersView(content: viewContent)
@@ -28,17 +22,12 @@ struct AccountViewWidgetsInfoView: View {
 
             cells()
         }
-        .makeCustomConditionalView(shouldShowHomeScreenInfo, content: homeScreenInfoView)
-        .makeCustomConditionalView(shouldShowControlCenterInfo, content: controlCenterInfoView)
-        .makeCustomConditionalView(shouldShowActionButtonInfo, content: actionButtonInfoView)
-        .makeCustomConditionalView(shouldShowDoubleBackTapInfo, content: doubleBackTapInfoView)
-        .makeCustomConditionalView(shouldShowLockScreenInfo, content: lockScreenInfoView)
     }
 
     @ViewBuilder
     private func headerView() -> some View {
         HStack(spacing: 8) {
-            Button(action: backAction) {
+            Button(action: navigationVM.back) {
                 Image(.accountBack)
                     .resizable()
                     .scaledToFit()
@@ -61,41 +50,36 @@ struct AccountViewWidgetsInfoView: View {
             VStack(spacing: 10) {
                 cell(
                     "AccountWidgets.Base.Home".l,
-                    imageName: "AccountWidgetsBaseInfoHomeScreenImage"
-                ) {
-                    shouldShowHomeScreenInfo = true
-                }
+                    imageName: "AccountWidgetsBaseInfoHomeScreenImage",
+                    action: navigationVM.showAccountWidgetsHomeInfo
+                )
 
                 cell(
                     "AccountWidgets.Base.ControlCenter".l,
                     availableText: "AccountWidgets.Base.AvailableOnIOS18".l,
-                    imageName: "AccountWidgetsBaseInfoControlCenterImage"
-                ) {
-                    shouldShowControlCenterInfo = true
-                }
+                    imageName: "AccountWidgetsBaseInfoControlCenterImage",
+                    action: navigationVM.showAccountWidgetsControlCenter
+                )
 
                 cell(
                     "AccountWidgets.Base.ActionButton".l,
                     availableText: "AccountWidgets.Base.Available15ProAndNewer".l,
-                    imageName: "AccountWidgetsBaseInfoActionButtonImage"
-                ) {
-                    shouldShowActionButtonInfo = true
-                }
+                    imageName: "AccountWidgetsBaseInfoActionButtonImage",
+                    action: navigationVM.showAccountWidgetsActionButton
+                )
 
                 cell(
                     "AccountWidgets.Base.DoubleBackTap".l,
-                    imageName: "AccountWidgetsBaseInfoDoubleBackTapImage"
-                ) {
-                    shouldShowDoubleBackTapInfo = true
-                }
+                    imageName: "AccountWidgetsBaseInfoDoubleBackTapImage",
+                    action: navigationVM.showAccountWidgetsDoubleTap
+                )
 
                 cell(
                     "AccountWidgets.Base.LockScreen".l,
                     availableText: "AccountWidgets.Base.AvailableOnIOS18".l,
-                    imageName: "AccountWidgetsBaseInfoLockScreenImage"
-                ) {
-                    shouldShowLockScreenInfo = true
-                }
+                    imageName: "AccountWidgetsBaseInfoLockScreenImage",
+                    action: navigationVM.showAccountWidgetsLockScreen
+                )
             }
             .padding(.horizontal, 12)
             .padding(.bottom, isSmallDevice ? 22 : 0)
@@ -141,12 +125,7 @@ struct AccountViewWidgetsInfoView: View {
     }
 }
 
-#Preview {
-    AccountViewWidgetsInfoView { }
-}
-
-
-private extension AccountViewWidgetsInfoView {
+extension AccountViewWidgetsInfoView {
     @ViewBuilder func homeScreenInfoView() -> some View {
         AccountWidgetsInfoView(
             title: "AccountWidgets.Base.Home",
@@ -158,10 +137,9 @@ private extension AccountViewWidgetsInfoView {
                         imageName: "AccountWidgetsHomeInfo\(index)Image"
                     )
                 }
-            )
-        ) {
-            shouldShowHomeScreenInfo = false
-        }
+            ),
+            backAction: navigationVM.back
+        )
     }
 
     @ViewBuilder func controlCenterInfoView() -> some View {
@@ -175,10 +153,9 @@ private extension AccountViewWidgetsInfoView {
                             imageName: "AccountWidgetsControlCenterInfo\(index)Image"
                         )
                 }
-            )
-        ) {
-            shouldShowControlCenterInfo = false
-        }
+            ),
+            backAction: navigationVM.back
+        )
     }
 
     @ViewBuilder func actionButtonInfoView() -> some View {
@@ -192,16 +169,14 @@ private extension AccountViewWidgetsInfoView {
                             imageName: "AccountWidgetsActionButtonInfo\(index)Image".l
                         )
                 }
-            )
-        ) {
-            shouldShowActionButtonInfo = false
-        }
+            ),
+            backAction: navigationVM.back
+        )
     }
 
     @ViewBuilder func doubleBackTapInfoView() -> some View {
         AccountWidgetsInfoView(
             title: "AccountWidgets.Base.DoubleBackTap",
-            withScroll: true,
             models: [
                 .init(
                     number: 1,
@@ -213,10 +188,9 @@ private extension AccountViewWidgetsInfoView {
                 .init(number: 3, title: "AccountWidgets.DoubleBackTapInfo.Text3", imageName: "AccountWidgetsDoubleBackTapInfo3Image".l),
                 .init(number: 4, title: "AccountWidgets.DoubleBackTapInfo.Text4", imageName: "AccountWidgetsDoubleBackTapInfo4Image".l),
                 .init(number: 5, title: "AccountWidgets.DoubleBackTapInfo.Text5", imageName: "AccountWidgetsDoubleBackTapInfo5Image".l)
-            ]
-        ) {
-            shouldShowDoubleBackTapInfo = false
-        }
+            ],
+            backAction: navigationVM.back
+        )
     }
 
     @ViewBuilder func lockScreenInfoView() -> some View {
@@ -227,9 +201,8 @@ private extension AccountViewWidgetsInfoView {
                 .init(number: 2, title: "AccountWidgets.LockScreen.Text2", imageName: "AccountWidgetsLockScreenInfo2Image"),
                 .init(number: 3, title: "AccountWidgets.LockScreen.Text3", imageName: "AccountWidgetsLockScreenInfo3Image"),
                 .init(number: 4, title: "AccountWidgets.LockScreen.Text4", imageName: "AccountWidgetsLockScreenInfo4Image")
-            ]
-        ) {
-            shouldShowLockScreenInfo = false
-        }
+            ],
+            backAction: navigationVM.back
+        )
     }
 }

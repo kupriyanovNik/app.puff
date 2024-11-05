@@ -20,17 +20,12 @@ struct AccountWidgetsInfoModel: Identifiable {
 
 struct AccountWidgetsInfoView: View {
     let title: String
-    var withScroll: Bool = false
     let models: [AccountWidgetsInfoModel]
 
     var backAction: () -> Void
 
     var body: some View {
-        CustomDismissableView(
-            ableToDismissBySlidingDown: !withScroll,
-            dismissAction: backAction,
-            content: viewContent
-        )
+        CircledTopCornersView(content: viewContent)
     }
 
     @ViewBuilder
@@ -38,16 +33,10 @@ struct AccountWidgetsInfoView: View {
         VStack(spacing: 28) {
             headerView()
 
-            if withScroll {
-                ScrollView {
-                    cells()
-                }
-                .scrollIndicators(.hidden)
-            } else {
+            ScrollView {
                 cells()
-
-                Spacer()
             }
+            .scrollIndicators(.hidden)
         }
     }
 
