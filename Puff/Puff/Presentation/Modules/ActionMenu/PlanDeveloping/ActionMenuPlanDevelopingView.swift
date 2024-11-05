@@ -44,12 +44,7 @@ struct ActionMenuPlanDevelopingView: View {
                         .padding(.bottom, 12)
                 }
             }
-            .transition(
-                .asymmetric(
-                    insertion: .opacity.animation(.easeInOut(duration: 0.1).delay(0.12)),
-                    removal: .opacity
-                ).animation(.easeInOut(duration: 0.1))
-            )
+            .makeActionMenuTransition()
 
             AccentButton(
                 text: screenState == .info ? "Start".l : "Next".l,

@@ -77,12 +77,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
                     nonCriticalExceededView()
                 }
             }
-            .transition(
-                .asymmetric(
-                    insertion: .opacity.animation(.mainAnimation.delay(0.3)),
-                    removal: .opacity
-                ).animation(.mainAnimation)
-            )
+            .makeActionMenuTransition()
 
             VStack(spacing: 10) {
                 AccentButton(

@@ -126,6 +126,15 @@ extension View {
             .animation(.mainAnimation)
     }
 
+    func makeActionMenuTransition() -> some View {
+        transition(
+            .asymmetric(
+                insertion: .opacity.animation(.easeInOut(duration: 0.1).delay(0.12)),
+                removal: .opacity
+            ).animation(.easeInOut(duration: 0.1))
+        )
+    }
+
     func makeCustomConditionalView<Content: View>(
         _ condition: Bool,
         transition: AnyTransition = .opacity.combined(with: .offset(y: 50)).animation(.mainAnimation),

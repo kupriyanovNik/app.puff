@@ -248,10 +248,6 @@ extension AccountView {
                     smokesManager.resetPlan()
                     shouldShowResetWarning = false
                     AnalyticsManager.logEvent(event: .resetedPlan)
-
-                    delay(0.4) {
-                        navigationVM.back()
-                    }
                 }
 
                 SecondaryButton(text: "Cancel".l) {
