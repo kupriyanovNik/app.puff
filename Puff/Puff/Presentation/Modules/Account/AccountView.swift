@@ -17,7 +17,6 @@ struct AccountView: View {
     @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = false
 
     @State private var shouldShowResetWarning: Bool = false
-    @State private var shouldShowSubscriptionInfo: Bool = false
 
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.locale) var locale
@@ -47,21 +46,9 @@ struct AccountView: View {
             .overlay(alignment: .bottom) {
                 Group {
                     if subscriptionsManager.isPremium {
-                        TextButton(text: "Account.SubscriptionIsActive".l) {
-                            shouldShowSubscriptionInfo = true
-                        }
-                        .padding(.bottom, 7)
+                        TextButton(text: "Account.SubscriptionIsActive".l, action: navigationVM.showSubscriptionInfo)
+                            .padding(.bottom, 7)
                     }
-                }
-            }
-            .makeCustomConditionalView(shouldShowSubscriptionInfo) {
-                AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
-                    shouldShowSubscriptionInfo = false
-                }
-            }
-            .makeCustomConditionalView(navigationVM.shouldShowAccountWidgetsInfo) {
-                AccountViewWidgetsInfoView {
-                    navigationVM.shouldShowAccountWidgetsInfo = false
                 }
             }
             .makeCustomSheet(isPresented: $shouldShowResetWarning) {
@@ -150,8 +137,9 @@ struct AccountView: View {
             if #available(iOS 17.0, *) {
                 cell(
                     "Account.Widgets".l,
-                    imageName: "accountWidgetsImage"
-                ) { navigationVM.shouldShowAccountWidgetsInfo = true }
+                    imageName: "accountWidgetsImage",
+                    action: navigationVM.showWidgetsInfo
+                )
             }
 
             cell(

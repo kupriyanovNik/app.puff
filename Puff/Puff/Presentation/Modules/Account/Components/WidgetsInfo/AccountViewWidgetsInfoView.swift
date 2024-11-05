@@ -18,11 +18,7 @@ struct AccountViewWidgetsInfoView: View {
     @State private var shouldShowLockScreenInfo: Bool = false
 
     var body: some View {
-        CustomDismissableView(
-            ableToDismissBySlidingDown: false,
-            dismissAction: backAction,
-            content: viewContent
-        )
+        CircledTopCornersView(content: viewContent)
     }
 
     @ViewBuilder

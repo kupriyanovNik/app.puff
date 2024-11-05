@@ -42,6 +42,13 @@ struct MainNavigationView: View {
                     smokesManager: smokesManager,
                     subscriptionsManager: subscriptionsManager
                 ).prepareForStackPresentationInOnboarding()
+                case AppNavigationPathValue.accountSubscriptionInfo: AccountView.AccountViewSubscriptionInfoView(
+                    subscriptionsManager: subscriptionsManager,
+                    backAction: navigationVM.back
+                ).prepareForStackPresentationInOnboarding()
+                case AppNavigationPathValue.accountWidgetsInfo: AccountViewWidgetsInfoView(
+                    backAction: navigationVM.back
+                ).prepareForStackPresentationInOnboarding()
                 default: EmptyView()
                 }
             }

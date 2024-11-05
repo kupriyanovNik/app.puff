@@ -33,7 +33,7 @@ extension AccountView {
         }
 
         var body: some View {
-            CustomDismissableView(dismissAction: backAction, content: viewContent)
+            CircledTopCornersView(content: viewContent)
                 .makeCustomSheet(isPresented: $shouldShowSubscriptionEndingView) {
                     ActionMenuSubscriptionLeavingView { reasonsIndices, improvementsText in
                         requestCancel()

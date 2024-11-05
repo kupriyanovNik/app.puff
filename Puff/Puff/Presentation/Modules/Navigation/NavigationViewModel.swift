@@ -13,7 +13,6 @@ final class NavigationViewModel: ObservableObject {
 
     @Published var appNavigationPath = NavigationPath()
 
-    @Published var shouldShowAccountWidgetsInfo: Bool = false
     @Published var shouldShowWidgetsTip: Bool = false
     @AppStorage("hasSeenWidgetsTip") var hasSeenWidgetsTip: Bool = false
 
@@ -102,5 +101,13 @@ extension NavigationViewModel {
 
     func showAccount() {
         appNavigationPath.append(AppNavigationPathValue.account)
+    }
+
+    func showSubscriptionInfo() {
+        appNavigationPath.append(AppNavigationPathValue.accountSubscriptionInfo)
+    }
+
+    func showWidgetsInfo() {
+        appNavigationPath.append(AppNavigationPathValue.accountWidgetsInfo)
     }
 }
