@@ -21,9 +21,7 @@ struct AppHeaderView: View {
 
             Spacer()
 
-            Button {
-                navigationVM.shouldShowAccountView = true
-            } label: {
+            Button(action: navigationVM.showAccount) {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color(hex: 0xE7E7E7))
                     .frame(34)

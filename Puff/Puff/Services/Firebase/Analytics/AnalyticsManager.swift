@@ -24,6 +24,7 @@ final class AnalyticsManager {
         case skippedSurveyAndPlanCreating
         case acceptedNotifications
         case resetedPlan
+        case resetedSmokes
         case canceledSubscription(reasons: [String], feedback: String)
         case startedPlan(initialSmokes: Int, daysInPlan: Int)
         case addedMoreSmokes(count: Int)
@@ -40,6 +41,7 @@ final class AnalyticsManager {
             case .skippedSurveyAndPlanCreating: "UserSkippedSurveyAndPlancreating"
             case .acceptedNotifications: "UserAcceptedNotifications"
             case .resetedPlan: "UserResetedPlan"
+            case .resetedSmokes: "UserResetedSmokes"
             case .canceledSubscription: "UserCanceledSubscription"
             case .startedPlan: "UserStartedPlan"
             case .addedMoreSmokes: "UserAddedMoreSmokes"
@@ -75,7 +77,7 @@ final class AnalyticsManager {
                     "Day2Limit": day2Limit.safeUnwrapAsString()
                 ]
 
-            case .acceptedNotifications, .resetedPlan, .extendedPlan, .extendedPlanInLastDay: nil
+            case .acceptedNotifications, .resetedPlan, .resetedSmokes, .extendedPlan, .extendedPlanInLastDay: nil
             case .openedAppStoreFromUpdateActionMenu, .skippedSurveyAndPlanCreating: nil
             }
         }

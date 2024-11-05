@@ -25,14 +25,26 @@ struct MainNavigationView: View {
     @State private var timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        ZStack {
-            Color.clear
-                .ignoresSafeArea()
+        NavigationStack(path: $navigationVM.appNavigationPath) {
+            ZStack {
+                Color.clear
+                    .ignoresSafeArea()
 
-            content()
-                .safeAreaInset(edge: .bottom) {
-                    TabBar(selectedTab: $navigationVM.selectedTab)
+                content()
+                    .safeAreaInset(edge: .bottom) {
+                        TabBar(selectedTab: $navigationVM.selectedTab)
+                    }
+            }
+            .navigationDestination(for: String.self) { value in
+                switch value {
+                case AppNavigationPathValue.account: AccountView(
+                    navigationVM: navigationVM,
+                    smokesManager: smokesManager,
+                    subscriptionsManager: subscriptionsManager
+                ).prepareForStackPresentationInOnboarding()
+                default: EmptyView()
                 }
+            }
         }
         .alert(isPresented: $shouldShowCurrentDayIndexError) {
             Alert(title: Text("Home.CurrentDayIndexErrorText".l))
@@ -46,13 +58,6 @@ struct MainNavigationView: View {
         ) {
             OnboardingView(
                 onboardingVM: onboardingVM,
-                subscriptionsManager: subscriptionsManager
-            )
-        }
-        .makeCustomConditionalView(navigationVM.shouldShowAccountView) {
-            AccountView(
-                navigationVM: navigationVM,
-                smokesManager: smokesManager,
                 subscriptionsManager: subscriptionsManager
             )
         }

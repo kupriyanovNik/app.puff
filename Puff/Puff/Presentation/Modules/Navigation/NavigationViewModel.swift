@@ -11,11 +11,11 @@ import SwiftUI
 final class NavigationViewModel: ObservableObject {
     @Published var selectedTab: TabBarModel = .home
 
+    @Published var appNavigationPath = NavigationPath()
+
     @Published var shouldShowAccountWidgetsInfo: Bool = false
     @Published var shouldShowWidgetsTip: Bool = false
     @AppStorage("hasSeenWidgetsTip") var hasSeenWidgetsTip: Bool = false
-
-    @Published var shouldShowAccountView: Bool = false
 
     @Published var shouldShowPlanDevelopingActionMenu: Bool = false
     @Published var shouldShowReadyToBreakActionMenu: Bool = false
@@ -86,5 +86,21 @@ final class NavigationViewModel: ObservableObject {
         } else {
             ableToShowUpdateActionMenu = true
         }
+    }
+}
+
+enum AppNavigationPathValue {
+    static let account = "ACCOUNTVIEW"
+    static let accountWidgetsInfo = "ACCOUNTWIDGETSINFOVIEW"
+    static let accountSubscriptionInfo = "ACCOUNTSUBSCRIPTIONINFOVIEW"
+}
+
+extension NavigationViewModel {
+    func back() {
+        appNavigationPath.removeLast()
+    }
+
+    func showAccount() {
+        appNavigationPath.append(AppNavigationPathValue.account)
     }
 }

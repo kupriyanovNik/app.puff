@@ -31,52 +31,48 @@ struct AccountView: View {
     }
 
     var body: some View {
-        CustomDismissableView {
-            navigationVM.shouldShowAccountView = false
-        } content: {
-            viewContent()
-        }
-        .onChange(of: scenePhase) { newValue in
-            if newValue == .active {
-                checkNotifications()
+        CircledTopCornersView(content: viewContent)
+            .onChange(of: scenePhase) { newValue in
+                if newValue == .active {
+                    checkNotifications()
+                }
             }
-        }
-        .onAppear {
-            NotificationManager.shared.checkNotificationStatus()
+            .onAppear {
+                NotificationManager.shared.checkNotificationStatus()
 
-            delay(0.6) {
-                checkNotifications()
+                delay(0.6) {
+                    checkNotifications()
+                }
             }
-        }
-        .overlay(alignment: .bottom) {
-            Group {
-                if subscriptionsManager.isPremium {
-                    TextButton(text: "Account.SubscriptionIsActive".l) {
-                        shouldShowSubscriptionInfo = true
+            .overlay(alignment: .bottom) {
+                Group {
+                    if subscriptionsManager.isPremium {
+                        TextButton(text: "Account.SubscriptionIsActive".l) {
+                            shouldShowSubscriptionInfo = true
+                        }
+                        .padding(.bottom, 7)
                     }
-                    .padding(.bottom, 7)
                 }
             }
-        }
-        .makeCustomConditionalView(shouldShowSubscriptionInfo) {
-            AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
-                shouldShowSubscriptionInfo = false
-            }
-        }
-        .makeCustomConditionalView(navigationVM.shouldShowAccountWidgetsInfo) {
-            AccountViewWidgetsInfoView {
-                navigationVM.shouldShowAccountWidgetsInfo = false
-            }
-        }
-        .makeCustomSheet(isPresented: $shouldShowResetWarning) {
-            Group {
-                if smokesManager.isPlanStarted {
-                    resetWarningIfPlanStarted()
-                } else {
-                    resetWarningIfPlanNotStarted()
+            .makeCustomConditionalView(shouldShowSubscriptionInfo) {
+                AccountViewSubscriptionInfoView(subscriptionsManager: subscriptionsManager) {
+                    shouldShowSubscriptionInfo = false
                 }
             }
-        }
+            .makeCustomConditionalView(navigationVM.shouldShowAccountWidgetsInfo) {
+                AccountViewWidgetsInfoView {
+                    navigationVM.shouldShowAccountWidgetsInfo = false
+                }
+            }
+            .makeCustomSheet(isPresented: $shouldShowResetWarning) {
+                Group {
+                    if smokesManager.isPlanStarted {
+                        resetWarningIfPlanStarted()
+                    } else {
+                        resetWarningIfPlanNotStarted()
+                    }
+                }
+            }
     }
 
     @ViewBuilder
@@ -93,9 +89,7 @@ struct AccountView: View {
     @ViewBuilder
     private func headerView() -> some View {
         HStack(spacing: 8) {
-            Button {
-                navigationVM.shouldShowAccountView = false
-            } label: {
+            Button(action: navigationVM.back) {
                 Image(.accountBack)
                     .resizable()
                     .scaledToFit()
@@ -268,7 +262,7 @@ extension AccountView {
                     AnalyticsManager.logEvent(event: .resetedPlan)
 
                     delay(0.4) {
-                        navigationVM.shouldShowAccountView = false
+                        navigationVM.back()
                     }
                 }
 
@@ -304,11 +298,7 @@ extension AccountView {
                 AccentButton(text: "AccountSmokesResetting.Reset".l, background: Color(hex: 0xFF7D7D)) {
                     smokesManager.resetAllSmokes()
                     shouldShowResetWarning = false
-                    AnalyticsManager.logEvent(event: .resetedPlan)
-
-                    delay(0.4) {
-                        navigationVM.shouldShowAccountView = false
-                    }
+                    AnalyticsManager.logEvent(event: .resetedSmokes)
                 }
 
                 SecondaryButton(text: "Cancel".l) {

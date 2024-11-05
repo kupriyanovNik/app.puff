@@ -102,7 +102,7 @@ struct PuffApp: App {
             }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowWidgetsTip) {
                 ActionMenuWidgetsTipView {
-                    navigationVM.shouldShowAccountView = true
+                    navigationVM.showAccount()
                     navigationVM.shouldShowAccountWidgetsInfo = true
                     navigationVM.shouldShowWidgetsTip = false
                 } onDismiss: {
