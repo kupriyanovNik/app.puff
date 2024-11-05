@@ -21,19 +21,22 @@ struct PuffIntent: AppIntent {
         let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
         let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
 
+        // чтобы нельзя было отметить затяжку если план закончен
+        if !((!isPlanEnded && isPlanStarted) || !isPlanStarted) { return .result() }
+
         defaults.set(true, forKey: "hasAddedPuffsUsingIntent")
 
-        if (!isPlanEnded && isPlanStarted) || !isPlanStarted {
-            var counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
-            var dates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]
+        var planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [0]
+        let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
 
-            let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
-            var planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [1000]
-            let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
-            var currentDayIndexInArray = min(planCounts.count - 1, currentDayIndex)
+        if ableToPuff(limits: planLimits, counts: planCounts) {
+            var smokesCounts = defaults.array(forKey: "newSmokesCount") as? [Int]
+            var smokesDates = defaults.array(forKey: "newSmokesDates") as? [Date] ?? [.now]
 
-            if counts.count > 0 && ableToPuff(limits: planLimits, counts: planCounts) {
-                if isPlanStarted {
+            var currentDayIndexInArray = min(planCounts.count - 1, defaults.integer(forKey: "newCurrentDayIndex"))
+
+            if isPlanStarted {
+                if smokesCounts != nil, !(smokesCounts ?? []).isEmpty {
                     let realCurrentDayIndex = getRealCurrentIndex(limits: planLimits)
                     let dayIndexWithoutLimit = getRealCurrentIndexWithoutLimit(limits: planLimits)
 
@@ -44,40 +47,36 @@ struct PuffIntent: AppIntent {
 
                     if dayIndexWithoutLimit == realCurrentDayIndex {
                         planCounts[currentDayIndexInArray] += 1
-                        if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
-                            counts[counts.count - 1] += 1
-                        } else {
-                            counts.append(1)
-                            dates.append(.now)
-                        }
-                    }
 
-                } else {
-                    if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
-                        counts[counts.count - 1] += 1
-                    } else {
-                        counts.append(1)
-                        dates.append(.now)
+                        justPuff(counts: &smokesCounts!, dates: &smokesDates)
                     }
                 }
 
-                defaults.set(counts, forKey: "newSmokesCount")
-                defaults.set(dates, forKey: "newSmokesDates")
-
-                defaults.set(planCounts, forKey: "newPlanCounts")
-
-                defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
-
-                defaults.synchronize()
+            } else if smokesCounts != nil, !(smokesCounts ?? []).isEmpty {
+                justPuff(counts: &smokesCounts!, dates: &smokesDates)
             }
-        } else {
-            // TODO: - open app and tell that plan is ended
-            // ^ desided not to do!
+
+            defaults.set(smokesCounts, forKey: "newSmokesCount")
+            defaults.set(smokesDates, forKey: "newSmokesDates")
+
+            defaults.set(planCounts, forKey: "newPlanCounts")
+
+            defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
         }
 
+        defaults.synchronize()
         WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
 
         return .result()
+    }
+
+    private func justPuff(counts: inout [Int], dates: inout [Date]) {
+        if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
+            counts[counts.count - 1] += 1
+        } else {
+            counts.append(1)
+            dates.append(.now)
+        }
     }
 
     private func getRealCurrentIndex(limits: [Int]) -> Int? {
@@ -121,13 +120,13 @@ struct PuffIntent: AppIntent {
     }
 
     private func ableToPuff(limits: [Int], counts: [Int]) -> Bool {
-        let planStartDate = defaults.integer(forKey: "newPlanStartDate")
-
         if !defaults.bool(forKey: "newIsPlanStarted") {
             return true
         }
 
         let calendar = Calendar.current
+
+        let planStartDate = defaults.integer(forKey: "newPlanStartDate")
 
         if let currentDayIndexInArray = getRealCurrentIndex(limits: limits) {
             // запрещаем затягиваться больше лимита только в последний день

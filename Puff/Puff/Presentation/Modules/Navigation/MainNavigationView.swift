@@ -108,6 +108,13 @@ struct MainNavigationView: View {
                 }
             }
         }
+        .onAppear {
+            if smokesManager.isPlanStarted {
+                if !defaults.bool(forKey: "newIsPlanStarted") {
+                    defaults.set(true, forKey: "newIsPlanStarted")
+                }
+            }
+        }
     }
 
     @ViewBuilder
