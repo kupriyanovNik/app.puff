@@ -24,7 +24,7 @@ extension HomeView {
         }
 
         var body: some View {
-            RoundedRectangle(cornerRadius: 28)
+            RoundedRectangle(cornerRadius: isSmallDevice ? 18 : 28)
                 .fill(fillColor)
                 .overlay {
                     RadialGradient(
@@ -123,7 +123,7 @@ extension HomeView {
         }
 
         var body: some View {
-            RoundedRectangle(cornerRadius: 28)
+            RoundedRectangle(cornerRadius: isSmallDevice ? 18 : 28)
                 .fill(Color(hex: 0xE7E7E7))
                 .height(self.height)
                 .overlay {
@@ -147,8 +147,8 @@ extension HomeView {
                     .animation(.easeInOut(duration: 0.15), value: offset)
                     .animation(.easeInOut(duration: 0.15), value: extraOffsetMultiplier)
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 28))
-                .contentShape(RoundedRectangle(cornerRadius: 28))
+                .clipShape(RoundedRectangle(cornerRadius: isSmallDevice ? 18 : 28))
+                .contentShape(RoundedRectangle(cornerRadius: isSmallDevice ? 18 : 28))
                 .overlay {
                     Text("\(smokesManager.todaySmokes)")
                         .font(isSmallDevice ? .bold90 : .bold108)
@@ -195,7 +195,7 @@ extension HomeView {
                     Capsule()
                         .fill(Color(hex: 0x030303, alpha: 0.1))
                 }
-                .padding(.bottom, 20)
+                .padding(.bottom, isSmallDevice ? 14 : 20)
                 .onReceive(timer) { _ in setTime() }
                 .onChange(of: smokesManager.todaySmokes) { _ in setTime() }
                 .onAppear { setTime() }
