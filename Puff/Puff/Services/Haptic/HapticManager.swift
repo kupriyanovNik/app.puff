@@ -30,4 +30,16 @@ final class HapticManager {
     static func onTappedPlus() {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
+
+    static func actionMenusButton() {
+        if #available(iOS 17.5, *) {
+            UIImpactFeedbackGenerator(style: .rigid)
+                .impactOccurred(
+                    intensity: 1, at: .init(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height)
+                )
+        } else {
+            UIImpactFeedbackGenerator(style: .rigid)
+                .impactOccurred(intensity: 0.5)
+        }
+    }
 }

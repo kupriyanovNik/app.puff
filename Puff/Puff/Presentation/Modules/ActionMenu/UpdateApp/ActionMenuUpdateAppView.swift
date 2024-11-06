@@ -31,6 +31,8 @@ struct ActionMenuUpdateAppView: View {
 
             AccentButton(text: "ActionMenuUpdateApp.GoToAppStore".l) {
                 AnalyticsManager.logEvent(event: .openedAppStoreFromUpdateActionMenu)
+                HapticManager.actionMenusButton()
+
                 "https://apps.apple.com/app/id6717609578".openURL()
 
                 delay(0.5, action: onDismiss)

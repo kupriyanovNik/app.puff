@@ -42,21 +42,27 @@ struct ActionMenuAddingMoreSmokesView: View {
     @ViewBuilder
     private func buttons() -> some View {
         VStack(spacing: 10) {
-            AccentButton(text: "ActionMenuAddingMoreSmokes.NoItWasLast".l, action: onDismiss)
+            AccentButton(text: "ActionMenuAddingMoreSmokes.NoItWasLast".l) {
+                HapticManager.actionMenusButton()
+                onDismiss()
+            }
 
             HStack(spacing: 10) {
                 SecondaryButton(text: "+10", foreground: Palette.textSecondary) {
                     onAddedMoreSmokes(10)
+                    HapticManager.actionMenusButton()
                     onDismiss()
                 }
 
                 SecondaryButton(text: "+50", foreground: Palette.textSecondary) {
                     onAddedMoreSmokes(50)
+                    HapticManager.actionMenusButton()
                     onDismiss()
                 }
 
                 SecondaryButton(text: "+100", foreground: Palette.textSecondary) {
                     onAddedMoreSmokes(100)
+                    HapticManager.actionMenusButton()
                     onDismiss()
                 }
             }

@@ -141,6 +141,8 @@ struct ActionMenuPlanDevelopingView: View {
     }
 
     private func nextAction() {
+        HapticManager.actionMenusButton()
+
         withAnimation(.mainAnimation) {
             if screenState == .addiction {
                 screenState = .plan

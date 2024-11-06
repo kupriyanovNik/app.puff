@@ -28,8 +28,11 @@ struct ActionMenuWidgetsTipView: View {
                 .scaledToFit()
                 .cornerRadius(16)
 
-            AccentButton(text: "Add".l, action: callback)
-                .padding(.bottom, -26)
+            AccentButton(text: "Add".l) {
+                HapticManager.actionMenusButton()
+                callback()
+            }
+            .padding(.bottom, -26)
 
             TextButton(text: "NotificationRequest.MaybeLater".l, action: onDismiss)
         }

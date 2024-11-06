@@ -151,6 +151,8 @@ struct ActionMenuSubscriptionLeavingView: View {
     }
 
     private func nextAction() {
+        HapticManager.actionMenusButton()
+
         withAnimation(.mainAnimation) {
             if screenState == .reasons {
                 screenState = .improvements

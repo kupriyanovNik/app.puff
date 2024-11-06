@@ -140,6 +140,8 @@ struct ActionMenuReadyToBreakView: View {
     }
 
     private func nextButtonAction(needOneMoreDay: Bool) {
+        HapticManager.actionMenusButton()
+
         if screenState == .base {
             if needOneMoreDay {
                 if tappedReadyToBreak && !isLastSmoke {

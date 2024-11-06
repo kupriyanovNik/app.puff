@@ -80,14 +80,15 @@ struct ActionMenuYesterdayPlanExceededView: View {
             .makeActionMenuTransition()
 
             VStack(spacing: 10) {
-                AccentButton(
-                    text: isCriticallyExceeded ? "ActionMenuYesterdayExceeded.CanDoIt".l : "Ok",
-                    action: onDismiss
-                )
+                AccentButton(text: isCriticallyExceeded ? "ActionMenuYesterdayExceeded.CanDoIt".l : "Ok") {
+                    HapticManager.actionMenusButton()
+                    onDismiss()
+                }
 
                 Group {
                     if isCriticallyExceeded && !shouldShowPlanExtendedWarning {
                         SecondaryButton(text: "ActionMenuYesterdayExceeded.ExtendPlan".l) {
+                            HapticManager.actionMenusButton()
                             extendPlan()
                         }
                         .transition(.opacity.combined(with: .move(edge: .bottom)))
