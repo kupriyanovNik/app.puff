@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActionMenuPlanDevelopingView: View {
 
-    @State private var sliderPercentage: Double = 47
+    @State private var sliderPercentage: Double = 26
     @State private var selectedPeriod: ActionMenuPlanDevelopingPeriod = .mid
 
     @State private var screenState: ScreenState = .addiction

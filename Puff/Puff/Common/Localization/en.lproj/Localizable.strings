@@ -173,7 +173,7 @@
 "AccountPlanQuitting.Reset" = "Yes, reset quit plan";
 
 "Account.ResetAllSmokes" = "Reset all puffs";
-"AccountSmokesResetting.Title" = "Are you sure you want to reset all puffs?";
+"AccountSmokesResetting.Title" = "Are you sure you want to\nreset all puffs?";
 "AccountSmokesResetting.Description" = "This will completely reset your puff statistics for the entire time you've been using the app.";
 "AccountSmokesResetting.Reset" = "Yes, reset all puffs";
 

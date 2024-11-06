@@ -72,7 +72,7 @@ extension AccountView {
                 TextButton(text: "AccountSubscription.CancelSubscription".l) {
                     shouldShowSubscriptionEndingView = true
                 }
-                .padding(.bottom, isSmallDevice ? 16 : 0)
+                .padding(.bottom, isSmallDevice ? 16 : 7)
             }
             .padding(.horizontal, 28)
         }
