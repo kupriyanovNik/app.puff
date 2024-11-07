@@ -15,6 +15,8 @@ final class SmokesManager: ObservableObject {
 
     @Published var realPlanDayIndex: Int = 0
 
+    @AppStorage("hasUpdatedDataAfterUpdate") var hasUpdatedDataAfterUpdate: Bool = false
+
     @AppStorage("firstSmokeDate") var dateOfFirstSmoke: Int?
 
     @AppStorage("isPlanStarted") private(set) var isPlanStarted: Bool = false
@@ -55,6 +57,8 @@ final class SmokesManager: ObservableObject {
 
     init() {
         checkIsNewDay()
+
+        storeDataAfterUpdate()
 
         timer = .scheduledTimer(
             timeInterval: 2,
@@ -373,5 +377,23 @@ final class SmokesManager: ObservableObject {
     private func addNewDate(auto: Bool = true) {
         smokesDates.append(.now)
         smokesCount.append(auto ? 1 : 0)
+    }
+
+    private func storeDataAfterUpdate() {
+        if !hasUpdatedDataAfterUpdate {
+            defaults.set(isPlanStarted, forKey: "newIsPlanStarted")
+            defaults.set(isPlanEnded, forKey: "newIsPlanEnded")
+            defaults.set(currentDayIndex, forKey: "newCurrentDayIndex")
+            defaults.set(planLimits, forKey: "newPlanLimits")
+            defaults.set(planCounts, forKey: "newPlanCounts")
+
+            defaults.set(smokesCount, forKey: "newSmokesCount")
+            defaults.set(smokesDates, forKey: "newSmokesDates")
+
+            hasUpdatedDataAfterUpdate = true
+
+            WidgetCenter.shared.reloadAllTimelines()
+            defaults.synchronize()
+        }
     }
 }

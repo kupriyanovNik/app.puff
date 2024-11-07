@@ -7,4 +7,5 @@
 
 import Foundation
 
+//let defaults = UserDefaults.standard
 let defaults = UserDefaults(suiteName: "group.com.quitvapingteam.quitvaping")!
