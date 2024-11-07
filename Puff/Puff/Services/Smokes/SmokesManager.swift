@@ -94,7 +94,7 @@ final class SmokesManager: ObservableObject {
 
     var isYesterdayLimitExceeded: Bool { yesterdayCount > yesterdayLimit }
 
-    var isDayAfterPlanEnded: Bool { realPlanDayIndex > planLimits.count }
+    var isDayAfterPlanEnded: Bool { realPlanDayIndex >= planLimits.count }
 
     // MARK: - Internal Functions
 

@@ -39,11 +39,11 @@ struct PuffApp: App {
             }
             .makeCustomSheet(
                 isPresented: $navigationVM.shouldShowReadyToBreakActionMenu,
-                ableToDismissWithSwipe: smokesManager.realPlanDayIndex - smokesManager.planCounts.count == -1
+                ableToDismissWithSwipe: false
             ) {
                 ActionMenuReadyToBreakView(
-                    tappedReadyToBreak: smokesManager.realPlanDayIndex - smokesManager.planCounts.count == -1,
-                    isLastSmoke: smokesManager.todaySmokes == smokesManager.todayLimit,
+                    tappedReadyToBreak: navigationVM.tappedReadyToBreak,
+                    isLastSmoke: smokesManager.todaySmokes >= smokesManager.todayLimit,
                     todayLimit: smokesManager.todayLimit
                 ) {
                     navigationVM.selectedTab = .home
@@ -54,6 +54,7 @@ struct PuffApp: App {
                     smokesManager.addDay()
                 } onDismiss: {
                     navigationVM.shouldShowReadyToBreakActionMenu = false
+                    navigationVM.tappedReadyToBreak = false
                 }
             }
             .makeCustomSheet(isPresented: $navigationVM.shouldShowAddingMoreSmokesActionMenu) {
@@ -69,18 +70,23 @@ struct PuffApp: App {
                 ) {
                     smokesManager.extendPlanForOneDay()
                 } onDismiss: {
-                    navigationVM.shouldShowPlanExtendingActionMenu = false
                     navigationVM.seenYesterdayResult()
                 }
+            }
+            .makeCustomSheet(isPresented: $navigationVM.shouldShowYesterdayResult) {
+                ActionMenuYesterdaySuccessedView(todayLimit: smokesManager.todayLimit) {
+                    navigationVM.seenYesterdayResult()
 
+                    delay(0.4) { requestReview() }
+                }
             }
             .onChange(of: smokesManager.todaySmokes) { newValue in
-                if newValue == smokesManager.todayLimit && smokesManager.isDayAfterPlanEnded {
+                if newValue == smokesManager.todayLimit && (smokesManager.isLastDayOfPlan) {
                     navigationVM.shouldShowReadyToBreakActionMenu = true
                 }
             }
             .onAppear {
-                if smokesManager.isDayAfterPlanEnded {
+                if smokesManager.isDayAfterPlanEnded || (smokesManager.todaySmokes == smokesManager.todayLimit) {
                     navigationVM.shouldShowReadyToBreakActionMenu = true
                 }
 
@@ -88,7 +94,7 @@ struct PuffApp: App {
                     if smokesManager.isYesterdayLimitExceeded {
                         navigationVM.shouldShowPlanExtendingActionMenu = true
                     } else {
-
+                        navigationVM.shouldShowYesterdayResult = true
                     }
                 }
             }

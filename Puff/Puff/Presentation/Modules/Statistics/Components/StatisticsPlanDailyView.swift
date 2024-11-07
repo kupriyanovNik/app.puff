@@ -73,7 +73,7 @@ struct StatisticsPlanDailyView: View {
         let limit = smokesManager.planLimits[index]
         let count = smokesManager.planCounts[index]
 
-        let percentage = 1.0 - (Double(smokesManager.planLimits[dayIndex]) / Double(smokesManager.planLimits[0]))
+        let percentage = 1.0 - (Double(smokesManager.planLimits[min(smokesManager.planLimits.count - 1, dayIndex)]) / Double(smokesManager.planLimits[0]))
         let showPercentage = percentage > 0 && ratio < 1
 
         let leadingText: String = {

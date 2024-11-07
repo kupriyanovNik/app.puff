@@ -66,7 +66,8 @@ struct HomeView: View {
                 }
             } else {
                 HomeViewIsPremiumPlanCreatedView(smokesManager: smokesManager) {
-                    navigationVM.shouldShowReadyToBreakActionMenu.toggle()
+                    navigationVM.tappedReadyToBreak = true
+                    navigationVM.shouldShowReadyToBreakActionMenu = true
                 }
             }
         }

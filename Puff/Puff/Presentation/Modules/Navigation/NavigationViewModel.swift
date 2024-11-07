@@ -18,7 +18,11 @@ final class NavigationViewModel: ObservableObject {
     @Published var shouldShowPlanDevelopingActionMenu: Bool = false
     @Published var shouldShowReadyToBreakActionMenu: Bool = false
     @Published var shouldShowAddingMoreSmokesActionMenu: Bool = false
+
     @Published var shouldShowPlanExtendingActionMenu: Bool = false
+    @Published var shouldShowYesterdayResult: Bool = false
+
+    @Published var tappedReadyToBreak: Bool = false
 
     @AppStorage("dateOfSeenYesterdayResult") private(set) var dateOfSeenYesterdayResult: Date?
     @Published private(set) var ableToShowYesterdayResult: Bool = false
@@ -37,6 +41,10 @@ final class NavigationViewModel: ObservableObject {
 
     func seenYesterdayResult() {
         dateOfSeenYesterdayResult = .now
+
+        shouldShowPlanExtendingActionMenu = false
+        shouldShowYesterdayResult = false
+
         checkAbilityToShowYesterdayResult()
     }
 }
