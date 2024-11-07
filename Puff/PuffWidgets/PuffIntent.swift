@@ -32,16 +32,7 @@ struct PuffIntent: AppIntent {
             let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
             var currentDayIndexInArray = min(planCounts.count - 1, currentDayIndex)
 
-            let realCurrentDayIndex = getRealCurrentIndex(limits: planLimits)
-
             if counts.count > 0 {
-                if realCurrentDayIndex != currentDayIndexInArray {
-                    if let realCurrentDayIndex {
-                        currentDayIndexInArray = realCurrentDayIndex
-                        defaults.set(currentDayIndexInArray, forKey: "newCurrentDayIndex")
-                    }
-                }
-
                 if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
                     counts[counts.count - 1] += 1
                 } else {
@@ -50,25 +41,27 @@ struct PuffIntent: AppIntent {
                 }
 
                 if isPlanStarted {
-                    if currentDayIndexInArray <= currentDayIndexInArray {
+                    let realCurrentDayIndex = getRealCurrentIndex(limits: planLimits)
+
+                    if let realCurrentDayIndex, realCurrentDayIndex > currentDayIndexInArray {
+                        currentDayIndexInArray = realCurrentDayIndex
+                        defaults.set(currentDayIndexInArray, forKey: "newCurrentDayIndex")
+                    }
+
+                    if currentDayIndex < 2 || planCounts[currentDayIndexInArray] < planLimits[currentDayIndexInArray] {
                         planCounts[currentDayIndexInArray] += 1
                     }
-
-                    if planLimits[currentDayIndexInArray] < planCounts[currentDayIndexInArray] {
-                        // TODO: - open app
-                        // ^ desided not to do!
-                    }
                 }
+
+                defaults.set(counts, forKey: "newSmokesCount")
+                defaults.set(dates, forKey: "newSmokesDates")
+
+                defaults.set(planCounts, forKey: "newPlanCounts")
+
+                defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
+
+                defaults.synchronize()
             }
-
-            defaults.set(counts, forKey: "newSmokesCount")
-            defaults.set(dates, forKey: "newSmokesDates")
-
-            defaults.set(planCounts, forKey: "newPlanCounts")
-
-            defaults.set(Date().timeIntervalSince1970, forKey: "newDateOfLastSmoke")
-
-            defaults.synchronize()
         } else {
             // TODO: - open app and tell that plan is ended
             // ^ desided not to do!

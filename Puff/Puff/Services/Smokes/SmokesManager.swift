@@ -215,7 +215,7 @@ final class SmokesManager: ObservableObject {
         defaults.set(planLimits, forKey: "newPlanLimits")
 
         defaults.synchronize()
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
     }
 
     func extendPlanForOneDay() {
@@ -242,7 +242,7 @@ final class SmokesManager: ObservableObject {
         defaults.set(planLimits, forKey: "newPlanLimits")
 
         defaults.synchronize()
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
     }
 
     func addDay() {
@@ -270,7 +270,7 @@ final class SmokesManager: ObservableObject {
         defaults.set(planLimits, forKey: "newPlanLimits")
 
         defaults.synchronize()
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")
     }
 
     func endPlan() {

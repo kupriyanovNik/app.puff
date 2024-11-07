@@ -39,17 +39,20 @@ struct Provider: TimelineProvider {
         } else {
 
             let counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
-            let limits = defaults.array(forKey: "newPlanLimits") as? [Int]
+            let planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [0]
+            let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int]
 
             let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
             let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
+
+            let todayCount = isPlanStarted ? planCounts[min(currentDayIndex, planCounts.count - 1)] : (counts.last ?? -1)
 
             let timeline = Timeline(
                 entries: [
                     SimpleEntry(
                         date: .now,
-                        count: counts.last ?? -1,
-                        limit: (!isPlanStarted || limits == nil) ? nil : limits![currentDayIndex],
+                        count: todayCount,
+                        limit: (!isPlanStarted || planLimits == nil) ? nil : planLimits![currentDayIndex],
                         isEnded: isPlanEnded,
                         dateOfLastSmoke: defaults.integer(forKey: "newDateOfLastSmoke")
                     )
