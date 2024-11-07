@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+import Adapty
 
 extension AccountView {
     struct AccountViewSubscriptionInfoView: View {
@@ -41,6 +42,7 @@ extension AccountView {
                         shouldShowSubscriptionEndingView = false
                     }
                 }
+                .task { await subscriptionsManager.fetchActiveTransactions() }
         }
 
         @ViewBuilder

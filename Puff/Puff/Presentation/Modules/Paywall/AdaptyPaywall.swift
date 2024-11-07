@@ -42,6 +42,8 @@ struct PaywallViewModifier: ViewModifier {
                         didFinishPurchase: { product, info in
                             isPremium = info.profile.accessLevels["premium"]?.isActive ?? false
 
+                            isPresented = false
+
                             logger.trace("BOUGHT: \(product.vendorProductId). IsPremium: \(isPremium)")
                         },
                         didFailPurchase: { _, error in
@@ -70,13 +72,6 @@ struct PaywallViewModifier: ViewModifier {
             } else {
                 content
             }
-
-//            if shouldShowCongratulationView && isPresented {
-//                PremiumCongratulationView {
-//                    isPresented = false
-//                }
-//                .transition(.opacity.animation(.easeOut(duration: 0.2).delay(0.3)))
-//            }
         }
     }
 
