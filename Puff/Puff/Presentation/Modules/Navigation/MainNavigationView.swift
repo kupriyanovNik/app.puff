@@ -57,13 +57,6 @@ struct MainNavigationView: View {
             }
         }
         .onChange(of: smokesManager.todaySmokes) { newValue in
-            if !reviewManager.hasSeenReviewRequestAt100Smokes {
-                if newValue == 100 {
-                    requestReview()
-                    reviewManager.hasSeenReviewRequestAt100Smokes = true
-                }
-            }
-
             if !navigationVM.hasSeenWidgetsTip {
                 if newValue == 50 {
                     navigationVM.shouldShowWidgetsTip = true
