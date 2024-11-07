@@ -102,7 +102,7 @@ struct MainNavigationView: View {
             }
         }
         .task {
-            if navigationVM.shouldShowUpdateActionMenu {
+            if navigationVM.ableToShowUpdateActionMenu {
                 do {
                     let response = try await UpdateManager().getLatestAvailableVersion()
 
