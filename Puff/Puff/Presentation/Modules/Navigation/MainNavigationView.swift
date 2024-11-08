@@ -81,7 +81,7 @@ struct MainNavigationView: View {
             !onboardingVM.hasSeenOnboarding,
             transition: .asymmetric(
                 insertion: .identity.animation(.none),
-                removal: .move(edge: .top).animation(.mainAnimation)
+                removal: .move(edge: .top).combined(with: .opacity).animation(.mainAnimation)
             )
         ) {
             OnboardingView(
