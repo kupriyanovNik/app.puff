@@ -93,7 +93,7 @@ struct MainNavigationView: View {
         .paywall(isPresented: $navigationVM.shouldShowDailyPaywall, placementId: "basicDailyPaywall")
         .paywall(isPresented: $navigationVM.shouldShowHomePaywall, placementId: "basicPaywallInHomeView")
         .paywall(isPresented: $navigationVM.shouldShowStatisticsPaywall, placementId: "basicPaywallInStatistics")
-        .paywall(isPresented: $navigationVM.shouldShowOnboardingPaywall, placementId: "basicPaywallInOnboarding")
+        .paywall(isPresented: $navigationVM.shouldShowOnboardingPaywall, placementId: "basicPaywallInOnboarding", shouldLoadWhenInit: true)
         .onChange(of: onboardingVM.hasSeenOnboarding) { newValue in
             if newValue {
                 navigationVM.shouldShowOnboardingPaywall = true

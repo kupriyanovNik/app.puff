@@ -20,6 +20,8 @@ struct PaywallViewModifier: ViewModifier {
     
     var placementId: String
 
+    var shouldLoadWhenInit: Bool
+
     @State private var paywall: AdaptyPaywall?
     @State private var viewConfig: AdaptyUI.LocalizedViewConfiguration?
 
@@ -33,7 +35,7 @@ struct PaywallViewModifier: ViewModifier {
     @ViewBuilder
     func contentOrSheet(content: Content) -> some View {
         ZStack {
-            if let paywall, let viewConfig, isPresented {
+            if let paywall, let viewConfig {
                 Group {
                     if shouldShowCongratulationView {
                         congratulationView()
@@ -74,26 +76,28 @@ struct PaywallViewModifier: ViewModifier {
                             )
                     }
                 }
+                .transition(.move(edge: .bottom))
             } else {
                 content
             }
         }
+        .onChange(of: isPresented) { newValue in
+            if newValue && !shouldLoadWhenInit {
+                Task {
+                    await getPaywall()
+                }
+            }
+        }
+        .task {
+            if shouldLoadWhenInit {
+                await getPaywall()
+            }
+        }
+        .animation(.mainAnimation, value: isPresented)
     }
 
     func body(content: Content) -> some View {
         contentOrSheet(content: content)
-            .task {
-                do {
-                    let paywall = try await Adapty.getPaywall(placementId: placementId)
-                    let viewConfig = try await AdaptyUI.getViewConfiguration(forPaywall: paywall)
-
-                    self.paywall = paywall
-                    self.viewConfig = viewConfig
-                } catch {
-                    logger.error("getPaywallAndConfig: \(error)")
-                    alertError = .init(title: "getPaywallAndConfig error!", error: error)
-                }
-            }
     }
 
     @ViewBuilder
@@ -112,14 +116,28 @@ struct PaywallViewModifier: ViewModifier {
         }
         .transition(.opacity.animation(.easeOut(duration: 0.2).delay(0.3)))
     }
+
+    private func getPaywall() async {
+        do {
+            let paywall = try await Adapty.getPaywall(placementId: placementId)
+            let viewConfig = try await AdaptyUI.getViewConfiguration(forPaywall: paywall)
+
+            self.paywall = paywall
+            self.viewConfig = viewConfig
+        } catch {
+            logger.error("getPaywallAndConfig: \(error)")
+            alertError = .init(title: "getPaywallAndConfig error!", error: error)
+        }
+    }
 }
 
 extension View {
-    func paywall(isPresented: Binding<Bool>, placementId: String) -> some View {
+    func paywall(isPresented: Binding<Bool>, placementId: String, shouldLoadWhenInit: Bool = false) -> some View {
         modifier(
             PaywallViewModifier(
                 isPresented: isPresented,
-                placementId: placementId
+                placementId: placementId,
+                shouldLoadWhenInit: shouldLoadWhenInit
             )
         )
     }
