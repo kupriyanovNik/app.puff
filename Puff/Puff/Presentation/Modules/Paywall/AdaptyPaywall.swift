@@ -33,42 +33,47 @@ struct PaywallViewModifier: ViewModifier {
     @ViewBuilder
     func contentOrSheet(content: Content) -> some View {
         ZStack {
-            if let paywall, let viewConfig {
-                content
-                    .paywall(
-                        isPresented: $isPresented,
-                        paywall: paywall,
-                        viewConfiguration: viewConfig,
-                        didFinishPurchase: { product, info in
-                            isPremium = info.profile.accessLevels["premium"]?.isActive ?? false
+            if let paywall, let viewConfig, isPresented {
+                Group {
+                    if shouldShowCongratulationView {
+                        congratulationView()
+                    } else {
+                        content
+                            .paywall(
+                                isPresented: $isPresented,
+                                paywall: paywall,
+                                viewConfiguration: viewConfig,
+                                didFinishPurchase: { product, info in
+                                    isPremium = info.profile.accessLevels["premium"]?.isActive ?? false
 
-                            isPresented = false
+                                    shouldShowCongratulationView = true
 
-                            logger.trace("BOUGHT: \(product.vendorProductId). IsPremium: \(isPremium)")
-                        },
-                        didFailPurchase: { _, error in
-                            alertPaywallError = .init(title: "Purchase failed!", error: error)
-                        },
-                        didFinishRestore: { _ in
-                            // handle event
-                        },
-                        didFailRestore: { error in
-                            alertPaywallError = .init(title: "Restore failed!", error: error)
-                        },
-                        didFailRendering: { error in
-                            isPresented = false
-                            alertPaywallError = .init(title: "Internal Error", error: error)
-                        },
-                        showAlertItem: $alertPaywallError,
-                        showAlertBuilder: { errorItem in
-                            Alert(
-                                title: Text(errorItem.title),
-                                message: Text("\(errorItem.error.localizedDescription)"),
-                                dismissButton: .cancel()
+                                    logger.trace("BOUGHT: \(product.vendorProductId). IsPremium: \(isPremium)")
+                                },
+                                didFailPurchase: { _, error in
+                                    alertPaywallError = .init(title: "Purchase failed!", error: error)
+                                },
+                                didFinishRestore: { _ in
+                                    // handle event
+                                },
+                                didFailRestore: { error in
+                                    alertPaywallError = .init(title: "Restore failed!", error: error)
+                                },
+                                didFailRendering: { error in
+                                    isPresented = false
+                                    alertPaywallError = .init(title: "Internal Error", error: error)
+                                },
+                                showAlertItem: $alertPaywallError,
+                                showAlertBuilder: { errorItem in
+                                    Alert(
+                                        title: Text(errorItem.title),
+                                        message: Text("\(errorItem.error.localizedDescription)"),
+                                        dismissButton: .cancel()
+                                    )
+                                }
                             )
-                        }
-                    )
-
+                    }
+                }
             } else {
                 content
             }
@@ -89,12 +94,23 @@ struct PaywallViewModifier: ViewModifier {
                     alertError = .init(title: "getPaywallAndConfig error!", error: error)
                 }
             }
-//            .animation(.easeOut(duration: 0.35), value: shouldShowCongratulationView)
-//            .onChange(of: isPremium) { newValue in
-//                if newValue {
-//                    shouldShowCongratulationView = true
-//                }
-//            }
+    }
+
+    @ViewBuilder
+    private func congratulationView() -> some View {
+        PremiumCongratulationView {
+            isPresented = false
+
+            delay(0.2) {
+                shouldShowCongratulationView = false
+            }
+        }
+        .hCenter()
+        .background {
+            Palette.accentColor
+                .ignoresSafeArea()
+        }
+        .transition(.opacity.animation(.easeOut(duration: 0.2).delay(0.3)))
     }
 }
 

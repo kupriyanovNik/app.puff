@@ -112,7 +112,7 @@ struct PuffApp: App {
                 await subscriptionsManager.updatePurchasedProducts()
             }
             .onAppear {
-                if !subscriptionsManager.isPremium {
+                if !subscriptionsManager.isPremium && !UserDefaults.standard.bool(forKey: "isPremium") {
                     if navigationVM.ableToShowDailyPaywall || (onboardingVM.hasSeenOnboarding && appManager.appOpensCount == 2) {
                         showPaywall()
                         navigationVM.seenDailyPaywall()
@@ -152,9 +152,7 @@ struct PuffApp: App {
     }
 
     private func showPaywall() {
-        delay(1) {
-            navigationVM.shouldShowDailyPaywall = true
-        }
+        navigationVM.shouldShowDailyPaywall = true
     }
 
     private func yesterdaySuccessedDismissAction() {
