@@ -94,6 +94,11 @@ struct MainNavigationView: View {
         .paywall(isPresented: $navigationVM.shouldShowHomePaywall, placementId: "basicPaywallInHomeView")
         .paywall(isPresented: $navigationVM.shouldShowStatisticsPaywall, placementId: "basicPaywallInStatistics")
         .paywall(isPresented: $navigationVM.shouldShowOnboardingPaywall, placementId: "basicPaywallInOnboarding")
+        .onChange(of: onboardingVM.hasSeenOnboarding) { newValue in
+            if newValue {
+                navigationVM.shouldShowOnboardingPaywall = true
+            }
+        }
         .onChange(of: smokesManager.todaySmokes) { newValue in
             if !navigationVM.hasSeenWidgetsTip {
                 if newValue == 50 {

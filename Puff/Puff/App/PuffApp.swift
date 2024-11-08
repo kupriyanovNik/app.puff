@@ -152,7 +152,7 @@ struct PuffApp: App {
     }
 
     private func showPaywall() {
-        delay(0.4) {
+        delay(1) {
             navigationVM.shouldShowDailyPaywall = true
         }
     }
