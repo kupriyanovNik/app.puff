@@ -25,8 +25,6 @@ struct PaywallViewModifier: ViewModifier {
     @State private var paywall: AdaptyPaywall?
     @State private var viewConfig: AdaptyUI.LocalizedViewConfiguration?
 
-    @AppStorage("isPremium") var isPremium: Bool = false
-
     @State private var shouldShowCongratulationView: Bool = false
 
     @State private var alertError: IdentifiableErrorWrapper?
@@ -46,11 +44,16 @@ struct PaywallViewModifier: ViewModifier {
                                 paywall: paywall,
                                 viewConfiguration: viewConfig,
                                 didFinishPurchase: { product, info in
-                                    isPremium = info.profile.accessLevels["premium"]?.isActive ?? false
+                                    let isUserPremium: Bool = info.profile.accessLevels["premium"]?.isActive ?? false
 
-                                    shouldShowCongratulationView = true
+                                    if let date = info.transaction.transactionDate {
+                                        AdaptySubscriptionManager.shared.isPremium = true
+                                        shouldShowCongratulationView = true
 
-                                    logger.trace("BOUGHT: \(product.vendorProductId). IsPremium: \(isPremium)")
+                                        logger.trace("BOUGHT: \(product.vendorProductId). IsPremium: \(isUserPremium)")
+
+                                        isPresented = false
+                                    }
                                 },
                                 didFailPurchase: { _, error in
                                     alertPaywallError = .init(title: "Purchase failed!", error: error)
@@ -140,5 +143,17 @@ extension View {
                 shouldLoadWhenInit: shouldLoadWhenInit
             )
         )
+    }
+}
+
+final class AdaptySubscriptionManager {
+    static let shared = AdaptySubscriptionManager()
+
+    private init() { }
+
+    var isPremium: Bool = UserDefaults.standard.bool(forKey: "isPremium") {
+        didSet {
+            UserDefaults.standard.set(isPremium, forKey: "isPremium")
+        }
     }
 }

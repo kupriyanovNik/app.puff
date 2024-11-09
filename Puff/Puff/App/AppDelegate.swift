@@ -52,7 +52,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, AdaptyDelegate {
     func didLoadLatestProfile(_ profile: AdaptyProfile) {
         Adapty.getProfile { result in
             if let profile = try? result.get() {
-                UserDefaults.standard.set(profile.accessLevels["premium"]?.isActive ?? false, forKey: "isPremium")
+                let isUserPremium: Bool = profile.accessLevels["premium"]?.isActive ?? false
+
+                AdaptySubscriptionManager.shared.isPremium = isUserPremium
             }
         }
     }

@@ -90,10 +90,24 @@ struct MainNavigationView: View {
             )
             .removeSwipeToDismissWhenAppeared()
         }
-        .paywall(isPresented: $navigationVM.shouldShowDailyPaywall, placementId: "basicDailyPaywall")
-        .paywall(isPresented: $navigationVM.shouldShowHomePaywall, placementId: "basicPaywallInHomeView")
-        .paywall(isPresented: $navigationVM.shouldShowStatisticsPaywall, placementId: "basicPaywallInStatistics")
-        .paywall(isPresented: $navigationVM.shouldShowOnboardingPaywall, placementId: "basicPaywallInOnboarding", shouldLoadWhenInit: true)
+        .paywall(
+            isPresented: $navigationVM.shouldShowDailyPaywall,
+            placementId: "basicDailyPaywall",
+            shouldLoadWhenInit: !subscriptionsManager.isPremium
+        )
+        .paywall(
+            isPresented: $navigationVM.shouldShowHomePaywall,
+            placementId: "basicPaywallInHomeView"
+        )
+        .paywall(
+            isPresented: $navigationVM.shouldShowStatisticsPaywall,
+            placementId: "basicPaywallInStatistics"
+        )
+        .paywall(
+            isPresented: $navigationVM.shouldShowOnboardingPaywall,
+            placementId: "basicPaywallInOnboarding",
+            shouldLoadWhenInit: !subscriptionsManager.isPremium
+        )
         .onChange(of: onboardingVM.hasSeenOnboarding) { newValue in
             if newValue {
                 navigationVM.shouldShowOnboardingPaywall = true

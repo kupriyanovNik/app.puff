@@ -112,7 +112,7 @@ struct PuffApp: App {
                 await subscriptionsManager.updatePurchasedProducts()
             }
             .onAppear {
-                if !subscriptionsManager.isPremium && !UserDefaults.standard.bool(forKey: "isPremium") {
+                if !subscriptionsManager.isPremium {
                     if navigationVM.ableToShowDailyPaywall || (onboardingVM.hasSeenOnboarding && appManager.appOpensCount == 2) {
                         showPaywall()
                         navigationVM.seenDailyPaywall()
