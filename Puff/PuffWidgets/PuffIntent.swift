@@ -32,7 +32,7 @@ struct PuffIntent: AppIntent {
             let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
             var currentDayIndexInArray = min(planCounts.count - 1, currentDayIndex)
 
-            if counts.count > 0 {
+            if counts.count > 0 && ableToPuff(limits: planLimits, counts: planCounts) {
                 if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
                     counts[counts.count - 1] += 1
                 } else {
@@ -90,5 +90,36 @@ struct PuffIntent: AppIntent {
         }
 
         return nil
+    }
+
+    private func ableToPuff(limits: [Int], counts: [Int]) -> Bool {
+        let planStartDate = defaults.integer(forKey: "newPlanStartDate")
+
+        if !defaults.bool(forKey: "newIsPlanStarted") {
+            return true
+        }
+
+        let calendar = Calendar.current
+
+        if let currentDayIndexInArray = getRealCurrentIndex(limits: limits) {
+            if defaults.bool(forKey: "newIsPlanStarted") {
+                return counts[currentDayIndexInArray] < limits[currentDayIndexInArray]
+            }
+        }
+
+        if planStartDate != 0 {
+            let startOfToday = calendar.startOfDay(for: .now)
+            let startOfStartOfPlan = calendar.startOfDay(
+                for: Date(timeIntervalSince1970: TimeInterval(planStartDate))
+            ).timeIntervalSince1970
+
+            let diff = Int(startOfToday.timeIntervalSince1970) - Int(startOfStartOfPlan)
+
+            let diffDays = Int(diff / 86400)
+
+            return diff < limits.count - 1
+        }
+
+        return true
     }
 }

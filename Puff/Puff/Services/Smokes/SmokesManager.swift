@@ -332,7 +332,6 @@ final class SmokesManager: ObservableObject {
                 smokesDates = dates
             }
 
-
             if let newPlanCounts = defaults.array(forKey: "newPlanCounts") as? [Int] {
                 self.planCounts = newPlanCounts
             }
