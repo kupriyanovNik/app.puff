@@ -157,7 +157,8 @@
 
 // MARK: - Account
 
-"Account.Title" = "Настройки";
+"Account.Title" = "Профиль";
+"Account.Method" = "Метод Puffless";
 "Account.ContactUs" = "Связаться с нами";
 "Account.Widgets" = "Виджеты и команды";
 "Account.Subscription" = "Подписка";
@@ -218,6 +219,10 @@
 "AccountWidgets.LockScreen.Text2" = "Выберите\n«Экран блокировки»";
 "AccountWidgets.LockScreen.Text3" = "Удалите одну из иконок\nи нажмите на плюсик";
 "AccountWidgets.LockScreen.Text4" = "Найдите Puffless и\nдобавьте виджет";
+
+"AccountMethod.Title2" = "95% людей, бросающих резко, срываются";
+"AccountMethod.Description2" = "Согласно исследованию Dr. J. Taylor Hays (2022), именно такое количество людей не справляются с ломкой, возникающей при резком отказе, так как организму сложно справиться с внезапными изменениями.";
+"AccountMethod.Back" = "Назад в Профиль";
 
 // MARK: - Action Menus
 

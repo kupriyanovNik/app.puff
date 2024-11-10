@@ -70,6 +70,10 @@ struct MainNavigationView: View {
                     navigationVM: navigationVM
                 ).lockScreenInfoView().prepareForStackPresentation()
 
+                case AppNavigationPathValue.accountMethodInfo: AccountViewMethodInfoView(
+                    backAction: navigationVM.back
+                ).prepareForStackPresentation()
+
                 default: EmptyView()
                 }
             }

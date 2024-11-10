@@ -134,7 +134,7 @@ extension AccountView {
             if diff <= TimeInterval(260000) {
                 self.paymentText = "AccountSubscription.EndOfTrial".l
             } else {
-                self.paymentText = "AccountSubscription.Billin gDate".l
+                self.paymentText = "AccountSubscription.BillingDate".l
             }
         }
 

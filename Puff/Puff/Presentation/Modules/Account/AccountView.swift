@@ -133,6 +133,11 @@ struct AccountView: View {
             }
 
             cell(
+                "Account.Method".l,
+                imageName: "accountMethodImage"
+            ) { navigationVM.showMethodInfo() }
+
+            cell(
                 "Account.ContactUs".l,
                 imageName: "accountTgImage"
             ) { "https://t.me/puffless_support".openURL() }

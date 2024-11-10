@@ -95,6 +95,7 @@ final class NavigationViewModel: ObservableObject {
 enum AppNavigationPathValue {
     static let account = "ACCOUNTVIEW"
     static let accountWidgetsInfo = "ACCOUNTWIDGETSINFOVIEW"
+    static let accountMethodInfo = "ACCOUNTMETHODINFOVIEW"
     static let accountWidgetsInfoHomeScreen = "ACCOUNTWIDGETSINFOVIEWHomeScreen"
     static let accountWidgetsInfoControlCenter = "ACCOUNTWIDGETSINFOVIEWControlCenter"
     static let accountWidgetsInfoActionButton = "ACCOUNTWIDGETSINFOVIEWActionButton"
@@ -118,6 +119,10 @@ extension NavigationViewModel {
 
     func showWidgetsInfo() {
         appNavigationPath.append(AppNavigationPathValue.accountWidgetsInfo)
+    }
+
+    func showMethodInfo() {
+        appNavigationPath.append(AppNavigationPathValue.accountMethodInfo)
     }
 
     func showAccountWidgetsHomeInfo() {

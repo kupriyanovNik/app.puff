@@ -45,6 +45,7 @@
 		B73B2E4F2C9B6498001EB658 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E4E2C9B6498001EB658 /* HapticManager.swift */; };
 		B73B2E522C9B64A6001EB658 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E502C9B64A6001EB658 /* Logger.swift */; };
 		B73B2E552C9B64CD001EB658 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73B2E542C9B64CD001EB658 /* AppManager.swift */; };
+		B73D68142CE11A8900143FAF /* AccountViewMethodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73D68132CE11A8900143FAF /* AccountViewMethodInfoView.swift */; };
 		B74D975E2CCAF097004C5E23 /* PuffShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */; };
 		B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
 		B754071B2CCD12B200DCB1D5 /* Animation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */; };
@@ -240,6 +241,7 @@
 		B73B2E4E2C9B6498001EB658 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		B73B2E502C9B64A6001EB658 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B73B2E542C9B64CD001EB658 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		B73D68132CE11A8900143FAF /* AccountViewMethodInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewMethodInfoView.swift; sourceTree = "<group>"; };
 		B75277492C9F4C7B00F8B98D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Ext.swift"; sourceTree = "<group>"; };
 		B76235222CEFDA2E003ECA7A /* PuffWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetProvider.swift; sourceTree = "<group>"; };
@@ -839,6 +841,7 @@
 			children = (
 				B7C885FD2CC39FFA004B6E9D /* AccountViewComponents.swift */,
 				B7633EA62CCD5B7F0061050C /* WidgetsInfo */,
+				B73D68132CE11A8900143FAF /* AccountViewMethodInfoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1400,6 +1403,7 @@
 				B7C886532CC39FFA004B6E9D /* StatisticsViewPlanViews.swift in Sources */,
 				B7C886542CC39FFA004B6E9D /* StatisticsWeeklyChart.swift in Sources */,
 				B78DF5AB2CBFE1BD0078F9D0 /* LocalizableString+Ext.swift in Sources */,
+				B73D68142CE11A8900143FAF /* AccountViewMethodInfoView.swift in Sources */,
 				B7C886552CC39FFA004B6E9D /* StatisticsView.swift in Sources */,
 				A398214B2CB1452600B325F5 /* ReviewManager.swift in Sources */,
 				B7C886562CC39FFA004B6E9D /* StatisticsWeeklyViewModel.swift in Sources */,
