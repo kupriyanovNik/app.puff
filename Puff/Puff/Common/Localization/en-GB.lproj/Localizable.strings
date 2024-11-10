@@ -182,7 +182,8 @@
 "AccountSubscription.SubscriptionTypeMonthly" = "Monthly";
 "AccountSubscription.SubscriptionTypeMonthlyWithTrial" = "Monthly with trial";
 "AccountSubscription.StartDate" = "Start Date";
-"AccountSubscription.BillingDate" = "Billing Date";
+"AccountSubscription.BillingDate" = "Возобновление";
+"AccountSubscription.EndOfTrial" = "Конец пробного периода";
 "AccountSubscription.CancelSubscription" = "Cancel Subscription";
 
 "AccountWidgets.Base.Home" = "Home Screen";

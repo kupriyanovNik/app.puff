@@ -33,6 +33,8 @@ extension AccountView {
             return "AccountSubscription.SubscriptionTypeMonthly".l
         }
 
+        @State private var paymentText: String = ""
+
         var body: some View {
             CircledTopCornersView(background: .init(hex: 0xF5F5F5), content: viewContent)
                 .makeCustomSheet(isPresented: $shouldShowSubscriptionEndingView) {
@@ -63,7 +65,7 @@ extension AccountView {
 
                     if let expirationDate = transaction.expirationDate {
                         cell(
-                            title: "AccountSubscription.BillingDate".l,
+                            title: paymentText,
                             subtitle: formatter.string(from: expirationDate)
                         )
                     }
@@ -77,6 +79,7 @@ extension AccountView {
                 .padding(.bottom, isSmallDevice ? 16 : 7)
             }
             .padding(.horizontal, 28)
+            .onAppear(perform: setText)
         }
 
         @ViewBuilder
@@ -116,6 +119,22 @@ extension AccountView {
                 }
 
                 Spacer()
+            }
+        }
+
+        private func setText() {
+            guard let transaction = subscriptionsManager.activeTransactions.first,
+                  let endDate = transaction.expirationDate else {
+                self.paymentText = "AccountSubscription.BillingDate".l
+                return
+            }
+
+            let diff = endDate - transaction.originalPurchaseDate
+
+            if diff <= TimeInterval(260000) {
+                self.paymentText = "AccountSubscription.EndOfTrial".l
+            } else {
+                self.paymentText = "AccountSubscription.Billin gDate".l
             }
         }
 

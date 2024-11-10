@@ -115,9 +115,8 @@ struct AccountView: View {
 
             content
         }
-        .padding(.vertical, 13)
+        .padding([.vertical, .leading], 13)
         .padding(.trailing, 20)
-        .padding(.leading, 13)
         .contentShape(.rect)
         .onTapGesture(perform: action)
     }
