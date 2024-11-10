@@ -298,6 +298,10 @@
 
 "ActionMenuWidgetsTip.Title" = "Add a widget to track your puffs without opening the app.";
 
+"ActionMenuWrongIndex.Title" = "Set the correct\ndate and time";
+"ActionMenuWrongIndex.Description" = "Puffless can't work and count your puffs correctly. It can cause failures and crashes.\n\nPlease set the correct date and time in settings application.";
+"ActionMenuWrongIndex.Button" = "Go to settings";
+
 // MARK: - Tab Bar
 
 "TabBar.Home" = "Home";

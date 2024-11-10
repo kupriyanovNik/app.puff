@@ -298,6 +298,10 @@
 
 "ActionMenuWidgetsTip.Title" = "Добавьте виджет, чтобы отмечать затяжки не заходя в приложение";
 
+"ActionMenuWrongIndex.Title" = "Установите правильные\nдату и время";
+"ActionMenuWrongIndex.Description" = "Puffless не может корректно работать и подсчитывать ваши затяжки. Это может привести к сбоям и вылетам.\n\nПожалуйста, установите правильные дату и время в настройках.";
+"ActionMenuWrongIndex.Button" = "В настройки";
+
 // MARK: - Tab Bar
 
 "TabBar.Home" = "Главная";

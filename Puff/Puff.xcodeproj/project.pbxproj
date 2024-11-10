@@ -86,6 +86,7 @@
 		B7B55EAF2CC143BE0057EA61 /* StatisticsMonthlyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B55EAE2CC143BE0057EA61 /* StatisticsMonthlyViewModel.swift */; };
 		B7B55EB12CC144020057EA61 /* StatisticsMonthlyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B55EB02CC144020057EA61 /* StatisticsMonthlyChart.swift */; };
 		B7BE274C2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE274A2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift */; };
+		B7C27A762CE0DA0C0073439A /* ActionMenuWrongIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C27A742CE0DA0C0073439A /* ActionMenuWrongIndexView.swift */; };
 		B7C885CF2CC39FFA004B6E9D /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C885CD2CC39FFA004B6E9D /* UpdateManager.swift */; };
 		B7C885D22CC39FFA004B6E9D /* SmokesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C885D02CC39FFA004B6E9D /* SmokesManager.swift */; };
 		B7C885D52CC39FFA004B6E9D /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C885D32CC39FFA004B6E9D /* SubscriptionManager.swift */; };
@@ -268,6 +269,7 @@
 		B7B55EAE2CC143BE0057EA61 /* StatisticsMonthlyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMonthlyViewModel.swift; sourceTree = "<group>"; };
 		B7B55EB02CC144020057EA61 /* StatisticsMonthlyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsMonthlyChart.swift; sourceTree = "<group>"; };
 		B7BE274A2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuWidgetsTipView.swift; sourceTree = "<group>"; };
+		B7C27A742CE0DA0C0073439A /* ActionMenuWrongIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuWrongIndexView.swift; sourceTree = "<group>"; };
 		B7C885CB2CC39FFA004B6E9D /* ReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewManager.swift; sourceTree = "<group>"; };
 		B7C885CD2CC39FFA004B6E9D /* UpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		B7C885D02CC39FFA004B6E9D /* SmokesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokesManager.swift; sourceTree = "<group>"; };
@@ -726,6 +728,14 @@
 			path = WidgetsTip;
 			sourceTree = "<group>";
 		};
+		B7C27A752CE0DA0C0073439A /* WrongIndex */ = {
+			isa = PBXGroup;
+			children = (
+				B7C27A742CE0DA0C0073439A /* ActionMenuWrongIndexView.swift */,
+			);
+			path = WrongIndex;
+			sourceTree = "<group>";
+		};
 		B7C885CC2CC39FFA004B6E9D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -913,6 +923,7 @@
 		B7C886162CC39FFA004B6E9D /* ActionMenu */ = {
 			isa = PBXGroup;
 			children = (
+				B7C27A752CE0DA0C0073439A /* WrongIndex */,
 				B7BE274B2CC57DE600E8DAAD /* WidgetsTip */,
 				B7C886042CC39FFA004B6E9D /* AddingMoreSmokes */,
 				B7C8860B2CC39FFA004B6E9D /* PlanDeveloping */,
@@ -1425,6 +1436,7 @@
 				B7C885F52CC39FFA004B6E9D /* RippleEffectModifier.swift in Sources */,
 				B7C885F62CC39FFA004B6E9D /* KeyboardAwareModifier.swift in Sources */,
 				B7C885F72CC39FFA004B6E9D /* SizeCalculatorModifier.swift in Sources */,
+				B7C27A762CE0DA0C0073439A /* ActionMenuWrongIndexView.swift in Sources */,
 				B79527C02CA5C90600ADB323 /* CustomSheet.swift in Sources */,
 				B73B2E4C2C9B647D001EB658 /* Palette.swift in Sources */,
 				B78A6A1D2CA71A940074067B /* Optional+Ext.swift in Sources */,

@@ -74,9 +74,6 @@ struct MainNavigationView: View {
                 }
             }
         }
-        .alert(isPresented: $shouldShowCurrentDayIndexError) {
-            Alert(title: Text("Home.CurrentDayIndexErrorText".l))
-        }
         .makeCustomConditionalView(
             !onboardingVM.hasSeenOnboarding,
             transition: .asymmetric(
@@ -172,10 +169,10 @@ struct MainNavigationView: View {
                 }
             }
         }
-        .onAppear {
-            if smokesManager.currentDayIndex < 0 {
-                shouldShowCurrentDayIndexError = true
-            }
+        .onAppear(perform: checkIsCurrentDayIndexCorrect)
+        .onChange(of: smokesManager.currentDayIndex) { _ in checkIsCurrentDayIndexCorrect() }
+        .makeCustomSheet(isPresented: $shouldShowCurrentDayIndexError, ableToDismissWithSwipe: false) {
+            ActionMenuWrongIndexView()
         }
     }
 
@@ -223,7 +220,15 @@ struct MainNavigationView: View {
             }
         }
     }
-    
+
+    private func checkIsCurrentDayIndexCorrect() {
+        if smokesManager.currentDayIndex < 0 {
+            shouldShowCurrentDayIndexError = true
+        } else if shouldShowCurrentDayIndexError {
+            shouldShowCurrentDayIndexError = false
+        }
+    }
+
     private func handlePlanStarting(isStarted: Bool) {
         if isStarted {
             NotificationManager.shared.removeAllNotifications()
