@@ -15,7 +15,6 @@ struct PuffWidgetProvider: TimelineProvider {
 
         // MARK: - if plan ended we need to just update widget every day
         if isPlanEnded {
-            let calendar = Calendar.current
             let currentDay = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: .now) ?? .now
 
             let entries = (0...50).map {
@@ -45,27 +44,40 @@ struct PuffWidgetProvider: TimelineProvider {
                 count: todayCount,
                 limit: (!isPlanStarted || planLimits == nil) ? nil : planLimits![currentDayIndex],
                 isEnded: isPlanEnded,
-                dateOfLastSmoke: defaults.integer(forKey: "newDateOfLastSmoke")
+                dateOfLastSmoke: 0
             )
 
             var currentDay: Date = .now.startOfDate
-
             if isPlanStarted {
                 var nextEntries: [SimpleEntry] = [currentEntry]
                 let daysInPlan = planCounts.count
 
                 let maxIndex = daysInPlan - 1
-                let seq = (1...(maxIndex - currentDayIndex))
+                let upperBound = maxIndex - currentDayIndex
 
-                if currentDayIndex <= daysInPlan - 1 {
-                    let entry = SimpleEntry(
-                        date: currentDay.tomorrow,
-                        count: planCounts[currentDayIndex + 1],
-                        limit: (!isPlanStarted || planLimits == nil) ? nil : planLimits![currentDayIndex],
-                        isEnded: isPlanEnded,
-                        dateOfLastSmoke: defaults.integer(forKey: "newDateOfLastSmoke")
+                if upperBound > 0 {
+                    let seq = (1...upperBound)
+
+                    for i in seq {
+                        let entry = SimpleEntry(
+                            date: calendar.date(byAdding: .day, value: i, to: currentDay) ?? currentDay,
+                            count: planCounts[currentDayIndex + i],
+                            limit: (!isPlanStarted || planLimits == nil) ? nil : planLimits![
+                                min(planCounts.count - 1, currentDayIndex + i)
+                            ],
+                            isEnded: isPlanEnded,
+                            dateOfLastSmoke: 0
+                        )
+                        nextEntries.append(entry)
+                    }
+                } else if let planLimits {
+                    let currentEntry = SimpleEntry(
+                        date: .now,
+                        count: todayCount,
+                        limit: planLimits[currentDayIndex],
+                        isEnded: false,
+                        dateOfLastSmoke: 0
                     )
-                    nextEntries.append(entry)
                 }
 
                 let timeline = Timeline(entries: nextEntries, policy: .atEnd)
