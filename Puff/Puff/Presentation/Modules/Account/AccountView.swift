@@ -64,7 +64,7 @@ struct AccountView: View {
 
     @ViewBuilder
     private func viewContent() -> some View {
-        VStack(spacing: 28) {
+        VStack(spacing: 12) {
             headerView()
 
             cells()
@@ -97,7 +97,6 @@ struct AccountView: View {
     private func cell<Content: View>(
         _ text: String,
         imageName: String,
-        withDivider: Bool = true,
         color: Color = Palette.textPrimary,
         content: Content = Image(.accountBack).resizable().scaledToFit().frame(22).rotationEffect(.degrees(180)),
         action: @escaping () -> Void = {}
@@ -117,16 +116,8 @@ struct AccountView: View {
             content
         }
         .padding(.vertical, 13)
-        .padding(.trailing, 14)
-        .padding(.leading, 10)
-        .overlay(alignment: .bottom) {
-            if withDivider {
-                Rectangle()
-                    .fill(Color(hex: 0xE5E5E5))
-                    .height(1.2)
-                    .padding(.leading, 48)
-            }
-        }
+        .padding(.trailing, 20)
+        .padding(.leading, 13)
         .contentShape(.rect)
         .onTapGesture(perform: action)
     }
@@ -167,13 +158,10 @@ struct AccountView: View {
                 cell(
                     smokesManager.isPlanStarted ? "Account.ResetQuittingPlan".l : "Account.ResetAllSmokes".l,
                     imageName: "accountResetImage",
-                    withDivider: false,
                     color: Color(hex: 0xFF7D7D)
                 ) { shouldShowResetWarning.toggle() }
             }
         }
-        .roundedCornerWithBorder(lineWidth: 1.2, borderColor: Color(hex: 0xE5E5E5), radius: 16, corners: .allCorners)
-        .padding(.horizontal, 12)
         .onChange(of: isNotificationsEnabled) { newValue in
             if newValue {
                 requestNotifications()
