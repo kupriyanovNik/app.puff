@@ -163,6 +163,8 @@ struct OnboardingSurveyScreen: View {
     }
 
     private func selectAnswer(index: Int) {
+        HapticManager.forOnboarding()
+
         onboardingVM.surveyAnswersIndices.append(index)
 
         if (questionIndex == 4 && index == 0) || questionIndex == 5 {

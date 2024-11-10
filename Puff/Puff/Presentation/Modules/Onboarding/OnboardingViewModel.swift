@@ -22,6 +22,8 @@ final class OnboardingViewModel: ObservableObject {
         currentIndex += 1
         AnalyticsManager.logEvent(event: .seenOnboarding(pageNumber: currentIndex))
         onboardingPath.append(currentIndex)
+
+        HapticManager.forOnboarding()
     }
 
     func backToQuestionsFromSkippedView() {

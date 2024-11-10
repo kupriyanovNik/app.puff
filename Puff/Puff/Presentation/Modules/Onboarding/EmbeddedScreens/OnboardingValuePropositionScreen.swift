@@ -97,6 +97,8 @@ struct OnboardingValuePropositionScreen: View {
             animated(.mainAnimation) {
                 selectedTabIndex += 1
             }
+
+            HapticManager.forOnboarding()
         } else {
             onboardingVM.nextScreen()
         }

@@ -42,4 +42,9 @@ final class HapticManager {
                 .impactOccurred(intensity: 0.5)
         }
     }
+
+    static func forOnboarding() {
+        UIImpactFeedbackGenerator(style: .soft)
+            .impactOccurred(intensity: 0.4)
+    }
 }
