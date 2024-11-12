@@ -149,11 +149,11 @@ extension NotificationManager {
         var ids: [String] = []
 
         if limits.isEmpty {
-            let dates: [Date] = (0...15).map {
+            let dates: [Date] = (0...25).map {
                 calendar.date(byAdding: .day, value: $0, to: .now) ?? .now
             }
 
-            for index in (0...15) {
+            for index in (0...25) {
                 let title: String = "Notifications.DailyNotifications".l
                 let body = "Notifications.DailyNotificationsFreeBody".l
 
