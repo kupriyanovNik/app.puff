@@ -122,6 +122,7 @@ final class SmokesManager: ObservableObject {
         }
 
         planStartDate = Int(Date().timeIntervalSince1970)
+        defaults.set(planStartDate, forKey: "newPlanStartDate")
 
         daysInPlan = period.rawValue
 
@@ -291,6 +292,8 @@ final class SmokesManager: ObservableObject {
         defaults.set(false, forKey: "newIsPlanStarted")
         defaults.set(false, forKey: "newIsPlanEnded")
 
+        defaults.set(nil, forKey: "newPlanStartDate")
+
         defaults.synchronize()
         WidgetCenter.shared.reloadAllTimelines()
     }
@@ -333,7 +336,11 @@ final class SmokesManager: ObservableObject {
                 self.dateOfLastSmoke = dateOfLastSmokeInMillis
             }
 
+            self.currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
+
             defaults.set(false, forKey: "hasAddedPuffsUsingIntent")
+
+            defaults.synchronize()
         }
     }
 

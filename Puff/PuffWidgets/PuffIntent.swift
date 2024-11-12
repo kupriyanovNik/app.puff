@@ -30,24 +30,28 @@ struct PuffIntent: AppIntent {
             let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
             var planCounts = defaults.array(forKey: "newPlanCounts") as? [Int] ?? [1000]
             let planLimits = defaults.array(forKey: "newPlanLimits") as? [Int] ?? [-1]
-            let currentDayIndexInArray = min(planCounts.count - 1, currentDayIndex)
+            var currentDayIndexInArray = min(planCounts.count - 1, currentDayIndex)
+
+            let realCurrentDayIndex = getRealCurrentIndex(limits: planLimits)
 
             if counts.count > 0 {
+                if realCurrentDayIndex != currentDayIndexInArray {
+                    if let realCurrentDayIndex {
+                        currentDayIndexInArray = realCurrentDayIndex
+                        defaults.set(currentDayIndexInArray, forKey: "newCurrentDayIndex")
+                    }
+                }
+
                 if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
                     counts[counts.count - 1] += 1
                 } else {
                     counts.append(1)
-                }
-
-                if isPlanStarted {
-                    planCounts[currentDayIndexInArray] += 1
-                }
-
-                if !dates.contains(where: { Calendar.current.isDateInToday($0) }) {
                     dates.append(.now)
                 }
 
                 if isPlanStarted {
+                    planCounts[currentDayIndexInArray] += 1
+
                     if planLimits[currentDayIndexInArray] < planCounts[currentDayIndexInArray] {
                         // TODO: - open app
                     }
@@ -70,5 +74,25 @@ struct PuffIntent: AppIntent {
         WidgetCenter.shared.reloadAllTimelines()
 
         return .result()
+    }
+
+    private func getRealCurrentIndex(limits: [Int]) -> Int? {
+        let calendar = Calendar.current
+        let planStartDate = defaults.integer(forKey: "newPlanStartDate")
+
+        if planStartDate != 0 {
+            let startOfToday = calendar.startOfDay(for: .now)
+            let startOfStartOfPlan = calendar.startOfDay(
+                for: Date(timeIntervalSince1970: TimeInterval(planStartDate))
+            ).timeIntervalSince1970
+
+            let diff = Int(startOfToday.timeIntervalSince1970) - Int(startOfStartOfPlan)
+
+            let diffDays = Int(diff / 86400)
+
+            return min(limits.count - 1, diffDays)
+        }
+
+        return nil
     }
 }
