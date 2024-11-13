@@ -24,7 +24,7 @@ struct AccountViewMethodInfoView: View {
         ),
         .init(
             title: "AccountMethod.Title2".l,
-            titleMarkdowns: ["95% людей,"],
+            titleMarkdowns: ["95% людей,", "95% of people"],
             imageName: "onboardingSkipped1Image",
             imageFrame: 64,
             description: "AccountMethod.Description2".l,
