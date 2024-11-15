@@ -304,6 +304,10 @@ extension HomeView {
                         return "\(hours) часов"
                     }
                 } else {
+                    if minutes == 0 {
+                        return "1 минуту"
+                    }
+
                     if (minutes % 10 == 1 && minutes % 100 != 11) || minutes == 1 {
                         return "\(minutes) минуту"
                     } else if (minutes % 10 >= 2 && minutes % 10 <= 4) && !(minutes % 100 >= 12 && minutes % 100 <= 14) {
