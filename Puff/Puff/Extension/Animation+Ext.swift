@@ -8,5 +8,5 @@
 import SwiftUI
 
 extension Animation {
-    static let mainAnimation: Animation = .easeInOut(duration: 0.3)
+    static let mainAnimation: Animation = .easeInOut(duration: 0.24)
 }
