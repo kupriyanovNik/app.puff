@@ -37,6 +37,7 @@ struct PaywallViewModifier: ViewModifier {
                 Group {
                     if shouldShowCongratulationView {
                         congratulationView()
+                            .transition(.move(edge: .top).combined(with: .offset(y: -25)))
                     } else {
                         content
                             .paywall(
@@ -82,6 +83,7 @@ struct PaywallViewModifier: ViewModifier {
                     }
                 }
                 .transition(.move(edge: .bottom))
+                .animation(.mainAnimation, value: shouldShowCongratulationView)
             } else {
                 content
             }

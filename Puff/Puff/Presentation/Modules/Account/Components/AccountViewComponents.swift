@@ -139,7 +139,7 @@ extension AccountView {
 
             let diff = endDate - transaction.originalPurchaseDate
 
-            if diff <= TimeInterval(260000) {
+            if diff <= TimeInterval(360000) {
                 self.paymentText = "AccountSubscription.EndOfTrial".l
             } else {
                 self.paymentText = "AccountSubscription.BillingDate".l

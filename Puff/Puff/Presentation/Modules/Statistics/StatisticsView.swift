@@ -32,7 +32,7 @@ struct StatisticsView: View {
                 VStack(spacing: 10) {
                     planView()
 
-                    if smokesManager.isPlanStarted && !smokesManager.isPlanEnded {
+                    if smokesManager.isPlanStarted && !smokesManager.isPlanEnded && AdaptySubscriptionManager.shared.isPremium {
                         StatisticsPlanDailyView(smokesManager: smokesManager)
                     }
 
