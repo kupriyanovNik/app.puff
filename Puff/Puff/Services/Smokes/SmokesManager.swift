@@ -153,10 +153,6 @@ final class SmokesManager: ObservableObject {
     }
 
     func extendPlanForOneDay() {
-        print("A", planLimits)
-        print("B", planLimits[0..<currentDayIndex])
-        print("C", planLimits[currentDayIndex...])
-
         var newPlan: [Int] = []
         let planUntilToday = planLimits[0..<currentDayIndex]
 
@@ -208,7 +204,7 @@ final class SmokesManager: ObservableObject {
 
             let diffDays = Int(diff / 86400)
 
-            currentDayIndex = min(planLimits.count, diffDays)
+            currentDayIndex = min(planLimits.count - 1, diffDays)
             realPlanDayIndex = diffDays
         }
     }

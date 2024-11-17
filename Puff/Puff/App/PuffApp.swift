@@ -108,7 +108,7 @@ struct PuffApp: App {
                 }
 
                 if smokesManager.isPlanStarted {
-                    if navigationVM.ableToShowYesterdayResult {
+                    if navigationVM.ableToShowYesterdayResult && smokesManager.realPlanDayIndex == smokesManager.currentDayIndex {
                         if smokesManager.isYesterdayLimitExceeded {
                             navigationVM.shouldShowPlanExtendingActionMenu = true
                         } else {
