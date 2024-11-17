@@ -438,14 +438,15 @@
 			path = Provider;
 			sourceTree = "<group>";
 		};
-		B72BE93B2CCDB02C007296FA /* PuffControlCenterWidget */ = {
+		B72BE93B2CCDB02C007296FA /* PuffControlCenterWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				B72BE9432CCDB13E007296FA /* PuffControlCenterWidgetExtension.entitlements */,
 				B72BE93A2CCDB02C007296FA /* PuffControlCenterWidgetBundle.swift */,
 				B72BE9392CCDB02C007296FA /* PuffControlCenterWidget.swift */,
 				B72BE9422CCDB0E1007296FA /* Common */,
 			);
-			path = PuffControlCenterWidget;
+			path = PuffControlCenterWidgets;
 			sourceTree = "<group>";
 		};
 		B72BE9422CCDB0E1007296FA /* Common */ = {
@@ -460,11 +461,9 @@
 		B73B2E252C9B637A001EB658 = {
 			isa = PBXGroup;
 			children = (
-				B7861AB22CBDA91D00081617 /* PuffWidgetsExtension.entitlements */,
-				B72BE9432CCDB13E007296FA /* PuffControlCenterWidgetExtension.entitlements */,
 				B73B2E302C9B637A001EB658 /* Puff */,
 				B7861AAC2CBDA83000081617 /* PuffWidgets */,
-				B72BE93B2CCDB02C007296FA /* PuffControlCenterWidget */,
+				B72BE93B2CCDB02C007296FA /* PuffControlCenterWidgets */,
 				B703C7B62CB9498000373E2A /* Frameworks */,
 				B73B2E2F2C9B637A001EB658 /* Products */,
 			);
@@ -674,6 +673,7 @@
 		B7861AAC2CBDA83000081617 /* PuffWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				B7861AB22CBDA91D00081617 /* PuffWidgetsExtension.entitlements */,
 				B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */,
 				B76235212CEFDA0D003ECA7A /* Actions */,
 				B76235202CEFD9F7003ECA7A /* HomeScreenWidget */,
@@ -1473,13 +1473,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = PuffControlCenterWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PuffControlCenterWidgets/PuffControlCenterWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 79AQJWGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PuffControlCenterWidget/Common/Info.plist;
+				INFOPLIST_FILE = PuffControlCenterWidgets/Common/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PuffControlCenterWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -1506,13 +1506,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = PuffControlCenterWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PuffControlCenterWidgets/PuffControlCenterWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 79AQJWGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PuffControlCenterWidget/Common/Info.plist;
+				INFOPLIST_FILE = PuffControlCenterWidgets/Common/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PuffControlCenterWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -1742,7 +1742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = PuffWidgetsExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PuffWidgets/PuffWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 79AQJWGJQM;
@@ -1774,7 +1774,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = PuffWidgetsExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PuffWidgets/PuffWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 79AQJWGJQM;
