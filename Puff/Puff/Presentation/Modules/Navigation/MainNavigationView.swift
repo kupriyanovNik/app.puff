@@ -73,9 +73,7 @@ struct MainNavigationView: View {
             }
         }
         .onChange(of: smokesManager.currentDayIndex) { newValue in
-            if newValue > 2 {
-                navigationVM.shouldShowPlanExtendingActionMenu = false
-            }
+            navigationVM.shouldShowAddingMoreSmokesActionMenu = false
         }
         .onChange(of: smokesManager.isPlanStarted) { newValue in
             handlePlanStarting(isStarted: newValue)
