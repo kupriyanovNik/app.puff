@@ -229,10 +229,22 @@ struct MainNavigationView: View {
     }
 
     private func checkIsCurrentDayIndexCorrect() {
-        if smokesManager.currentDayIndex < 0 {
-            shouldShowCurrentDayIndexError = true
-        } else if shouldShowCurrentDayIndexError {
-            shouldShowCurrentDayIndexError = false
+        if smokesManager.isPlanStarted {
+            if smokesManager.currentDayIndex < 0 {
+                shouldShowCurrentDayIndexError = true
+            } else if shouldShowCurrentDayIndexError {
+                shouldShowCurrentDayIndexError = false
+            }
+        } else {
+            if let maxDate = smokesManager.smokesDates.max() {
+                if maxDate > Date() {
+                    shouldShowCurrentDayIndexError = true
+                } else {
+                    shouldShowCurrentDayIndexError = false
+                }
+            } else {
+                shouldShowCurrentDayIndexError = false
+            }
         }
     }
 
