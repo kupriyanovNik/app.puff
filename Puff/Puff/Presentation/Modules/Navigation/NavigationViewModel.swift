@@ -37,6 +37,8 @@ final class NavigationViewModel: ObservableObject {
 
     @Published var shouldShowHomePaywall: Bool = false
     @Published var shouldShowStatisticsPaywall: Bool = false
+
+    @Published var hasRequestedOnboardingPaywall: Bool = false
     @Published var shouldShowOnboardingPaywall: Bool = false
 
     init() {

@@ -87,7 +87,8 @@ struct MainNavigationView: View {
         ) {
             OnboardingView(
                 onboardingVM: onboardingVM,
-                subscriptionsManager: subscriptionsManager
+                subscriptionsManager: subscriptionsManager,
+                navigationVM: navigationVM
             )
             .removeSwipeToDismissWhenAppeared()
         }
@@ -111,11 +112,11 @@ struct MainNavigationView: View {
             placementId: "basicPaywallInOnboarding",
             shouldLoadWhenInit: !subscriptionsManager.isPremium && !onboardingVM.hasSeenOnboarding
         )
-        .onChange(of: onboardingVM.hasSeenOnboarding) { newValue in
-            if newValue {
-                navigationVM.shouldShowOnboardingPaywall = true
-            }
-        }
+//        .onChange(of: onboardingVM.hasSeenOnboarding) { newValue in
+//            if newValue {
+//                navigationVM.shouldShowOnboardingPaywall = true
+//            }
+//        }
         .onChange(of: smokesManager.todaySmokes) { newValue in
             if !navigationVM.hasSeenWidgetsTip {
                 if newValue == 50 {

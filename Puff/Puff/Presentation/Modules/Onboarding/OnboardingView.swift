@@ -11,6 +11,7 @@ struct OnboardingView: View {
 
     @ObservedObject var onboardingVM: OnboardingViewModel
     @ObservedObject var subscriptionsManager: SubscriptionsManager
+    @ObservedObject var navigationVM: NavigationViewModel
 
     var body: some View {
         NavigationStack(path: $onboardingVM.onboardingPath) {
@@ -23,7 +24,7 @@ struct OnboardingView: View {
                     case 4: OnboardingPlanCreatingScreen(onboardingVM: onboardingVM)
                     case 5: OnboardingContractScreen(onboardingVM: onboardingVM)
 //                    case 6: AppPaywallView(subscriptionsManager: subscriptionsManager) { onboardingVM.nextScreen() }
-                    case 6: NotificationRequestView {
+                    case 6: NotificationRequestView(navigationVM: navigationVM) {
                         AnalyticsManager.logEvent(event: .acceptedNotifications)
                         onboardingVM.hasSeenOnboarding = true
                     }
@@ -37,6 +38,7 @@ struct OnboardingView: View {
 #Preview {
     OnboardingView(
         onboardingVM: .init(),
-        subscriptionsManager: .init()
+        subscriptionsManager: .init(),
+        navigationVM: .init()
     )
 }
