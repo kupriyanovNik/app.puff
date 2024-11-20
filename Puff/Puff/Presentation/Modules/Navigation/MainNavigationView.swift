@@ -94,20 +94,22 @@ struct MainNavigationView: View {
         .paywall(
             isPresented: $navigationVM.shouldShowDailyPaywall,
             placementId: "basicDailyPaywall",
-            shouldLoadWhenInit: !subscriptionsManager.isPremium
+            shouldLoadWhenInit: !subscriptionsManager.isPremium && onboardingVM.hasSeenOnboarding
         )
         .paywall(
             isPresented: $navigationVM.shouldShowHomePaywall,
-            placementId: "basicPaywallInHomeView"
+            placementId: "basicPaywallInHomeView",
+            shouldLoadWhenInit: !subscriptionsManager.isPremium && onboardingVM.hasSeenOnboarding
         )
         .paywall(
             isPresented: $navigationVM.shouldShowStatisticsPaywall,
-            placementId: "basicPaywallInStatistics"
+            placementId: "basicPaywallInStatistics",
+            shouldLoadWhenInit: !subscriptionsManager.isPremium && onboardingVM.hasSeenOnboarding
         )
         .paywall(
             isPresented: $navigationVM.shouldShowOnboardingPaywall,
             placementId: "basicPaywallInOnboarding",
-            shouldLoadWhenInit: !subscriptionsManager.isPremium
+            shouldLoadWhenInit: !subscriptionsManager.isPremium && !onboardingVM.hasSeenOnboarding
         )
         .onChange(of: onboardingVM.hasSeenOnboarding) { newValue in
             if newValue {

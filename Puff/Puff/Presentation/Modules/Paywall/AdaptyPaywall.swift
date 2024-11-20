@@ -87,7 +87,7 @@ struct PaywallViewModifier: ViewModifier {
             }
         }
         .onChange(of: isPresented) { newValue in
-            if newValue && !shouldLoadWhenInit {
+            if newValue && (paywall == nil || viewConfig == nil) {
                 Task {
                     await getPaywall()
                 }
