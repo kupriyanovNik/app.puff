@@ -98,7 +98,7 @@ struct MainNavigationView: View {
         .onAppear(perform: openAddingMoreSmokesSheetIfNeeded)
         .onChange(of: scenePhase) { newValue in
             if newValue == .active {
-                smokesManager.restore(isInitial: true)
+                smokesManager.restore()
             }
         }
         .task {

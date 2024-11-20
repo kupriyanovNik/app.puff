@@ -56,8 +56,6 @@ final class SmokesManager: ObservableObject {
     init() {
         checkIsNewDay()
 
-        restore(isInitial: true)
-
         timer = .scheduledTimer(
             timeInterval: 2,
             target: self,
@@ -78,8 +76,8 @@ final class SmokesManager: ObservableObject {
     // MARK: - Internal Properties
 
     var todaySmokes: Int {
-        if let last = smokesCount.last {
-            return last
+        if let index = smokesDates.firstIndex(where: { calendar.isDateInToday($0) }) {
+            return smokesCount[max(0, index)]
         }
 
         return 0
@@ -322,8 +320,8 @@ final class SmokesManager: ObservableObject {
         }
     }
 
-    func restore(isInitial: Bool = false) {
-        if defaults.bool(forKey: "hasAddedPuffsUsingIntent") || isInitial {
+    func restore() {
+        if defaults.bool(forKey: "hasAddedPuffsUsingIntent") {
             if let counts = defaults.array(forKey: "newSmokesCount") as? [Int] {
                 self.smokesCount = counts
             }
