@@ -238,8 +238,13 @@
 "AccountSubscription.Leaving.Improvements.FeedbackPlaceholder" = "Обратная связь";
 
 "AccountSubscription.Leaving.Cancel.StayPremium" = "Оставить Premium";
+"AccountSubscription.Leaving.Cancel.CancelAnyway" = "Все равно отменить";
 "AccountSubscription.Leaving.Cancel.Thanks" = "Спасибо!";
 "AccountSubscription.Leaving.Cancel.ThanksFor" = "Рады, что вы были с нами. Теперь вы можете отменить подписку";
+
+"AccountSubscription.LeavingInFirst3Days.Title" = "Первые 3 дня бросания самые сложные";
+"AccountSubscription.LeavingInFirst3Days.Description1" = "людей сдаются в первые 3 дня";
+"AccountSubscription.LeavingInFirst3Days.Description2" = "шанс бросить, если продержаться 3 дня";
 
 "ActionMenuPlanDeveloping.Addiction.HowMany" = "Сколько затяжек вы делаете в день?";
 "ActionMenuPlanDeveloping.Addiction.Description" = "Можно указать примерное число - если в первые дни окажется, что лимит маловат, мы скорректируем его";

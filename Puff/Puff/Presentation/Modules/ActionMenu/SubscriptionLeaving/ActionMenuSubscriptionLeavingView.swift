@@ -14,7 +14,7 @@ struct ActionMenuSubscriptionLeavingView: View {
     @State private var reasonsIndices: [Int] = []
     @State private var improvementsString: String = ""
 
-    var onCancelSubscription: ([Int], String) -> Void = { _, _ in }
+    var onCancelSubscription: () -> Void = {}
     var onDismiss: () -> Void = {}
 
     private let reasons: [String] = Array((1...6).map { "AccountSubscription.Leaving.Base.Reason\($0)".l })
@@ -67,7 +67,6 @@ struct ActionMenuSubscriptionLeavingView: View {
         .padding(.top, 20)
         .padding(.horizontal, 12)
         .padding(.bottom, 16)
-        .removeSwipeToDismissWhenAppeared()
     }
 
     @ViewBuilder
@@ -159,7 +158,7 @@ struct ActionMenuSubscriptionLeavingView: View {
             } else if screenState == .improvements {
                 screenState = .cancel
             } else if screenState == .cancel {
-                onCancelSubscription(reasonsIndices, improvementsString)
+                onCancelSubscription()
                 sendAnalytics()
                 onDismiss()
             }

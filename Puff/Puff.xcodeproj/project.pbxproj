@@ -146,6 +146,7 @@
 		B7C8865B2CC39FFA004B6E9D /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C886582CC39FFA004B6E9D /* NavigationViewModel.swift */; };
 		B7C8865F2CC39FFA004B6E9D /* HomeViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8865C2CC39FFA004B6E9D /* HomeViewComponents.swift */; };
 		B7C886602CC39FFA004B6E9D /* HomeViewPlanViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8865D2CC39FFA004B6E9D /* HomeViewPlanViews.swift */; };
+		B7DAAEBA2CE5232E0064E8B1 /* ActionMenuSubscriptionLeavingInFirst3DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DAAEB92CE5232E0064E8B1 /* ActionMenuSubscriptionLeavingInFirst3DaysView.swift */; };
 		B7EFBB922CC03634006CAE4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */; };
 		B7EFBB972CC0370D006CAE4F /* CustomDismissableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */; };
 		B7EFBB9A2CC052DF006CAE4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716A4432CBAABCC005842A5 /* Localizable.strings */; };
@@ -331,6 +332,7 @@
 		B7C886582CC39FFA004B6E9D /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		B7C8865C2CC39FFA004B6E9D /* HomeViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComponents.swift; sourceTree = "<group>"; };
 		B7C8865D2CC39FFA004B6E9D /* HomeViewPlanViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPlanViews.swift; sourceTree = "<group>"; };
+		B7DAAEB92CE5232E0064E8B1 /* ActionMenuSubscriptionLeavingInFirst3DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuSubscriptionLeavingInFirst3DaysView.swift; sourceTree = "<group>"; };
 		B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7EFBB902CC03634006CAE4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissableView.swift; sourceTree = "<group>"; };
@@ -895,6 +897,7 @@
 			isa = PBXGroup;
 			children = (
 				B7C8860E2CC39FFA004B6E9D /* ActionMenuSubscriptionLeavingView.swift */,
+				B7DAAEB92CE5232E0064E8B1 /* ActionMenuSubscriptionLeavingInFirst3DaysView.swift */,
 			);
 			path = SubscriptionLeaving;
 			sourceTree = "<group>";
@@ -1357,6 +1360,7 @@
 				B76AEF5C2CA97ECB000003F8 /* TagLayout.swift in Sources */,
 				B73B2E4A2C9B644C001EB658 /* HomeView.swift in Sources */,
 				B7BE274C2CC57DE600E8DAAD /* ActionMenuWidgetsTipView.swift in Sources */,
+				B7DAAEBA2CE5232E0064E8B1 /* ActionMenuSubscriptionLeavingInFirst3DaysView.swift in Sources */,
 				B7F377762C9B6C480050C93B /* SecondaryButton.swift in Sources */,
 				B7C885FB2CC39FFA004B6E9D /* CircledTopCornersView.swift in Sources */,
 				B76C8B8D2CC6CC2800BE19BA /* PuffIntent.swift in Sources */,

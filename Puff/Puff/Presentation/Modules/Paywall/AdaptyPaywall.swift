@@ -53,6 +53,8 @@ struct PaywallViewModifier: ViewModifier {
                                         logger.trace("BOUGHT: \(product.vendorProductId). IsPremium: \(isUserPremium)")
 
                                         isPresented = false
+
+                                        defaults.set(Date().timeIntervalSince1970, forKey: "dateWhenBoughtSubscription")
                                     }
                                 },
                                 didFailPurchase: { _, error in

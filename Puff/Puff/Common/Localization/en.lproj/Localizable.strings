@@ -238,8 +238,13 @@
 "AccountSubscription.Leaving.Improvements.FeedbackPlaceholder" = "Feedback";
 
 "AccountSubscription.Leaving.Cancel.StayPremium" = "Keep Premium";
+"AccountSubscription.Leaving.Cancel.CancelAnyway" = "Cancel anyway";
 "AccountSubscription.Leaving.Cancel.Thanks" = "Thank you!";
 "AccountSubscription.Leaving.Cancel.ThanksFor" = "We’re glad you've been with us. You can now unsubscribe";
+
+"AccountSubscription.LeavingInFirst3Days.Title" = "The first 3 days of quitting are the hardest";
+"AccountSubscription.LeavingInFirst3Days.Description1" = "of people give up in the first 3 days";
+"AccountSubscription.LeavingInFirst3Days.Description2" = "chance of quitting if you last 3 days";
 
 "ActionMenuPlanDeveloping.Addiction.HowMany" = "How many puffs do you take per day?";
 "ActionMenuPlanDeveloping.Addiction.Description" = "You can specify an approximate number - if in the first few days it turns out that the limit is too low, we will adjust it";

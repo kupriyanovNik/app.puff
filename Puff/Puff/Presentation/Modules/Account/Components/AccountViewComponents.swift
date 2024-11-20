@@ -37,13 +37,7 @@ extension AccountView {
 
         var body: some View {
             CircledTopCornersView(background: .init(hex: 0xF5F5F5), content: viewContent)
-                .makeCustomSheet(isPresented: $shouldShowSubscriptionEndingView) {
-                    ActionMenuSubscriptionLeavingView { reasonsIndices, improvementsText in
-                        requestCancel()
-                    } onDismiss: {
-                        shouldShowSubscriptionEndingView = false
-                    }
-                }
+                .makeCustomSheet(isPresented: $shouldShowSubscriptionEndingView, content: sheetContent)
                 .task { await subscriptionsManager.fetchActiveTransactions() }
         }
 
@@ -80,6 +74,20 @@ extension AccountView {
             }
             .padding(.horizontal, 28)
             .onAppear(perform: setText)
+        }
+
+        @ViewBuilder
+        private func sheetContent() -> some View {
+            Group {
+                if Date(
+                    timeIntervalSince1970: TimeInterval(defaults.integer(forKey: "dateWhenBoughtSubscription"))
+                ).distance(to: .now) <= 259200 {
+                    ActionMenuSubscriptionLeavingInFirst3DaysView(onCancelSubscription: requestCancel, onDismiss: hideSubscriptionEndingView)
+                } else {
+                    ActionMenuSubscriptionLeavingView(onCancelSubscription: requestCancel, onDismiss: hideSubscriptionEndingView)
+                }
+            }
+            .removeSwipeToDismissWhenAppeared()
         }
 
         @ViewBuilder
@@ -146,9 +154,15 @@ extension AccountView {
                 ) as? UIWindowScene {
 
                 Task {
+                    shouldShowSubscriptionEndingView = false
+
                     try await AppStore.showManageSubscriptions(in: scene)
                 }
             }
+        }
+
+        private func hideSubscriptionEndingView() {
+            shouldShowSubscriptionEndingView = false
         }
     }
 }
