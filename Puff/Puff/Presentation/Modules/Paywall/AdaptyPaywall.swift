@@ -124,7 +124,7 @@ struct PaywallViewModifier: ViewModifier {
 
     private func getPaywall() async {
         do {
-            let paywall = try await Adapty.getPaywall(placementId: placementId)
+            let paywall = try await Adapty.getPaywall(placementId: placementId, locale: "AdaptyLocale".l)
             let viewConfig = try await AdaptyUI.getViewConfiguration(forPaywall: paywall)
 
             self.paywall = paywall
