@@ -47,6 +47,8 @@
 		B74D975E2CCAF097004C5E23 /* PuffShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */; };
 		B752774A2C9F4C7B00F8B98D /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
 		B754071B2CCD12B200DCB1D5 /* Animation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */; };
+		B762351E2CEFD8C8003ECA7A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
+		B762351F2CEFD8C8003ECA7A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
 		B7633EA72CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA52CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift */; };
 		B7633EA92CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA82CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift */; };
 		B76AEF5C2CA97ECB000003F8 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */; };
@@ -1264,6 +1266,7 @@
 				B72BE9402CCDB036007296FA /* PuffIntent.swift in Sources */,
 				B72BE9442CCDB1A7007296FA /* UserDefaultsManager.swift in Sources */,
 				B72BE93C2CCDB02C007296FA /* PuffControlCenterWidget.swift in Sources */,
+				B762351F2CEFD8C8003ECA7A /* Date+Ext.swift in Sources */,
 				B72BE93D2CCDB02C007296FA /* PuffControlCenterWidgetBundle.swift in Sources */,
 				B72BE9412CCDB0D5007296FA /* LocalizableString+Ext.swift in Sources */,
 			);
@@ -1388,6 +1391,7 @@
 				B7861ABD2CBDA98300081617 /* UserDefaultsManager.swift in Sources */,
 				B7F1E4472CC4063E00BE422D /* PuffIntent.swift in Sources */,
 				B78DF5AD2CBFE2390078F9D0 /* Color+Ext.swift in Sources */,
+				B762351E2CEFD8C8003ECA7A /* Date+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

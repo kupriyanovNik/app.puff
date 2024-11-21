@@ -39,7 +39,7 @@ extension Date {
     }
 
     var tomorrow: Date {
-        Calendar.current.date(byAdding: .day, value: 1, to: self) ?? .now
+        Calendar.current.date(byAdding: .day, value: 1, to: self) ?? self
     }
 
     var startOfWeek: Date {
