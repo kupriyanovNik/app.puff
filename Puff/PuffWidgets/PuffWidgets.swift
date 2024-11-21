@@ -20,7 +20,9 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
+        let calendar = Calendar.current
 
+        // MARK: - if plan ended we need to just update widget every day
         if isPlanEnded {
             let calendar = Calendar.current
             let currentDay = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: .now) ?? .now
@@ -47,20 +49,38 @@ struct Provider: TimelineProvider {
 
             let todayCount = isPlanStarted ? planCounts[min(currentDayIndex, planCounts.count - 1)] : (counts.last ?? -1)
 
-            let timeline = Timeline(
-                entries: [
-                    SimpleEntry(
-                        date: .now,
-                        count: todayCount,
-                        limit: (!isPlanStarted || planLimits == nil) ? nil : planLimits![currentDayIndex],
-                        isEnded: isPlanEnded,
-                        dateOfLastSmoke: defaults.integer(forKey: "newDateOfLastSmoke")
-                    )
-                ],
-                policy: .atEnd
+            let currentEntry = SimpleEntry(
+                date: .now,
+                count: todayCount,
+                limit: (!isPlanStarted || planLimits == nil) ? nil : planLimits![currentDayIndex],
+                isEnded: isPlanEnded,
+                dateOfLastSmoke: defaults.integer(forKey: "newDateOfLastSmoke")
             )
 
-            completion(timeline)
+            if isPlanStarted {
+                let timeline = Timeline(
+                    entries: [
+                        currentEntry
+                    ],
+                    policy: .atEnd
+                )
+
+                completion(timeline)
+            } else {
+                // только следующий день потому что если даже не тыкнет завтра то пофиг, будет просто
+                let currentDay = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: .now) ?? .now
+
+                let nextEvent = SimpleEntry(
+                    date: calendar.date(byAdding: .day, value: 1, to: currentDay) ?? currentDay,
+                    count: 0,
+                    limit: nil,
+                    isEnded: false,
+                    dateOfLastSmoke: 0
+                )
+
+                let timeline = Timeline(entries: [ currentEntry, nextEvent ], policy: .atEnd)
+                completion(timeline)
+            }
         }
     }
 }
