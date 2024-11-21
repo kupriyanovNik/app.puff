@@ -49,6 +49,8 @@
 		B754071B2CCD12B200DCB1D5 /* Animation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */; };
 		B762351E2CEFD8C8003ECA7A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
 		B762351F2CEFD8C8003ECA7A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75277492C9F4C7B00F8B98D /* Date+Ext.swift */; };
+		B76235232CEFDA2E003ECA7A /* PuffWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76235222CEFDA2E003ECA7A /* PuffWidgetProvider.swift */; };
+		B76235252CEFDA90003ECA7A /* PuffHomeScreenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76235242CEFDA90003ECA7A /* PuffHomeScreenWidget.swift */; };
 		B7633EA72CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA52CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift */; };
 		B7633EA92CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7633EA82CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift */; };
 		B76AEF5C2CA97ECB000003F8 /* TagLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */; };
@@ -64,7 +66,7 @@
 		B7861A952CBDA82A00081617 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7861A942CBDA82A00081617 /* WidgetKit.framework */; };
 		B7861A972CBDA82A00081617 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7861A962CBDA82A00081617 /* SwiftUI.framework */; };
 		B7861AA22CBDA82B00081617 /* PuffWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7861A932CBDA82A00081617 /* PuffWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B7861AAD2CBDA83000081617 /* PuffWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861AAA2CBDA83000081617 /* PuffWidgets.swift */; };
+		B7861AAD2CBDA83000081617 /* PuffWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861AAA2CBDA83000081617 /* PuffWidgetView.swift */; };
 		B7861AAE2CBDA83000081617 /* PuffWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */; };
 		B7861ABC2CBDA98300081617 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861ABA2CBDA98300081617 /* UserDefaultsManager.swift */; };
 		B7861ABD2CBDA98300081617 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7861ABA2CBDA98300081617 /* UserDefaultsManager.swift */; };
@@ -232,6 +234,8 @@
 		B73B2E542C9B64CD001EB658 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		B75277492C9F4C7B00F8B98D /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		B754071A2CCD12B200DCB1D5 /* Animation+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Ext.swift"; sourceTree = "<group>"; };
+		B76235222CEFDA2E003ECA7A /* PuffWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetProvider.swift; sourceTree = "<group>"; };
+		B76235242CEFDA90003ECA7A /* PuffHomeScreenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffHomeScreenWidget.swift; sourceTree = "<group>"; };
 		B7633EA52CCD5B7F0061050C /* AccountViewWidgetsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewWidgetsInfoView.swift; sourceTree = "<group>"; };
 		B7633EA82CCD5B8A0061050C /* AccountViewWidgetsInfoViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewWidgetsInfoViewComponents.swift; sourceTree = "<group>"; };
 		B76AEF5B2CA97ECB000003F8 /* TagLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLayout.swift; sourceTree = "<group>"; };
@@ -244,7 +248,7 @@
 		B7861A932CBDA82A00081617 /* PuffWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PuffWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7861A942CBDA82A00081617 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B7861A962CBDA82A00081617 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		B7861AAA2CBDA83000081617 /* PuffWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgets.swift; sourceTree = "<group>"; };
+		B7861AAA2CBDA83000081617 /* PuffWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetView.swift; sourceTree = "<group>"; };
 		B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetsBundle.swift; sourceTree = "<group>"; };
 		B7861AB12CBDA91200081617 /* Puff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Puff.entitlements; sourceTree = "<group>"; };
 		B7861AB22CBDA91D00081617 /* PuffWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PuffWidgetsExtension.entitlements; sourceTree = "<group>"; };
@@ -585,6 +589,33 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		B76235202CEFD9F7003ECA7A /* HomeScreenWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B76235262CEFDABC003ECA7A /* View */,
+				B76235222CEFDA2E003ECA7A /* PuffWidgetProvider.swift */,
+			);
+			path = HomeScreenWidget;
+			sourceTree = "<group>";
+		};
+		B76235212CEFDA0D003ECA7A /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				B7F1E4462CC4063E00BE422D /* PuffIntent.swift */,
+				B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		B76235262CEFDABC003ECA7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B76235242CEFDA90003ECA7A /* PuffHomeScreenWidget.swift */,
+				B7861AAA2CBDA83000081617 /* PuffWidgetView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B7633EA62CCD5B7F0061050C /* WidgetsInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,9 +664,8 @@
 			isa = PBXGroup;
 			children = (
 				B7861AAB2CBDA83000081617 /* PuffWidgetsBundle.swift */,
-				B7861AAA2CBDA83000081617 /* PuffWidgets.swift */,
-				B7F1E4462CC4063E00BE422D /* PuffIntent.swift */,
-				B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */,
+				B76235212CEFDA0D003ECA7A /* Actions */,
+				B76235202CEFD9F7003ECA7A /* HomeScreenWidget */,
 				B7EFBB912CC03634006CAE4F /* Common */,
 			);
 			path = PuffWidgets;
@@ -1382,16 +1412,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B76235252CEFDA90003ECA7A /* PuffHomeScreenWidget.swift in Sources */,
 				B78DF5AC2CBFE1C20078F9D0 /* LocalizableString+Ext.swift in Sources */,
 				B78DF5A42CBFE0C40078F9D0 /* Fonts.swift in Sources */,
 				B7F1E4432CC3E22B00BE422D /* Text+Ext.swift in Sources */,
-				B7861AAD2CBDA83000081617 /* PuffWidgets.swift in Sources */,
+				B7861AAD2CBDA83000081617 /* PuffWidgetView.swift in Sources */,
 				B7F1E4452CC3E6EA00BE422D /* PuffShortcut.swift in Sources */,
 				B7861AAE2CBDA83000081617 /* PuffWidgetsBundle.swift in Sources */,
 				B7861ABD2CBDA98300081617 /* UserDefaultsManager.swift in Sources */,
 				B7F1E4472CC4063E00BE422D /* PuffIntent.swift in Sources */,
 				B78DF5AD2CBFE2390078F9D0 /* Color+Ext.swift in Sources */,
 				B762351E2CEFD8C8003ECA7A /* Date+Ext.swift in Sources */,
+				B76235232CEFDA2E003ECA7A /* PuffWidgetProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
