@@ -25,7 +25,7 @@ struct Provider: TimelineProvider {
             let calendar = Calendar.current
             let currentDay = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: .now) ?? .now
 
-            let entries = (0...35).map {
+            let entries = (0...50).map {
                 SimpleEntry(
                     date: calendar.date(byAdding: .day, value: $0, to: currentDay) ?? currentDay,
                     count: 0,
@@ -178,9 +178,9 @@ struct PuffWidgetsEntryView : View {
 
     private func getLastSmokeTimeEnglishString(_ days: Int) -> String {
         if days > 0 {
-            if days > 30 {
-                return "More then month"
-            }
+//            if days > 30 {
+//                return "More then month"
+//            }
 
             if days == 1 {
                 return "1 day"
@@ -194,9 +194,9 @@ struct PuffWidgetsEntryView : View {
 
     private func getLastSmokeTimeRussianString(_ days: Int) -> String {
         if days > 0 {
-            if days > 30 {
-                return "Больше месяца"
-            }
+//            if days > 30 {
+//                return "Больше месяца"
+//            }
 
             if days % 10 == 1 && days % 100 != 11 {
                 return "\(days) день"
