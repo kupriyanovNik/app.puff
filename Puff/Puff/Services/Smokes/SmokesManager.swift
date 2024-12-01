@@ -39,6 +39,8 @@ final class SmokesManager: ObservableObject {
     // MARK: - Inits
 
     init() {
+        checkIsNewDay()
+
         timer = .scheduledTimer(
             timeInterval: 3,
             target: self,
@@ -48,9 +50,6 @@ final class SmokesManager: ObservableObject {
         )
 
         RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
-
-        print("l", planLimits)
-        print("c", planCounts)
     }
 
     // MARK: - Private Properties
@@ -74,6 +73,13 @@ final class SmokesManager: ObservableObject {
     var isLastDayOfPlan: Bool { currentDayIndex + 1 >= daysInPlan }
 
     var isTodayLimitExceeded: Bool { todaySmokes > todayLimit }
+
+    var isDayAfterPlanEnded: Bool {
+        print(realPlanDayIndex > planLimits.count, realPlanDayIndex, planLimits)
+
+
+        return realPlanDayIndex > planLimits.count
+    }
 
     // MARK: - Internal Functions
 

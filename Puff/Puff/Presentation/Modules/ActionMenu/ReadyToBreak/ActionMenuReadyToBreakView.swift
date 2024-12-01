@@ -141,7 +141,7 @@ struct ActionMenuReadyToBreakView: View {
 
     private func nextButtonAction(needOneMoreDay: Bool) {
         if screenState == .base {
-            if needOneMoreDay || isLastSmoke {
+            if needOneMoreDay {
                 if tappedReadyToBreak {
                     onDismiss()
                 } else {

@@ -55,6 +55,16 @@ struct PuffApp: App {
                     navigationVM.shouldShowReadyToBreakActionMenu = false
                 }
             }
+            .onChange(of: smokesManager.todaySmokes) { newValue in
+                if newValue == smokesManager.todayLimit {
+                    navigationVM.shouldShowReadyToBreakActionMenu = true
+                }
+            }
+            .onAppear {
+                if smokesManager.isDayAfterPlanEnded {
+                    navigationVM.shouldShowReadyToBreakActionMenu = true
+                }
+            }
         }
     }
 }
