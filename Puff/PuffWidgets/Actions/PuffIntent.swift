@@ -33,22 +33,32 @@ struct PuffIntent: AppIntent {
             var currentDayIndexInArray = min(planCounts.count - 1, currentDayIndex)
 
             if counts.count > 0 && ableToPuff(limits: planLimits, counts: planCounts) {
-                if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
-                    counts[counts.count - 1] += 1
-                } else {
-                    counts.append(1)
-                    dates.append(.now)
-                }
-
                 if isPlanStarted {
                     let realCurrentDayIndex = getRealCurrentIndex(limits: planLimits)
+                    let dayIndexWithoutLimit = getRealCurrentIndexWithoutLimit(limits: planLimits)
 
                     if let realCurrentDayIndex, realCurrentDayIndex > currentDayIndexInArray {
                         currentDayIndexInArray = realCurrentDayIndex
                         defaults.set(currentDayIndexInArray, forKey: "newCurrentDayIndex")
                     }
 
-                    planCounts[currentDayIndexInArray] += 1
+                    if dayIndexWithoutLimit == realCurrentDayIndex {
+                        planCounts[currentDayIndexInArray] += 1
+                        if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
+                            counts[counts.count - 1] += 1
+                        } else {
+                            counts.append(1)
+                            dates.append(.now)
+                        }
+                    }
+
+                } else {
+                    if let lastDate = dates.last, Calendar.current.isDateInToday(lastDate) {
+                        counts[counts.count - 1] += 1
+                    } else {
+                        counts.append(1)
+                        dates.append(.now)
+                    }
                 }
 
                 defaults.set(counts, forKey: "newSmokesCount")
@@ -85,6 +95,26 @@ struct PuffIntent: AppIntent {
             let diffDays = Int(diff / 86400)
 
             return min(limits.count - 1, diffDays)
+        }
+
+        return nil
+    }
+
+    private func getRealCurrentIndexWithoutLimit(limits: [Int]) -> Int? {
+        let calendar = Calendar.current
+        let planStartDate = defaults.integer(forKey: "newPlanStartDate")
+
+        if planStartDate != 0 {
+            let startOfToday = calendar.startOfDay(for: .now)
+            let startOfStartOfPlan = calendar.startOfDay(
+                for: Date(timeIntervalSince1970: TimeInterval(planStartDate))
+            ).timeIntervalSince1970
+
+            let diff = Int(startOfToday.timeIntervalSince1970) - Int(startOfStartOfPlan)
+
+            let diffDays = Int(diff / 86400)
+
+            return diffDays
         }
 
         return nil
