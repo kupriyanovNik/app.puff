@@ -14,7 +14,7 @@ extension StatisticsView {
 
         var body: some View {
             DelayedButton {
-                navigationVM.shouldShowStatisticsPaywall.toggle()
+                navigationVM.shouldShowPaywall.toggle()
                 AnalyticsManager.logEvent(event: .openedPaywall(tab: 2))
             } content: {
                 VStack(spacing: 36) {

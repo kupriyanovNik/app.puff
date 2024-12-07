@@ -93,30 +93,10 @@ struct MainNavigationView: View {
             .removeSwipeToDismissWhenAppeared()
         }
         .paywall(
-            isPresented: $navigationVM.shouldShowDailyPaywall,
-            placementId: "basicDailyPaywall",
-            shouldLoadWhenInit: !subscriptionsManager.isPremium && onboardingVM.hasSeenOnboarding
+            isPresented: $navigationVM.shouldShowPaywall,
+            placementId: "single",
+            shouldLoadWhenInit: !subscriptionsManager.isPremium
         )
-        .paywall(
-            isPresented: $navigationVM.shouldShowHomePaywall,
-            placementId: "basicPaywallInHomeView",
-            shouldLoadWhenInit: !subscriptionsManager.isPremium && onboardingVM.hasSeenOnboarding
-        )
-        .paywall(
-            isPresented: $navigationVM.shouldShowStatisticsPaywall,
-            placementId: "basicPaywallInStatistics",
-            shouldLoadWhenInit: !subscriptionsManager.isPremium && onboardingVM.hasSeenOnboarding
-        )
-        .paywall(
-            isPresented: $navigationVM.shouldShowOnboardingPaywall,
-            placementId: "basicPaywallInOnboarding",
-            shouldLoadWhenInit: !subscriptionsManager.isPremium && !onboardingVM.hasSeenOnboarding
-        )
-//        .onChange(of: onboardingVM.hasSeenOnboarding) { newValue in
-//            if newValue {
-//                navigationVM.shouldShowOnboardingPaywall = true
-//            }
-//        }
         .onChange(of: smokesManager.todaySmokes) { newValue in
             if !navigationVM.hasSeenWidgetsTip {
                 if newValue == 50 {

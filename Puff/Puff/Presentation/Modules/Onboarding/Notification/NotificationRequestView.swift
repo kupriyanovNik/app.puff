@@ -11,8 +11,6 @@ struct NotificationRequestView: View {
 
     @AppStorage("hasSkippedNotificationRequest") var hasSkippedNotificationRequest: Bool = false
 
-    @ObservedObject var navigationVM: NavigationViewModel
-
     var action: () -> Void
 
     var body: some View {
@@ -42,12 +40,6 @@ struct NotificationRequestView: View {
         }
         .padding(.horizontal, 20)
         .prepareForStackPresentation()
-        .onAppear {
-            if !navigationVM.hasRequestedOnboardingPaywall {
-                navigationVM.shouldShowOnboardingPaywall = true
-                navigationVM.hasRequestedOnboardingPaywall = true
-            }
-        }
     }
 
     @ViewBuilder
@@ -71,5 +63,5 @@ struct NotificationRequestView: View {
 }
 
 #Preview {
-    NotificationRequestView(navigationVM: .init()) { }
+    NotificationRequestView { }
 }

@@ -31,20 +31,11 @@ final class NavigationViewModel: ObservableObject {
     @AppStorage("dateOfSeenUpdateSheet") private(set) var dateOfSeenUpdateSheet: Date?
     @Published private(set) var ableToShowUpdateActionMenu: Bool = false
 
-    @Published var shouldShowDailyPaywall: Bool = false
-    @AppStorage("dateOfSeenDailyPaywall") private(set) var dateOfSeenDailyPaywall: Date?
-    @Published private(set) var ableToShowDailyPaywall: Bool = false
-
-    @Published var shouldShowHomePaywall: Bool = false
-    @Published var shouldShowStatisticsPaywall: Bool = false
-
-    @Published var hasRequestedOnboardingPaywall: Bool = false
-    @Published var shouldShowOnboardingPaywall: Bool = false
+    @Published var shouldShowPaywall: Bool = false
 
     init() {
         checkAbilityToShowYesterdayResult()
         checkAbilityToShowUpdateActionMenu()
-        checkAbilityToShowDailyPaywall()
     }
 
     func seenYesterdayResult() {
@@ -62,22 +53,11 @@ final class NavigationViewModel: ObservableObject {
         shouldShowUpdateActionMenu = false
     }
 
-    func seenDailyPaywall() {
-        dateOfSeenDailyPaywall = .now
-        ableToShowDailyPaywall = false
-    }
-
     func checkAbilityToShowYesterdayResult() {
         if let dateOfSeenYesterdayResult {
             ableToShowYesterdayResult = !Calendar.current.isDateInToday(dateOfSeenYesterdayResult)
         } else {
             ableToShowYesterdayResult = true
-        }
-    }
-
-    func checkAbilityToShowDailyPaywall() {
-        if let dateOfSeenDailyPaywall {
-            ableToShowDailyPaywall = !Calendar.current.isDateInToday(dateOfSeenDailyPaywall)
         }
     }
 

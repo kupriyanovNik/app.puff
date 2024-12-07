@@ -111,14 +111,6 @@ struct PuffApp: App {
             .task {
                 await subscriptionsManager.updatePurchasedProducts()
             }
-            .onAppear {
-                if !subscriptionsManager.isPremium {
-                    if navigationVM.ableToShowDailyPaywall || (onboardingVM.hasSeenOnboarding && appManager.appOpensCount == 2) {
-                        showPaywall()
-                        navigationVM.seenDailyPaywall()
-                    }
-                }
-            }
             .onReceive(
                 NotificationCenter.default.publisher(
                     for: UIApplication.didReceiveMemoryWarningNotification,
@@ -152,7 +144,7 @@ struct PuffApp: App {
     }
 
     private func showPaywall() {
-        navigationVM.shouldShowDailyPaywall = true
+        navigationVM.shouldShowPaywall = true
     }
 
     private func yesterdaySuccessedDismissAction() {

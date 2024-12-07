@@ -24,8 +24,9 @@ struct OnboardingView: View {
                     case 4: OnboardingPlanCreatingScreen(onboardingVM: onboardingVM)
                     case 5: OnboardingContractScreen(onboardingVM: onboardingVM)
 //                    case 6: AppPaywallView(subscriptionsManager: subscriptionsManager) { onboardingVM.nextScreen() }
-                    case 6: NotificationRequestView(navigationVM: navigationVM) {
+                    case 6: NotificationRequestView {
                         AnalyticsManager.logEvent(event: .acceptedNotifications)
+                        navigationVM.shouldShowPaywall = true
                         onboardingVM.hasSeenOnboarding = true
                     }
                     default: EmptyView()
