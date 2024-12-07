@@ -300,7 +300,7 @@
 "ActionMenuYesterdayExceeded.NonCritical.First" = "Не переживайте, такое бывает. Продолжаем двигаться вперед!\n\n";
 "ActionMenuYesterdayExceeded.NonCritical.Third" = "Сегодняшний лимит затяжек - {count}.";
 
-"ActionMenuYesterdayExceeded.Critical.Title" = "Вчера вы превысили лимит на {count} затяжек";
+"ActionMenuYesterdayExceeded.Critical.Title" = "Вчера вы превысили лимит затяжек на {count}";
 "ActionMenuYesterdayExceeded.Critical.First" = "Не переживайте, такое бывает.\n\n";
 "ActionMenuYesterdayExceeded.Critical.Third" = "Сегодняшний лимит затяжек - {count}. Если уверены, что справитесь - продолжаем!\n\nА если вам нужно чуть больше времени - можем продлить план на 1 день. Лимит будет такой же, как вчера.";
 

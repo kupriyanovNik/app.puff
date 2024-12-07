@@ -112,7 +112,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
             MarkdownText(
                 text: "ActionMenuYesterdayExceeded.Critical.Title".l.formatByDivider(divider: "{count}", count: yesterdedExceed),
                 markdowns: [
-                    "{count} затяжек".formatByDivider(divider: "{count}", count: yesterdedExceed),
+                    "превысили лимит",
                     "{count} puffs".formatByDivider(divider: "{count}", count: yesterdedExceed)
                 ],
                 accentColor: Color(hex: 0xFF7D7D)
@@ -138,7 +138,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
             MarkdownText(
                 text: "ActionMenuYesterdayExceeded.Critical.Title".l.formatByDivider(divider: "{count}", count: yesterdedExceed),
                 markdowns: [
-                    "{count} затяжек".formatByDivider(divider: "{count}", count: yesterdedExceed),
+                    "превысили лимит",
                     "{count} puffs".formatByDivider(divider: "{count}", count: yesterdedExceed)
                 ]
             )
