@@ -80,7 +80,7 @@ struct ActionMenuYesterdayPlanExceededView: View {
             .makeActionMenuTransition()
 
             VStack(spacing: 10) {
-                AccentButton(text: isCriticallyExceeded ? "ActionMenuYesterdayExceeded.CanDoIt".l : "Ok") {
+                AccentButton(text: isCriticallyExceeded ? "ActionMenuYesterdayExceeded.CanDoIt".l : "Ok".l) {
                     HapticManager.actionMenusButton()
                     onDismiss()
                 }

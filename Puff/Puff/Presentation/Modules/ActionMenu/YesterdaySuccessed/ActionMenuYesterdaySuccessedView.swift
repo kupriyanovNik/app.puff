@@ -54,7 +54,7 @@ struct ActionMenuYesterdaySuccessedView: View {
             }
             .padding(.horizontal, 12)
 
-            AccentButton(text: "Ok") {
+            AccentButton(text: "Ok".l) {
                 HapticManager.actionMenusButton()
                 onDismiss()
             }
