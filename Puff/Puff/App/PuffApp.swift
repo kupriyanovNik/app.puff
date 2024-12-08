@@ -143,10 +143,6 @@ struct PuffApp: App {
         }
     }
 
-    private func showPaywall() {
-        navigationVM.shouldShowPaywall = true
-    }
-
     private func yesterdaySuccessedDismissAction() {
         seenYesterdayResult()
 

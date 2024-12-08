@@ -18,6 +18,8 @@ final class OnboardingViewModel: ObservableObject {
 
     @Published var surveyAnswersIndices: [Int] = []
 
+    var hasRequestedPaywall: Bool = false
+
     func nextScreen() {
         currentIndex += 1
         AnalyticsManager.logEvent(event: .seenOnboarding(pageNumber: currentIndex))
