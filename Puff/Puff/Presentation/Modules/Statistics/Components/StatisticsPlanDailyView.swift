@@ -66,14 +66,14 @@ struct StatisticsPlanDailyView: View {
     @ViewBuilder
     private func bottomView() -> some View {
         let dayIndex = smokesManager.realPlanDayIndex
-        let ratio = getRatio(for: selectedIndex)
+        let ratio = getRatio(for: dayIndex)
 
         let index = min(smokesManager.planCounts.count - 1, selectedIndex)
 
         let limit = smokesManager.planLimits[index]
         let count = smokesManager.planCounts[index]
 
-        let percentage = 1.0 - (Double(limit) / Double(smokesManager.planLimits[0]))
+        let percentage = 1.0 - (Double(smokesManager.planLimits[dayIndex]) / Double(smokesManager.planLimits[0]))
         let showPercentage = percentage > 0 && ratio < 1
 
         let leadingText: String = {
@@ -128,10 +128,8 @@ struct StatisticsPlanDailyView: View {
                             .font(.medium12)
                             .foregroundStyle(Palette.textQuaternary)
                     }
-                    .transition(.opacity.animation(.easeInOut(duration: 0.25)))
                 }
             }
-            .animation(.easeInOut(duration: 0.25), value: showPercentage)
         }
     }
 
