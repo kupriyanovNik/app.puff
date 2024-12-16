@@ -157,6 +157,7 @@ final class SmokesManager: ObservableObject {
 
     func puff() {
         dateOfLastSmoke = Int(Date().timeIntervalSince1970)
+        defaults.set(dateOfLastSmoke, forKey: "newDateOfLastSmoke")
 
         if dateOfFirstSmoke == nil {
             dateOfFirstSmoke = Int(Date().timeIntervalSince1970)

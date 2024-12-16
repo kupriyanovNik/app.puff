@@ -56,6 +56,7 @@ struct PuffIntent: AppIntent {
 
                     if planLimits[currentDayIndexInArray] < planCounts[currentDayIndexInArray] {
                         // TODO: - open app
+                        // ^ desided not to do!
                     }
                 }
             }
@@ -70,6 +71,7 @@ struct PuffIntent: AppIntent {
             defaults.synchronize()
         } else {
             // TODO: - open app and tell that plan is ended
+            // ^ desided not to do!
         }
 
         WidgetCenter.shared.reloadTimelines(ofKind: "PuffWidgets.HomeScreenWidget")

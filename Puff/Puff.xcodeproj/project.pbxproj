@@ -130,7 +130,6 @@
 		B7C886602CC39FFA004B6E9D /* HomeViewPlanViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C8865D2CC39FFA004B6E9D /* HomeViewPlanViews.swift */; };
 		B7EFBB922CC03634006CAE4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */; };
 		B7EFBB972CC0370D006CAE4F /* CustomDismissableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */; };
-		B7EFBB992CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */; };
 		B7EFBB9A2CC052DF006CAE4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716A4432CBAABCC005842A5 /* Localizable.strings */; };
 		B7F1E4432CC3E22B00BE422D /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F574F02C9CAAAF0059BAB9 /* Text+Ext.swift */; };
 		B7F1E4452CC3E6EA00BE422D /* PuffShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */; };
@@ -293,7 +292,6 @@
 		B7EFBB8F2CC03634006CAE4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7EFBB902CC03634006CAE4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7EFBB962CC0370D006CAE4F /* CustomDismissableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissableView.swift; sourceTree = "<group>"; };
-		B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffWidgetButtonStyle.swift; sourceTree = "<group>"; };
 		B7F0A2E02CB847520023D4C7 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffShortcut.swift; sourceTree = "<group>"; };
 		B7F1E4462CC4063E00BE422D /* PuffIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuffIntent.swift; sourceTree = "<group>"; };
@@ -581,7 +579,6 @@
 				B7861AAA2CBDA83000081617 /* PuffWidgets.swift */,
 				B7F1E4462CC4063E00BE422D /* PuffIntent.swift */,
 				B7F1E4442CC3E6EA00BE422D /* PuffShortcut.swift */,
-				B7EFBB982CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift */,
 				B7EFBB912CC03634006CAE4F /* Common */,
 			);
 			path = PuffWidgets;
@@ -1288,7 +1285,6 @@
 				B7861AAD2CBDA83000081617 /* PuffWidgets.swift in Sources */,
 				B7F1E4452CC3E6EA00BE422D /* PuffShortcut.swift in Sources */,
 				B7861AAE2CBDA83000081617 /* PuffWidgetsBundle.swift in Sources */,
-				B7EFBB992CC04AD2006CAE4F /* PuffWidgetButtonStyle.swift in Sources */,
 				B7861ABD2CBDA98300081617 /* UserDefaultsManager.swift in Sources */,
 				B7F1E4472CC4063E00BE422D /* PuffIntent.swift in Sources */,
 				B78DF5AD2CBFE2390078F9D0 /* Color+Ext.swift in Sources */,

@@ -10,36 +10,53 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), count: 10, isEnded: false, dateOfLastSmoke: nil)
+        SimpleEntry(date: Date(), count: 10, isEnded: false, dateOfLastSmoke: 0)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), count: 10, isEnded: false, dateOfLastSmoke: nil)
+        let entry = SimpleEntry(date: Date(), count: 10, isEnded: false, dateOfLastSmoke: 0)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        let counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
-        let limits = defaults.array(forKey: "newPlanLimits") as? [Int]
-
-        let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
-        let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
         let isPlanEnded = defaults.bool(forKey: "newIsPlanEnded")
 
-        let timeline = Timeline(
-            entries: [
+        if isPlanEnded {
+            let calendar = Calendar.current
+            let entries = (0...100).map {
                 SimpleEntry(
-                    date: .now,
-                    count: counts.last ?? -1,
-                    limit: (!isPlanStarted || limits == nil) ? nil : limits![currentDayIndex],
-                    isEnded: isPlanEnded,
+                    date: calendar.date(byAdding: .day, value: $0, to: .now) ?? .now,
+                    count: 0,
+                    limit: nil,
+                    isEnded: true,
                     dateOfLastSmoke: defaults.integer(forKey: "newDateOfLastSmoke")
                 )
-            ],
-            policy: .atEnd
-        )
+            }
 
-        completion(timeline)
+            completion(Timeline(entries: Array(entries), policy: .atEnd))
+        } else {
+
+            let counts = defaults.array(forKey: "newSmokesCount") as? [Int] ?? [0]
+            let limits = defaults.array(forKey: "newPlanLimits") as? [Int]
+
+            let currentDayIndex = defaults.integer(forKey: "newCurrentDayIndex")
+            let isPlanStarted = defaults.bool(forKey: "newIsPlanStarted")
+
+            let timeline = Timeline(
+                entries: [
+                    SimpleEntry(
+                        date: .now,
+                        count: counts.last ?? -1,
+                        limit: (!isPlanStarted || limits == nil) ? nil : limits![currentDayIndex],
+                        isEnded: isPlanEnded,
+                        dateOfLastSmoke: defaults.integer(forKey: "newDateOfLastSmoke")
+                    )
+                ],
+                policy: .atEnd
+            )
+
+            completion(timeline)
+        }
     }
 }
 
@@ -48,7 +65,7 @@ struct SimpleEntry: TimelineEntry {
     let count: Int
     var limit: Int?
     let isEnded: Bool
-    let dateOfLastSmoke: Int?
+    let dateOfLastSmoke: Int
 }
 
 struct PuffWidgetsEntryView : View {
@@ -66,6 +83,10 @@ struct PuffWidgetsEntryView : View {
         }
 
         return "\(entry.count)"
+    }
+
+    private var daysDontSmoke: Int {
+        Int( (Double(Date().timeIntervalSince1970) - Double(entry.dateOfLastSmoke)) / 86400 )
     }
 
     var body: some View {
@@ -119,20 +140,20 @@ struct PuffWidgetsEntryView : View {
             .scaleEffect(1.2)
             .overlay {
                 VStack(spacing: 4) {
-                    Text("Home.DontSmokeFor".l)
+                    Text(daysDontSmoke == 0 ? "Widgets.Broke".l : "Home.DontSmokeFor".l)
                         .font(.medium15)
                         .foregroundStyle(.limit)
 
-                    Text(setTime())
+                    Text(getTime())
                         .font(.bold28)
                         .foregroundStyle(.dontSmoke)
                 }
             }
     }
 
-    private func setTime() -> String {
-        if let dateOfLastSmoke = entry.dateOfLastSmoke {
-            return getLastSmokeTimeString(for: dateOfLastSmoke)
+    private func getTime() -> String {
+        if entry.dateOfLastSmoke > 0 {
+            return getLastSmokeTimeString(for: entry.dateOfLastSmoke)
         } else {
             return "Home.RealyLongTime".l
         }
@@ -140,40 +161,29 @@ struct PuffWidgetsEntryView : View {
 
     private func getLastSmokeTimeString(for dateInt: Int) -> String {
         let diff = Double(Date().timeIntervalSince1970) - Double(dateInt)
-
         let days = Int(diff / 86400)
-        let hours = Int(diff / 3600)
-        let minutes = Int(diff / 60)
 
         if Bundle.main.preferredLocalizations[0] == "ru" {
-            return getLastSmokeTimeRussianString(days, hours, minutes)
+            return getLastSmokeTimeRussianString(days)
         } else {
-            if days != 0 {
-                if days == 1 {
-                    return "1 day"
-                } else {
-                    return "\(days) days"
-                }
-            } else {
-                if hours != 0 {
-                    if hours == 1 {
-                        return "1 hour"
-                    } else {
-                        return "\(hours) hours"
-                    }
-                } else {
-                    if minutes == 1 || minutes == 0 {
-                        return "1 minute"
-                    } else {
-                        return "\(minutes) minutes"
-                    }
-                }
-            }
+            return getLastSmokeTimeEnglishString(days)
         }
     }
 
-    private func getLastSmokeTimeRussianString(_ days: Int, _ hours: Int, _ minutes: Int) -> String {
-        if days != 0 {
+    private func getLastSmokeTimeEnglishString(_ days: Int) -> String {
+        if days > 0 {
+            if days == 1 {
+                return "1 day"
+            } else {
+                return "\(days) days"
+            }
+        }
+
+        return "Today"
+    }
+
+    private func getLastSmokeTimeRussianString(_ days: Int) -> String {
+        if days > 0 {
             if days % 10 == 1 && days % 100 != 11 {
                 return "\(days) день"
             } else if (days % 10 >= 2 && days % 10 <= 4) && !(days % 100 >= 12 && days % 100 <= 14) {
@@ -181,25 +191,9 @@ struct PuffWidgetsEntryView : View {
             } else {
                 return "\(days) дней"
             }
-        } else {
-            if hours != 0 {
-                if hours % 10 == 1 && hours % 100 != 11 {
-                    return "\(hours) час"
-                } else if (hours % 10 >= 2 && hours % 10 <= 4) && !(hours % 100 >= 12 && hours % 100 <= 14) {
-                    return "\(hours) часа"
-                } else {
-                    return "\(hours) часов"
-                }
-            } else {
-                if (minutes % 10 == 1 && minutes % 100 != 11) || minutes == 1 {
-                    return "\(minutes) минуту"
-                } else if (minutes % 10 >= 2 && minutes % 10 <= 4) && !(minutes % 100 >= 12 && minutes % 100 <= 14) {
-                    return "\(minutes) минуты"
-                } else {
-                    return "\(minutes) минут"
-                }
-            }
         }
+
+        return "Сегодня"
     }
 }
 
@@ -215,6 +209,18 @@ struct PuffHomeScreenWidget: Widget {
         .configurationDisplayName("Widgets.HomeScreenTitle".l)
         .description("Widgets.HomeScreenDescription".l)
         .supportedFamilies([.systemSmall])
+    }
+}
+
+private extension PuffWidgetsEntryView {
+    struct PuffWidgetButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            let isPressed = configuration.isPressed
+
+            configuration.label
+                .opacity(isPressed ? 0.8 : 1)
+                .animation(.easeOut(duration: 0.15), value: isPressed)
+        }
     }
 }
 
