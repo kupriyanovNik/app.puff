@@ -90,11 +90,10 @@ struct MainNavigationView: View {
             )
             .removeSwipeToDismissWhenAppeared()
         }
-        .makeCustomConditionalView(navigationVM.shouldShowPaywall) {
-            AppPaywallView(subscriptionsManager: subscriptionsManager, showBenefitsDelay: 0.4) {
-                navigationVM.shouldShowPaywall = false
-            }
-        }
+        .paywall(isPresented: $navigationVM.shouldShowDailyPaywall, placementId: "basicDailyPaywall")
+        .paywall(isPresented: $navigationVM.shouldShowHomePaywall, placementId: "basicPaywallInHomeView")
+        .paywall(isPresented: $navigationVM.shouldShowStatisticsPaywall, placementId: "basicPaywallInStatistics")
+        .paywall(isPresented: $navigationVM.shouldShowOnboardingPaywall, placementId: "basicPaywallInOnboarding")
         .onChange(of: smokesManager.todaySmokes) { newValue in
             if !navigationVM.hasSeenWidgetsTip {
                 if newValue == 50 {

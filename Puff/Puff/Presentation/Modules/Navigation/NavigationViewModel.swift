@@ -31,9 +31,13 @@ final class NavigationViewModel: ObservableObject {
     @AppStorage("dateOfSeenUpdateSheet") private(set) var dateOfSeenUpdateSheet: Date?
     @Published private(set) var ableToShowUpdateActionMenu: Bool = false
 
-    @Published var shouldShowPaywall: Bool = false
+    @Published var shouldShowDailyPaywall: Bool = false
     @AppStorage("dateOfSeenDailyPaywall") private(set) var dateOfSeenDailyPaywall: Date?
     @Published private(set) var ableToShowDailyPaywall: Bool = false
+
+    @Published var shouldShowHomePaywall: Bool = false
+    @Published var shouldShowStatisticsPaywall: Bool = false
+    @Published var shouldShowOnboardingPaywall: Bool = false
 
     init() {
         checkAbilityToShowYesterdayResult()

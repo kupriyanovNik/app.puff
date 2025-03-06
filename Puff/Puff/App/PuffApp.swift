@@ -152,7 +152,7 @@ struct PuffApp: App {
     }
 
     private func showPaywall() {
-        navigationVM.shouldShowPaywall = true
+        navigationVM.shouldShowDailyPaywall = true
     }
 
     private func yesterdaySuccessedDismissAction() {
